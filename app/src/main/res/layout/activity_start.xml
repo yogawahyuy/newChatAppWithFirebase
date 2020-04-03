@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
     tools:context=".View.StartActivity">
 
@@ -13,21 +14,28 @@
         android:layout_height="wrap_content"
         android:text="Chat App"
         android:textSize="25sp"
+        android:textColor="#fff"
         android:textStyle="bold"
         />
     <Button
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:id="@+id/btnLoginApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
+        android:textColor="#fff"
         android:text="Login"/>
     <Button
         android:id="@+id/btnRegisterApp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@color/colorPrimaryDark"
+        android:textColor="#fff"
+        android:background="@color/colorAccent"
         android:text="Register"/>
 
 </LinearLayout>
