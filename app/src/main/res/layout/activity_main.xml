@@ -33,8 +33,23 @@
                android:textColor="#fff"
                android:textStyle="bold"/>
        </androidx.appcompat.widget.Toolbar>
-       
 
+       <com.google.android.material.tabs.TabLayout
+           android:id="@+id/tabLayout"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@color/colorPrimaryDark"
+           app:tabSelectedTextColor="#fff"
+           app:tabIndicatorColor="#fff"
+           app:tabTextColor="#fff"/>
    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </LinearLayout>
