@@ -21,6 +21,7 @@ import com.example.chatwithfirebase.Fragments.ChatsFragment;
 import com.example.chatwithfirebase.Fragments.UsersFragment;
 import com.example.chatwithfirebase.Model.User;
 import com.example.chatwithfirebase.View.StartActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +30,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
 
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseUser firebaseUser;
     DatabaseReference reference;
+
+    private BottomNavigationViewEx bottomNavigationViewEx;
 
 
     @Override
@@ -80,16 +84,26 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        TabLayout tabLayout=findViewById(R.id.tabLayout);
-        ViewPager viewPager=findViewById(R.id.viewPager);
 
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        bottomNavigationViewEx=findViewById(R.id.bottom_nav_view);
 
-        viewPagerAdapter.addFragment(new ChatsFragment(),"Chats");
-        viewPagerAdapter.addFragment(new UsersFragment(),"Users");
-        viewPager.setAdapter(viewPagerAdapter);
+        bottomNavigationViewEx.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                return false;
+            }
+        });
 
-        tabLayout.setupWithViewPager(viewPager);
+//        TabLayout tabLayout=findViewById(R.id.tabLayout);
+//        ViewPager viewPager=findViewById(R.id.viewPager);
+//
+//        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+//
+//        viewPagerAdapter.addFragment(new ChatsFragment(),"Chats");
+//        viewPagerAdapter.addFragment(new UsersFragment(),"Users");
+//        viewPager.setAdapter(viewPagerAdapter);
+//
+//        tabLayout.setupWithViewPager(viewPager);
 
     }
 
@@ -111,35 +125,35 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter{
-        private ArrayList<Fragment> fragments;
-        private ArrayList<String > titles;
-
-        ViewPagerAdapter(FragmentManager fm){
-            super(fm);
-            this.fragments=new ArrayList<>();
-            this.titles=new ArrayList<>();
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return fragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return fragments.size();
-        }
-        public void addFragment(Fragment fragment, String title){
-            fragments.add(fragment);
-            titles.add(title);
-        }
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return titles.get(position);
-        }
-
-
-    }
+//    class ViewPagerAdapter extends FragmentPagerAdapter{
+//        private ArrayList<Fragment> fragments;
+//        private ArrayList<String > titles;
+//
+//        ViewPagerAdapter(FragmentManager fm){
+//            super(fm);
+//            this.fragments=new ArrayList<>();
+//            this.titles=new ArrayList<>();
+//        }
+//
+//        @Override
+//        public Fragment getItem(int position) {
+//            return fragments.get(position);
+//        }
+//
+//        @Override
+//        public int getCount() {
+//            return fragments.size();
+//        }
+//        public void addFragment(Fragment fragment, String title){
+//            fragments.add(fragment);
+//            titles.add(title);
+//        }
+//        @Nullable
+//        @Override
+//        public CharSequence getPageTitle(int position) {
+//            return titles.get(position);
+//        }
+//
+//
+//    }
 }

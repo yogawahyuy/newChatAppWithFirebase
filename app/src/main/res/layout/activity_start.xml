@@ -5,18 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@color/colorPrimary"
+    android:background="#fff"
     android:orientation="vertical"
     tools:context=".View.StartActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chat App"
-        android:textSize="25sp"
-        android:textColor="#fff"
-        android:textStyle="bold"
-        />
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/logorsi"/>
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Chat App"-->
+<!--        android:textSize="25sp"-->
+<!--        android:textColor="#"-->
+<!--        android:textStyle="bold"-->
+<!--        />-->
     <Button
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
