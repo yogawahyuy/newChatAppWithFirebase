@@ -26,7 +26,7 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    MaterialEditText username,email,password;
+    MaterialEditText fullname,email,password,numberPhone,confpassword;
     Button btn_register;
 
     FirebaseAuth auth;
@@ -41,31 +41,37 @@ public class RegisterActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Register");
         getSupportActionBar() .setDisplayShowHomeEnabled(true);
 
-        username=findViewById(R.id.username);
+        fullname=findViewById(R.id.fullname);
         email=findViewById(R.id.email);
+        numberPhone=findViewById(R.id.numberphone);
         password=findViewById(R.id.password);
+        confpassword=findViewById(R.id.confpassword);
         btn_register=findViewById(R.id.btnregister);
         auth=FirebaseAuth.getInstance();
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txtUsername=username.getText().toString();
+                String txtUsername=fullname.getText().toString();
                 String txtEmail=email.getText().toString();
                 String txtPassword=password.getText().toString();
+                String txtNumberPhone=numberPhone.getText().toString();
+                String txtConfPassword=confpassword.getText().toString();
 
-                if (TextUtils.isEmpty(txtUsername)||TextUtils.isEmpty(txtEmail)||TextUtils.isEmpty(txtPassword)){
-                    Toast.makeText(RegisterActivity.this, "Please Fill all fields", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(txtUsername)||TextUtils.isEmpty(txtEmail)||TextUtils.isEmpty(txtPassword)||TextUtils.isEmpty(txtNumberPhone)||TextUtils.isEmpty(txtConfPassword)){
+                    Toast.makeText(RegisterActivity.this, "Isi Semua Form", Toast.LENGTH_SHORT).show();
                 }else if (txtPassword.length() < 6){
-                    Toast.makeText(RegisterActivity.this, "Password must 6 characters", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Password minimal 6 karakter", Toast.LENGTH_SHORT).show();
+                }else if(!txtPassword.equals(txtConfPassword)){
+                    Toast.makeText(RegisterActivity.this, "Password tidak sama", Toast.LENGTH_SHORT).show();
                 }else{
-                    register(txtUsername,txtEmail,txtPassword);
+                    register(txtUsername,txtEmail,txtNumberPhone,txtPassword);
                 }
             }
         });
     }
 
-    private void register(final String username, final String email, final String password){
+    private void register(final String username, final String email,final String numberPhone, final String password){
         auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -78,6 +84,8 @@ public class RegisterActivity extends AppCompatActivity {
                     HashMap<String, String > hashMap=new HashMap<>();
                     hashMap.put("id",uid);
                     hashMap.put("username",username);
+                    hashMap.put("email",email);
+                    hashMap.put("numberPhone",numberPhone);
                     hashMap.put("ImageURL","Default");
 
                     reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {

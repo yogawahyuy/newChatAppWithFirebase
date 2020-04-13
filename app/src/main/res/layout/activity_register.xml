@@ -18,17 +18,19 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create new Account"
+            android:text="Buat Akun Baru"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
         
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/username"
+            android:id="@+id/fullname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
-            android:hint="Username"/>
+            android:inputType="text"
+            android:hint="Nama Lengkap"/>
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/email"
             android:layout_width="match_parent"
@@ -38,13 +40,29 @@
             android:inputType="textEmailAddress"
             android:hint="Email"/>
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/numberphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:met_floatingLabel="normal"
+            android:inputType="numberDecimal"
+            android:hint="Nomor Telepon"/>
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:met_floatingLabel="normal"
             android:inputType="textPassword"
-            android:hint="Password"/>
+            android:hint="Pasword"/>
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/confpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:met_floatingLabel="normal"
+            android:inputType="textPassword"
+            android:hint="Konfirmasi password"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

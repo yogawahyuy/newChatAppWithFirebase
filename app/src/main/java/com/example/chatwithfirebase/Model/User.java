@@ -2,15 +2,39 @@ package com.example.chatwithfirebase.Model;
 
 public class User {
 
-    private String username, id, ImageURL;
+    private String username;
+    private String id;
+    private String ImageURL;
+    private String email;
+    private String numberPhone;
+
+
+    public User(String username, String id, String imageURL, String email, String numberPhone) {
+        this.username = username;
+        this.id = id;
+        ImageURL = imageURL;
+        this.email = email;
+        this.numberPhone = numberPhone;
+    }
+
 
     public User() {
     }
 
-    public User(String username, String id, String ImageURL) {
-        this.username = username;
-        this.id = id;
-        this.ImageURL = ImageURL;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNumberPhone() {
+        return numberPhone;
+    }
+
+    public void setNumberPhone(String numberPhone) {
+        this.numberPhone = numberPhone;
     }
 
     public void setUsername(String username) {

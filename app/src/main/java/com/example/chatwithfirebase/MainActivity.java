@@ -17,7 +17,9 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.chatwithfirebase.Fragments.AboutFragment;
 import com.example.chatwithfirebase.Fragments.ChatsFragment;
+import com.example.chatwithfirebase.Fragments.HomeFragment;
 import com.example.chatwithfirebase.Fragments.UsersFragment;
 import com.example.chatwithfirebase.Model.User;
 import com.example.chatwithfirebase.View.StartActivity;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference reference;
 
     private BottomNavigationViewEx bottomNavigationViewEx;
+    MenuItem prevMenuItem;
 
 
     @Override
@@ -62,28 +65,37 @@ public class MainActivity extends AppCompatActivity {
         username=findViewById(R.id.username);
 
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        reference= FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        if (firebaseUser!=null) {
+            reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            User user = dataSnapshot.getValue(User.class);
-            username.setText(user.getUsername());
-                Log.d("main", "onDataChange: "+user.getId());
-                Log.d("main", "onDataChange: "+user.getUsername());
-                Log.d("main", "onDataChange: "+user.getImageURL());
-            if(user.getImageURL().equals("Default")){
-                profileImage.setImageResource(R.mipmap.ic_launcher);
-            }else{
-                Glide.with(MainActivity.this).load(user.getImageURL()).into(profileImage);
-            }
-            }
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    User user = dataSnapshot.getValue(User.class);
+                    FirebaseUser mFirebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+                        username.setText(user.getUsername());
+                        Log.d("main", "onDataChange: " + user.getId());
+                        Log.d("main", "onDataChange: " + user.getUsername());
+                        Log.d("main", "onDataChange: " + user.getImageURL());
+                        if (user.getImageURL().equals("Default")) {
+                            profileImage.setImageResource(R.mipmap.ic_launcher);
+                        } else {
+                            Glide.with(MainActivity.this).load(user.getImageURL()).into(profileImage);
+                        }
+                    }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }else{
+            username.setText("RSI Purwokerto");
+            profileImage.setImageResource(R.drawable.logorsi);
+            profileImage.setMaxHeight(50);
+            profileImage.setMaxWidth(50);
+        }
 
         bottomNavigationViewEx=findViewById(R.id.bottom_nav_view);
 
@@ -95,17 +107,62 @@ public class MainActivity extends AppCompatActivity {
         });
 
 //        TabLayout tabLayout=findViewById(R.id.tabLayout);
-//        ViewPager viewPager=findViewById(R.id.viewPager);
-//
-//        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-//
-//        viewPagerAdapter.addFragment(new ChatsFragment(),"Chats");
-//        viewPagerAdapter.addFragment(new UsersFragment(),"Users");
-//        viewPager.setAdapter(viewPagerAdapter);
+        final ViewPager viewPager=findViewById(R.id.viewPager);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFragment(new HomeFragment());
+        viewPagerAdapter.addFragment(new AboutFragment());
+        viewPagerAdapter.addFragment(new ChatsFragment());
+        viewPagerAdapter.addFragment(new UsersFragment());
+        viewPager.setAdapter(viewPagerAdapter);
 //
 //        tabLayout.setupWithViewPager(viewPager);
 
+        bottomNavigationViewEx.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.home_menu:
+                        viewPager.setCurrentItem(0);
+                        break;
+                    case R.id.about_menu:
+                        viewPager.setCurrentItem(1);
+                        break;
+                    case R.id.chat_menu:
+                        viewPager.setCurrentItem(2);
+                        break;
+                    case R.id.profile_menu:
+                        viewPager.setCurrentItem(3);
+                        break;
+                }
+                return false;
+
+            }
+        });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (prevMenuItem!=null){
+                    prevMenuItem.setChecked(false);
+                }else{
+                    bottomNavigationViewEx.getMenu().getItem(0).setChecked(false);
+                }
+                bottomNavigationViewEx.getMenu().getItem(position).setChecked(true);
+                prevMenuItem=bottomNavigationViewEx.getMenu().getItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -121,39 +178,39 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, StartActivity.class));
                 finish();
                 return true;
+            case R.id.login:
+                startActivity(new Intent(MainActivity.this,StartActivity.class));
+                finish();
+                return true;
         }
         return false;
     }
 
-//    class ViewPagerAdapter extends FragmentPagerAdapter{
-//        private ArrayList<Fragment> fragments;
-//        private ArrayList<String > titles;
-//
-//        ViewPagerAdapter(FragmentManager fm){
-//            super(fm);
-//            this.fragments=new ArrayList<>();
-//            this.titles=new ArrayList<>();
-//        }
-//
-//        @Override
-//        public Fragment getItem(int position) {
-//            return fragments.get(position);
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            return fragments.size();
-//        }
-//        public void addFragment(Fragment fragment, String title){
-//            fragments.add(fragment);
-//            titles.add(title);
-//        }
-//        @Nullable
-//        @Override
-//        public CharSequence getPageTitle(int position) {
-//            return titles.get(position);
-//        }
-//
-//
-//    }
+
+
+    class ViewPagerAdapter extends FragmentPagerAdapter{
+        private ArrayList<Fragment> fragments;
+
+        ViewPagerAdapter(FragmentManager fm){
+            super(fm);
+            this.fragments=new ArrayList<>();
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+        public void addFragment(Fragment fragment){
+            fragments.add(fragment);
+
+        }
+
+
+
+    }
 }

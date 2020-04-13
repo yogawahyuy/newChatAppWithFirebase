@@ -12,15 +12,17 @@
         <activity android:name=".View.LoginActivity"
             android:parentActivityName=".View.StartActivity"/>
         <activity android:name=".View.StartActivity" >
+
+        </activity>
+        <activity android:name=".View.RegisterActivity"
+            android:parentActivityName=".View.StartActivity"/>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".View.RegisterActivity"
-            android:parentActivityName=".View.StartActivity"/>
-        <activity android:name=".MainActivity"/>
 
     </application>
 
