@@ -55,47 +55,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar=findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+//        Toolbar toolbar=findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setTitle("");
 
 
 
         profileImage =findViewById(R.id.profile_image);
         username=findViewById(R.id.username);
 
-        firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        if (firebaseUser!=null) {
-            reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
-
-            reference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    User user = dataSnapshot.getValue(User.class);
-                    FirebaseUser mFirebaseuser = FirebaseAuth.getInstance().getCurrentUser();
-                        username.setText(user.getUsername());
-                        Log.d("main", "onDataChange: " + user.getId());
-                        Log.d("main", "onDataChange: " + user.getUsername());
-                        Log.d("main", "onDataChange: " + user.getImageURL());
-                        if (user.getImageURL().equals("Default")) {
-                            profileImage.setImageResource(R.mipmap.ic_launcher);
-                        } else {
-                            Glide.with(MainActivity.this).load(user.getImageURL()).into(profileImage);
-                        }
-                    }
 
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+        username.setText("RSI Purwokerto");
+        profileImage.setImageResource(R.drawable.logorsi);
+        profileImage.setMaxHeight(50);
+        profileImage.setMaxWidth(50);
 
-                }
-            });
-        }else{
-            username.setText("RSI Purwokerto");
-            profileImage.setImageResource(R.drawable.logorsi);
-            profileImage.setMaxHeight(50);
-            profileImage.setMaxWidth(50);
-        }
 
         bottomNavigationViewEx=findViewById(R.id.bottom_nav_view);
 

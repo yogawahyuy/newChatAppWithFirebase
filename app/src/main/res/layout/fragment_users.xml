@@ -1,19 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    tools:context=".Fragments.UsersFragment"
+   >
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.UsersFragment">
-
+    android:scrollbars="vertical">
    <RelativeLayout
-       android:layout_width="match_parent"
+       android:layout_width="fill_parent"
        android:layout_height="wrap_content"
-       android:background="@color/colorAccent">
+       android:background="@android:color/white">
+      <RelativeLayout
+          android:id="@+id/box_photo"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
       <de.hdodenhof.circleimageview.CircleImageView
+          android:id="@+id/profile_picture"
           android:layout_width="100dp"
           android:layout_height="100dp"
          android:layout_centerInParent="true"
-         android:src="@mipmap/ic_launcher"/>
+         android:src="@drawable/logorsi"/>
+      </RelativeLayout>
+      <RelativeLayout
+         android:id="@+id/box_data"
+          android:layout_marginTop="16dp"
+         android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/box_photo"
+          android:padding="10dp">
+
+         <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/page_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:padding="10dp">
+               <ImageView
+                  android:id="@+id/icon_email"
+                   android:layout_width="24dp"
+                   android:layout_height="24dp"
+                  android:layout_marginTop="5dp"
+                  android:src="@drawable/icons8email64"/>
+               <TextView
+                  android:layout_toRightOf="@id/icon_email"
+                  android:layout_alignParentRight="true"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                  android:layout_marginLeft="24dp"
+                  android:layout_marginTop="6dp"
+                  android:text="yogawahyuy@gmail.com"
+                  android:textSize="14sp"
+                  android:textStyle="normal"
+                  android:typeface="normal"/>
+               <View
+                   android:layout_width="match_parent"
+                   android:layout_height="1px"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginLeft="40dp"
+                  android:background="@color/colorGREY"
+                  android:layout_below="@id/icon_email"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+               android:id="@+id/page_numberphone"
+               android:layout_below="@id/page_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:padding="10dp">
+
+               <ImageView
+                   android:id="@+id/icon_numberphone"
+                   android:layout_width="24dp"
+                   android:layout_height="24dp"
+                   android:layout_marginTop="5dp"
+                   android:src="@drawable/icons8numberpad100"/>
+
+               <TextView
+                   android:layout_toRightOf="@id/icon_numberphone"
+                   android:layout_alignParentRight="true"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="24dp"
+                   android:layout_marginTop="6dp"
+                   android:text="081578980166"
+                   android:textSize="14sp"
+                   android:textStyle="normal"
+                   android:typeface="normal"/>
+               <View
+                   android:layout_width="match_parent"
+                   android:layout_height="1px"
+                   android:layout_marginTop="10dp"
+                   android:layout_marginLeft="40dp"
+                   android:background="@color/colorGREY"
+                   android:layout_below="@id/icon_numberphone"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/page_nama"
+                android:layout_below="@id/page_numberphone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+               <ImageView
+                   android:id="@+id/icon_nama"
+                   android:layout_width="24dp"
+                   android:layout_height="24dp"
+                   android:layout_marginTop="5dp"
+                   android:src="@drawable/icons8name96"/>
+
+               <TextView
+                   android:layout_toRightOf="@id/icon_nama"
+                   android:layout_alignParentRight="true"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="24dp"
+                   android:layout_marginTop="6dp"
+                   android:text="Yoga Wahyu Yuwono"
+                   android:textSize="14sp"
+                   android:textStyle="normal"
+                   android:typeface="normal"/>
+               <View
+                   android:layout_width="match_parent"
+                   android:layout_height="1px"
+                   android:layout_marginTop="10dp"
+                   android:layout_marginLeft="40dp"
+                   android:background="@color/colorGREY"
+                   android:layout_below="@id/icon_nama"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/page_profesi"
+                android:layout_below="@id/page_nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+               <ImageView
+                   android:id="@+id/icon_profesi"
+                   android:layout_width="24dp"
+                   android:layout_height="24dp"
+                   android:layout_marginTop="5dp"
+                   android:src="@drawable/icons8nursemale80"/>
+
+               <TextView
+                   android:layout_toRightOf="@id/icon_profesi"
+                   android:layout_alignParentRight="true"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="24dp"
+                   android:layout_marginTop="6dp"
+                   android:text="IT (information technologies)"
+                   android:textSize="14sp"
+                   android:textStyle="normal"
+                   android:typeface="normal"/>
+               <View
+                   android:layout_width="match_parent"
+                   android:layout_height="1px"
+                   android:layout_marginTop="10dp"
+                   android:layout_marginLeft="40dp"
+                   android:background="@color/colorGREY"
+                   android:layout_below="@id/icon_profesi"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/page_alamat"
+                android:layout_below="@id/page_profesi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+               <ImageView
+                   android:id="@+id/icon_alamat"
+                   android:layout_width="24dp"
+                   android:layout_height="24dp"
+                   android:layout_marginTop="5dp"
+                   android:src="@drawable/icons8address96"/>
+
+               <TextView
+                   android:layout_toRightOf="@id/icon_alamat"
+                   android:layout_alignParentRight="true"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="24dp"
+                   android:layout_marginTop="6dp"
+                   android:text="Kalilandak Banjarnegara"
+                   android:textSize="14sp"
+                   android:textStyle="normal"
+                   android:typeface="normal"/>
+               <View
+                   android:layout_width="match_parent"
+                   android:layout_height="1px"
+                   android:layout_marginTop="10dp"
+                   android:layout_marginLeft="40dp"
+                   android:background="@color/colorGREY"
+                   android:layout_below="@id/icon_alamat"/>
+            </RelativeLayout>
+         </RelativeLayout>
+
+      </RelativeLayout>
+      <Button
+         android:id="@+id/edit_profilebtn"
+         android:layout_below="@id/box_data"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+         android:text="Edit Profile"
+         android:background="@drawable/bg_template"
+         android:textColor="@android:color/holo_red_light"
+         android:layout_marginTop="10dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="16dp"/>
+
+      <Button
+          android:id="@+id/logout_profilebtn"
+          android:layout_below="@id/edit_profilebtn"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Log Out"
+          android:background="@drawable/bg_template"
+          android:textColor="@android:color/holo_red_light"
+          android:layout_marginTop="10dp"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="16dp"/>
    </RelativeLayout>
+</ScrollView>
 
 </RelativeLayout>

@@ -56,27 +56,7 @@ public class UsersFragment extends Fragment {
         final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
 
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                users.clear();
-                for (DataSnapshot snapshot :dataSnapshot.getChildren()){
-                    User user= snapshot.getValue(User.class);
 
-                    assert user!=null;
-                    assert firebaseUser!=null;
-                    if (!user.getId().equals(firebaseUser.getUid())){
-                        users.add(user);
-                    }
-                }
-                usersAdapter=new UsersAdapter(getContext(),users);
-                recyclerView.setAdapter(usersAdapter);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
 }
