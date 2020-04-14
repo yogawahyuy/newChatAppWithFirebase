@@ -55,24 +55,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Toolbar toolbar=findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setTitle("");
-
-
-
         profileImage =findViewById(R.id.profile_image);
         username=findViewById(R.id.username);
-
-
 
         username.setText("RSI Purwokerto");
         profileImage.setImageResource(R.drawable.logorsi);
         profileImage.setMaxHeight(50);
         profileImage.setMaxWidth(50);
-
-
         bottomNavigationViewEx=findViewById(R.id.bottom_nav_view);
+        bottomNavigationViewEx.setIconSize(20, 20);
+        bottomNavigationViewEx.setTextSize(12);
+        bottomNavigationViewEx.enableAnimation(false);
+        bottomNavigationViewEx.setTextVisibility(true);
+        bottomNavigationViewEx.enableShiftingMode(false);
+        bottomNavigationViewEx.enableItemShiftingMode(false);
+        bottomNavigationViewEx.setIconTintList(0, getResources().getColorStateList(R.color.colorAccent));
+        bottomNavigationViewEx.setTextTintList(0, getResources().getColorStateList(R.color.colorAccent));
+
 
         bottomNavigationViewEx.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -81,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        TabLayout tabLayout=findViewById(R.id.tabLayout);
         final ViewPager viewPager=findViewById(R.id.viewPager);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(new HomeFragment());
@@ -89,8 +87,7 @@ public class MainActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(new ChatsFragment());
         viewPagerAdapter.addFragment(new UsersFragment());
         viewPager.setAdapter(viewPagerAdapter);
-//
-//        tabLayout.setupWithViewPager(viewPager);
+
 
         bottomNavigationViewEx.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -98,15 +95,47 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.home_menu:
                         viewPager.setCurrentItem(0);
+                        bottomNavigationViewEx.setIconTintList(0, getResources().getColorStateList(R.color.colorAccent));
+                       bottomNavigationViewEx.setTextTintList(0, getResources().getColorStateList(R.color.colorAccent));
+                       bottomNavigationViewEx.setIconTintList(1, getResources().getColorStateList(R.color.colorGREY));
+                       bottomNavigationViewEx.setTextTintList(1, getResources().getColorStateList(R.color.colorGREY));
+                       bottomNavigationViewEx.setIconTintList(2, getResources().getColorStateList(R.color.colorGREY));
+                       bottomNavigationViewEx.setTextTintList(2, getResources().getColorStateList(R.color.colorGREY));
+                       bottomNavigationViewEx.setIconTintList(3, getResources().getColorStateList(R.color.colorGREY));
+                       bottomNavigationViewEx.setTextTintList(3, getResources().getColorStateList(R.color.colorGREY));
                         break;
                     case R.id.about_menu:
                         viewPager.setCurrentItem(1);
+                        bottomNavigationViewEx.setIconTintList(0, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setTextTintList(0, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setIconTintList(1, getResources().getColorStateList(R.color.colorAccent));
+                        bottomNavigationViewEx.setTextTintList(1, getResources().getColorStateList(R.color.colorAccent));
+                        bottomNavigationViewEx.setIconTintList(2, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setTextTintList(2, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setIconTintList(3, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setTextTintList(3, getResources().getColorStateList(R.color.colorGREY));
                         break;
                     case R.id.chat_menu:
                         viewPager.setCurrentItem(2);
+                        bottomNavigationViewEx.setIconTintList(0, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setTextTintList(0, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setIconTintList(1, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setTextTintList(1, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setIconTintList(2, getResources().getColorStateList(R.color.colorAccent));
+                        bottomNavigationViewEx.setTextTintList(2, getResources().getColorStateList(R.color.colorAccent));
+                        bottomNavigationViewEx.setIconTintList(3, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setTextTintList(3, getResources().getColorStateList(R.color.colorGREY));
                         break;
                     case R.id.profile_menu:
                         viewPager.setCurrentItem(3);
+                        bottomNavigationViewEx.setIconTintList(0, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setTextTintList(0, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setIconTintList(1, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setTextTintList(1, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setIconTintList(2, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setTextTintList(2, getResources().getColorStateList(R.color.colorGREY));
+                        bottomNavigationViewEx.setIconTintList(3, getResources().getColorStateList(R.color.colorAccent));
+                        bottomNavigationViewEx.setTextTintList(3, getResources().getColorStateList(R.color.colorAccent));
                         break;
                 }
                 return false;
