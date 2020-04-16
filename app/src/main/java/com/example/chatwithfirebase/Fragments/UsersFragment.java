@@ -1,5 +1,6 @@
 package com.example.chatwithfirebase.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.chatwithfirebase.Adapter.UsersAdapter;
 import com.example.chatwithfirebase.Model.User;
 import com.example.chatwithfirebase.R;
+import com.example.chatwithfirebase.View.StartActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +36,7 @@ public class UsersFragment extends Fragment {
     private RecyclerView recyclerView;
     private UsersAdapter usersAdapter;
     private List<User> users;
+    private Button btnLogout,btnEdit;
 
     public UsersFragment() {
         // Required empty public constructor
@@ -45,7 +49,14 @@ public class UsersFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_users,container,false);
 
-
+        btnLogout=view.findViewById(R.id.logout_profilebtn);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getContext(), StartActivity.class));
+            }
+        });
         users=new ArrayList<>();
         readUsers();
         return view;

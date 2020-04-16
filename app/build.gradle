@@ -44,5 +44,6 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     api 'com.github.ittianyu:BottomNavigationViewEx:2.0.2'
+    api 'com.github.mirrajabi:search-dialog:1.2.4'
 
 }

@@ -1,6 +1,8 @@
 package com.example.chatwithfirebase.Model;
 
-public class User {
+import ir.mirrajabi.searchdialog.core.Searchable;
+
+public class User implements Searchable {
 
     private String username;
     private String id;
@@ -19,6 +21,11 @@ public class User {
 
 
     public User() {
+    }
+
+    public User(String username, String imageURL) {
+        this.username = username;
+        ImageURL = imageURL;
     }
 
     public String getEmail() {
@@ -59,5 +66,10 @@ public class User {
 
     public String getImageURL() {
         return ImageURL;
+    }
+
+    @Override
+    public String getTitle() {
+        return null;
     }
 }
