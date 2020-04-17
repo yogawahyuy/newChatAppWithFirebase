@@ -31,7 +31,7 @@
                android:layout_marginLeft="25dp"
                android:layout_marginStart="25dp"
                android:text="Username"
-               android:textColor="#fff"
+               android:textColor="@android:color/black"
                android:textStyle="bold"/>
        </androidx.appcompat.widget.Toolbar>
     </RelativeLayout>
