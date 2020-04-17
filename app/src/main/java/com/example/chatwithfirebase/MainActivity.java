@@ -41,7 +41,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity {
 
     CircleImageView profileImage;
-    TextView username;
+    //TextView username;
 
     FirebaseUser firebaseUser;
     DatabaseReference reference;
@@ -56,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         profileImage =findViewById(R.id.profile_image);
-        username=findViewById(R.id.username);
+        //username=findViewById(R.id.username);
 
-        username.setText(R.string.rsip);
+        //username.setText(R.string.rsip);
         profileImage.setImageResource(R.drawable.logorsi);
         profileImage.setMaxHeight(50);
         profileImage.setMaxWidth(50);
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                        bottomNavigationViewEx.setTextTintList(2, getResources().getColorStateList(R.color.colorGREY));
                        bottomNavigationViewEx.setIconTintList(3, getResources().getColorStateList(R.color.colorGREY));
                        bottomNavigationViewEx.setTextTintList(3, getResources().getColorStateList(R.color.colorGREY));
-                       username.setText(R.string.rsip);
+                       //username.setText(R.string.rsip);
                         break;
                     case R.id.about_menu:
                         viewPager.setCurrentItem(1);
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                         bottomNavigationViewEx.setTextTintList(2, getResources().getColorStateList(R.color.colorGREY));
                         bottomNavigationViewEx.setIconTintList(3, getResources().getColorStateList(R.color.colorGREY));
                         bottomNavigationViewEx.setTextTintList(3, getResources().getColorStateList(R.color.colorGREY));
-                        username.setText("About RSI");
+                       // username.setText("About RSI");
                         break;
                     case R.id.chat_menu:
                         viewPager.setCurrentItem(2);
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                         bottomNavigationViewEx.setTextTintList(2, getResources().getColorStateList(R.color.colorAccent));
                         bottomNavigationViewEx.setIconTintList(3, getResources().getColorStateList(R.color.colorGREY));
                         bottomNavigationViewEx.setTextTintList(3, getResources().getColorStateList(R.color.colorGREY));
-                        username.setText("Chat");
+                        //username.setText("Chat");
                         break;
                     case R.id.profile_menu:
                         viewPager.setCurrentItem(3);
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                         bottomNavigationViewEx.setTextTintList(2, getResources().getColorStateList(R.color.colorGREY));
                         bottomNavigationViewEx.setIconTintList(3, getResources().getColorStateList(R.color.colorAccent));
                         bottomNavigationViewEx.setTextTintList(3, getResources().getColorStateList(R.color.colorAccent));
-                        username.setText("Profile");
+                        //username.setText("Profile");
                         break;
                 }
                 return false;

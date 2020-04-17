@@ -6,17 +6,20 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/myImage_news"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:scaleType="centerCrop" />
+    <TextView
+        android:id="@+id/myText_Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Headline"
+        android:textSize="24sp"
+        android:padding="16dp"/>
     <TextView
         android:id="@+id/myText_news"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Headline"
-        android:layout_toRightOf="@id/myImage_news"
+        android:text="Desc"
+        android:layout_below="@id/myText_Headline"
+        android:textSize="16sp"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"/>
     </RelativeLayout>

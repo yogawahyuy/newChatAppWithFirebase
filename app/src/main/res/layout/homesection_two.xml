@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.synnapps.carouselview.CarouselView
-                android:id="@+id/slider"
+                android:id="@+id/slider_news"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 app:fillColor="#FFFFFFFF"
