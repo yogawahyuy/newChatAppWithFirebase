@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -40,7 +41,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    CircleImageView profileImage;
+    ImageView profileImage,akreditasiImage;
     //TextView username;
 
     FirebaseUser firebaseUser;
@@ -55,13 +56,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        profileImage =findViewById(R.id.profile_image);
+        //profileImage =findViewById(R.id.profile_image);
+        //akreditasiImage=findViewById(R.id.akreditasi_image);
         //username=findViewById(R.id.username);
 
         //username.setText(R.string.rsip);
-        profileImage.setImageResource(R.drawable.logorsi);
-        profileImage.setMaxHeight(50);
-        profileImage.setMaxWidth(50);
+//        profileImage.setImageResource(R.drawable.logo3);
+//        profileImage.setMaxHeight(50);
+//        profileImage.setMaxWidth(50);
+//        akreditasiImage.setImageResource(R.drawable.akreditasi);
+//        akreditasiImage.setMaxWidth(50);
+//        akreditasiImage.setMaxHeight(50);
         bottomNavigationViewEx=findViewById(R.id.bottom_nav_view);
         bottomNavigationViewEx.setIconSize(20, 20);
         bottomNavigationViewEx.setTextSize(12);

@@ -23,7 +23,7 @@
           android:layout_width="150dp"
           android:layout_height="150dp"
          android:layout_centerInParent="true"
-         android:src="@drawable/logorsi"/>
+         android:src="@drawable/logo3"/>
       </RelativeLayout>
       <RelativeLayout
          android:id="@+id/box_data"

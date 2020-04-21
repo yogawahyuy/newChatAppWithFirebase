@@ -18,14 +18,33 @@
            android:layout_height="wrap_content"
            android:background="@color/colorPrimaryDark"
            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-           app:popupTheme="@style/MenuStyle">
+           >
 
-           <de.hdodenhof.circleimageview.CircleImageView
-               android:id="@+id/profile_image"
-               android:layout_width="50dp"
+           <ImageView
+               android:layout_width="150dp"
+               android:layout_height="70dp"
+               android:src="@drawable/logo3"
+               android:layout_marginStart="20dp"/>
+           <ImageView
+               android:layout_width="100dp"
                android:layout_height="50dp"
-               android:layout_marginLeft="175dp"
-               />
+               android:src="@drawable/akreditasi"
+               android:layout_marginStart="60dp"/>
+
+<!--           <de.hdodenhof.circleimageview.CircleImageView-->
+<!--               android:id="@+id/profile_image"-->
+<!--               android:layout_width="50dp"-->
+<!--               android:layout_height="50dp"-->
+<!--               android:layout_marginStart="50dp"-->
+<!--               android:src="@drawable/logo3"-->
+<!--               android:contentDescription="TODO" />-->
+<!--           <de.hdodenhof.circleimageview.CircleImageView-->
+<!--               android:id="@+id/akreditasi_image"-->
+<!--               android:layout_width="50dp"-->
+<!--               android:layout_height="50dp"-->
+<!--               android:layout_marginStart="175dp"-->
+<!--               android:contentDescription="TODO"-->
+<!--               android:src="@drawable/akreditasi" />-->
 
 <!--           <TextView-->
 <!--               android:layout_width="wrap_content"-->

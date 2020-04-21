@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#fff"
+    android:background="@drawable/bg_start"
     android:orientation="vertical"
-    tools:context=".View.StartActivity">
+    tools:context=".View.StartActivity"
+    >
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/logorsi"/>
+        android:id="@+id/image_logo"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo3"
+        android:layout_centerInParent="true"/>
 
 <!--    <TextView-->
 <!--        android:layout_width="wrap_content"-->
@@ -23,6 +26,7 @@
 <!--        android:textStyle="bold"-->
 <!--        />-->
     <Button
+        android:layout_below="@id/image_logo"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:id="@+id/btnLoginApp"
@@ -33,6 +37,7 @@
         android:textColor="#fff"
         android:text="Login"/>
     <Button
+        android:layout_below="@id/btnLoginApp"
         android:id="@+id/btnRegisterApp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -43,4 +48,4 @@
         android:background="@color/colorAccent"
         android:text="Register"/>
 
-</LinearLayout>
+</RelativeLayout>
