@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.chatwithfirebase.R;
 import com.example.chatwithfirebase.View.BookingActivity;
+import com.example.chatwithfirebase.View.InfoBedActivity;
 
 public class GridHomeAdapter extends BaseAdapter {
 
@@ -59,6 +60,17 @@ public class GridHomeAdapter extends BaseAdapter {
             public void onClick(View v) {
                 if (position==0){
                     mContext.startActivity(new Intent(mContext, BookingActivity.class));
+                }
+                else if (position==1){
+
+                }else if (position==2){
+                    mContext.startActivity(new Intent(mContext, InfoBedActivity.class));
+                }
+                else if (position==3){
+
+                }
+                else if (position==4){
+
                 }
             }
         });
