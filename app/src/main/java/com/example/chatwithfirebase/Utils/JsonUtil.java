@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JsonUtil {
-    public ArrayList<InfoBedModel> infoBedModels = new ArrayList<>();
+
 
     public JsonUtil() {
     }
@@ -53,7 +53,7 @@ public class JsonUtil {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.i("JsonUtils", "onErrorResponse: "+error);
             }
         });
         Volley.newRequestQueue(context).add(jsonObjectRequest);

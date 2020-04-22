@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:background="@color/colorAccent"
+        android:background="@color/green"
         android:textColor="#fff"
         android:text="Login"/>
     <Button
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textColor="#fff"
-        android:background="@color/colorAccent"
+        android:background="@android:color/holo_red_dark"
         android:text="Register"/>
 
 </RelativeLayout>

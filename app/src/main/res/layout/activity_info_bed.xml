@@ -34,9 +34,32 @@
         </androidx.appcompat.widget.Toolbar>
     </RelativeLayout>
 
+<RelativeLayout
+    android:id="@+id/rel_titlebed"
+    android:layout_width="match_parent"
+    android:layout_height="28dp"
+    android:layout_below="@id/rel_toolbar"
+    android:layout_marginBottom="3dp"
+    android:background="@color/colorPrimaryDark"
+   >
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ketersediaan Tempat Tidur"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:fontFamily="@font/bookmanoldstyle"
+        android:textColor="@android:color/white"
+        />
+
+
+</RelativeLayout>
+
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/recy_list_bed"
-    android:layout_below="@id/rel_toolbar"
+    android:layout_below="@id/rel_titlebed"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="vertical" />

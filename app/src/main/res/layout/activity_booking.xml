@@ -41,8 +41,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#D3D1D1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="200dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Booking Antrian"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Masukan SEP"
+                android:background="@drawable/bg_template"/>
 
         </LinearLayout>
     </RelativeLayout>

@@ -41,7 +41,7 @@ public class InfoBedAdapter extends RecyclerView.Adapter<InfoBedAdapter.ViewHold
         holder.sisaBed.setText(String.valueOf(sisabed));
         holder.kapasitasBed.setText(infoBedModels.get(position).getKapasitas());
         holder.tersedia.setText(infoBedModels.get(position).getTersedia());
-        holder.lastUpdate.setText("2020/04/04 19:50");
+        holder.lastUpdate.setText(infoBedModels.get(position).getKodeKelas());
     }
 
     @Override

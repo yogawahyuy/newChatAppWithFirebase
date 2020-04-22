@@ -1,20 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".Fragments.AboutFragment">
+
+<!--        <RelativeLayout-->
+<!--        android:id="@+id/fotoatas"-->
+<!--        android:background="@color/colorPrimaryDark"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:src="@drawable/halapandepan"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        />-->
+<!--        </RelativeLayout>-->
+
+    <RelativeLayout
+        android:id="@+id/rel_titleabout"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/colorPrimaryDark"
+        >
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tentang Kami"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:fontFamily="@font/bookmanoldstyle"
+            android:textColor="@android:color/white"
+            />
+    </RelativeLayout>
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.AboutFragment">
+    android:scrollbars="vertical"
+    android:layout_below="@id/rel_titleabout">
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+         <RelativeLayout
+            android:id="@+id/visiRelative"
+            android:layout_marginTop="5dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:layout_marginLeft="16dp"
+             android:layout_marginRight="16dp"
+             >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/visi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Headline"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:id="@+id/visiDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+         </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/misiRelative"
+            android:layout_marginTop="13dp"
+            android:layout_below="@id/visiRelative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/misi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Headline"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:id="@+id/misiDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+         </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/falsafahRelative"
+            android:layout_marginTop="13dp"
+            android:layout_below="@id/misiRelative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/falsafah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Headline"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textColor="@android:color/black"
+                    />
+                <TextView
+                    android:id="@+id/falsafahDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Deskripsi"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+         </RelativeLayout>
+
     <RelativeLayout
-        android:background="@color/colorPrimaryDark"
+        android:id="@+id/kontakRelative"
+        android:layout_marginTop="13dp"
+        android:layout_below="@id/falsafahRelative"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/halapandepan"
-        android:scaleType="centerCrop"
-        />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/kontak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Headline"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/black"
+                />
+            <TextView
+                android:id="@+id/kontakDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi"
+                android:textSize="14sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/black"
+                />
+        </LinearLayout>
     </RelativeLayout>
-
-
+</RelativeLayout>
+</ScrollView>
 </RelativeLayout>

@@ -123,9 +123,9 @@ public class HomeFragment extends Fragment {
     }
 
     private void dataSliderHome(ViewListener viewListener, CarouselView carouselView, ShimmerFrameLayout shimmerFrameLayout){
-        carousellModels.add(R.drawable.halapandepan);
-        carousellModels.add(R.drawable.bmw);
-        carousellModels.add(R.drawable.bmw1);
+        carousellModels.add(R.drawable.slide3);
+        carousellModels.add(R.drawable.slide2);
+        carousellModels.add(R.drawable.slide1);
         carouselView.setViewListener(viewListener);
         carouselView.setPageCount(3);
         shimmerFrameLayout.stopShimmerAnimation();

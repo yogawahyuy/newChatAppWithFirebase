@@ -32,15 +32,11 @@ public class InfoBedActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager=new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
         toAdapter();
-
-
+        jsonUtils.getInfoBed(this,infoBedAdapter,infoBedModels);
 
     }
     private void toAdapter(){
         infoBedAdapter=new InfoBedAdapter(this,infoBedModels);
         recyclerView.setAdapter(infoBedAdapter);
-        jsonUtils.getInfoBed(this,infoBedAdapter,infoBedModels);
-
-
     }
 }
