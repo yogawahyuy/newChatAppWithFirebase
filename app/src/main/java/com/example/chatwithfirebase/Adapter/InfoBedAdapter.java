@@ -38,9 +38,9 @@ public class InfoBedAdapter extends RecyclerView.Adapter<InfoBedAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         int sisabed= Integer.valueOf(infoBedModels.get(position).getKapasitas()) - Integer.valueOf(infoBedModels.get(position).getTersedia());
         holder.nmKelas.setText(infoBedModels.get(position).getNamaRuang());
-        holder.sisaBed.setText(String.valueOf(sisabed));
+        holder.sisaBed.setText(infoBedModels.get(position).getTersedia());
         holder.kapasitasBed.setText(infoBedModels.get(position).getKapasitas());
-        holder.tersedia.setText(infoBedModels.get(position).getTersedia());
+        holder.tersedia.setText(String.valueOf(sisabed));
         holder.lastUpdate.setText(infoBedModels.get(position).getKodeKelas());
     }
 

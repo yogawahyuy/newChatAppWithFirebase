@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.chatwithfirebase.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,7 +27,7 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    MaterialEditText fullname,email,password,numberPhone,confpassword;
+    TextInputLayout fullname,email,password,numberPhone,confpassword,alamat;
     Button btn_register;
 
     FirebaseAuth auth;
@@ -41,22 +42,31 @@ public class RegisterActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Register");
         getSupportActionBar() .setDisplayShowHomeEnabled(true);
 
-        fullname=findViewById(R.id.fullname);
-        email=findViewById(R.id.email);
-        numberPhone=findViewById(R.id.numberphone);
-        password=findViewById(R.id.password);
-        confpassword=findViewById(R.id.confpassword);
+        fullname=findViewById(R.id.nama_lengkap_layout);
+        email=findViewById(R.id.emaillayout);
+        numberPhone=findViewById(R.id.nomorhplayout);
+        password=findViewById(R.id.passwordlayout);
+        confpassword=findViewById(R.id.confpasswordlayout);
+        alamat=findViewById(R.id.alamatlayout);
         btn_register=findViewById(R.id.btnregister);
         auth=FirebaseAuth.getInstance();
+
+        fullname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fullname.setError("nama panjang ya");
+            }
+        });
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txtUsername=fullname.getText().toString();
-                String txtEmail=email.getText().toString();
-                String txtPassword=password.getText().toString();
-                String txtNumberPhone=numberPhone.getText().toString();
-                String txtConfPassword=confpassword.getText().toString();
+                String txtUsername=fullname.getEditText().getText().toString();
+                String txtEmail=email.getEditText().getText().toString();
+                String txtPassword=password.getEditText().getText().toString();
+                String txtNumberPhone=numberPhone.getEditText().getText().toString();
+                String txtConfPassword=confpassword.getEditText().getText().toString();
+                String txtAlamat=alamat.getEditText().getText().toString();
 
                 if (TextUtils.isEmpty(txtUsername)||TextUtils.isEmpty(txtEmail)||TextUtils.isEmpty(txtPassword)||TextUtils.isEmpty(txtNumberPhone)||TextUtils.isEmpty(txtConfPassword)){
                     Toast.makeText(RegisterActivity.this, "Isi Semua Form", Toast.LENGTH_SHORT).show();
@@ -65,13 +75,13 @@ public class RegisterActivity extends AppCompatActivity {
                 }else if(!txtPassword.equals(txtConfPassword)){
                     Toast.makeText(RegisterActivity.this, "Password tidak sama", Toast.LENGTH_SHORT).show();
                 }else{
-                    register(txtUsername,txtEmail,txtNumberPhone,txtPassword);
+                    register(txtUsername,txtEmail,txtNumberPhone,txtPassword,txtAlamat);
                 }
             }
         });
     }
 
-    private void register(final String username, final String email,final String numberPhone, final String password){
+    private void register(final String username, final String email,final String numberPhone, final String password,final String alamat){
         auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -86,6 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                     hashMap.put("username",username);
                     hashMap.put("email",email);
                     hashMap.put("numberPhone",numberPhone);
+                    hashMap.put("alamat",alamat);
                     hashMap.put("ImageURL","Default");
 
                     reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -95,6 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 Intent intent=new Intent(RegisterActivity.this,StartActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
+                                Toast.makeText(RegisterActivity.this, "Anda Sudah Terdaftar", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }

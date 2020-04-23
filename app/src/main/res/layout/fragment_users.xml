@@ -51,6 +51,7 @@
                   android:layout_marginTop="5dp"
                   android:src="@drawable/icons8email64"/>
                <TextView
+                   android:id="@+id/textemail"
                   android:layout_toRightOf="@id/icon_email"
                   android:layout_alignParentRight="true"
                    android:layout_width="wrap_content"
@@ -85,6 +86,7 @@
                    android:src="@drawable/icons8numberpad100"/>
 
                <TextView
+                   android:id="@+id/texthp"
                    android:layout_toRightOf="@id/icon_numberphone"
                    android:layout_alignParentRight="true"
                    android:layout_width="wrap_content"
@@ -118,6 +120,7 @@
                    android:src="@drawable/icons8name96"/>
 
                <TextView
+                   android:id="@+id/textnama"
                    android:layout_toRightOf="@id/icon_nama"
                    android:layout_alignParentRight="true"
                    android:layout_width="wrap_content"
@@ -136,42 +139,42 @@
                    android:background="@color/colorGREY"
                    android:layout_below="@id/icon_nama"/>
             </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/page_profesi"
-                android:layout_below="@id/page_nama"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp">
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/page_profesi"-->
+<!--                android:layout_below="@id/page_nama"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="10dp">-->
 
-               <ImageView
-                   android:id="@+id/icon_profesi"
-                   android:layout_width="24dp"
-                   android:layout_height="24dp"
-                   android:layout_marginTop="5dp"
-                   android:src="@drawable/icons8nursemale80"/>
+<!--               <ImageView-->
+<!--                   android:id="@+id/icon_profesi"-->
+<!--                   android:layout_width="24dp"-->
+<!--                   android:layout_height="24dp"-->
+<!--                   android:layout_marginTop="5dp"-->
+<!--                   android:src="@drawable/icons8nursemale80"/>-->
 
-               <TextView
-                   android:layout_toRightOf="@id/icon_profesi"
-                   android:layout_alignParentRight="true"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginLeft="24dp"
-                   android:layout_marginTop="6dp"
-                   android:text="IT (information technologies)"
-                   android:textSize="14sp"
-                   android:textStyle="normal"
-                   android:typeface="normal"/>
-               <View
-                   android:layout_width="match_parent"
-                   android:layout_height="1px"
-                   android:layout_marginTop="10dp"
-                   android:layout_marginLeft="40dp"
-                   android:background="@color/colorGREY"
-                   android:layout_below="@id/icon_profesi"/>
-            </RelativeLayout>
+<!--               <TextView-->
+<!--                   android:layout_toRightOf="@id/icon_profesi"-->
+<!--                   android:layout_alignParentRight="true"-->
+<!--                   android:layout_width="wrap_content"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:layout_marginLeft="24dp"-->
+<!--                   android:layout_marginTop="6dp"-->
+<!--                   android:text="IT (information technologies)"-->
+<!--                   android:textSize="14sp"-->
+<!--                   android:textStyle="normal"-->
+<!--                   android:typeface="normal"/>-->
+<!--               <View-->
+<!--                   android:layout_width="match_parent"-->
+<!--                   android:layout_height="1px"-->
+<!--                   android:layout_marginTop="10dp"-->
+<!--                   android:layout_marginLeft="40dp"-->
+<!--                   android:background="@color/colorGREY"-->
+<!--                   android:layout_below="@id/icon_profesi"/>-->
+<!--            </RelativeLayout>-->
             <RelativeLayout
                 android:id="@+id/page_alamat"
-                android:layout_below="@id/page_profesi"
+                android:layout_below="@id/page_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp">
@@ -184,6 +187,7 @@
                    android:src="@drawable/icons8address96"/>
 
                <TextView
+                   android:id="@+id/textalamat"
                    android:layout_toRightOf="@id/icon_alamat"
                    android:layout_alignParentRight="true"
                    android:layout_width="wrap_content"

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.BookingActivity">
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:id="@+id/rel_toolbar"
         android:layout_width="match_parent"
@@ -32,36 +34,100 @@
 
         </androidx.appcompat.widget.Toolbar>
     </RelativeLayout>
-
     <RelativeLayout
-        android:id="@+id/rel_container"
-        android:layout_below="@id/rel_toolbar"
+        android:id="@+id/rel_titlebook"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="28dp"
+        android:layout_below="@id/rel_toolbar"
+        android:layout_marginBottom="3dp"
+        android:background="@color/colorPrimaryDark"
+        >
+        <TextView
+            android:id="@+id/text_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="200dp"
-            >
+            android:text="Daftar Rawat Jalan"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:fontFamily="@font/bookmanoldstyle"
+            android:textColor="@android:color/white"
+            />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Booking Antrian"
-                android:gravity="center"
-                android:textSize="24sp"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:hint="Masukan SEP"
-                android:background="@drawable/bg_template"/>
-
-        </LinearLayout>
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@id/rel_titlebook"
+        android:id="@+id/rel_containerbooking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+        <TextView
+            android:id="@+id/text_pasien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data pasien"
+            android:textColor="@android:color/black" />
+        <RelativeLayout
+            android:layout_below="@id/text_pasien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_template">
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="13dp"
+                android:elevation="8dp"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0.0px"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                app:cardElevation="1dp"
+                app:cardPreventCornerOverlap="false"
+                >
+                <include layout="@layout/booking_section_one"/>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+<!-- JANGAN DIHAPUS -->
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rel_container"-->
+<!--        android:layout_below="@id/rel_toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_marginTop="200dp"-->
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Booking Antrian"-->
+<!--                android:gravity="center"-->
+<!--                android:textSize="24sp"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <com.rengwuxian.materialedittext.MaterialEditText-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:hint="Masukan SEP"-->
+<!--                android:background="@drawable/bg_template"/>-->
+
+<!--        </LinearLayout>-->
+<!--    </RelativeLayout>-->
+    <!--SAMPE SINI-->
 </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
