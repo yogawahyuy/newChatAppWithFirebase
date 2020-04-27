@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.chatwithfirebase.MainActivity;
 import com.example.chatwithfirebase.R;
@@ -15,6 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class StartActivity extends AppCompatActivity {
 
     Button login,register;
+    TextView skipLogin;
 
     FirebaseUser firebaseUser;
 
@@ -36,6 +38,7 @@ public class StartActivity extends AppCompatActivity {
 
         login=findViewById(R.id.btnLoginApp);
         register=findViewById(R.id.btnRegisterApp);
+        skipLogin=findViewById(R.id.textskip);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +51,13 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StartActivity.this,RegisterActivity.class));
+            }
+        });
+        skipLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StartActivity.this,MainActivity.class));
+
             }
         });
     }

@@ -48,4 +48,15 @@
         android:background="@android:color/holo_red_dark"
         android:text="Register"/>
 
+    <TextView
+        android:layout_below="@id/btnRegisterApp"
+        android:id="@+id/textskip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skip Login"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:layout_marginTop="16dp"/>
+
 </RelativeLayout>

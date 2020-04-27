@@ -5,4 +5,44 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="rsip">RSI Purwokerto</string>
     <string name="kata_cs">Care Center RSI Purwokerto merupakan layanan informasi terpusat seputar layanan di Rumah Sakit Islam Purwokerto yang hadir 24 jam. Anda dapat menyampaikan keluhan anda seputar pelayanan di RSI Purwokerto</string>
+    <string-array name="pengaduan">
+        <item>Pengaduan Keluhan</item>
+        <item>Permintaan Informasi</item>
+    </string-array>
+    <string-array name="unit">
+        <item>Al Barokah 1</item>
+        <item>Al Barokah 2</item>
+        <item>Al Barokah 3</item>
+        <item>Al Barokah Peristi</item>
+        <item>Apotek</item>
+        <item>Ar Rahman</item>
+        <item>Ar Rahman Anak</item>
+        <item>Ar Rahman ISOLASI</item>
+        <item>As Sakinah</item>
+        <item>As Sakinah Isolasi</item>
+        <item>As Sakinah Utama</item>
+        <item>As Salam</item>
+        <item>HAEMODALISA (HD)</item>
+        <item>ICU</item>
+        <item>ICU ISOLASI</item>
+        <item>INSTALASI GAWAT DARURAT (IGD)</item>
+        <item>KB</item>
+        <item>Laboratorium</item>
+        <item>POLI ANAK</item>
+        <item>POLI ANASTESI</item>
+        <item>POLI BEDAH</item>
+        <item>POLI DALAM</item>
+        <item>POLI FISIOTERAPI</item>
+        <item>POLI GIGI</item>
+        <item>POLI GIZI</item>
+        <item>POLI JANTUNG</item>
+        <item>POLI KANDUNGAN</item>
+        <item>POLI MATA</item>
+        <item>POLI ORTHOPEDI</item>
+        <item>POLI PARU</item>
+        <item>POLI SYARAF</item>
+        <item>POLI THT</item>
+        <item>POLI UROLOGI</item>
+        <item>Radiologi</item>
+    </string-array>
 </resources>

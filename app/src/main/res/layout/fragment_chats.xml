@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
     tools:context=".Fragments.ChatsFragment">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -31,12 +37,32 @@
                 android:gravity="center"
                 android:fontFamily="@font/bookmanoldstyle"/>
             <Button
+                android:id="@+id/btn_hubcs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hubungi Call Center RSI"
                 android:background="@android:color/holo_red_dark"
                 android:textColor="@android:color/white"
                 android:layout_margin="16dp"/>
+            <Button
+                android:id="@+id/btn_chatcs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@color/green"
+                android:text="Chat Call Center RSI"
+                android:textColor="@android:color/white"/>
+            <Button
+                android:id="@+id/btn_lihatChat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_template"
+                android:text="Lihat Keluhan"
+                android:textColor="@android:color/black"/>
         </LinearLayout>
 
     </RelativeLayout>
@@ -68,16 +94,16 @@
 
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="40dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/outline_chat_black_18dp"/>
-
-
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginRight="40dp"-->
+<!--        android:layout_marginBottom="40dp"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:src="@drawable/outline_chat_black_18dp"/>-->
+    </RelativeLayout>
+</ScrollView>
 
 </RelativeLayout>

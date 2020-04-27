@@ -11,6 +11,10 @@ import com.example.chatwithfirebase.Adapter.InfoBedAdapter;
 import com.example.chatwithfirebase.Model.InfoBedModel;
 import com.example.chatwithfirebase.R;
 import com.example.chatwithfirebase.Utils.JsonUtil;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -20,6 +24,7 @@ public class InfoBedActivity extends AppCompatActivity {
     ArrayList<InfoBedModel> infoBedModels=new ArrayList<>();
     InfoBedAdapter infoBedAdapter;
     JsonUtil jsonUtils = new JsonUtil();
+
 
 
     @Override

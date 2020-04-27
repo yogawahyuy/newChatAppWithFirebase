@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nama Pasien"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+    <EditText
+        android:id="@+id/edttext_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Yoga Wahyu Yuwono"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Kejadian"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+        <EditText
+            android:id="@+id/edttext_tgl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:text=""/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kategori"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+        <Spinner
+            android:layout_marginTop="8dp"
+            android:id="@+id/sp_keluhan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/pengaduan"></Spinner>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Unit"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+        <Spinner
+            android:layout_marginTop="8dp"
+            android:id="@+id/sp_unit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/unit"></Spinner>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sampaikan Keluhan Anda"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+        <EditText
+            android:id="@+id/edttext_keluhan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:text=""/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_laporkan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:text="Laporkan"
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>
