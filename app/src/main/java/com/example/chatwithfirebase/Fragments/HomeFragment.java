@@ -3,6 +3,7 @@ package com.example.chatwithfirebase.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +13,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.chatwithfirebase.Adapter.GridHomeAdapter;
+import com.example.chatwithfirebase.Adapter.GridHomeAdapterOne;
+import com.example.chatwithfirebase.Adapter.MenuViewAdapter;
+import com.example.chatwithfirebase.Model.GridViewModel;
 import com.example.chatwithfirebase.Model.HomeCarousellModel;
 import com.example.chatwithfirebase.R;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.PageIndicator;
 import com.synnapps.carouselview.ViewListener;
 
 import java.util.ArrayList;
@@ -40,11 +45,14 @@ import java.util.ArrayList;
  */
 public class HomeFragment extends Fragment {
     View rootView;
-    GridView gridView;
+    GridView gridView,gridView1;
     ShimmerFrameLayout mShimmerViewContainer,mShimerViewNews,mShimerViewMenu;
+    ViewPager viewPager;
+    PageIndicator pageIndicator;
     private ArrayList<Integer> carousellModels = new ArrayList<Integer>();
     private ArrayList<HomeCarousellModel> homeCarousellModels = new ArrayList<>();
-    private ArrayList<Integer> imageNews =new ArrayList<>();
+    private ArrayList<GridView> imageNews =new ArrayList<>();
+    private ArrayList<GridViewModel> gridViewModels=new ArrayList<>();
 
     String[] title={"Booking","Riwayat Periksa","Tempat Tidur","Dokter Cuti","Agenda RSI","Info Dokter"};
     int[] image={R.drawable.icons8newticket96,R.drawable.icons8orderhistory80,R.drawable.icons8hospitalbed80,R.drawable.icons8doctormale96,R.drawable.calendar,R.drawable.icons8info80};
@@ -87,9 +95,13 @@ public class HomeFragment extends Fragment {
                 titles.setText(titles.getText().toString());
                Picasso.get().load(image[position]).into(imageView);
             }
-            gridView=rootView.findViewById(R.id.gridview);
+           // gridView=rootView.findViewById(R.id.gridview);
+            gridView1=rootView.findViewById(R.id.gridview1);
             GridHomeAdapter gridHomeAdapter=new GridHomeAdapter(getContext(),title,image);
-            gridView.setAdapter(gridHomeAdapter);
+            GridHomeAdapterOne gridHomeAdapter1=new GridHomeAdapterOne(getContext(),title,image);
+            //gridView.setAdapter(gridHomeAdapter);
+            //gridView1.setAdapter(gridHomeAdapter1);
+
 
             return customView;
         }
@@ -101,9 +113,17 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
 
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        viewPager=rootView.findViewById(R.id.viewpager_menu);
+        MenuViewAdapter menuViewAdapter=new MenuViewAdapter(getContext(),getFragmentManager());
+        menuViewAdapter.addFragment(new MenuOneFragment());
+        menuViewAdapter.addFragment(new MenuTwoFragment());
+        viewPager.setAdapter(menuViewAdapter);
+        pageIndicator=rootView.findViewById(R.id.pageindicator);
+        pageIndicator.setViewPager(viewPager);
+
         mShimmerViewContainer = (ShimmerFrameLayout) rootView.findViewById(R.id.shimer_view_container);
         mShimerViewNews=rootView.findViewById(R.id.shimer_view_container_news);
-        mShimerViewMenu=rootView.findViewById(R.id.shimer_view_container_menu);
+//        mShimerViewMenu=rootView.findViewById(R.id.shimer_view_container_menu);
         carouselViewMenu=rootView.findViewById(R.id.slider_menuicon);
         carouselViewNews=rootView.findViewById(R.id.slider_news);
         carouselView = rootView.findViewById(R.id.slider);
@@ -116,8 +136,8 @@ public class HomeFragment extends Fragment {
         super.onResume();
         mShimmerViewContainer.startShimmerAnimation();
         mShimerViewNews.startShimmerAnimation();
-        mShimerViewMenu.startShimmerAnimation();
-        datasliderMenu(viewListenerMenu,carouselViewMenu,mShimerViewMenu);
+//        mShimerViewMenu.startShimmerAnimation();
+        //datasliderMenu(viewListenerMenu,carouselViewMenu,mShimerViewMenu);
         dataSliderHome(viewListener,carouselView,mShimmerViewContainer);
         datasliderNews(viewListenerNews,carouselViewNews,mShimerViewNews);
     }
@@ -139,6 +159,8 @@ public class HomeFragment extends Fragment {
         shimmerFrameLayout.stopShimmerAnimation();
     }
     private void datasliderMenu(ViewListener viewListener,CarouselView carouselView,ShimmerFrameLayout shimmerFrameLayout){
+        imageNews.add(gridView);
+        imageNews.add(gridView1);
         carouselView.setViewListener(viewListener);
         carouselView.setPageCount(2);
         shimmerFrameLayout.stopShimmerAnimation();

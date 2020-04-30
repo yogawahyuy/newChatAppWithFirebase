@@ -85,13 +85,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final ViewPager viewPager=findViewById(R.id.viewPager);
+        final ViewPager viewPager=findViewById(R.id.viewpager);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(new HomeFragment());
         viewPagerAdapter.addFragment(new AboutFragment());
         viewPagerAdapter.addFragment(new ChatsFragment());
         viewPagerAdapter.addFragment(new UsersFragment());
         viewPager.setAdapter(viewPagerAdapter);
+
 
 
         bottomNavigationViewEx.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

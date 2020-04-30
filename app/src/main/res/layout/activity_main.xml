@@ -59,12 +59,18 @@
        </androidx.appcompat.widget.Toolbar>
     </RelativeLayout>
 
-    <androidx.viewpager.widget.ViewPager
+<!--    <androidx.viewpager.widget.ViewPager-->
+<!--        android:layout_below="@id/rel_toolbar"-->
+<!--        android:layout_above="@id/botom_nav"-->
+<!--        android:id="@+id/viewPager"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+    <com.example.chatwithfirebase.Adapter.CustomViewPager
         android:layout_below="@id/rel_toolbar"
         android:layout_above="@id/botom_nav"
-        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:id="@+id/viewpager"/>
 <RelativeLayout
     android:id="@+id/botom_nav"
     android:layout_width="match_parent"

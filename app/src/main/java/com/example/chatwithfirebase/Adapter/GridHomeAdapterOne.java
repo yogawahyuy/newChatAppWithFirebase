@@ -8,24 +8,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.chatwithfirebase.R;
-import com.example.chatwithfirebase.View.AgendaRsiActivity;
 import com.example.chatwithfirebase.View.BookingActivity;
-import com.example.chatwithfirebase.View.DokterCutiActivity;
 import com.example.chatwithfirebase.View.InfoBedActivity;
-import com.example.chatwithfirebase.View.InfoDokterActivity;
-import com.example.chatwithfirebase.View.RiwayatPeriksaActivity;
 
-public class GridHomeAdapter extends BaseAdapter {
-
+public class GridHomeAdapterOne extends BaseAdapter {
     Context mContext;
     private final String[] title;
     private final int[] image;
     LayoutInflater layoutInflater;
 
-    public GridHomeAdapter(Context mContext, String[] title, int[] image) {
+    public GridHomeAdapterOne(Context mContext, String[] title, int[] image) {
         this.mContext = mContext;
         this.title = title;
         this.image = image;
@@ -49,7 +43,7 @@ public class GridHomeAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Holder holder=new Holder();
+        GridHomeAdapterOne.Holder holder=new GridHomeAdapterOne.Holder();
         final View rowView;
 
         rowView = layoutInflater.inflate(R.layout.homeview_menu,null);
@@ -66,18 +60,15 @@ public class GridHomeAdapter extends BaseAdapter {
                     mContext.startActivity(new Intent(mContext, BookingActivity.class));
                 }
                 else if (position==1){
-                    mContext.startActivity(new Intent(mContext, RiwayatPeriksaActivity.class));
 
                 }else if (position==2){
                     mContext.startActivity(new Intent(mContext, InfoBedActivity.class));
                 }
                 else if (position==3){
-                    mContext.startActivity(new Intent(mContext, DokterCutiActivity.class));
+
                 }
                 else if (position==4){
-                    mContext.startActivity(new Intent(mContext, AgendaRsiActivity.class));
-                }else if (position==5){
-                    mContext.startActivity(new Intent(mContext, InfoDokterActivity.class));
+
                 }
             }
         });

@@ -72,16 +72,29 @@
             android:layout_marginTop="8dp"
 
             >
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimer_view_container_menu"
-                android:layout_width="match_parent"
+            <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager_menu"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+            <com.synnapps.carouselview.CirclePageIndicator
+                android:id="@+id/pageindicator"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                shimmer:duration="800">
-                <include layout="@layout/homesection_three"/>
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:padding="3dp"
+                />
+<!--            <com.facebook.shimmer.ShimmerFrameLayout-->
+<!--                android:id="@+id/shimer_view_container_menu"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="200dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:orientation="vertical"-->
+<!--                shimmer:duration="800">-->
+<!--&lt;!&ndash;                <include layout="@layout/homesection_three"/>&ndash;&gt;-->
+<!--                -->
 
-            </com.facebook.shimmer.ShimmerFrameLayout>
+<!--            </com.facebook.shimmer.ShimmerFrameLayout>-->
 
         </androidx.cardview.widget.CardView>
     </LinearLayout>
