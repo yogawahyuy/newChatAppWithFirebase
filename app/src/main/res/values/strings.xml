@@ -4,7 +4,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="rsip">RSI Purwokerto</string>
-    <string name="kata_cs">Care Center RSI Purwokerto merupakan layanan informasi terpusat seputar layanan di Rumah Sakit Islam Purwokerto yang hadir 24 jam. Anda dapat menyampaikan keluhan anda seputar pelayanan di RSI Purwokerto</string>
+    <string name="kata_cs">Care Center Rumah Sakit Islam Purwokerto</string>
     <string-array name="pengaduan">
         <item>Pengaduan Keluhan</item>
         <item>Permintaan Informasi</item>
