@@ -13,7 +13,7 @@
    <RelativeLayout
        android:layout_width="fill_parent"
        android:layout_height="wrap_content"
-       android:background="@android:color/white">
+       android:background="@drawable/bg_atas">
       <RelativeLayout
           android:id="@+id/box_photo"
           android:layout_width="match_parent"
@@ -38,7 +38,8 @@
 
          <RelativeLayout
              android:layout_width="match_parent"
-             android:layout_height="wrap_content">
+             android:layout_height="wrap_content"
+             android:background="@drawable/bg_template">
             <RelativeLayout
                 android:id="@+id/page_email"
                 android:layout_width="match_parent"
@@ -60,7 +61,7 @@
                   android:layout_marginTop="6dp"
                   android:text="yogawahyuy@gmail.com"
                   android:textSize="14sp"
-                  android:textStyle="normal"
+                  android:textStyle="bold"
                   android:typeface="normal"/>
                <View
                    android:layout_width="match_parent"
@@ -95,7 +96,7 @@
                    android:layout_marginTop="6dp"
                    android:text="081578980166"
                    android:textSize="14sp"
-                   android:textStyle="normal"
+                   android:textStyle="bold"
                    android:typeface="normal"/>
                <View
                    android:layout_width="match_parent"
@@ -129,7 +130,7 @@
                    android:layout_marginTop="6dp"
                    android:text="Yoga Wahyu Yuwono"
                    android:textSize="14sp"
-                   android:textStyle="normal"
+                   android:textStyle="bold"
                    android:typeface="normal"/>
                <View
                    android:layout_width="match_parent"
@@ -196,7 +197,7 @@
                    android:layout_marginTop="6dp"
                    android:text="Kalilandak Banjarnegara"
                    android:textSize="14sp"
-                   android:textStyle="normal"
+                   android:textStyle="bold"
                    android:typeface="normal"/>
                <View
                    android:layout_width="match_parent"
@@ -215,8 +216,8 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
          android:text="Edit Profile"
-         android:background="@drawable/bg_template"
-         android:textColor="@android:color/holo_red_light"
+         android:background="@drawable/bg_templateyellow"
+         android:textColor="@android:color/black"
          android:layout_marginTop="10dp"
           android:layout_marginLeft="16dp"
           android:layout_marginRight="16dp"/>
@@ -227,8 +228,8 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:text="Log Out"
-          android:background="@drawable/bg_template"
-          android:textColor="@android:color/holo_red_light"
+          android:background="@drawable/bg_templatered"
+          android:textColor="@android:color/white"
           android:layout_marginTop="10dp"
           android:layout_marginLeft="16dp"
           android:layout_marginRight="16dp"/>

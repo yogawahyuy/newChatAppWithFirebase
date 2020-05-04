@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.InfoDokterActivity"></activity>
+        <activity android:name=".View.EditProfileActivity"></activity>
+        <activity android:name=".View.InfoDokterActivity" />
         <activity android:name=".View.AgendaRsiActivity" />
         <activity android:name=".View.DokterCutiActivity" />
         <activity android:name=".View.RiwayatPeriksaActivity" />

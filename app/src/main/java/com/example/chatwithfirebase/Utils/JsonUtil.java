@@ -1,5 +1,6 @@
 package com.example.chatwithfirebase.Utils;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
@@ -25,7 +26,7 @@ public class JsonUtil {
     public JsonUtil() {
     }
 
-    public void getInfoBed(Context context, final RecyclerView.Adapter adapter, final List<InfoBedModel> infobed){
+    public void getInfoBed(Context context, final RecyclerView.Adapter adapter, final List<InfoBedModel> infobed, final ProgressDialog progressDialog){
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, "http://103.81.195.2:5758/bpjs/bpjsApi/kamar/getKamarSedia", null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -43,6 +44,7 @@ public class JsonUtil {
                             infoBedModel.setTersedia(data.getString("tersedia"));
                             infobed.add(infoBedModel);
                         }
+                        progressDialog.dismiss();
                         Log.e("JsonUtils", "onResponse: gagal atau berhasil");
                     } catch (JSONException e) {
                         e.printStackTrace();

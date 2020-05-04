@@ -53,6 +53,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<HomeCarousellModel> homeCarousellModels = new ArrayList<>();
     private ArrayList<GridView> imageNews =new ArrayList<>();
     private ArrayList<GridViewModel> gridViewModels=new ArrayList<>();
+    MenuViewAdapter menuViewAdapter;
 
     String[] title={"Booking","Riwayat Periksa","Tempat Tidur","Dokter Cuti","Agenda RSI","Info Dokter"};
     int[] image={R.drawable.icons8newticket96,R.drawable.icons8orderhistory80,R.drawable.icons8hospitalbed80,R.drawable.icons8doctormale96,R.drawable.calendar,R.drawable.icons8info80};
@@ -114,9 +115,9 @@ public class HomeFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
         viewPager=rootView.findViewById(R.id.viewpager_menu);
-        MenuViewAdapter menuViewAdapter=new MenuViewAdapter(getContext(),getFragmentManager());
-        menuViewAdapter.addFragment(new MenuOneFragment());
-        menuViewAdapter.addFragment(new MenuTwoFragment());
+        menuViewAdapter=new MenuViewAdapter(getContext(),getChildFragmentManager());
+//        menuViewAdapter.addFragment(new MenuOneFragment());
+//        menuViewAdapter.addFragment(new MenuTwoFragment());
         viewPager.setAdapter(menuViewAdapter);
         pageIndicator=rootView.findViewById(R.id.pageindicator);
         pageIndicator.setViewPager(viewPager);
@@ -136,6 +137,7 @@ public class HomeFragment extends Fragment {
         super.onResume();
         mShimmerViewContainer.startShimmerAnimation();
         mShimerViewNews.startShimmerAnimation();
+        dataSliderMenu();
 //        mShimerViewMenu.startShimmerAnimation();
         //datasliderMenu(viewListenerMenu,carouselViewMenu,mShimerViewMenu);
         dataSliderHome(viewListener,carouselView,mShimmerViewContainer);
@@ -164,5 +166,14 @@ public class HomeFragment extends Fragment {
         carouselView.setViewListener(viewListener);
         carouselView.setPageCount(2);
         shimmerFrameLayout.stopShimmerAnimation();
+    }
+
+    private void dataSliderMenu(){
+//        MenuViewAdapter menuViewAdapter=new MenuViewAdapter(getContext(),getFragmentManager());
+        menuViewAdapter.addFragment(new MenuOneFragment());
+        menuViewAdapter.addFragment(new MenuTwoFragment());
+//        viewPager.setAdapter(menuViewAdapter);
+//        pageIndicator=rootView.findViewById(R.id.pageindicator);
+//        pageIndicator.setViewPager(viewPager);
     }
 }

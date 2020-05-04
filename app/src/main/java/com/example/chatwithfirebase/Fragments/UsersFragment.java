@@ -1,5 +1,6 @@
 package com.example.chatwithfirebase.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.example.chatwithfirebase.Adapter.UsersAdapter;
 import com.example.chatwithfirebase.Model.User;
 import com.example.chatwithfirebase.R;
+import com.example.chatwithfirebase.View.EditProfileActivity;
 import com.example.chatwithfirebase.View.StartActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,6 +41,7 @@ public class UsersFragment extends Fragment {
     private UsersAdapter usersAdapter;
     private List<User> users;
     private Button btnLogout,btnEdit;
+    ProgressDialog progressDialog;
     private TextView email,nama,nohp,alamat;
     final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
 
@@ -56,7 +59,7 @@ public class UsersFragment extends Fragment {
         nama=view.findViewById(R.id.textnama);
         nohp=view.findViewById(R.id.texthp);
         alamat=view.findViewById(R.id.textalamat);
-
+        progresDialog();
         btnEdit=view.findViewById(R.id.edit_profilebtn);
         btnLogout=view.findViewById(R.id.logout_profilebtn);
         if (firebaseUser==null){
@@ -75,6 +78,13 @@ public class UsersFragment extends Fragment {
                 }else{
                     startActivity(new Intent(getContext(), StartActivity.class));
                 }
+            }
+        });
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), EditProfileActivity.class));
+
             }
         });
         users=new ArrayList<>();
@@ -103,6 +113,7 @@ public class UsersFragment extends Fragment {
                     } else {
                         alamat.setText("alamat disini");
                     }
+                    progressDialog.dismiss();
                 }
 
                 @Override
@@ -113,5 +124,13 @@ public class UsersFragment extends Fragment {
         }
 
 
+    }
+    private void progresDialog(){
+        progressDialog=new ProgressDialog(getContext());
+        progressDialog.setMessage("Sedang Mengambil Info Anda");
+        progressDialog.setIndeterminate(false);
+        progressDialog.setCanceledOnTouchOutside(true);
+        progressDialog.setCancelable(true);
+        progressDialog.show();
     }
 }
