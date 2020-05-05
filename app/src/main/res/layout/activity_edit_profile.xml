@@ -85,14 +85,26 @@
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:src="@drawable/logobulet"/>
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Klik untuk ganti foto"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_edit_black_24dp"
+                        android:layout_marginRight="6dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ganti foto"
                     android:gravity="center"
                     android:textColor="@android:color/black"
                     android:layout_marginTop="8dp"/>
+                </LinearLayout>
                 <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/editNamaProfile"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:text="Yoga Wahyu Yuwono"
@@ -100,15 +112,7 @@
                     android:layout_marginTop="8dp"
                     android:textStyle="bold"/>
             </LinearLayout>
-<!--            <View-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="4px"-->
-<!--                android:layout_marginTop="6dp"-->
-<!--                android:layout_marginLeft="8dp"-->
-<!--                android:layout_marginRight="8dp"-->
-<!--                android:background="@android:color/black"-->
-<!--                android:layout_below="@id/linear"-->
-<!--                />-->
+
         </RelativeLayout>
  <RelativeLayout
      android:id="@+id/box_data"
@@ -135,6 +139,7 @@
                 android:layout_marginBottom="0dp"
                 android:textStyle="bold"/>
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editEmailProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="yogawahyuy@gmail.com"
@@ -159,6 +164,7 @@
                 android:textColor="@android:color/black"
                 android:textStyle="bold"/>
             <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/editNohpProfile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="081557557"
@@ -167,8 +173,30 @@
                 />
         </LinearLayout>
      <LinearLayout
-         android:id="@+id/linear_alamat"
+         android:id="@+id/linear_jk"
          android:layout_below="@id/linear_nohp"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:layout_marginLeft="16dp"
+         android:layout_marginRight="16dp">
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="Jenis Kelamin"
+             android:fontFamily="@font/bookmanoldstyle"
+             android:textSize="16sp"
+             android:textColor="@android:color/black"
+             android:textStyle="bold"/>
+         <Spinner
+             android:id="@+id/jk_editprofile"
+             android:layout_width="match_parent"
+             android:layout_height="30dp"
+             android:entries="@array/jeniskelamin"/>
+     </LinearLayout>
+     <LinearLayout
+         android:id="@+id/linear_alamat"
+         android:layout_below="@id/linear_jk"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:orientation="vertical"
@@ -183,6 +211,7 @@
              android:textColor="@android:color/black"
              android:textStyle="bold"/>
          <com.rengwuxian.materialedittext.MaterialEditText
+             android:id="@+id/editAlamatProfile"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:text="Kalilandak rt02/03"
@@ -207,6 +236,12 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/bookmanoldstyle"/>
         </RelativeLayout>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"
+            android:id="@+id/progress_editprofile"/>
     </RelativeLayout>
     </ScrollView>
 

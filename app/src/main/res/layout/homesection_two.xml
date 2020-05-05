@@ -19,7 +19,7 @@
                 app:radius="1dp"
                 app:strokeColor="#FF777777"
                 app:strokeWidth="1dp"
-                app:slideInterval="6000"
+                app:slideInterval="7500"
                 app:autoPlay="true"
                 app:indicatorVisibility="gone"/>
 

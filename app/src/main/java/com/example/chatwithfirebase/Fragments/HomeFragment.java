@@ -153,9 +153,9 @@ public class HomeFragment extends Fragment {
         shimmerFrameLayout.stopShimmerAnimation();
     }
     private void datasliderNews(ViewListener viewListener,CarouselView carouselView,ShimmerFrameLayout shimmerFrameLayout){
-        homeCarousellModels.add(new HomeCarousellModel("RSIP Paripurna SNARS 1","Terakreditasi Paripurna SNARS 1 tahun 2019 menjadikan RSI Purwokerto"));
-        homeCarousellModels.add(new HomeCarousellModel("Laparoscopy unggulan RSIP","Fasilitas unggulan bedah minimal invasif yang ada di RSI Purwokerto"));
-        homeCarousellModels.add(new HomeCarousellModel("Vitreo Retina Layanan Unggulan","Salah satu layanan unggulan di RSI Purwokerto dan salah satu dari 4 sub spesialis mata di Jawa Tengah"));
+        homeCarousellModels.add(new HomeCarousellModel("RSIP Paripurna SNARS 1","Terakreditasi Paripurna SNARS 1 tahun 2019 menjadikan RSI Purwokerto menjadikan satu - satunya Rumah Sakit Tipe D Paripurna Snars Edisi 1 di Kabupaten Banyumas."));
+        homeCarousellModels.add(new HomeCarousellModel("Laparoscopy unggulan RSIP","Fasilitas unggulan bedah minimal invasif yang ada di RSI Purwokerto, Endoskopi Laparoscopy, Bedah Sinus Endoskopi, Tindakan Urologi URS dan Tindakan Urologi URS."));
+        homeCarousellModels.add(new HomeCarousellModel("Vitreo Retina Layanan Unggulan","Salah satu layanan unggulan di RSI Purwokerto dan salah satu dari 4 sub spesialis mata di Jawa Tengah yang membuka layanan Vitreo Retina."));
         carouselView.setViewListener(viewListener);
         carouselView.setPageCount(3);
         shimmerFrameLayout.stopShimmerAnimation();

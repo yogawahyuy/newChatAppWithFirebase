@@ -9,6 +9,10 @@
         <item>Pengaduan Keluhan</item>
         <item>Permintaan Informasi</item>
     </string-array>
+    <string-array name="jeniskelamin">
+        <item>Laki-Laki</item>
+        <item>Perempuan</item>
+    </string-array>
     <string-array name="unit">
         <item>Al Barokah 1</item>
         <item>Al Barokah 2</item>

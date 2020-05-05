@@ -9,6 +9,7 @@ public class User {
     private String ImageURL;
     private String email;
     private String alamat;
+    private String jk;
     private String numberPhone;
 
 
@@ -39,6 +40,18 @@ public class User {
     public User(String username, String imageURL) {
         this.username = username;
         ImageURL = imageURL;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getJk() {
+        return jk;
+    }
+
+    public void setJk(String jk) {
+        this.jk = jk;
     }
 
     public String getEmail() {

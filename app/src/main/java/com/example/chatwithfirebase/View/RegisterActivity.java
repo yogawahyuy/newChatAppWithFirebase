@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
@@ -29,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     TextInputLayout fullname,email,password,numberPhone,confpassword,alamat;
     Button btn_register;
+    Spinner spinner;
 
     FirebaseAuth auth;
     DatabaseReference reference;
@@ -37,10 +39,10 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Toolbar toolbar=findViewById(R.id.toolsbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Register");
-        getSupportActionBar() .setDisplayShowHomeEnabled(true);
+//        Toolbar toolbar=findViewById(R.id.toolsbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setTitle("Register");
+//        getSupportActionBar() .setDisplayShowHomeEnabled(true);
 
         fullname=findViewById(R.id.nama_lengkap_layout);
         email=findViewById(R.id.emaillayout);
@@ -50,6 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
         alamat=findViewById(R.id.alamatlayout);
         btn_register=findViewById(R.id.btnregister);
         auth=FirebaseAuth.getInstance();
+        spinner=findViewById(R.id.spiner_register);
 
         fullname.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,21 +78,26 @@ public class RegisterActivity extends AppCompatActivity {
                 }else if(!txtPassword.equals(txtConfPassword)){
                     Toast.makeText(RegisterActivity.this, "Password tidak sama", Toast.LENGTH_SHORT).show();
                 }else{
-                    register(txtUsername,txtEmail,txtNumberPhone,txtPassword,txtAlamat);
+                    register(txtUsername,txtEmail,txtNumberPhone,txtPassword,txtAlamat,spinner);
                 }
             }
         });
     }
 
-    private void register(final String username, final String email,final String numberPhone, final String password,final String alamat){
+    private void register(final String username, final String email, final String numberPhone, final String password, final String alamat, final Spinner spinner){
         auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    int spinerID;
                     FirebaseUser firebaseUser=auth.getCurrentUser();
                     assert firebaseUser != null;
                     String uid=firebaseUser.getUid();
-
+                    if (spinner.getSelectedItemPosition()==0){
+                        spinerID=1;
+                    }else{
+                        spinerID=2;
+                    }
                     reference= FirebaseDatabase.getInstance().getReference("Users").child(uid);
                     HashMap<String, String > hashMap=new HashMap<>();
                     hashMap.put("id",uid);
@@ -97,6 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
                     hashMap.put("email",email);
                     hashMap.put("numberPhone",numberPhone);
                     hashMap.put("alamat",alamat);
+                    hashMap.put("jk",String.valueOf(spinerID));
                     hashMap.put("ImageURL","Default");
 
                     reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
