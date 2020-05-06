@@ -5,6 +5,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="rsip">RSI Purwokerto</string>
     <string name="kata_cs">Care Center Rumah Sakit Islam Purwokerto</string>
+    <string name="kontak">Kontak Rumah Sakit Islam Purwokerto </string>
+    <string name="kontakdesc">Informasi  (0281) 630019
+                Facsimile  (0281) 635394
+                Email rsislam.purwokerto@gmail.com
+                WA +62 858-7503-5300
+                Jam Kunjungan Pasien Rawat Inap (Jam Besuk Pasien)
+                Siang : 11.00 sampai dengan 13.00
+                Sore   : 17.00 sampai dengan 20.00</string>
     <string-array name="pengaduan">
         <item>Pengaduan Keluhan</item>
         <item>Permintaan Informasi</item>

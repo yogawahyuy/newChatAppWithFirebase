@@ -30,10 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Toolbar toolbar=findViewById(R.id.toolsbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Login");
-        getSupportActionBar() .setDisplayShowHomeEnabled(true);
+
 
         auth=FirebaseAuth.getInstance();
 

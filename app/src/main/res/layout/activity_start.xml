@@ -17,14 +17,6 @@
         android:src="@drawable/logo3"
         android:layout_centerInParent="true"/>
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Chat App"-->
-<!--        android:textSize="25sp"-->
-<!--        android:textColor="#"-->
-<!--        android:textStyle="bold"-->
-<!--        />-->
     <Button
         android:layout_below="@id/image_logo"
         android:layout_marginLeft="16dp"
@@ -35,6 +27,7 @@
         android:layout_marginTop="100dp"
         android:background="@color/green"
         android:textColor="#fff"
+        android:fontFamily="@font/bookmanoldstyle"
         android:text="Login"/>
     <Button
         android:layout_below="@id/btnLoginApp"
@@ -45,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textColor="#fff"
+        android:fontFamily="@font/bookmanoldstyle"
         android:background="@android:color/holo_red_dark"
         android:text="Register"/>
 
@@ -57,6 +51,7 @@
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:gravity="center"
+        android:fontFamily="@font/bookmanoldstyle"
         android:layout_marginTop="16dp"/>
 
 </RelativeLayout>

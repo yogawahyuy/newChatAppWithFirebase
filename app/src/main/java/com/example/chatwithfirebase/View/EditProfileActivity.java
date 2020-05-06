@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.chatwithfirebase.Model.User;
 import com.example.chatwithfirebase.R;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -140,7 +141,7 @@ public class EditProfileActivity extends AppCompatActivity {
             spinerID=2;
         }
         user.setId(firebaseUser.getUid());
-        user.setImageURL("Default");
+        user.setImageURL(filePath.toString());
         user.setUsername(nama.getText().toString());
         user.setEmail(email.getText().toString());
         user.setNumberPhone(noHp.getText().toString());
@@ -167,7 +168,7 @@ public class EditProfileActivity extends AppCompatActivity {
     }
     private void uploadIntoFirebase(){
         if (filePath!=null){
-            ProgressDialog progressDialog
+            final ProgressDialog progressDialog
                     = new ProgressDialog(this);
             progressDialog.setTitle("Mengupload foto");
             progressDialog.show();
@@ -182,11 +183,36 @@ public class EditProfileActivity extends AppCompatActivity {
             String namafolder="ProfilePicture/"+namafile;
 
             UploadTask uploadTask= storageReference.child(namafolder).putBytes(bytes);
+//            uploadTask.continueWith(new Continuation<UploadTask.TaskSnapshot,Task<Uri>>() {
+//                @Override
+//                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+//                    if (!task.isSuccessful()){
+//                        throw task.getException();
+//                    }
+//                    return storageReference.getDownloadUrl();
+//                }
+//            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+//                @Override
+//                public void onComplete(@NonNull Task<Uri> task) {
+//                    if (task.isSuccessful()){
+//                        Uri downloadUri=task.getResult();
+//                        String mUri=downloadUri.toString();
+//                        HashMap<String ,Object> map=new HashMap<>();
+//                        map.put("imageURL",mUri);
+//                        dbreference.updateChildren(map);
+//                        progressDialog.dismiss();
+//                    }else{
+//                        Toast.makeText(EditProfileActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
+//                        progressDialog.dismiss();
+//                    }
+//                }
+//            }).addOnFailureListener()
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(EditProfileActivity.this, "Uploading Berhasil", Toast.LENGTH_SHORT).show();
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override

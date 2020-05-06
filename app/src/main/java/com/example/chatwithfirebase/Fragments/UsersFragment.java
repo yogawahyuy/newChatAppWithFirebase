@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.module.GlideModule;
 import com.example.chatwithfirebase.Adapter.UsersAdapter;
+import com.example.chatwithfirebase.Model.GlideApp;
 import com.example.chatwithfirebase.Model.User;
 import com.example.chatwithfirebase.R;
 import com.example.chatwithfirebase.View.EditProfileActivity;
@@ -28,9 +32,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,8 +49,10 @@ public class UsersFragment extends Fragment {
     private UsersAdapter usersAdapter;
     private List<User> users;
     private Button btnLogout,btnEdit;
+    CircleImageView profilePicture;
     ProgressDialog progressDialog;
-    private TextView email,nama,nohp,alamat;
+    private TextView email,nama,nohp,alamat,jeniskelamin;
+    StorageReference storageReference;
     final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
 
     public UsersFragment() {
@@ -59,6 +69,8 @@ public class UsersFragment extends Fragment {
         nama=view.findViewById(R.id.textnama);
         nohp=view.findViewById(R.id.texthp);
         alamat=view.findViewById(R.id.textalamat);
+        jeniskelamin=view.findViewById(R.id.textjk);
+        profilePicture=view.findViewById(R.id.profile_picture);
         progresDialog();
         btnEdit=view.findViewById(R.id.edit_profilebtn);
         btnLogout=view.findViewById(R.id.logout_profilebtn);
@@ -95,6 +107,9 @@ public class UsersFragment extends Fragment {
     private void readUsers() {
         if (firebaseUser!=null) {
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+            storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+firebaseUser.getUid()+".jpg");
+            //Glide.with(getContext()).load(storageReference).into(profilePicture);
+            Log.d("userpregment", "readUsers: "+storageReference);
             reference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -108,9 +123,18 @@ public class UsersFragment extends Fragment {
                     if (!user.getNumberPhone().isEmpty()) {
                         nohp.setText(user.getNumberPhone());
                     }
+                    if (!user.getJk().isEmpty()){
+                        if (user.equals("1")){
+                            jeniskelamin.setText("Laki-laki");
+                        }else{
+                            jeniskelamin.setText("Perempuan");
+                        }
+                    }
                     if (!user.getUsername().isEmpty()) {
                         alamat.setText(user.getAlamat());
-                    } else {
+                    }if (!user.getImageURL().equals("Default")){
+                        GlideApp.with(getContext()).load(storageReference).into(profilePicture);
+                    }else {
                         alamat.setText("alamat disini");
                     }
                     progressDialog.dismiss();

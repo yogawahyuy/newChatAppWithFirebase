@@ -4,15 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".View.RegisterActivity">
-<!--    <include-->
-<!--        android:id="@+id/toolsbar"-->
-<!--        layout="@layout/bar_layout"/>-->
+    tools:context=".View.RegisterActivity"
+    android:background="@drawable/tile">
+    <RelativeLayout
+        android:id="@+id/rel_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            >
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:src="@drawable/logo3"
+                android:layout_marginStart="20dp"/>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/akreditasi"
+                android:layout_marginStart="60dp"/>
+
+        </androidx.appcompat.widget.Toolbar>
+    </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:background="@drawable/tile">
+        android:layout_below="@id/rel_toolbar"
+        >
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -101,7 +126,8 @@
                 android:entries="@array/jeniskelamin"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:fontFamily="@font/bookmanoldstyle"/>
+                android:fontFamily="@font/bookmanoldstyle"
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"/>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordlayout"
             android:layout_width="match_parent"
@@ -157,6 +183,7 @@
             android:id="@+id/btnregister"
             android:background="@color/colorPrimaryDark"
             android:textColor="#fff"
+            android:fontFamily="@font/bookmanoldstyle"
             android:layout_marginTop="10dp"/>
         </LinearLayout>
 
