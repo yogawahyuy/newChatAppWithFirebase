@@ -12,6 +12,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.chatwithfirebase.Model.GlideApp;
 import com.example.chatwithfirebase.Model.User;
 import com.example.chatwithfirebase.R;
 import com.google.android.gms.tasks.Continuation;
@@ -63,6 +65,7 @@ public class EditProfileActivity extends AppCompatActivity {
     StorageReference storageReference;
     Bitmap bitmap;
     ProgressBar progressBar;
+    ProgressDialog progressDialog;
     private final int PICK_IMAGE_REQUEST = 22;
 
     @Override
@@ -85,6 +88,7 @@ public class EditProfileActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                createProgressDialog();
                 updateProfile();
             }
         });
@@ -112,6 +116,11 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void readProfile(){
+        //DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        FirebaseStorage storage= FirebaseStorage.getInstance();
+        final StorageReference storageReferences= storage.getReference("ProfilePicture/"+firebaseUser.getUid()+".jpg");
+        //StorageReference strref=storageReference.child()
+        //FirebaseStorage.getInstance().getReference("ProfilePicture/"+firebaseUser.getUid()+".jpg");
         dbreference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -124,6 +133,10 @@ public class EditProfileActivity extends AppCompatActivity {
                     spinerJk.setSelection(0);
                 else if (user.getJk().equals("1"))spinerJk.setSelection(0);
                 else spinerJk.setSelection(1);
+
+                if (!user.getImageURL().equals("Default")){
+                    GlideApp.with(EditProfileActivity.this).load(storageReferences).into(profilePhoto);
+                }
             }
 
             @Override
@@ -155,23 +168,36 @@ public class EditProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        FirebaseStorage storages=FirebaseStorage.getInstance();
+        StorageReference strReference=storages.getReference("ProfilePicture/"+firebaseUser.getUid()+".jpg");
+        strReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d("fotodelete", "onSuccess: foto dihapus");
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("fotodelete", "onSuccess: foto gagal dihapus");
+
+            }
+        });
         uploadIntoFirebase();
 
     }
-    private void getImageFromCamera(){
 
-    }
     private void selectImage(){
         Intent intent=new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        //intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent,"Pilih..."),PICK_IMAGE_REQUEST);
     }
     private void uploadIntoFirebase(){
         if (filePath!=null){
-            final ProgressDialog progressDialog
-                    = new ProgressDialog(this);
-            progressDialog.setTitle("Mengupload foto");
-            progressDialog.show();
+//            final ProgressDialog progressDialog
+//                    = new ProgressDialog(this);
+//            progressDialog.setTitle("Mengupload foto");
+//            progressDialog.show();
             profilePhoto.setDrawingCacheEnabled(true);
             profilePhoto.buildDrawingCache();
             Bitmap bitmaps=((BitmapDrawable) profilePhoto.getDrawable()).getBitmap();
@@ -183,30 +209,6 @@ public class EditProfileActivity extends AppCompatActivity {
             String namafolder="ProfilePicture/"+namafile;
 
             UploadTask uploadTask= storageReference.child(namafolder).putBytes(bytes);
-//            uploadTask.continueWith(new Continuation<UploadTask.TaskSnapshot,Task<Uri>>() {
-//                @Override
-//                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-//                    if (!task.isSuccessful()){
-//                        throw task.getException();
-//                    }
-//                    return storageReference.getDownloadUrl();
-//                }
-//            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-//                @Override
-//                public void onComplete(@NonNull Task<Uri> task) {
-//                    if (task.isSuccessful()){
-//                        Uri downloadUri=task.getResult();
-//                        String mUri=downloadUri.toString();
-//                        HashMap<String ,Object> map=new HashMap<>();
-//                        map.put("imageURL",mUri);
-//                        dbreference.updateChildren(map);
-//                        progressDialog.dismiss();
-//                    }else{
-//                        Toast.makeText(EditProfileActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
-//                        progressDialog.dismiss();
-//                    }
-//                }
-//            }).addOnFailureListener()
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -226,8 +228,19 @@ public class EditProfileActivity extends AppCompatActivity {
                     progressBar.setVisibility(View.VISIBLE);
                     double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
                     progressBar.setProgress((int) progress);
+//                    if (progress==100){
+//                        progressDialog.dismiss();
+//                    }
                 }
             });
         }
+    }
+    public void createProgressDialog(){
+        progressDialog=new ProgressDialog(EditProfileActivity.this);
+        progressDialog.setIndeterminate(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.setCancelable(false);
+        progressDialog.setMax(100);
+        progressDialog.show();
     }
 }

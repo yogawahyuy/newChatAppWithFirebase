@@ -1,6 +1,5 @@
 package com.example.chatwithfirebase.Model;
 
-import ir.mirrajabi.searchdialog.core.Searchable;
 
 public class User {
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.chatwithfirebase.CustomView.CustomProgressDialog;
 import com.example.chatwithfirebase.MainActivity;
 import com.example.chatwithfirebase.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
     MaterialEditText email,password;
     Button btnLogin;
-
+    CustomProgressDialog dialog;
     FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +38,13 @@ public class LoginActivity extends AppCompatActivity {
         email=findViewById(R.id.email);
         password=findViewById(R.id.password);
         btnLogin=findViewById(R.id.btnlogin);
-
+        dialog=new CustomProgressDialog(this);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String txtEmail=email.getText().toString();
                 String txtPassword=password.getText().toString();
-
+                dialog.showDialog();
                 if (TextUtils.isEmpty(txtEmail)||TextUtils.isEmpty(txtPassword)){
                     Toast.makeText(LoginActivity.this, "Isi semua form", Toast.LENGTH_SHORT).show();
                 }else {
@@ -54,9 +55,11 @@ public class LoginActivity extends AppCompatActivity {
                                 Intent intent=new Intent(LoginActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
+                                dialog.hideDialog();
                                 finish();
                             }else{
                                 Toast.makeText(LoginActivity.this, "Email atau Password Salah", Toast.LENGTH_SHORT).show();
+                                dialog.hideDialog();
                             }
                         }
                     });

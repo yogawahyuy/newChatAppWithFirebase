@@ -130,12 +130,12 @@ public class UsersFragment extends Fragment {
                             jeniskelamin.setText("Perempuan");
                         }
                     }
-                    if (!user.getUsername().isEmpty()) {
+                    if (!user.getAlamat().isEmpty()) {
                         alamat.setText(user.getAlamat());
-                    }if (!user.getImageURL().equals("Default")){
-                        GlideApp.with(getContext()).load(storageReference).into(profilePicture);
                     }else {
                         alamat.setText("alamat disini");
+                    }if (!user.getImageURL().equals("Default")){
+                        GlideApp.with(getContext()).load(storageReference).into(profilePicture);
                     }
                     progressDialog.dismiss();
                 }

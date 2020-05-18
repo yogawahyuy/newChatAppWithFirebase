@@ -1,8 +1,8 @@
 package com.example.chatwithfirebase.Model;
 
-import ir.mirrajabi.searchdialog.core.Searchable;
 
-public class SearchModel implements Searchable {
+
+public class SearchModel{
 
     private String mTitle;
 
@@ -15,8 +15,8 @@ public class SearchModel implements Searchable {
         return this;
     }
 
-    @Override
-    public String getTitle() {
-        return mTitle;
-    }
+//    @Override
+//    public String getTitle() {
+//        return mTitle;
+//    }
 }
