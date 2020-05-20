@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.example.chatwithfirebase.Model.GlideApp;
 import com.example.chatwithfirebase.Model.User;
 import com.example.chatwithfirebase.R;
+import com.example.chatwithfirebase.Utils.CacheUtil;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -105,7 +106,9 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==PICK_IMAGE_REQUEST&&resultCode==RESULT_OK){
             filePath=data.getData();
-
+            Log.d("filepath", "onActivityResult: "+filePath.toString());
+            //profilePhoto.setImageURI(filePath);
+            GlideApp.with(this).load(filePath).into(profilePhoto);
             try{
                 bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),filePath);
                 profilePhoto.setImageBitmap(bitmap);
@@ -113,6 +116,13 @@ public class EditProfileActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        GlideApp.with(getApplicationContext()).load(filePath).into(profilePhoto);
+        //readProfile();
     }
 
     private void readProfile(){
@@ -135,7 +145,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 else spinerJk.setSelection(1);
 
                 if (!user.getImageURL().equals("Default")){
-                    GlideApp.with(EditProfileActivity.this).load(storageReferences).into(profilePhoto);
+                    GlideApp.with(getApplicationContext()).load(storageReferences).into(profilePhoto);
                 }
             }
 
@@ -185,6 +195,8 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
         uploadIntoFirebase();
+        CacheUtil cacheUtil=new CacheUtil();
+        cacheUtil.deleteCache(this);
 
     }
 
@@ -213,7 +225,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(EditProfileActivity.this, "Uploading Berhasil", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(EditProfileActivity.this, "Uploading Berhasil", Toast.LENGTH_SHORT).show();
 
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -243,4 +255,6 @@ public class EditProfileActivity extends AppCompatActivity {
         progressDialog.setMax(100);
         progressDialog.show();
     }
+
+
 }

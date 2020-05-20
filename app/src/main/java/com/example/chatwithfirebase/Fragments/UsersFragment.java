@@ -96,12 +96,22 @@ public class UsersFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), EditProfileActivity.class));
+                getActivity().finish();
 
             }
         });
+        storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+firebaseUser.getUid()+".jpg");
         users=new ArrayList<>();
         readUsers();
+       // GlideApp.with(getContext()).load(storageReference).into(profilePicture);
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        readUsers();
+        //GlideApp.with(getContext()).load(storageReference).into(profilePicture);
     }
 
     private void readUsers() {

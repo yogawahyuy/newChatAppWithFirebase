@@ -23,6 +23,7 @@ import com.example.chatwithfirebase.Fragments.ChatsFragment;
 import com.example.chatwithfirebase.Fragments.HomeFragment;
 import com.example.chatwithfirebase.Fragments.UsersFragment;
 import com.example.chatwithfirebase.Model.User;
+import com.example.chatwithfirebase.Utils.CacheUtil;
 import com.example.chatwithfirebase.View.StartActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -55,18 +56,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //profileImage =findViewById(R.id.profile_image);
-        //akreditasiImage=findViewById(R.id.akreditasi_image);
-        //username=findViewById(R.id.username);
-
-        //username.setText(R.string.rsip);
-//        profileImage.setImageResource(R.drawable.logo3);
-//        profileImage.setMaxHeight(50);
-//        profileImage.setMaxWidth(50);
-//        akreditasiImage.setImageResource(R.drawable.akreditasi);
-//        akreditasiImage.setMaxWidth(50);
-//        akreditasiImage.setMaxHeight(50);
+        CacheUtil cacheUtil=new CacheUtil();
+        cacheUtil.deleteCache(this);
         bottomNavigationViewEx=findViewById(R.id.bottom_nav_view);
         bottomNavigationViewEx.setIconSize(20, 20);
         bottomNavigationViewEx.setTextSize(12);
