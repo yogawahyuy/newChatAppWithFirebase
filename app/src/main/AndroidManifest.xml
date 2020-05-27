@@ -4,8 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.EditProfileActivity"></activity>
+        <activity android:name=".View.MenuSurahActivity"></activity>
+        <activity android:name=".View.EditProfileActivity" />
         <activity android:name=".View.InfoDokterActivity" />
         <activity android:name=".View.AgendaRsiActivity" />
         <activity android:name=".View.DokterCutiActivity" />

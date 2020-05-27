@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.chatwithfirebase.R;
 import com.example.chatwithfirebase.View.BookingActivity;
 import com.example.chatwithfirebase.View.InfoBedActivity;
+import com.example.chatwithfirebase.View.MenuSurahActivity;
 
 public class GridHomeAdapterOne extends BaseAdapter {
     Context mContext;
@@ -57,7 +58,7 @@ public class GridHomeAdapterOne extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (position==0){
-                    mContext.startActivity(new Intent(mContext, BookingActivity.class));
+                    mContext.startActivity(new Intent(mContext, MenuSurahActivity.class));
                 }
                 else if (position==1){
 

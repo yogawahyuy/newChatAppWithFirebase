@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.example.chatwithfirebase.Adapter.KeluhanAdapter;
 import com.example.chatwithfirebase.Model.KeluhanModel;
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 
 public class DaftarKeluhanActivity extends AppCompatActivity {
     RecyclerView recyclerView;
+    RelativeLayout relEmptyView;
     ArrayList<KeluhanModel> keluhanModels=new ArrayList<>();
     KeluhanAdapter keluhanAdapter;
     FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
@@ -35,6 +38,7 @@ public class DaftarKeluhanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_daftar_keluhan);
         recyclerView=findViewById(R.id.recy_list_chat);
         recyclerView.setHasFixedSize(true);
+        relEmptyView=findViewById(R.id.rel_emptyview);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
 readKeluhan();
@@ -50,6 +54,8 @@ readKeluhan();
                     KeluhanModel keluhanModel=snapshot.getValue(KeluhanModel.class);
                     if (keluhanModel.getSender().equals(getUid)){
                         keluhanModels.add(keluhanModel);
+                    }else if(!keluhanModel.getSender().equals(getUid)){
+                        relEmptyView.setVisibility(View.VISIBLE);
                     }
                     keluhanAdapter =new KeluhanAdapter(DaftarKeluhanActivity.this,keluhanModels);
                     recyclerView.setAdapter(keluhanAdapter);
