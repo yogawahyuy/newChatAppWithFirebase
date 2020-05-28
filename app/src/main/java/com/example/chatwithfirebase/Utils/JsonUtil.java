@@ -9,9 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.chatwithfirebase.Model.InfoBedModel;
+import com.example.chatwithfirebase.Model.MenuSurahModel;
+import com.google.android.gms.dynamic.IFragmentWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,5 +62,38 @@ public class JsonUtil {
             }
         });
         Volley.newRequestQueue(context).add(jsonObjectRequest);
+    }
+    public void getSurah(Context context, final RecyclerView.Adapter adapter, final List<MenuSurahModel> surah, final ProgressDialog progressDialog){
+        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, "https://raw.githubusercontent.com/penggguna/QuranJSON/master/quran.json", null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                if (response.length()>0){
+                    try {
+                        Log.e("json utils", "jumlah array: "+response.length() );
+                        for (int i = 0; i <response.length() ; i++) {
+                            JSONObject data=response.getJSONObject(i);
+                            MenuSurahModel surahModel=new MenuSurahModel();
+                            surahModel.setNameSurah(data.getString("name"));
+                            surahModel.setNumberAyah(String.valueOf(data.getInt("number_of_ayah"))+" Ayat");
+                            surahModel.setNumberSurah(String.valueOf(data.getInt("number_of_surah")));
+                            surahModel.setTypeSurah(data.getString("type"));
+                            JSONObject transaltion=data.getJSONObject("name_translations");
+                            surahModel.setArTranslation(transaltion.getString("ar"));
+                            surah.add(surahModel);
+                        }
+                        progressDialog.dismiss();
+                    }catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        Volley.newRequestQueue(context).add(jsonArrayRequest);
     }
 }

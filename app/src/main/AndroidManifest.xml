@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.MenuSurahActivity"></activity>
+        <activity android:name=".View.AyatActivity"></activity>
+        <activity android:name=".View.MenuSurahActivity" />
         <activity android:name=".View.EditProfileActivity" />
         <activity android:name=".View.InfoDokterActivity" />
         <activity android:name=".View.AgendaRsiActivity" />
