@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/rel_item_surah"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/bg_template">
+        <LinearLayout
+            android:id="@+id/lin_nosurah"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/islamic_star"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_nosurah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:text="1"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lin_arab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lin_nosurah"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_arab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Arab"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:gravity="right"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="16dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lin_namasurah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/lin_arab"
+            android:layout_toRightOf="@id/lin_nosurah"
+            android:layout_marginLeft="8dp">
+            <TextView
+                android:id="@+id/tv_translation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Terjemahan Indonesia"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

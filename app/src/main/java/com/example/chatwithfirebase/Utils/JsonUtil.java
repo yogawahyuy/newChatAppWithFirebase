@@ -96,4 +96,8 @@ public class JsonUtil {
         });
         Volley.newRequestQueue(context).add(jsonArrayRequest);
     }
+
+    public void getAyat(Context context,final RecyclerView.Adapter adapter, final List<MenuSurahModel> surah, final ProgressDialog progressDialog){
+        
+    }
 }

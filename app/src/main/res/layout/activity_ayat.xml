@@ -39,7 +39,6 @@
             android:layout_width="match_parent"
             android:layout_height="28dp"
             android:layout_below="@id/rel_toolbar"
-            android:layout_marginBottom="3dp"
             android:background="@color/colorPrimaryDark"
             >
             <TextView
@@ -56,6 +55,51 @@
 
 
         </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/lin_ayat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel_titlebook"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_templategreens">
+            <TextView
+                android:id="@+id/tv_typesurah"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
+                android:text="Madinah"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:gravity="center_horizontal"
+                android:paddingTop="10dp"/>
+            <TextView
+                android:id="@+id/tv_translation"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:text="Keluarga Imran"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="24dp"
+                android:paddingTop="10dp"/>
+            <TextView
+                android:id="@+id/tv_jumlahayat"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="236 Ayat"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="24dp"
+                android:paddingTop="10dp"/>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ayat_recylcer"
+            android:layout_below="@id/lin_ayat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"/>
+
     </RelativeLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
