@@ -3,6 +3,7 @@ package com.example.chatwithfirebase.Utils;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.chatwithfirebase.Model.AyatModel;
 import com.example.chatwithfirebase.Model.InfoBedModel;
 import com.example.chatwithfirebase.Model.MenuSurahModel;
 import com.google.android.gms.dynamic.IFragmentWrapper;
@@ -97,7 +99,83 @@ public class JsonUtil {
         Volley.newRequestQueue(context).add(jsonArrayRequest);
     }
 
-    public void getAyat(Context context,final RecyclerView.Adapter adapter, final List<MenuSurahModel> surah, final ProgressDialog progressDialog){
-        
+    public void getAyat(Context context, final RecyclerView.Adapter adapter, final List<AyatModel> surah, final ProgressDialog progressDialog, final int idSurah, final TextView title, final TextView type, final TextView translations, final TextView jumlah){
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/" + idSurah + ".json", null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                if (response.length()>0){
+                    try{
+                        Log.e("json utils", "jumlah array: "+response.length() );
+                        AyatModel ayatModel=new AyatModel();
+                        String nameSurah=response.getString("name");
+                        String typeSurah=response.getString("type");
+                        JSONObject translation=response.getJSONObject("name_translations");
+                        String idTranslation=translation.getString("id");
+                        int jumlahAyat=response.getInt("number_of_ayah");
+                        ayatModel.setNamaSurah(nameSurah);
+                        ayatModel.setTypeSurah(typeSurah);
+                        ayatModel.setIdTranslation(idTranslation);
+                        ayatModel.setJumlahAyat(String.valueOf(jumlahAyat));
+                        title.setText(nameSurah);
+                        translations.setText(idTranslation);
+                        type.setText(typeSurah);
+                        jumlah.setText(jumlahAyat+" Ayat");
+                        JSONArray verse=response.getJSONArray("verses");
+//                        for (int i = 0; i <verse.length() ; i++) {
+//                            JSONObject data=verse.getJSONObject(i);
+//                            AyatModel ayatModel1=new AyatModel();
+//                            ayatModel1.setNumberAyat(String.valueOf(data.getInt("number")));
+////                            ayatModel1.setTextArab(data.getString("text"));
+////                            ayatModel1.setIdTranslationAyat(data.getString("translation_id"));
+//                            surah.add(ayatModel1);
+//                        }
+                        progressDialog.dismiss();
+                    }catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i("JsonUtils", "onErrorResponse: "+error);
+            }
+        });
+        Volley.newRequestQueue(context).add(jsonObjectRequest);
+    }
+
+    public void getAyat(Context context, final RecyclerView.Adapter adapter, final List<AyatModel> surah, final int idSurah){
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "https://raw.githubusercontent.com/rioastamal/quran-json/master/surah/" + idSurah + ".json", null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("json utils", "jumlah array: "+response.length() );
+                try {
+                    JSONObject data=response.getJSONObject(String.valueOf(idSurah));
+                    int numberAyah=Integer.valueOf(data.getString("number_of_ayah"));
+                    for (int i = 0; i <numberAyah ; i++) {
+                        JSONObject textArab=data.getJSONObject("text");
+                        AyatModel ayatModel1=new AyatModel();
+                        ayatModel1.setNumberAyat(String.valueOf(i+1));
+                        ayatModel1.setTextArab(textArab.getString(String.valueOf(i+1)));
+                        JSONObject translation=data.getJSONObject("translations");
+                        JSONObject id=translation.getJSONObject("id");
+                        JSONObject idTranslation=id.getJSONObject("text");
+                        ayatModel1.setIdTranslationAyat(idTranslation.getString(String.valueOf(i+1)));
+                        surah.add(ayatModel1);
+                    }
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i("JsonUtils", "onErrorResponse: "+error);
+            }
+        });
+        Volley.newRequestQueue(context).add(jsonObjectRequest);
     }
 }

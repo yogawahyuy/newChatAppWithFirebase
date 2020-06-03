@@ -37,7 +37,7 @@ public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.surahNumber.setText(ayatModels.get(position).getNumberAyat());
         holder.arTranslation.setText(ayatModels.get(position).getTextArab());
-        holder.idTranslation.setText(ayatModels.get(position).getIdTranslation());
+        holder.idTranslation.setText(ayatModels.get(position).getIdTranslationAyat());
     }
 
     @Override

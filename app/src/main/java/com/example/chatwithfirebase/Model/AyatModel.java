@@ -1,7 +1,9 @@
 package com.example.chatwithfirebase.Model;
 
 public class AyatModel {
-    String namaSurah,namaTranslation,typeSurah,numberAyat,textArab,idTranslation,rectiation;
+    String namaSurah,namaTranslation,typeSurah,numberAyat,textArab,idTranslation,rectiation,jumlahAyat,idTranslationAyat;
+
+
 
     public AyatModel(String namaSurah, String namaTranslation, String typeSurah, String numberAyat, String textArab, String idTranslation, String rectiation) {
         this.namaSurah = namaSurah;
@@ -70,5 +72,20 @@ public class AyatModel {
 
     public void setRectiation(String rectiation) {
         this.rectiation = rectiation;
+    }
+    public String getJumlahAyat() {
+        return jumlahAyat;
+    }
+
+    public void setJumlahAyat(String jumlahAyat) {
+        this.jumlahAyat = jumlahAyat;
+    }
+
+    public String getIdTranslationAyat() {
+        return idTranslationAyat;
+    }
+
+    public void setIdTranslationAyat(String idTranslationAyat) {
+        this.idTranslationAyat = idTranslationAyat;
     }
 }
