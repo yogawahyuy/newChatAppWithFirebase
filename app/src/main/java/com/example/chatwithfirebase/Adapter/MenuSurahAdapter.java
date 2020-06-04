@@ -43,6 +43,7 @@ public class MenuSurahAdapter extends RecyclerView.Adapter<MenuSurahAdapter.View
         holder.typeSurah.setText(surahModels.get(position).getTypeSurah());
         holder.numberAyah.setText(surahModels.get(position).getNumberAyah());
         holder.arTranslation.setText(surahModels.get(position).getArTranslation());
+        holder.idTranslation.setText(surahModels.get(position).getIdTranslation());
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +61,7 @@ public class MenuSurahAdapter extends RecyclerView.Adapter<MenuSurahAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView surahNumber,nameSurah,typeSurah,numberAyah,arTranslation;
+        TextView surahNumber,nameSurah,typeSurah,numberAyah,arTranslation,idTranslation;
         RelativeLayout relativeLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,6 +70,7 @@ public class MenuSurahAdapter extends RecyclerView.Adapter<MenuSurahAdapter.View
             typeSurah=itemView.findViewById(R.id.tv_typesurah);
             numberAyah=itemView.findViewById(R.id.tv_jumlahayat);
             arTranslation=itemView.findViewById(R.id.tv_arab);
+            idTranslation=itemView.findViewById(R.id.tv_artiarab);
             relativeLayout=itemView.findViewById(R.id.rel_item_surah);
         }
     }

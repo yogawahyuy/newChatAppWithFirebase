@@ -67,7 +67,7 @@
         </LinearLayout>
         <LinearLayout
             android:id="@+id/lin_arab"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/lin_namasurah"
             android:orientation="vertical">
@@ -80,7 +80,17 @@
                 android:textColor="@android:color/black"
                 android:gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"/>
+                />
+            <TextView
+                android:id="@+id/tv_artiarab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Arab"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                />
         </LinearLayout>
     </RelativeLayout>
 

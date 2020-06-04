@@ -81,6 +81,7 @@ public class JsonUtil {
                             surahModel.setTypeSurah(data.getString("type"));
                             JSONObject transaltion=data.getJSONObject("name_translations");
                             surahModel.setArTranslation(transaltion.getString("ar"));
+                            surahModel.setIdTranslation(transaltion.getString("id"));
                             surah.add(surahModel);
                         }
                         progressDialog.dismiss();
