@@ -15,6 +15,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.rsip.mobile.Model.AyatModel;
 import com.rsip.mobile.Model.InfoBedModel;
+import com.rsip.mobile.Model.JadwalSolatModel;
 import com.rsip.mobile.Model.MenuSurahModel;
 
 import org.json.JSONArray;
@@ -173,6 +174,37 @@ public class JsonUtil {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i("JsonUtils", "onErrorResponse: "+error);
+            }
+        });
+        Volley.newRequestQueue(context).add(jsonObjectRequest);
+    }
+
+    public void getJadwalSholat(Context context, final RecyclerView.Adapter adapter, final List<JadwalSolatModel> jadwals, String tanggal){
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "https://api.banghasan.com/sholat/format/json/jadwal/kota/707/tanggal/" + tanggal + "", null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONObject data = response.getJSONObject("jadwal");
+                    JSONObject jadwal=data.getJSONObject("data");
+                    JadwalSolatModel jadwalSolatModel=new JadwalSolatModel();
+                    jadwalSolatModel.setAzhar(jadwal.getString("ashar"));
+                    jadwalSolatModel.setDuha(jadwal.getString("dhuha"));
+                    jadwalSolatModel.setDuhur(jadwal.getString("dzuhur"));
+                    jadwalSolatModel.setImsak(jadwal.getString("imsak"));
+                    jadwalSolatModel.setIsya(jadwal.getString("isya"));
+                    jadwalSolatModel.setMagrib(jadwal.getString("maghrib"));
+                    jadwalSolatModel.setSubuh(jadwal.getString("subuh"));
+                    jadwalSolatModel.setTanggal(jadwal.getString("tanggal"));
+                    jadwals.add(jadwalSolatModel);
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
             }
         });
         Volley.newRequestQueue(context).add(jsonObjectRequest);

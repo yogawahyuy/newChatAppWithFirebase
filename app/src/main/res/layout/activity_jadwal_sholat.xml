@@ -39,7 +39,6 @@
             android:layout_width="match_parent"
             android:layout_height="28dp"
             android:layout_below="@id/rel_toolbar"
-            android:layout_marginBottom="3dp"
             android:background="@color/colorPrimaryDark"
             >
             <TextView
@@ -56,9 +55,39 @@
 
 
         </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/lin_ket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel_titlebook"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_templategreens"
+            android:layout_marginBottom="3dp">
+            <TextView
+                android:id="@+id/tv_typesurah"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:text="Banyumas,"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:gravity="right"
+                android:paddingTop="10dp"
+                android:layout_marginRight="8dp"
+                />
+            <TextView
+                android:id="@+id/tv_translation"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:text="Jumat 05 Juni 2020"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:gravity="left"
+                android:paddingTop="10dp"
+                />
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/surah_recylcer"
-            android:layout_below="@id/rel_titlebook"
+            android:layout_below="@id/lin_ket"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"/>
