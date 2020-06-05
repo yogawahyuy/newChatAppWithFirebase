@@ -17,8 +17,8 @@ import com.example.chatwithfirebase.R;
  * A simple {@link Fragment} subclass.
  */
 public class MenuTwoFragment extends Fragment {
-    String[] title={"Alquran","Menu2","Menu 3","Menu 3","Menu 3","Menu 3"};
-    int[] image={R.drawable.quran,R.drawable.icons8orderhistory80,R.drawable.icons8hospitalbed80,R.drawable.icons8doctormale96,R.drawable.calendar,R.drawable.icons8info80};
+        String[] title={"Alquran","Jadwal Sholat","Menu 3","Menu 3","Menu 3","Menu 3"};
+    int[] image={R.drawable.quran,R.drawable.mosque,R.drawable.icons8hospitalbed80,R.drawable.icons8doctormale96,R.drawable.calendar,R.drawable.icons8info80};
     View rootView;
     GridView gridView;
     public MenuTwoFragment() {
