@@ -34,7 +34,7 @@
        </androidx.appcompat.widget.Toolbar>
     </RelativeLayout>
 
-    <com.example.chatwithfirebase.Adapter.CustomViewPager
+    <com.rsip.mobile.Adapter.CustomViewPager
         android:layout_below="@id/rel_toolbar"
         android:layout_above="@id/botom_nav"
         android:layout_width="match_parent"
