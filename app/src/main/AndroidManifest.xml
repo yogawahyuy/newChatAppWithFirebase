@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
         android:allowBackup="true"
@@ -16,32 +17,33 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.rsip.mobile.View.JadwalSholatActivity"></activity>
-        <activity android:name="com.rsip.mobile.View.AyatActivity" />
-        <activity android:name="com.rsip.mobile.View.MenuSurahActivity" />
-        <activity android:name="com.rsip.mobile.View.EditProfileActivity" />
-        <activity android:name="com.rsip.mobile.View.InfoDokterActivity" />
-        <activity android:name="com.rsip.mobile.View.AgendaRsiActivity" />
-        <activity android:name="com.rsip.mobile.View.DokterCutiActivity" />
-        <activity android:name="com.rsip.mobile.View.RiwayatPeriksaActivity" />
-        <activity android:name="com.rsip.mobile.View.DaftarKeluhanActivity" />
-        <activity android:name="com.rsip.mobile.View.SplashScreenActivity">
+        <activity android:name=".View.KartuActivity"></activity>
+        <activity android:name=".View.JadwalSholatActivity" />
+        <activity android:name=".View.AyatActivity" />
+        <activity android:name=".View.MenuSurahActivity" />
+        <activity android:name=".View.EditProfileActivity" />
+        <activity android:name=".View.InfoDokterActivity" />
+        <activity android:name=".View.AgendaRsiActivity" />
+        <activity android:name=".View.DokterCutiActivity" />
+        <activity android:name=".View.RiwayatPeriksaActivity" />
+        <activity android:name=".View.DaftarKeluhanActivity" />
+        <activity android:name=".View.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.rsip.mobile.View.InfoBedActivity" />
-        <activity android:name="com.rsip.mobile.View.BookingActivity" />
+        <activity android:name=".View.InfoBedActivity" />
+        <activity android:name=".View.BookingActivity" />
         <activity
-            android:name="com.rsip.mobile.View.LoginActivity"
-            android:parentActivityName="com.rsip.mobile.View.StartActivity" />
-        <activity android:name="com.rsip.mobile.View.StartActivity" />
+            android:name=".View.LoginActivity"
+            android:parentActivityName=".View.StartActivity" />
+        <activity android:name=".View.StartActivity" />
         <activity
-            android:name="com.rsip.mobile.View.RegisterActivity"
-            android:parentActivityName="com.rsip.mobile.View.StartActivity" />
-        <activity android:name="com.rsip.mobile.MainActivity" />
+            android:name=".View.RegisterActivity"
+            android:parentActivityName=".View.StartActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

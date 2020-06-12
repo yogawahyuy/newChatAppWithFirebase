@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.rsip.mobile.R;
 import com.rsip.mobile.View.InfoBedActivity;
 import com.rsip.mobile.View.JadwalSholatActivity;
+import com.rsip.mobile.View.KartuActivity;
 import com.rsip.mobile.View.MenuSurahActivity;
 
 public class GridHomeAdapterOne extends BaseAdapter {
@@ -63,7 +64,7 @@ public class GridHomeAdapterOne extends BaseAdapter {
                 else if (position==1){
                     mContext.startActivity(new Intent(mContext, JadwalSholatActivity.class));
                 }else if (position==2){
-                    mContext.startActivity(new Intent(mContext, InfoBedActivity.class));
+                    mContext.startActivity(new Intent(mContext, KartuActivity.class));
                 }
                 else if (position==3){
 

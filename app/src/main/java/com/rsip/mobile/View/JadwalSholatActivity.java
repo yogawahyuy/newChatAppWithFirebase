@@ -2,8 +2,12 @@ package com.rsip.mobile.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -54,6 +58,10 @@ public class JadwalSholatActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public static void setAutoOrientationEnabled(Context context, boolean enabled)
+    {
+        Settings.System.putInt( context.getContentResolver(), Settings.System.ACCELEROMETER_ROTATION, enabled ? 1 : 0);
     }
     private void getCurentDate(){
         Date c= Calendar.getInstance().getTime();
