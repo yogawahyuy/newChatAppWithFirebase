@@ -3,6 +3,8 @@ package com.rsip.mobile.Utils;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +19,7 @@ import com.rsip.mobile.Model.AyatModel;
 import com.rsip.mobile.Model.InfoBedModel;
 import com.rsip.mobile.Model.JadwalSolatModel;
 import com.rsip.mobile.Model.MenuSurahModel;
+import com.rsip.mobile.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -121,14 +124,6 @@ public class JsonUtil {
                         type.setText(typeSurah);
                         jumlah.setText(jumlahAyat+" Ayat");
                         JSONArray verse=response.getJSONArray("verses");
-//                        for (int i = 0; i <verse.length() ; i++) {
-//                            JSONObject data=verse.getJSONObject(i);
-//                            AyatModel ayatModel1=new AyatModel();
-//                            ayatModel1.setNumberAyat(String.valueOf(data.getInt("number")));
-////                            ayatModel1.setTextArab(data.getString("text"));
-////                            ayatModel1.setIdTranslationAyat(data.getString("translation_id"));
-//                            surah.add(ayatModel1);
-//                        }
                         progressDialog.dismiss();
                     }catch (JSONException e){
                         e.printStackTrace();
@@ -179,23 +174,30 @@ public class JsonUtil {
         Volley.newRequestQueue(context).add(jsonObjectRequest);
     }
 
-    public void getJadwalSholat(Context context, final RecyclerView.Adapter adapter, final List<JadwalSolatModel> jadwals, String tanggal){
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "https://api.banghasan.com/sholat/format/json/jadwal/kota/707/tanggal/" + tanggal + "", null, new Response.Listener<JSONObject>() {
+    public void getJadwalSholat(Context context, final List<JadwalSolatModel> jadwals, String tanggal, String tempat, final TextView subuh, final TextView duhur, final TextView ashar, final TextView magrib, final TextView isya,final ProgressDialog progressDialog){
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "http://api.aladhan.com/v1/timingsByAddress?address="+tempat+"/"+tanggal+"&method=11", null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    JSONObject data = response.getJSONObject("jadwal");
-                    JSONObject jadwal=data.getJSONObject("data");
+                    JSONObject data = response.getJSONObject("data");
+                    JSONObject jadwal=data.getJSONObject("timings");
                     JadwalSolatModel jadwalSolatModel=new JadwalSolatModel();
-                    jadwalSolatModel.setAzhar(jadwal.getString("ashar"));
-                    jadwalSolatModel.setDuha(jadwal.getString("dhuha"));
-                    jadwalSolatModel.setDuhur(jadwal.getString("dzuhur"));
-                    jadwalSolatModel.setImsak(jadwal.getString("imsak"));
-                    jadwalSolatModel.setIsya(jadwal.getString("isya"));
-                    jadwalSolatModel.setMagrib(jadwal.getString("maghrib"));
-                    jadwalSolatModel.setSubuh(jadwal.getString("subuh"));
-                    jadwalSolatModel.setTanggal(jadwal.getString("tanggal"));
+                    jadwalSolatModel.setAzhar(jadwal.getString("Asr"));
+                    jadwalSolatModel.setDuha(jadwal.getString("Sunrise"));
+                    jadwalSolatModel.setDuhur(jadwal.getString("Dhuhr"));
+                    jadwalSolatModel.setImsak(jadwal.getString("Imsak"));
+                    jadwalSolatModel.setIsya(jadwal.getString("Isha"));
+                    jadwalSolatModel.setMagrib(jadwal.getString("Maghrib"));
+                    jadwalSolatModel.setSubuh(jadwal.getString("Fajr"));
+                    //jadwalSolatModel.setTanggal(jadwal.getString("tanggal"));
+                    Log.d("jadwalsolat", "onResponse: "+jadwal.getString("Fajr"));
+                    subuh.setText(jadwalSolatModel.getSubuh());
+                    duhur.setText(jadwalSolatModel.getDuhur());
+                    ashar.setText(jadwalSolatModel.getAzhar());
+                    magrib.setText(jadwalSolatModel.getMagrib());
+                    isya.setText(jadwalSolatModel.getIsya());
                     jadwals.add(jadwalSolatModel);
+                    progressDialog.dismiss();
                 }catch (JSONException e){
                     e.printStackTrace();
                 }
@@ -208,5 +210,32 @@ public class JsonUtil {
             }
         });
         Volley.newRequestQueue(context).add(jsonObjectRequest);
+    }
+
+    public void getKabupaten(final Context context, final List<String> kab, final Spinner spinner, final ProgressDialog progressDialog){
+        JsonArrayRequest  jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, "https://raw.githubusercontent.com/ibnux/data-indonesia/master/kabupaten/33.json", null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try{
+                    for (int i = 0; i <response.length() ; i++) {
+                        JSONObject data=response.getJSONObject(i);
+                        kab.add(data.getString("nama"));
+                    }
+                    ArrayAdapter<String> adapter=new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item,kab);
+                    spinner.setAdapter(adapter);
+                    spinner.setSelection(1);
+                    progressDialog.dismiss();
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        Volley.newRequestQueue(context).add(jsonArrayRequest);
     }
 }

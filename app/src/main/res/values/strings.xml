@@ -21,6 +21,16 @@
         <item>Laki-Laki</item>
         <item>Perempuan</item>
     </string-array>
+    <string-array name="kota">
+        <item>Banyumas</item>
+        <item>Semarang</item>
+        <item>Tegal</item>
+        <item>Wonosobo</item>
+        <item>Kebumen</item>
+        <item>Banyumas</item>
+        <item>Banyumas</item>
+        <item>Banyumas</item>
+    </string-array>
     <string-array name="unit">
         <item>Al Barokah 1</item>
         <item>Al Barokah 2</item>

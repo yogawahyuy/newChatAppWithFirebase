@@ -64,33 +64,317 @@
             android:background="@drawable/bg_templategreens"
             android:layout_marginBottom="3dp">
             <TextView
-                android:id="@+id/tv_typesurah"
-                android:layout_width="170dp"
+                android:id="@+id/tv_tempat"
+                android:layout_width="200dp"
                 android:layout_height="50dp"
-                android:text="Banyumas,"
+                android:text="Kabupaten Banyumas"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/bookmanoldstyle"
-                android:gravity="right"
+                android:gravity="center_horizontal"
                 android:paddingTop="10dp"
                 android:layout_marginRight="8dp"
                 />
             <TextView
-                android:id="@+id/tv_translation"
+                android:id="@+id/tv_tanggal"
                 android:layout_width="200dp"
                 android:layout_height="50dp"
                 android:text="Jumat 05 Juni 2020"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/bookmanoldstyle"
-                android:gravity="left"
+                android:gravity="center_horizontal"
                 android:paddingTop="10dp"
                 />
         </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/surah_recylcer"
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/surah_recylcer"-->
+<!--            android:layout_below="@id/lin_ket"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:scrollbars="vertical"/>-->
+
+        <LinearLayout
+            android:id="@+id/lin_searchspiner"
             android:layout_below="@id/lin_ket"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ganti Lokasi"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/bookmanoldstyle"
+        android:textSize="16sp"/>
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spiner"
+
+                />
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/rel_jadwal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_template"
+            android:layout_below="@id/lin_searchspiner"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp">
+            <LinearLayout
+                android:id="@+id/jadwal"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/jenis_waktu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subuh"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/jadwal_jam"
+                android:layout_toRightOf="@id/jadwal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/jadwal_solat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AZHAR"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_jadwal1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_template"
+            android:layout_below="@id/rel_jadwal"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp">
+            <LinearLayout
+                android:id="@+id/jadwal1"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/jenis_waktu1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dzuhur"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/jadwal_jam1"
+                android:layout_toRightOf="@id/jadwal1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/jadwal_solat1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AZHAR"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_jadwal2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_template"
+            android:layout_below="@id/rel_jadwal1"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp">
+            <LinearLayout
+                android:id="@+id/jadwal2"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/jenis_waktu2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Azhar"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/jadwal_jam2"
+                android:layout_toRightOf="@id/jadwal2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/jadwal_solat2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AZHAR"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_jadwal3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_template"
+            android:layout_below="@id/rel_jadwal2"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp">
+            <LinearLayout
+                android:id="@+id/jadwal3"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/jenis_waktu3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Magrib"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/jadwal_jam3"
+                android:layout_toRightOf="@id/jadwal3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/jadwal_solat3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AZHAR"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_jadwal4"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_template"
+            android:layout_below="@id/rel_jadwal3"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp">
+            <LinearLayout
+                android:id="@+id/jadwal4"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/jenis_waktu4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Isya"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/jadwal_jam4"
+                android:layout_toRightOf="@id/jadwal4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/jadwal_solat4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AZHAR"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
