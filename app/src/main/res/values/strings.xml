@@ -67,4 +67,34 @@
         <item>POLI UROLOGI</item>
         <item>Radiologi</item>
     </string-array>
+    <string-array name="poli">
+        <item>POLI ANAK</item>
+        <item>POLI ANASTESI</item>
+        <item>POLI BEDAH</item>
+        <item>POLI DALAM</item>
+        <item>POLI FISIOTERAPI</item>
+        <item>POLI GIGI</item>
+        <item>POLI GIZI</item>
+        <item>POLI JANTUNG</item>
+        <item>POLI KANDUNGAN</item>
+        <item>POLI MATA</item>
+        <item>POLI ORTHOPEDI</item>
+        <item>POLI PARU</item>
+        <item>POLI SYARAF</item>
+        <item>POLI THT</item>
+        <item>POLI UROLOGI</item>
+        <item>Radiologi</item>
+        <item>HAEMODALISA (HD)</item>
+    </string-array>
+    <string-array name="doktermata">
+        <item>Muhamad Rifqy Setyanto, Dr., dr., Sp.M(K)Retina</item>
+    </string-array>
+    <string-array name="dokterbedah">
+        <item>M. Hidayat Budi Kusumo, dr., Sp.B., MSi. Med., ST.</item>
+        <item>Yuhantoro Budi H.S, dr., Sp.B., M.Kes.</item>
+    </string-array>
+    <string-array name="doktersyaraf">
+        <item>Muttaqien Pramudigdo, dr., Sp.S.</item>
+        <item>Hernawan, dr., Sp.S</item>
+    </string-array>
 </resources>

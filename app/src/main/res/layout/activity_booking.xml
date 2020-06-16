@@ -56,78 +56,206 @@
 
 
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_below="@id/rel_titlebook"
-        android:id="@+id/rel_containerbooking"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp">
-        <TextView
-            android:id="@+id/text_pasien"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Data pasien"
-            android:textColor="@android:color/black" />
-        <RelativeLayout
-            android:layout_below="@id/text_pasien"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/bg_template">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="13dp"
-                android:elevation="8dp"
-                android:divider="@android:color/transparent"
-                android:dividerHeight="0.0px"
-                android:clipToPadding="false"
-                android:clipChildren="false"
-                app:cardElevation="1dp"
-                app:cardPreventCornerOverlap="false"
-                >
-                <include layout="@layout/booking_section_one"/>
-
-            </androidx.cardview.widget.CardView>
-
-
-        </RelativeLayout>
-
-
-
-    </RelativeLayout>
-<!-- JANGAN DIHAPUS -->
 <!--    <RelativeLayout-->
-<!--        android:id="@+id/rel_container"-->
-<!--        android:layout_below="@id/rel_toolbar"-->
+<!--        android:layout_below="@id/rel_titlebook"-->
+<!--        android:id="@+id/rel_containerbooking"-->
 <!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
-<!--        <LinearLayout-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="16dp">-->
+<!--        <TextView-->
+<!--            android:id="@+id/text_pasien"-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical"-->
-<!--            android:layout_marginTop="200dp"-->
-<!--            >-->
+<!--            android:text="Data pasien"-->
+<!--            android:textColor="@android:color/black" />-->
+<!--        <RelativeLayout-->
+<!--            android:layout_below="@id/text_pasien"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:background="@drawable/bg_template">-->
 
-<!--            <TextView-->
+<!--            <androidx.cardview.widget.CardView-->
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="wrap_content"-->
-<!--                android:text="Booking Antrian"-->
-<!--                android:gravity="center"-->
-<!--                android:textSize="24sp"-->
-<!--                android:textColor="@android:color/black"-->
-<!--                android:textStyle="bold" />-->
+<!--                app:cardCornerRadius="13dp"-->
+<!--                android:elevation="8dp"-->
+<!--                android:divider="@android:color/transparent"-->
+<!--                android:dividerHeight="0.0px"-->
+<!--                android:clipToPadding="false"-->
+<!--                android:clipChildren="false"-->
+<!--                app:cardElevation="1dp"-->
+<!--                app:cardPreventCornerOverlap="false"-->
+<!--                >-->
+<!--                <include layout="@layout/booking_section_one"/>-->
 
-<!--            <com.rengwuxian.materialedittext.MaterialEditText-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:hint="Masukan SEP"-->
-<!--                android:background="@drawable/bg_template"/>-->
+<!--            </androidx.cardview.widget.CardView>-->
 
-<!--        </LinearLayout>-->
+
+<!--        </RelativeLayout>-->
+
+
+
 <!--    </RelativeLayout>-->
+<!-- JANGAN DIHAPUS -->
+    <RelativeLayout
+        android:id="@+id/rel_container"
+        android:layout_below="@id/rel_titlebook"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/lin_norm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:visibility="visible"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daftar Rawat Jalan"
+                android:gravity="center"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textStyle="bold" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/edtnorm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:inputType="numberDecimal"
+                android:hint="Masukan Nomor Rekam Medis"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:background="@drawable/bg_template"/>
+            <Button
+                android:id="@+id/daftarbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Daftar"
+                android:backgroundTint="@color/green"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_regpasien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registrasi Pasien"
+                android:textSize="24sp"
+                android:gravity="center_horizontal"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"/>
+            <TextView
+                android:id="@+id/tv_rm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No RM"
+                android:textSize="16sp"
+                android:gravity="center_horizontal"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/bg_templatewhite">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal Periksa"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/bookmanoldstyle"
+                        android:textSize="16sp"/>
+                    <EditText
+                        android:id="@+id/edittxt_tanggalperiksa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bookmanoldstyle"
+                        android:ems="10"
+                        android:text=""/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Poli Tuju"
+                    android:textSize="16sp"
+                    android:gravity="left"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="8dp"/>
+                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/spiner_poli"
+                    android:entries="@array/poli"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
+                    />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dokter Tuju"
+                        android:textSize="16sp"
+                        android:gravity="left"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/bookmanoldstyle"
+
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="8dp"/>
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:id="@+id/spiner_dokter"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
     <!--SAMPE SINI-->
 </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

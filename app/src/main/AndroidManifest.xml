@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.KartuActivity"></activity>
+        <activity android:name=".View.KartuBpjsActivity"></activity>
+        <activity android:name=".View.KartuActivity" />
         <activity android:name=".View.JadwalSholatActivity" />
         <activity android:name=".View.AyatActivity" />
         <activity android:name=".View.MenuSurahActivity" />

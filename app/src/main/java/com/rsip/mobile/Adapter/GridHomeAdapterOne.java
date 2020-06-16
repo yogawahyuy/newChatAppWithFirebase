@@ -13,6 +13,7 @@ import com.rsip.mobile.R;
 import com.rsip.mobile.View.InfoBedActivity;
 import com.rsip.mobile.View.JadwalSholatActivity;
 import com.rsip.mobile.View.KartuActivity;
+import com.rsip.mobile.View.KartuBpjsActivity;
 import com.rsip.mobile.View.MenuSurahActivity;
 
 public class GridHomeAdapterOne extends BaseAdapter {
@@ -67,7 +68,7 @@ public class GridHomeAdapterOne extends BaseAdapter {
                     mContext.startActivity(new Intent(mContext, KartuActivity.class));
                 }
                 else if (position==3){
-
+                    mContext.startActivity(new Intent(mContext, KartuBpjsActivity.class));
                 }
                 else if (position==4){
 
