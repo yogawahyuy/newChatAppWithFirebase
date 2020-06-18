@@ -53,6 +53,7 @@ public class MenuSurahAdapter extends RecyclerView.Adapter<MenuSurahAdapter.View
                 context.startActivity(intent);
             }
         });
+
     }
 
     @Override
