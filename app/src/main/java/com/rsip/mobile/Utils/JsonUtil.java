@@ -84,6 +84,7 @@ public class JsonUtil {
                             JSONObject transaltion=data.getJSONObject("name_translations");
                             surahModel.setArTranslation(transaltion.getString("ar"));
                             surahModel.setIdTranslation(transaltion.getString("id"));
+                            surahModel.setRectiation(data.getString("recitation"));
                             surah.add(surahModel);
                         }
                         progressDialog.dismiss();
@@ -123,7 +124,13 @@ public class JsonUtil {
                         translations.setText(idTranslation);
                         type.setText(typeSurah);
                         jumlah.setText(jumlahAyat+" Ayat");
-                        JSONArray verse=response.getJSONArray("verses");
+
+                        JSONArray rectitation= response.getJSONArray("recitations");
+                        for (int i = 0; i <rectitation.length() ; i++) {
+                            JSONObject data=rectitation.getJSONObject(i);
+                            ayatModel.setRectiation(data.getString("audio_url"));
+                            Log.d("rectitation", "onResponse: "+ayatModel.getRectiation());
+                        }
                         progressDialog.dismiss();
                     }catch (JSONException e){
                         e.printStackTrace();

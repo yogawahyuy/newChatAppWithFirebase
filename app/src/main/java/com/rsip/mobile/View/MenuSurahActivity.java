@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -49,6 +50,13 @@ public class MenuSurahActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         toAdapter();
         jsonUtil.getSurah(this,surahAdapter,surahModels,progressDialog);
+
+        imagePlayPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private void toAdapter() {
@@ -63,5 +71,43 @@ public class MenuSurahActivity extends AppCompatActivity {
         progressDialog.setCanceledOnTouchOutside(true);
         progressDialog.setCancelable(true);
         progressDialog.show();
+    }
+
+    private Runnable updater = new Runnable() {
+        @Override
+        public void run() {
+            updateSeekBar();
+            long currentDuration=mediaPlayer.getCurrentPosition();
+            textCurentTime.setText(millisSecondToTimer(currentDuration));
+        }
+    };
+
+    private void updateSeekBar(){
+        if (mediaPlayer.isPlaying()){
+            playerSeekBar.setProgress((int)(((float) mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration())*100));
+            handler.postDelayed(updater,1000);
+        }
+    }
+
+    private String millisSecondToTimer(long millisecond){
+        String timerString="";
+        String secondsString;
+
+        int hours=(int)(millisecond / (1000*60*60));
+        int minutes=(int)(millisecond % (1000*60*60)) / (1000*60);
+        int seconds=(int) ((millisecond % (1000*60*60)) % (1000*60) / 1000);
+
+        if (hours>0){
+            timerString=hours+":";
+        }
+        if (seconds<10){
+            secondsString="0"+seconds;
+        }else {
+            secondsString=""+seconds;
+        }
+
+        timerString=timerString + minutes + ":" +secondsString;
+
+        return timerString;
     }
 }

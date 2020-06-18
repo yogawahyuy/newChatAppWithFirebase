@@ -1,11 +1,10 @@
 package com.rsip.mobile.Model;
 
 public class AyatModel {
-    String namaSurah,namaTranslation,typeSurah,numberAyat,textArab,idTranslation,rectiation,jumlahAyat,idTranslationAyat;
+    String namaSurah,namaTranslation,typeSurah,numberAyat,textArab,idTranslation,rectiation,nameRectitation,jumlahAyat,idTranslationAyat;
 
 
-
-    public AyatModel(String namaSurah, String namaTranslation, String typeSurah, String numberAyat, String textArab, String idTranslation, String rectiation) {
+    public AyatModel(String namaSurah, String namaTranslation, String typeSurah, String numberAyat, String textArab, String idTranslation, String rectiation, String nameRectitation, String jumlahAyat, String idTranslationAyat) {
         this.namaSurah = namaSurah;
         this.namaTranslation = namaTranslation;
         this.typeSurah = typeSurah;
@@ -13,6 +12,9 @@ public class AyatModel {
         this.textArab = textArab;
         this.idTranslation = idTranslation;
         this.rectiation = rectiation;
+        this.nameRectitation = nameRectitation;
+        this.jumlahAyat = jumlahAyat;
+        this.idTranslationAyat = idTranslationAyat;
     }
 
     public AyatModel() {
@@ -87,5 +89,13 @@ public class AyatModel {
 
     public void setIdTranslationAyat(String idTranslationAyat) {
         this.idTranslationAyat = idTranslationAyat;
+    }
+
+    public String getNameRectitation() {
+        return nameRectitation;
+    }
+
+    public void setNameRectitation(String nameRectitation) {
+        this.nameRectitation = nameRectitation;
     }
 }
