@@ -12,6 +12,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -94,7 +95,24 @@ public class AyatActivity extends AppCompatActivity {
 
             }
         });
-        prepareMediaPlayer();
+
+        playerSeekBar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                SeekBar seekBar=(SeekBar) v;
+                int playPosition=(mediaPlayer.getDuration()/100) * seekBar.getProgress();
+                mediaPlayer.seekTo(playPosition);
+                textCurentTime.setText(millisSecondToTimer(mediaPlayer.getCurrentPosition()));
+                return false;
+            }
+        });
+
+        mediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
+            @Override
+            public void onBufferingUpdate(MediaPlayer mp, int percent) {
+                playerSeekBar.setSecondaryProgress(percent);
+            }
+        });
 
     }
     public void toAdapter(){
@@ -109,12 +127,23 @@ public class AyatActivity extends AppCompatActivity {
         progressDialog.setCancelable(true);
         progressDialog.show();
     }
-    private void getData(){
-        textTitle.setText(ayatModels.get(idSurah-1).getNamaSurah());
+
+    @Override
+    public void onBackPressed() {
+
+        super.onBackPressed();
+        handler.removeCallbacks(updater);
+        mediaPlayer.stop();
+        mediaPlayer.release();
+        finish();
     }
 
-    private void prepareMediaPlayer(){
+
+    private void prepareMediaPlayer(String url){
         try{
+            //urlMusic="https://download.quranicaudio.com/quran/abdurrahmaan_as-sudays/001.mp3";
+            //urlMusic=ayatModel.getRectiation().toString();
+            Log.d("urlmusic", "prepareMediaPlayer: "+urlMusic );
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mediaPlayer.setDataSource(urlMusic);
             mediaPlayer.prepare();
@@ -172,9 +201,11 @@ public class AyatActivity extends AppCompatActivity {
                             JSONObject data=recitation.getJSONObject(i);
                             ayatModel.setNameRectitation(data.getString("name"));
                             ayatModel.setRectiation(data.getString("audio_url"));
+                            urlMusic=data.getString("audio_url");
+                            prepareMediaPlayer(data.getString("audio_url"));
                             modelsAyat.add(ayatModel);
                         }
-                        urlMusic=ayatModel.getRectiation();
+                       // urlMusic=ayatModel.getRectiation();
                         Log.d("helooayat", "onCreate: "+ayatModel.getRectiation());
                         Log.d("helooayat1", "onCreate: "+urlMusic);
                     }catch (JSONException e){
