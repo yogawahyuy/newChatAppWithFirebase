@@ -26,11 +26,6 @@ public class MenuSurahActivity extends AppCompatActivity {
     MenuSurahAdapter surahAdapter;
     JsonUtil jsonUtil=new JsonUtil();
     ProgressDialog progressDialog;
-    private ImageView imagePlayPause;
-    private TextView textCurentTime,textTotalDuration;
-    private SeekBar playerSeekBar;
-    private MediaPlayer mediaPlayer;
-    private Handler handler=new Handler();
 
 
     @Override
@@ -38,12 +33,6 @@ public class MenuSurahActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_surah);
         recyclerView=findViewById(R.id.surah_recylcer);
-        imagePlayPause=findViewById(R.id.playimage);
-        textCurentTime=findViewById(R.id.textCurrentTime);
-        textTotalDuration=findViewById(R.id.totalDuration);
-        playerSeekBar=findViewById(R.id.playerSeekbar);
-        mediaPlayer=new MediaPlayer();
-        playerSeekBar.setMax(100);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         progresDialog();
@@ -51,12 +40,6 @@ public class MenuSurahActivity extends AppCompatActivity {
         toAdapter();
         jsonUtil.getSurah(this,surahAdapter,surahModels,progressDialog);
 
-        imagePlayPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
     private void toAdapter() {
@@ -72,23 +55,6 @@ public class MenuSurahActivity extends AppCompatActivity {
         progressDialog.setCancelable(true);
         progressDialog.show();
     }
-
-    private Runnable updater = new Runnable() {
-        @Override
-        public void run() {
-            updateSeekBar();
-            long currentDuration=mediaPlayer.getCurrentPosition();
-            textCurentTime.setText(millisSecondToTimer(currentDuration));
-        }
-    };
-
-    private void updateSeekBar(){
-        if (mediaPlayer.isPlaying()){
-            playerSeekBar.setProgress((int)(((float) mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration())*100));
-            handler.postDelayed(updater,1000);
-        }
-    }
-
     private String millisSecondToTimer(long millisecond){
         String timerString="";
         String secondsString;

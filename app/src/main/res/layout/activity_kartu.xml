@@ -301,6 +301,45 @@
                                     android:layout_marginLeft="4dp"
                                     android:gravity="center_horizontal"/>
                             </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/linear_typepasien"
+                                android:layout_below="@id/linear_nik"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginLeft="50dp">
+                                <TextView
+                                    android:id="@+id/fieldtype"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Pasien "
+                                    android:textSize="16sp"
+                                    android:textColor="@android:color/black"
+                                    android:fontFamily="@font/bookmanoldstyle"
+                                    android:layout_marginTop="8dp"
+                                    android:gravity="center_horizontal"/>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text=": "
+                                    android:textSize="16sp"
+                                    android:textColor="@android:color/black"
+                                    android:fontFamily="@font/bookmanoldstyle"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginLeft="87dp"
+                                    android:gravity="center_horizontal"/>
+                                <TextView
+                                    android:id="@+id/typePasien"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="BPJS"
+                                    android:textSize="16sp"
+                                    android:textColor="@android:color/black"
+                                    android:fontFamily="@font/bookmanoldstyle"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginLeft="4dp"
+                                    android:gravity="center_horizontal"/>
+                            </LinearLayout>
 
                         </RelativeLayout>
                     </LinearLayout>

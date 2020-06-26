@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ import com.rsip.mobile.Adapter.AyatAdapter;
 import com.rsip.mobile.Model.AyatModel;
 import com.rsip.mobile.R;
 import com.rsip.mobile.Utils.JsonUtil;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,15 +45,17 @@ public class AyatActivity extends AppCompatActivity {
     ArrayList<AyatModel> modelsAyat=new ArrayList<>();
     AyatAdapter ayatAdapter;
     JsonUtil jsonUtil=new JsonUtil();
-    ProgressDialog progressDialog;
+    ProgressDialog progressDialog,progressDialog1;
     TextView textTitle,tvTypeSurah,tvTranslation,tvJumlahAyat;
-    private ImageView imagePlayPause;
-    private TextView textCurentTime,textTotalDuration;
+    private ImageView imagePlayPause,imagePlayButton;
+    private TextView textCurentTime,textTotalDuration,textPlayer;
     private SeekBar playerSeekBar;
     private MediaPlayer mediaPlayer;
     private Handler handler=new Handler();
+    LinearLayout linearLayoutSeekbar;
     AyatModel ayatModel=new AyatModel();
     String urlMusic;
+    SlidingUpPanelLayout slidingUpPanelLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,10 @@ public class AyatActivity extends AppCompatActivity {
         textCurentTime=findViewById(R.id.textCurrentTime);
         textTotalDuration=findViewById(R.id.totalDuration);
         playerSeekBar=findViewById(R.id.playerSeekbar);
+        imagePlayButton=findViewById(R.id.playbutton);
+        linearLayoutSeekbar=findViewById(R.id.lin_seekbar);
+        textPlayer=findViewById(R.id.text_player);
+       // slidingUpPanelLayout=findViewById(R.id.actvity_ayats);
         mediaPlayer=new MediaPlayer();
         playerSeekBar.setMax(100);
         recyclerView.setHasFixedSize(true);
@@ -75,10 +83,22 @@ public class AyatActivity extends AppCompatActivity {
         idSurah=intent.getIntExtra("idposisi",2);
         toAdapter();
         progresDialog();
+
         jsonUtil.getAyat(this, ayatAdapter,ayatModels,progressDialog,idSurah,textTitle,tvTypeSurah,tvTranslation,tvJumlahAyat);
         jsonUtil.getAyat(this,ayatAdapter,ayatModels,idSurah);
+        imagePlayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progresDialogMusic();
+                getRectitation(AyatActivity.this,idSurah,progressDialog1);
+                imagePlayButton.setVisibility(View.GONE);
+                imagePlayPause.setVisibility(View.VISIBLE);
+                linearLayoutSeekbar.setVisibility(View.VISIBLE);
+                textPlayer.setVisibility(View.GONE);
 
-        getRectitation(this,idSurah);
+            }
+        });
+
         imagePlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,6 +146,14 @@ public class AyatActivity extends AppCompatActivity {
         progressDialog.setCanceledOnTouchOutside(true);
         progressDialog.setCancelable(true);
         progressDialog.show();
+    }
+    private void progresDialogMusic() {
+        progressDialog1=new ProgressDialog(this);
+        progressDialog1.setMessage("Sedang Mengunduh Surah");
+        progressDialog1.setIndeterminate(false);
+        progressDialog1.setCanceledOnTouchOutside(true);
+        progressDialog1.setCancelable(true);
+        progressDialog1.show();
     }
 
     @Override
@@ -190,12 +218,13 @@ public class AyatActivity extends AppCompatActivity {
 
         return timerString;
     }
-    private void getRectitation(Context context,int idSurah){
+    private void getRectitation(Context context,int idSurah,ProgressDialog progressDialogs){
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/" + idSurah + ".json", null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if (response.length()>0){
                     try{
+                        //textPlayer.setText(response.getString("name"));
                         JSONArray recitation=response.getJSONArray("recitations");
                         for (int i = 0; i <recitation.length() ; i++) {
                             JSONObject data=recitation.getJSONObject(i);
@@ -205,6 +234,7 @@ public class AyatActivity extends AppCompatActivity {
                             prepareMediaPlayer(data.getString("audio_url"));
                             modelsAyat.add(ayatModel);
                         }
+                        progressDialogs.dismiss();
                        // urlMusic=ayatModel.getRectiation();
                         Log.d("helooayat", "onCreate: "+ayatModel.getRectiation());
                         Log.d("helooayat1", "onCreate: "+urlMusic);

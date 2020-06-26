@@ -86,32 +86,15 @@ public class ChatsFragment extends Fragment {
         lihatKeluhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(),DaftarKeluhanActivity.class));
+                if (firebaseUser != null) {
+                    startActivity(new Intent(getContext(), DaftarKeluhanActivity.class));
+                }else {
+                    Toast.makeText(getContext(), "Anda Harus Login Terlebih Dahulu", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-//        FloatingActionButton fab=v.findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                new SimpleSearchDialogCompat(getContext(), "Pengguna...", "Nama pengguna...", null, initData(), new SearchResultListener<Searchable>() {
-//                    @Override
-//                    public void onSelected(BaseSearchDialogCompat dialog, Searchable item, int position) {
-//                        Toast.makeText(getContext(), ""+item.getTitle(), Toast.LENGTH_SHORT).show();
-//                        dialog.dismiss();
-//                    }
-//                }).show();
-//            }
-//        });
+
         return v;
-    }
-        private ArrayList<SearchModel> initData(){
-        ArrayList<SearchModel> items=new ArrayList<>();
-        items.add(new SearchModel("test"));
-        items.add(new SearchModel("satu dua"));
-        items.add(new SearchModel("tiga"));
-        items.add(new SearchModel("empat lima"));
-        items.add(new SearchModel("enam"));
-        return items;
     }
     private void dialogForm(){
         dialog=new AlertDialog.Builder(getContext());
@@ -155,6 +138,7 @@ public class ChatsFragment extends Fragment {
                 editTextTanggal.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
             }
         },year,month,day);
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis()-1000);
         datePickerDialog.show();
     }
     private void readNamaUser(){

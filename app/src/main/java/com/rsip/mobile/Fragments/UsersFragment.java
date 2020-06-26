@@ -97,7 +97,9 @@ public class UsersFragment extends Fragment {
 
             }
         });
-        storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+firebaseUser.getUid()+".jpg");
+        if (firebaseUser!=null) {
+            storageReference = FirebaseStorage.getInstance().getReference("ProfilePicture/" + firebaseUser.getUid() + ".jpg");
+        }
         users=new ArrayList<>();
         readUsers();
        // GlideApp.with(getContext()).load(storageReference).into(profilePicture);
