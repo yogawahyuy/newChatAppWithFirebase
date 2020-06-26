@@ -18,6 +18,7 @@ import com.rsip.mobile.Model.JadwalSolatModel;
 import com.rsip.mobile.R;
 import com.rsip.mobile.Utils.JsonUtil;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -69,6 +70,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
         SimpleDateFormat dateFormat=new SimpleDateFormat("dd-MM-yyyy");
         curentDate=dateFormat.format(c);
         Log.d("tanggalString", "getCurentDate: "+curentDate);
+        Log.e("df", "getCurentDate: "+ DateFormat.getDateInstance(DateFormat.SHORT).format(c));
 
         Date tvTanggals=Calendar.getInstance().getTime();
         SimpleDateFormat df=new SimpleDateFormat("dd MMMM YYYY");

@@ -136,7 +136,7 @@
                 android:id="@+id/daftarbtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Daftar"
+                android:text="Cari Rekam Medis"
                 android:backgroundTint="@color/green"/>
 
         </LinearLayout>
@@ -201,6 +201,28 @@
                     android:orientation="vertical"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
+                    android:layout_marginTop="8dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Jam Periksa"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/bookmanoldstyle"
+                        android:textSize="16sp"/>
+                    <EditText
+                        android:id="@+id/edittxt_jamperiksa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bookmanoldstyle"
+                        android:ems="10"
+                        android:text=""/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="16dp"
                     >
                 <TextView
                     android:layout_width="match_parent"
@@ -218,7 +240,7 @@
                     android:layout_height="50dp"
                     android:id="@+id/spiner_poli"
                     android:entries="@array/poli"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="2dp"
                     android:layout_marginRight="8dp"
                     style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
                     />
@@ -227,7 +249,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="16dp"
                     >
                     <TextView
@@ -245,11 +267,60 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:id="@+id/spiner_dokter"
-                        android:layout_marginLeft="8dp"
+                        android:layout_marginLeft="2dp"
                         android:layout_marginRight="8dp"
                         style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
                         />
 
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ruang Periksa"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/bookmanoldstyle"
+                        android:textSize="16sp"/>
+                    <EditText
+                        android:id="@+id/edittxt_ruangperiksa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bookmanoldstyle"
+                        android:ems="10"
+                        android:text=""/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="16dp"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                            android:text="Pembayaran"
+                        android:textSize="16sp"
+                        android:gravity="left"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/bookmanoldstyle"
+
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="8dp"/>
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:id="@+id/spiner_Pembayaran"
+                        android:entries="@array/poli"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="8dp"
+                        style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
+                        />
                 </LinearLayout>
             </LinearLayout>
 

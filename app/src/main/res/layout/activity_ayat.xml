@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/lin_ayat"
             android:layout_marginBottom="3dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="@drawable/bg_templategreens"
             android:visibility="visible"
 
             >
