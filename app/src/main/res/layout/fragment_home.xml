@@ -83,6 +83,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:padding="3dp"
+                android:layout_gravity="bottom"
                 />
 <!--            <com.facebook.shimmer.ShimmerFrameLayout-->
 <!--                android:id="@+id/shimer_view_container_menu"-->

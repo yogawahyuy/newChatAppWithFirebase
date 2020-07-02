@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title_Hijri_View"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Hari ini"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/bookmanoldstyle"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/textview_tanggal_hijri"
+            android:layout_below="@id/title_Hijri_View"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="11-04-1441"
+            android:textSize="16sp"
+            android:textColor="@color/colorGREY"
+            android:fontFamily="@font/bookmanoldstyle"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="4dp"/>
+        <LinearLayout
+            android:layout_below="@id/textview_tanggal_hijri"
+            android:id="@+id/line_part_hijri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:id="@+id/part_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="11"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/part_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Djulhijah"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/part_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1441"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

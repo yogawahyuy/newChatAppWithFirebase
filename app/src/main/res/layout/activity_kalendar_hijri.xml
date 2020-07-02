@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    tools:context=".View.KalendarHijriActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/rel_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                >
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/logo3"
+                    android:layout_marginStart="20dp"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/akreditasi"
+                    android:layout_marginStart="60dp"/>
+
+
+            </androidx.appcompat.widget.Toolbar>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_titlebook"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_below="@id/rel_toolbar"
+            android:layout_marginBottom="3dp"
+            android:background="@color/colorPrimaryDark"
+            >
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kalendar Hijriah"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/white"
+                />
+
+
+
+        </RelativeLayout>
+
+
+    <!-- View Hijriah-->
+
+        <LinearLayout
+            android:layout_below="@id/rel_titlebook"
+            android:id="@+id/linear_Hijri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="13dp"
+                android:elevation="8dp"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0.0px"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                app:cardElevation="10dp"
+                app:cardPreventCornerOverlap="false"
+                android:layout_marginBottom="13dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+
+                >
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    shimmer:duration="800">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp">
+
+                        <TextView
+                            android:id="@+id/title_Hijri_View"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tanggal Hari ini"
+                            android:textSize="16sp"
+                            android:textColor="@android:color/black"
+                            android:fontFamily="@font/bookmanoldstyle"
+                            android:gravity="center_horizontal"/>
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textview_tanggal_hijri"-->
+<!--                            android:layout_below="@id/title_Hijri_View"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="11-04-1441"-->
+<!--                            android:textSize="16sp"-->
+<!--                            android:textColor="@color/colorGREY"-->
+<!--                            android:fontFamily="@font/bookmanoldstyle"-->
+<!--                            android:gravity="center_horizontal"-->
+<!--                            android:layout_marginTop="4dp"/>-->
+                        <LinearLayout
+                            android:layout_below="@id/title_Hijri_View"
+                            android:id="@+id/line_part_hijri"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="12dp">
+                            <TextView
+                                android:id="@+id/part_day"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="11"
+                                android:textSize="24sp"
+                                android:textColor="@android:color/black"
+                                android:gravity="center_horizontal"
+                                android:fontFamily="@font/bookmanoldstyle"
+                                android:layout_weight="1"/>
+                            <TextView
+                                android:id="@+id/part_month"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Djulhijah"
+                                android:textSize="24sp"
+                                android:textColor="@android:color/black"
+                                android:gravity="center_horizontal"
+                                android:fontFamily="@font/bookmanoldstyle"
+                                android:layout_weight="1"/>
+                            <TextView
+                                android:id="@+id/part_year"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="1441"
+                                android:textSize="24sp"
+                                android:textColor="@android:color/black"
+                                android:gravity="center_horizontal"
+                                android:fontFamily="@font/bookmanoldstyle"
+                                android:layout_weight="1"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/line_compare_hijr"
+                            android:layout_below="@id/line_part_hijri"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginTop="12dp">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Hijriah"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/colorGREY"
+                                    android:fontFamily="@font/bookmanoldstyle"
+                                    android:gravity="center_horizontal"
+                                    android:layout_weight="1"/>
+                                <View
+                                    android:layout_width="2dp"
+                                    android:layout_height="20dp"
+                                    android:background="@color/colorGREY"
+
+                                   />
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Masehi"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/colorGREY"
+                                    android:fontFamily="@font/bookmanoldstyle"
+                                    android:gravity="center_horizontal"
+                                    android:layout_weight="1"/>
+                            </LinearLayout>
+                            <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                                android:layout_marginTop="8dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="11-11-1111"
+                                android:textSize="16sp"
+                                android:textColor="@android:color/black"
+                                android:fontFamily="@font/bookmanoldstyle"
+                                android:gravity="center_horizontal"
+                                android:layout_weight="1"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="2-07-2020"
+                                android:textSize="16sp"
+                                android:textColor="@android:color/black"
+                                android:fontFamily="@font/bookmanoldstyle"
+                                android:gravity="center_horizontal"
+                                android:layout_weight="1"/>
+                        </LinearLayout>
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_changeDateHijr"
+            android:layout_below="@id/linear_Hijri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_templateblue"
+            android:layout_margin="16dp"
+            android:text="Lihat Tanggal Lain"
+            android:fontFamily="@font/bookmanoldstyle"/>
+
+        
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
