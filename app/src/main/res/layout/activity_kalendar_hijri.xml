@@ -67,7 +67,8 @@
             android:id="@+id/linear_Hijri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="24dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -199,6 +200,7 @@
                             android:orientation="horizontal"
                                 android:layout_marginTop="8dp">
                             <TextView
+                                android:id="@+id/textviewDate"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="11-11-1111"
@@ -234,7 +236,33 @@
             android:text="Lihat Tanggal Lain"
             android:fontFamily="@font/bookmanoldstyle"/>
 
-        
+        <LinearLayout
+            android:layout_below="@id/btn_changeDateHijr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Libur :"
+                android:textSize="24sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/black"
+                android:layout_marginLeft="8dp"/>
+
+            <TextView
+                android:id="@+id/textviewLiburan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Idul Adha"
+                android:gravity="center_horizontal"
+                android:textSize="30sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"/>
+
+
+        </LinearLayout>
 
     </RelativeLayout>
 

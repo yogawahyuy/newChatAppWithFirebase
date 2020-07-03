@@ -18,8 +18,10 @@ import com.android.volley.toolbox.Volley;
 import com.rsip.mobile.Model.AyatModel;
 import com.rsip.mobile.Model.InfoBedModel;
 import com.rsip.mobile.Model.JadwalSolatModel;
+import com.rsip.mobile.Model.KalendarHijriModel;
 import com.rsip.mobile.Model.MenuSurahModel;
 import com.rsip.mobile.R;
+import com.rsip.mobile.View.KalendarHijriActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -245,36 +247,53 @@ public class JsonUtil {
         });
         Volley.newRequestQueue(context).add(jsonArrayRequest);
     }
-//    public void getRectitation(Context context,int idSurah,ProgressDialog progressDialogs){
-//        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "https://raw.githubusercontent.com/penggguna/QuranJSON/master/surah/" + idSurah + ".json", null, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                if (response.length()>0){
-//                    try{
-//                        JSONArray recitation=response.getJSONArray("recitations");
-//                        for (int i = 0; i <recitation.length() ; i++) {
-//                            JSONObject data=recitation.getJSONObject(i);
-//                            ayatModel.setNameRectitation(data.getString("name"));
-//                            ayatModel.setRectiation(data.getString("audio_url"));
-//                            urlMusic=data.getString("audio_url");
-//                            prepareMediaPlayer(data.getString("audio_url"));
-//                            modelsAyat.add(ayatModel);
-//                        }
-//                        progressDialogs.dismiss();
-//                        // urlMusic=ayatModel.getRectiation();
-//                        Log.d("helooayat", "onCreate: "+ayatModel.getRectiation());
-//                        Log.d("helooayat1", "onCreate: "+urlMusic);
-//                    }catch (JSONException e){
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        });
-//        Volley.newRequestQueue(context).add(jsonObjectRequest);
-//    }
+
+    public void getDateHijri(final Context context, final List<KalendarHijriModel> kalendarHijri,String tanggal,ProgressDialog progressDialog,TextView days,TextView month,TextView years,TextView dates,TextView holidays){
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "http://api.aladhan.com/v1/gToH?date=" + tanggal, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                if (response.length() > 0) {
+                    try {
+                        Log.d("jsonDateHijri", "onResponse: " + response.length());
+                        KalendarHijriModel kalendarHijriModel=new KalendarHijriModel();
+
+                        JSONObject data = response.getJSONObject("data");
+                        JSONObject hijri=data.getJSONObject("hijri");
+                        String date=hijri.getString("date");
+                        String day=hijri.getString("day");
+                        JSONObject monthObject=hijri.getJSONObject("month");
+                        String nameMonth=monthObject.getString("en");
+                        String year=hijri.getString("year");
+
+                        kalendarHijriModel.setDateHijriah(date);
+                        kalendarHijriModel.setDayHijriah(day);
+                        kalendarHijriModel.setMonthHijriah(nameMonth);
+                        kalendarHijriModel.setYearHijriah(year);
+                        days.setText(day);
+                        month.setText(nameMonth);
+                        years.setText(year);
+                        dates.setText(date);
+
+                        JSONArray holiday=hijri.getJSONArray("holidays");
+                        if (holiday.length()>=0){
+                            for (int i = 0; i <holiday.length() ; i++) {
+                                kalendarHijriModel.setHolidays(holiday.getString(i));
+                            }
+                        }else{
+                            kalendarHijriModel.setHolidays("Tidak Ada Libur");
+                        }
+                        progressDialog.dismiss();
+                    }catch (JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        Volley.newRequestQueue(context).add(jsonObjectRequest);
+    }
 }
