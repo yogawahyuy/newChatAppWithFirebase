@@ -56,7 +56,7 @@ public class JsonUtil {
                         progressDialog.dismiss();
                         Log.e("JsonUtils", "onResponse: gagal atau berhasil");
                     } catch (JSONException e) {
-                        e.printStackTrace();
+                        Log.d("jsonUUtil", "onResponse: "+e.getMessage());
                     }
                 }
                 adapter.notifyDataSetChanged();
@@ -275,12 +275,16 @@ public class JsonUtil {
                         dates.setText(date);
 
                         JSONArray holiday=hijri.getJSONArray("holidays");
-                        if (holiday.length()>=0){
+                        Log.d("holiyay", "onResponse: "+holiday.length());
+                        if (holiday.length()==0){
+                            kalendarHijriModel.setHolidays("Tidak Ada Libur");
+                            holidays.setText("Tidak Ada Acara");
+                            Log.d("holidays", "onResponse: "+kalendarHijriModel.getHolidays());
+                        }else{
                             for (int i = 0; i <holiday.length() ; i++) {
                                 kalendarHijriModel.setHolidays(holiday.getString(i));
+                                holidays.setText(holiday.getString(0));
                             }
-                        }else{
-                            kalendarHijriModel.setHolidays("Tidak Ada Libur");
                         }
                         progressDialog.dismiss();
                     }catch (JSONException e){
