@@ -40,7 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="28dp"
             android:layout_below="@id/rel_toolbar"
-            android:layout_marginBottom="3dp"
             android:background="@color/colorPrimaryDark"
             >
             <TextView
@@ -61,9 +60,13 @@
 
 
     <!-- View Hijriah-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rel_titlebook"
+            android:background="@drawable/bg_atas">
 
         <LinearLayout
-            android:layout_below="@id/rel_titlebook"
             android:id="@+id/linear_Hijri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -238,6 +241,7 @@
             android:fontFamily="@font/bookmanoldstyle"/>
 
         <LinearLayout
+            android:id="@+id/lin_acara"
             android:layout_below="@id/btn_changeDateHijr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -264,7 +268,9 @@
                 android:fontFamily="@font/bookmanoldstyle"/>
 
 
-        </LinearLayout>
+        </LinearLayout>.
+        </RelativeLayout>
+        
 
     </RelativeLayout>
 

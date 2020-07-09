@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.KalendarHijriActivity"></activity>
+        <activity android:name=".View.QuoteActivity"></activity>
+        <activity android:name=".View.KalendarHijriActivity" />
         <activity android:name=".View.KartuBpjsActivity" />
         <activity android:name=".View.KartuActivity" />
         <activity android:name=".View.JadwalSholatActivity" />

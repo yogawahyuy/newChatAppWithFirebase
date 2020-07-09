@@ -20,6 +20,7 @@ import com.rsip.mobile.Model.InfoBedModel;
 import com.rsip.mobile.Model.JadwalSolatModel;
 import com.rsip.mobile.Model.KalendarHijriModel;
 import com.rsip.mobile.Model.MenuSurahModel;
+import com.rsip.mobile.Model.QuoteModel;
 import com.rsip.mobile.R;
 import com.rsip.mobile.View.KalendarHijriActivity;
 
@@ -27,7 +28,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class JsonUtil {
 
@@ -299,5 +302,78 @@ public class JsonUtil {
             }
         });
         Volley.newRequestQueue(context).add(jsonObjectRequest);
+    }
+
+    public void getQuotes(Context context,TextView quoteText,TextView quoteAuthor){
+        Random random=new Random();
+        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, "https://raw.githubusercontent.com/JamesFT/Database-Quotes-JSON/master/quotes.json", null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                    ArrayList<QuoteModel> quoteModelList=new ArrayList<>();
+
+                    String textQuote,authorQuote;
+                    Log.d("hasilquote", "onResponse: "+response.length());
+                    for (int i = 0; i <response.length() ; i++) {
+                        QuoteModel quoteModel=new QuoteModel();
+                        JSONObject data=response.getJSONObject(i);
+                        quoteModel.setQuoteText(data.getString("quoteText"));
+                        quoteModel.setQuoteAuthor(data.getString("quoteAuthor"));
+                        textQuote=data.getString("quoteText");
+                        quoteModelList.add(quoteModel);
+                    }
+
+                    int hasilRandom=random.nextInt(response.length());
+                    quoteText.setText(quoteModelList.get(hasilRandom).getQuoteText());
+                    quoteAuthor.setText(quoteModelList.get(hasilRandom).getQuoteAuthor());
+
+                    Log.d("hasilrandom", "onResponse: "+hasilRandom);
+                    Log.d("hasilrandom", "onResponse: "+quoteModelList.size());
+                    Log.d("hasilrandom", "onResponse: "+quoteModelList.get(1).getQuoteText());
+                    Log.d("hasilrandom", "onResponse: "+quoteModelList.get(1).getQuoteAuthor());
+                }catch (JSONException e){
+                    e.getMessage();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        Volley.newRequestQueue(context).add(jsonArrayRequest);
+    }
+
+    public void getQuotesIslamic(Context context,TextView quoteText,TextView quouteAuthor){
+        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, "https://unpkg.com/quran-json@1.0.1/json/quran/id.json", null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                ArrayList<QuoteModel> quoteModelList=new ArrayList<>();
+                try {
+                    for (int i = 0; i <response.length() ; i++) {
+                        QuoteModel quoteModel=new QuoteModel();
+                        JSONObject data=response.getJSONObject(i);
+                        quoteModel.setQuoteText(data.getString("text"));
+                        quoteModel.setQuoteAuthor(data.getString("translation"));
+                        quoteModelList.add(quoteModel);
+
+                    }
+                    Random random=new Random();
+                    int hasilRandom=random.nextInt(response.length());
+                    quoteText.setText(quoteModelList.get(hasilRandom).getQuoteText());
+                    quouteAuthor.setText(quoteModelList.get(hasilRandom).getQuoteAuthor());
+
+                }catch (JSONException e){
+                    e.getMessage();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        Volley.newRequestQueue(context).add(jsonArrayRequest);
     }
 }

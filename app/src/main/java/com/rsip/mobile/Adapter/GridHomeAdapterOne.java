@@ -16,6 +16,7 @@ import com.rsip.mobile.View.KalendarHijriActivity;
 import com.rsip.mobile.View.KartuActivity;
 import com.rsip.mobile.View.KartuBpjsActivity;
 import com.rsip.mobile.View.MenuSurahActivity;
+import com.rsip.mobile.View.QuoteActivity;
 
 public class GridHomeAdapterOne extends BaseAdapter {
     Context mContext;
@@ -74,6 +75,9 @@ public class GridHomeAdapterOne extends BaseAdapter {
                 else if (position==4){
                     mContext.startActivity(new Intent(mContext, KalendarHijriActivity.class));
 
+                }
+                else if (position==5){
+                    mContext.startActivity(new Intent(mContext, QuoteActivity.class));
                 }
             }
         });
