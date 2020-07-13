@@ -26,6 +26,7 @@ public class KalendarHijriActivity extends AppCompatActivity {
     Button btnGantiTanggal;
     JsonUtil jsonUtil=new JsonUtil();
     ProgressDialog progressDialog;
+    TextView quoteText,quoteAuthor,surahNo,ayahNo;
     ArrayList<KalendarHijriModel> kalendarHijriModels=new ArrayList<>();
 
     @Override
@@ -39,9 +40,15 @@ public class KalendarHijriActivity extends AppCompatActivity {
         holiday=findViewById(R.id.textviewLiburan);
         dateMasehi=findViewById(R.id.textviewDateMasehi);
         btnGantiTanggal=findViewById(R.id.btn_changeDateHijr);
+        quoteAuthor=findViewById(R.id.textViewAuthor);
+        quoteText=findViewById(R.id.textviewQuote);
+        surahNo=findViewById(R.id.surahNo);
+        ayahNo=findViewById(R.id.ayahNo);
+
         getDateNow();
         progresDialog();
         jsonUtil.getDateHijri(this,kalendarHijriModels,currentDate,progressDialog,day,month,year,date,holiday);
+        jsonUtil.getQuotesIslamic(this,quoteText,quoteAuthor,surahNo,ayahNo);
 
         btnGantiTanggal.setOnClickListener(new View.OnClickListener() {
             @Override

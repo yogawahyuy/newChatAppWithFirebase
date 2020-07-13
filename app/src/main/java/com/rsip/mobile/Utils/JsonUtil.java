@@ -344,7 +344,7 @@ public class JsonUtil {
         Volley.newRequestQueue(context).add(jsonArrayRequest);
     }
 
-    public void getQuotesIslamic(Context context,TextView quoteText,TextView quouteAuthor){
+    public void getQuotesIslamic(Context context,TextView quoteText,TextView quouteAuthor,TextView surahNo,TextView ayahNo){
         JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, "https://unpkg.com/quran-json@1.0.1/json/quran/id.json", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -355,6 +355,8 @@ public class JsonUtil {
                         JSONObject data=response.getJSONObject(i);
                         quoteModel.setQuoteText(data.getString("text"));
                         quoteModel.setQuoteAuthor(data.getString("translation"));
+                        quoteModel.setSurahNo(data.getString("surah_number"));
+                        quoteModel.setAyahNo(data.getString("verse_number"));
                         quoteModelList.add(quoteModel);
 
                     }
@@ -362,6 +364,8 @@ public class JsonUtil {
                     int hasilRandom=random.nextInt(response.length());
                     quoteText.setText(quoteModelList.get(hasilRandom).getQuoteText());
                     quouteAuthor.setText(quoteModelList.get(hasilRandom).getQuoteAuthor());
+                    surahNo.setText(quoteModelList.get(hasilRandom).getSurahNo());
+                    ayahNo.setText(quoteModelList.get(hasilRandom).getAyahNo());
 
                 }catch (JSONException e){
                     e.getMessage();
