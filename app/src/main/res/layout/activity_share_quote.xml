@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.ShareQuoteActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rel_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                >
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/left"
+                    android:layout_marginStart="20dp"
+
+                    />
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/logo3"
+                    android:layout_marginStart="20dp"
+                    />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/akreditasi"
+                    android:layout_marginLeft="30dp"
+                    />
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_titlebook"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_below="@id/rel_toolbar"
+            android:background="@color/colorPrimaryDark"
+            >
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Share Quote"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/white"
+                />
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relPicture"
+            android:layout_below="@id/rel_titlebook"
+            android:layout_width="fill_parent"
+            android:layout_height="500dp"
+            >
+
+            <ImageView
+                android:id="@+id/backgroundImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/masjid"
+                android:alpha="0.8"
+                android:scaleType="fitXY"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/logo3"
+                    android:layout_weight="1"
+                    android:paddingLeft="8dp"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/akreditasi"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textviewQuote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:gravity="center_horizontal"
+                android:text="ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="170dp"
+                android:textStyle="bold"
+
+                />
+            <TextView
+                android:id="@+id/textViewAuthor"
+                android:layout_below="@id/textviewQuote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:gravity="center_horizontal"
+                android:text="Karen Clark"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:shadowColor="@android:color/black"
+                />
+            <LinearLayout
+                android:id="@+id/linalquran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewAuthor"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:id="@+id/titleAlquran"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Al-Quran"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:shadowColor="@android:color/black"
+                    />
+                <TextView
+                    android:id="@+id/surahNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="satu"
+                    android:layout_weight="0.3"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:gravity="right"
+                    android:shadowColor="@android:color/black"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:layout_weight="0.1"
+                    android:layout_marginLeft="8dp"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:shadowColor="@android:color/black"
+                    />
+                <TextView
+                    android:id="@+id/ayahNo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="dua"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:shadowColor="@android:color/black"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/lin_btn"
+            android:layout_below="@id/relPicture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnGantiGambar"
+            android:layout_width="match_parent"
+            android:background="@color/green"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="Ganti Gambar"/>
+
+        <Button
+            android:id="@+id/btnShare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relPicture"
+            android:background="#00BCD4"
+            android:layout_margin="8dp"
+            android:text="Share"/>
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/imgCoba"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lin_btn"
+            android:src="@drawable/masjid"
+            android:scaleType="fitXY"/>
+
+    </RelativeLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

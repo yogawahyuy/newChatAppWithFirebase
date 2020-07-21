@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +24,7 @@ import java.util.Date;
 public class KalendarHijriActivity extends AppCompatActivity {
     String currentDate;
     TextView day,month,year,date,holiday,dateMasehi;
-    Button btnGantiTanggal;
+    Button btnGantiTanggal,btnBagikanAyat;
     JsonUtil jsonUtil=new JsonUtil();
     ProgressDialog progressDialog;
     TextView quoteText,quoteAuthor,surahNo,ayahNo;
@@ -44,6 +45,7 @@ public class KalendarHijriActivity extends AppCompatActivity {
         quoteText=findViewById(R.id.textviewQuote);
         surahNo=findViewById(R.id.surahNo);
         ayahNo=findViewById(R.id.ayahNo);
+        btnBagikanAyat=findViewById(R.id.btnBagikanAyat);
 
         getDateNow();
         progresDialog();
@@ -54,6 +56,12 @@ public class KalendarHijriActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showDatePicker();
+            }
+        });
+        btnBagikanAyat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareQuote();
             }
         });
     }
@@ -92,4 +100,16 @@ public class KalendarHijriActivity extends AppCompatActivity {
         datePickerDialog.show();
 
     }
+
+    private void shareQuote(){
+        Intent intent=new Intent(KalendarHijriActivity.this,ShareQuoteActivity.class);
+        intent.putExtra("quote",quoteText.getText().toString());
+        intent.putExtra("author",quoteAuthor.getText().toString());
+        intent.putExtra("surahno",surahNo.getText().toString());
+        intent.putExtra("ayahno",ayahNo.getText().toString());
+        startActivity(intent);
+
+    }
+
+
 }
