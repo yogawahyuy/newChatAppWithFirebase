@@ -24,7 +24,7 @@ import java.util.Date;
 public class KalendarHijriActivity extends AppCompatActivity {
     String currentDate;
     TextView day,month,year,date,holiday,dateMasehi;
-    Button btnGantiTanggal,btnBagikanAyat;
+    Button btnGantiTanggal,btnBagikanAyat,btnGantiAyat;
     JsonUtil jsonUtil=new JsonUtil();
     ProgressDialog progressDialog;
     TextView quoteText,quoteAuthor,surahNo,ayahNo;
@@ -46,6 +46,7 @@ public class KalendarHijriActivity extends AppCompatActivity {
         surahNo=findViewById(R.id.surahNo);
         ayahNo=findViewById(R.id.ayahNo);
         btnBagikanAyat=findViewById(R.id.btnBagikanAyat);
+        btnGantiAyat=findViewById(R.id.btnGantiAyat);
 
         getDateNow();
         progresDialog();
@@ -62,6 +63,12 @@ public class KalendarHijriActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 shareQuote();
+            }
+        });
+        btnGantiAyat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                jsonUtil.getQuotesIslamic(KalendarHijriActivity.this,quoteText,quoteAuthor,surahNo,ayahNo);
             }
         });
     }

@@ -11,6 +11,7 @@
         android:scrollbars="vertical">
 
     <RelativeLayout
+        android:id="@+id/all_shareQuote"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -84,7 +85,7 @@
                 android:id="@+id/backgroundImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/masjid"
+                android:src="@drawable/nature"
                 android:alpha="0.8"
                 android:scaleType="fitXY"
                 />
@@ -220,14 +221,6 @@
             android:text="Share"/>
         </LinearLayout>
 
-
-        <ImageView
-            android:id="@+id/imgCoba"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/lin_btn"
-            android:src="@drawable/masjid"
-            android:scaleType="fitXY"/>
 
     </RelativeLayout>
     </ScrollView>
