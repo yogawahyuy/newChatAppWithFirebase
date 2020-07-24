@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bookmanoldstyle"
                 android:gravity="center_horizontal"
-                android:text="Karen Clark"
+                android:text="rsipurwokerto.co.id"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
@@ -194,6 +194,23 @@
                     />
 
             </LinearLayout>
+            <TextView
+                android:id="@+id/textViewCreated"
+                android:layout_below="@id/linalquran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:gravity="center_horizontal"
+                android:text="Dibuat otomatis oleh RSI Mobile"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:shadowColor="@android:color/black"/>
 
         </RelativeLayout>
         <LinearLayout

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -30,6 +31,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rsip.mobile.BuildConfig;
 import com.rsip.mobile.R;
 
 import java.io.ByteArrayOutputStream;
@@ -77,7 +79,8 @@ public class ShareQuoteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //convertLayout();
                 if (isStoragePermissionGranted()){
-                   shareQuote();
+                   //shareQuote();
+                    saveImageToInternalExternal();
                 }
             }
         });
@@ -144,7 +147,8 @@ public class ShareQuoteActivity extends AppCompatActivity {
                 if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
                     //Toast.makeText(this, "Permission Diijinkan", Toast.LENGTH_SHORT).show();
                     //convertLayout();
-                    shareQuote();
+                    //shareQuote();
+                    saveImageToInternalExternal();
                 }else {
                     //Toast.makeText(this, "Permission Ditolak", Toast.LENGTH_SHORT).show();
                 }
@@ -207,13 +211,13 @@ public class ShareQuoteActivity extends AppCompatActivity {
         imgCoba.setImageBitmap(b);
 
         ContextWrapper cw=new ContextWrapper(getApplicationContext());
-        File directory=cw.getDir("ImageDir", Context.MODE_PRIVATE);
+        File directory=cw.getDir("RSIMOBILE", Context.MODE_PRIVATE);
         File root=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         File dir=new File(root.getAbsolutePath()+"/rsimobile");
-        dir.mkdirs();
-        Log.d("convert", "convertLayout: "+dir.toString());
+        //dir.mkdirs();
+       // Log.d("convert", "convertLayout: "+dir.toString());
         String fileName="RsiMobile-"+surahNo.getText().toString()+".jpg";
-        File file=new File(dir,fileName);
+        File file=new File(directory,fileName);
         Log.d("path", "convertLayout: "+file.toString());
         if (!file.exists())
         {
@@ -240,6 +244,72 @@ public class ShareQuoteActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void saveImageToInternalExternal(){
+        if (checkIfExternalStorageExist()){
+            Bitmap bitmap=getBitmapFromView(relativeLayout);
+
+            File root=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+            File dir=new File(root.getAbsolutePath()+"/rsimobile");
+            dir.mkdirs();
+            Log.d("convert", "convertLayout: "+dir.toString());
+            String fileName="RsiMobile-"+surahNo.getText().toString()+".jpg";
+            File file=new File(dir,fileName);
+
+            if (!file.exists()){
+                try {
+                    FileOutputStream outputStream = new FileOutputStream(file);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                    outputStream.flush();
+                    outputStream.close();
+                    Toast.makeText(this, "Berhasil Menyimpan", Toast.LENGTH_SHORT).show();
+                    file.setReadable(true,false);
+
+                    Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                    intent.setData(Uri.fromFile(file));
+                    sendBroadcast(intent);
+                    Intent intentShare=new Intent(Intent.ACTION_SEND);
+                    //intentShare.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Uri uri= FileProvider.getUriForFile(ShareQuoteActivity.this, BuildConfig.APPLICATION_ID+".provider",file);
+                    intentShare.putExtra(Intent.EXTRA_STREAM,uri);
+                    intentShare.setType("image/jpg");
+                    startActivity(Intent.createChooser(intentShare,"Bagikan Ke"));
+                }catch (Exception e){
+                    e.printStackTrace();
+                    Log.d("convertgagal", "shareQuote: "+e.getMessage());
+                }
+            }
+        }else{
+            Bitmap bitmap=getBitmapFromView(relativeLayout);
+            ContextWrapper cw=new ContextWrapper(getApplicationContext());
+            File directory=cw.getDir("RSIMOBILE", Context.MODE_PRIVATE);
+            String fileName="RsiMobile-"+surahNo.getText().toString()+".jpg";
+            File file=new File(directory,fileName);
+            if (!file.exists()){
+                try {
+                    FileOutputStream outputStream = new FileOutputStream(file);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+                    outputStream.flush();
+                    outputStream.close();
+                    Toast.makeText(this, "Berhasil Menyimpan", Toast.LENGTH_SHORT).show();
+                    file.setReadable(true,false);
+
+                    Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                    intent.setData(Uri.fromFile(file));
+                    sendBroadcast(intent);
+                    Intent intentShare=new Intent(Intent.ACTION_SEND);
+                    //intentShare.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Uri uri= FileProvider.getUriForFile(ShareQuoteActivity.this, BuildConfig.APPLICATION_ID+".provider",file);
+                    intentShare.putExtra(Intent.EXTRA_STREAM,uri);
+                    intentShare.setType("image/jpg");
+                    startActivity(Intent.createChooser(intentShare,"Bagikan Ke"));
+                }catch (Exception e){
+                    e.printStackTrace();
+                    Log.d("convertgagal", "shareQuote: "+e.getMessage());
+                }
+            }
+        }
     }
 
     @SuppressLint("ResourceAsColor")
@@ -278,13 +348,23 @@ public class ShareQuoteActivity extends AppCompatActivity {
                     sendBroadcast(intent);
                     Intent intentShare=new Intent(Intent.ACTION_SEND);
                     //intentShare.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intentShare.putExtra(Intent.EXTRA_STREAM,Uri.fromFile(file));
+                    Uri uri= FileProvider.getUriForFile(ShareQuoteActivity.this, BuildConfig.APPLICATION_ID+".provider",file);
+                    intentShare.putExtra(Intent.EXTRA_STREAM,uri);
                     intentShare.setType("image/jpg");
                     startActivity(Intent.createChooser(intentShare,"Bagikan Ke"));
                 }catch (Exception e){
                     e.printStackTrace();
+                    Log.d("convertgagal", "shareQuote: "+e.getMessage());
                 }
             }
 
+    }
+
+    private boolean checkIfExternalStorageExist(){
+        String state=Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)){
+            return true;
+        }
+        return false;
     }
 }
