@@ -64,44 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:background="@drawable/bg_template">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/masjid">
 
-                    <TextView
-                        android:id="@+id/textKataMutiara"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/bookmanoldstyle"
-                        android:gravity="center_horizontal"
-                        android:text="ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                        android:textColor="@android:color/primary_text_light"
-                        android:textSize="24sp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_centerInParent="true"
-                        android:textStyle="bold"
-                        />
-                <TextView
-                    android:id="@+id/textViewAuthor"
-                    android:layout_below="@id/textKataMutiara"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/bookmanoldstyle"
-                    android:gravity="center_horizontal"
-                    android:text="Karen Clark"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_centerInParent="true"
-                    android:textStyle="bold"
-                    />
-
-            </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
 

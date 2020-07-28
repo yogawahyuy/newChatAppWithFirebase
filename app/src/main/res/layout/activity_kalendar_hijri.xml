@@ -302,7 +302,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/bookmanoldstyle"
                                 android:gravity="center_horizontal"
-                                android:text="Karen Clark"
+                                android:text="rsipurwokerto.co.id"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                                 android:textColor="@android:color/black"
                                 android:textSize="16sp"

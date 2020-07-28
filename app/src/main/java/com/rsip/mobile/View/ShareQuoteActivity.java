@@ -80,7 +80,8 @@ public class ShareQuoteActivity extends AppCompatActivity {
                 //convertLayout();
                 if (isStoragePermissionGranted()){
                    //shareQuote();
-                    saveImageToInternalExternal();
+                   // saveImageToInternalExternal();
+                    shareImage();
                 }
             }
         });
@@ -148,7 +149,8 @@ public class ShareQuoteActivity extends AppCompatActivity {
                     //Toast.makeText(this, "Permission Diijinkan", Toast.LENGTH_SHORT).show();
                     //convertLayout();
                     //shareQuote();
-                    saveImageToInternalExternal();
+                    //saveImageToInternalExternal();
+                    shareImage();
                 }else {
                     //Toast.makeText(this, "Permission Ditolak", Toast.LENGTH_SHORT).show();
                 }
@@ -244,6 +246,25 @@ public class ShareQuoteActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void shareImage(){
+       Bitmap bitmap = getBitmapFromView(relativeLayout);
+        String fileName="RsiMobile-"+surahNo.getText().toString()+".jpg";
+        String filePath=this.getFilesDir().getPath().toString() + "/RsiMobile-"+surahNo.getText().toString()+".jpg";
+        File file=new File(filePath);
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            file.setReadable(true,false);
+            Uri uri= FileProvider.getUriForFile(ShareQuoteActivity.this, BuildConfig.APPLICATION_ID+".provider",file);
+            Intent intentShare=new Intent(Intent.ACTION_SEND);
+            intentShare.putExtra(Intent.EXTRA_STREAM,uri);
+            intentShare.setType("image/jpg");
+            startActivity(Intent.createChooser(intentShare,"Bagikan Ke"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void saveImageToInternalExternal(){

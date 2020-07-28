@@ -24,8 +24,6 @@ public class QuoteActivity extends AppCompatActivity {
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         quoteAuthor=findViewById(R.id.textViewAuthor);
-        quoteText=findViewById(R.id.textKataMutiara);
-
         //jsonUtil.getQuotes(this,quoteText,quoteAuthor);
         //jsonUtil.getQuotesIslamic(this,quoteText,quoteAuthor);
     }
