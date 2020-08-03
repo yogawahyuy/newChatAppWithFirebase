@@ -198,15 +198,10 @@ public class EditProfileActivity extends AppCompatActivity {
     }
     private void uploadIntoFirebase(){
         if (filePath!=null){
-//            final ProgressDialog progressDialog
-//                    = new ProgressDialog(this);
-//            progressDialog.setTitle("Mengupload foto");
-//            progressDialog.show();
             profilePhoto.setDrawingCacheEnabled(true);
             profilePhoto.buildDrawingCache();
             Bitmap bitmaps=((BitmapDrawable) profilePhoto.getDrawable()).getBitmap();
             ByteArrayOutputStream baos=new ByteArrayOutputStream();
-//            StorageReference ref = storageReference.child("ProfilePicture/"+firebaseUser.getUid()+".jpg");
             bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
             byte[] bytes=baos.toByteArray();
             String namafile=firebaseUser.getUid()+".jpg";

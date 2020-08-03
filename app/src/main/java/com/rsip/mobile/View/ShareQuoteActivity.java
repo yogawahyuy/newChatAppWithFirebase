@@ -23,8 +23,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -92,10 +94,11 @@ public class ShareQuoteActivity extends AppCompatActivity {
         int width=textAuthor.getMeasuredWidth();
         int heightRel=relativeLayout.getMeasuredHeight();
         int widtthRel=relativeLayout.getMeasuredWidth();
-        Log.d("tinggi", "onCreate: "+height);
-        Log.d("tinggi", "onCreate: "+width);
-        Log.d("tinggiRel", "onCreate: "+heightRel);
-        Log.d("tinggiRel", "onCreate: "+widtthRel);
+//        Log.d("tinggi", "onCreate: "+height);
+//        Log.d("tinggi", "onCreate: "+width);
+//        Log.d("tinggiRel", "onCreate: "+heightRel);
+//        Log.d("tinggiRel", "onCreate: "+widtthRel);
+//        Log.d("display", "onCreate: "+getScreenHeight(this));
 
     }
 
@@ -387,5 +390,38 @@ public class ShareQuoteActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    private static int getScreenHeight(Context context){
+        DisplayMetrics dm=new DisplayMetrics();
+        WindowManager windowManager=(WindowManager)context.getSystemService(WINDOW_SERVICE);
+        windowManager.getDefaultDisplay().getMetrics(dm);
+        int heightInDp=Math.round(dm.heightPixels/dm.density);
+        return heightInDp;
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        getRelativeInfo();
+    }
+
+    private void getRelativeInfo(){
+        float height=relativeLayout.getHeight();
+        float width=relativeLayout.getWidth();
+        float heightText=textAuthor.getHeight();
+        float widthText=textAuthor.getWidth();
+        RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params.height=2000;
+        Log.d("Tinggi", "getRelativeInfo: "+height);
+        Log.d("Tinggis", "getRelativeInfo: "+width);
+        Log.d("TinggiText", "getRelativeInfo: "+heightText);
+        Log.d("TinggiText", "getRelativeInfo: "+widthText);
+        if (heightText>500){
+//          backgroundImageView.requestLayout();
+//          backgroundImageView.getLayoutParams().height=2500;
+            relativeLayout.requestLayout();
+            relativeLayout.getLayoutParams().height=1500;
+        }
     }
 }

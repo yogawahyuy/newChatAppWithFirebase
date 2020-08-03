@@ -77,18 +77,18 @@
         <RelativeLayout
             android:id="@+id/relPicture"
             android:layout_below="@id/rel_titlebook"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="500dp"
             >
 
             <ImageView
                 android:id="@+id/backgroundImageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/nature"
-                android:alpha="0.8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.85"
                 android:scaleType="centerCrop"
-                />
+                android:src="@drawable/nature" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="QS"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:gravity="right"
                     android:textColor="@android:color/white"
                     android:fontFamily="@font/bookmanoldstyle"
@@ -163,40 +163,39 @@
                     android:id="@+id/surahNo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="satu"
-                    android:layout_weight="0.3"
-                    android:layout_marginLeft="4dp"
+                    android:text="33"
+                    android:layout_weight="0.1"
+                    android:layout_marginLeft="6dp"
                     android:textColor="@android:color/white"
                     android:fontFamily="@font/bookmanoldstyle"
                     android:gravity="center"
                     android:shadowColor="@android:color/black"
                     />
+
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=":"
-                    android:layout_weight="0.1"
                     android:layout_marginLeft="4dp"
-                    android:textColor="@android:color/white"
+                    android:layout_weight="0.05"
                     android:fontFamily="@font/bookmanoldstyle"
                     android:shadowColor="@android:color/black"
-                    />
+                    android:text=":"
+                    android:textColor="@android:color/white" />
+
                 <TextView
                     android:id="@+id/ayahNo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="dua"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:textColor="@android:color/white"
+                    android:layout_weight="0.5"
                     android:fontFamily="@font/bookmanoldstyle"
+                    android:gravity="left"
                     android:shadowColor="@android:color/black"
-                    />
+                    android:text="3"
+                    android:textColor="@android:color/white" />
 
             </LinearLayout>
             <TextView
                 android:id="@+id/textViewCreated"
-                android:layout_below="@id/linalquran"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bookmanoldstyle"
@@ -207,7 +206,7 @@
                 android:textSize="16sp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:textStyle="bold"
                 android:shadowColor="@android:color/black"/>
 
