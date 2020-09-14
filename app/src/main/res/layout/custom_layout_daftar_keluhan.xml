@@ -8,9 +8,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:background="@drawable/bg_template"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         >
         <RelativeLayout
             android:layout_width="match_parent"
@@ -33,12 +33,13 @@
                 android:text="Yoga Wahyu Yuwono"
                 android:textSize="16sp"
                 android:layout_marginLeft="16dp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"/>
         </LinearLayout>
             <View
                 android:id="@+id/view_nama"
                 android:layout_width="match_parent"
-                android:layout_height="2px"
+                android:layout_height="2dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorGREY"
                 android:layout_below="@id/box_nama"/>
@@ -61,12 +62,13 @@
             android:text="28/04/2020"
             android:textSize="16sp"
             android:layout_marginLeft="16dp"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/bookmanoldstyle"/>
         </LinearLayout>
             <View
                 android:id="@+id/view_tgl"
                 android:layout_width="match_parent"
-                android:layout_height="2px"
+                android:layout_height="2dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorGREY"
                 android:layout_below="@id/box_tgl"/>
@@ -84,18 +86,18 @@
                 />
         <TextView
             android:id="@+id/rec_text_kategori"
-            android:layout_below="@id/rec_text_tgl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pengaduan Keluhan"
             android:textSize="16sp"
             android:layout_marginLeft="16dp"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/bookmanoldstyle"/>
         </LinearLayout>
             <View
                 android:id="@+id/view_kategori"
                 android:layout_width="match_parent"
-                android:layout_height="2px"
+                android:layout_height="2dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorGREY"
                 android:layout_below="@id/box_kategori"/>
@@ -119,12 +121,13 @@
             android:text="IGD"
             android:textSize="16sp"
             android:layout_marginLeft="16dp"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/bookmanoldstyle"/>
         </LinearLayout>
             <View
                 android:id="@+id/view_unit"
                 android:layout_width="match_parent"
-                android:layout_height="2px"
+                android:layout_height="2dp"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorGREY"
                 android:layout_below="@id/box_unit"/>
@@ -137,39 +140,87 @@
             android:textSize="16sp"
             android:layout_marginTop="8dp"
             android:textColor="@android:color/black"
+            android:fontFamily="@font/bookmanoldstyle"
             />
-        <TextView
-            android:id="@+id/rec_text_keluhan"
-            android:layout_below="@id/title_text_keluhan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Disini Ada keluhan yaa"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"
-            android:textColor="@android:color/black"
-            android:background="@drawable/bg_template"
-            />
+            <LinearLayout
+                android:id="@+id/lin_keluhan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@id/title_text_keluhan"
+                android:background="@drawable/bg_template">
+                <TextView
+                    android:id="@+id/rec_text_keluhan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Disini Ada keluhan yaa"
+                    android:textSize="16sp"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    />
+            </LinearLayout>
+
         <TextView
             android:id="@+id/title_text_balasan"
-            android:layout_below="@id/rec_text_keluhan"
+            android:layout_below="@id/lin_keluhan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="balasan"
+            android:text="Balasan"
             android:textSize="16sp"
             android:layout_marginTop="8dp"
             android:textColor="@android:color/black"
+            android:fontFamily="@font/bookmanoldstyle"
             />
-        <TextView
-            android:id="@+id/rec_text_balasan"
-            android:layout_below="@id/title_text_balasan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Disini Ada keluhan yaa"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"
-            android:textColor="@android:color/black"
-            android:background="@drawable/bg_template"
-            />
+            <LinearLayout
+                android:id="@+id/lin_balasan"
+                android:layout_below="@id/title_text_balasan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_template">
+                <TextView
+                    android:id="@+id/rec_text_balasan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Disini Ada keluhan yaa"
+                    android:textSize="16sp"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/title_text_orangbalas"
+                android:layout_below="@id/lin_balasan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dibalas Oleh"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                />
+            <LinearLayout
+                android:id="@+id/lin_orangbales"
+                android:layout_below="@id/title_text_orangbalas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_template">
+                <TextView
+                    android:id="@+id/rec_text_orangbalas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Yoga Wahyu"
+                    android:textSize="16sp"
+                    android:layout_margin="8dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    />
+            </LinearLayout>
+
 
 
         </RelativeLayout>

@@ -20,7 +20,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class DaftarKeluhanActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -29,6 +32,7 @@ public class DaftarKeluhanActivity extends AppCompatActivity {
     KeluhanAdapter keluhanAdapter;
     FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Keluhan");
+    String hasilHari="";
 
 
     @Override
@@ -40,7 +44,7 @@ public class DaftarKeluhanActivity extends AppCompatActivity {
         relEmptyView=findViewById(R.id.rel_emptyview);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
-readKeluhan();
+        readKeluhan();
     }
 
     private void readKeluhan(){
@@ -53,6 +57,7 @@ readKeluhan();
                     KeluhanModel keluhanModel=snapshot.getValue(KeluhanModel.class);
                     if (keluhanModel.getSender().equals(getUid)){
                         keluhanModels.add(keluhanModel);
+                        relEmptyView.setVisibility(View.GONE);
                     }else if(!keluhanModel.getSender().equals(getUid)){
                         relEmptyView.setVisibility(View.VISIBLE);
                     }
@@ -68,4 +73,5 @@ readKeluhan();
         });
 
     }
+
 }

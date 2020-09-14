@@ -12,6 +12,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.rsip.mobile.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -109,15 +111,27 @@ public class RegisterActivity extends AppCompatActivity {
                     reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
+
+                        }
+                    });
+                    firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
-                                Intent intent=new Intent(RegisterActivity.this,StartActivity.class);
+                                Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
-                                Toast.makeText(RegisterActivity.this, "Anda Sudah Terdaftar", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "Cek email untuk verifikasi", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(RegisterActivity.this, "Gagal mengirim email verifikasi", Toast.LENGTH_SHORT).show();
+                        }
                     });
+
                 }else{
                     Toast.makeText(RegisterActivity.this, "You can't register with Email or password", Toast.LENGTH_SHORT).show();
                 }

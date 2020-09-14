@@ -9,6 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.rsip.mobile.Model.KeluhanModel;
 import com.rsip.mobile.R;
 
@@ -18,6 +23,8 @@ public class KeluhanAdapter extends RecyclerView.Adapter<KeluhanAdapter.ViewHold
 
     Context context;
     ArrayList<KeluhanModel> keluhanModels;
+    String nama;
+    DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Users");
 
     public KeluhanAdapter(Context context, ArrayList<KeluhanModel> keluhanModels) {
         this.context = context;
@@ -41,6 +48,7 @@ public class KeluhanAdapter extends RecyclerView.Adapter<KeluhanAdapter.ViewHold
         holder.unit.setText(keluhanModels.get(position).getUnit());
         holder.keluhan.setText(keluhanModels.get(position).getKeluhan());
         holder.balasan.setText(keluhanModels.get(position).getPesanBalasan());
+        holder.yangBalas.setText("Wahyuy");
     }
 
     @Override
@@ -48,7 +56,7 @@ public class KeluhanAdapter extends RecyclerView.Adapter<KeluhanAdapter.ViewHold
         return keluhanModels!=null?keluhanModels.size():0;
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView nama,tgl,kategori,unit,keluhan,balasan;
+        private TextView nama,tgl,kategori,unit,keluhan,balasan,yangBalas;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nama=itemView.findViewById(R.id.rec_text_nama);
@@ -57,6 +65,23 @@ public class KeluhanAdapter extends RecyclerView.Adapter<KeluhanAdapter.ViewHold
             unit=itemView.findViewById(R.id.rec_text_unit);
             keluhan=itemView.findViewById(R.id.rec_text_keluhan);
             balasan=itemView.findViewById(R.id.rec_text_balasan);
+            yangBalas=itemView.findViewById(R.id.rec_text_orangbalas);
         }
+    }
+
+    private void getNama(){
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot snapshot1:snapshot.getChildren()){
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }

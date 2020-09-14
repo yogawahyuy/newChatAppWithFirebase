@@ -97,4 +97,6 @@
         <item>Muttaqien Pramudigdo, dr., Sp.S.</item>
         <item>Hernawan, dr., Sp.S</item>
     </string-array>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

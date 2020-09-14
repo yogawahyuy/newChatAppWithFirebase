@@ -24,7 +24,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        if (firebaseUser!=null){
+        if (firebaseUser!=null&&firebaseUser.isEmailVerified()){
             Intent intent=new Intent(StartActivity.this, MainActivity.class);
             startActivity(intent);
             finish();

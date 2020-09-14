@@ -79,6 +79,21 @@
             android:hint="Password"
             android:textColor="@android:color/black"
             android:fontFamily="@font/bookmanoldstyle"/>
+    <LinearLayout
+        android:id="@+id/lin_lupaPassword"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lupa Password ?"
+            android:fontFamily="@font/bookmanoldstyle"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"/>
+    </LinearLayout>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

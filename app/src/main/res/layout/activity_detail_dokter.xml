@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.DetailDokterActivity">
+
+    <RelativeLayout
+        android:id="@+id/rel_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            >
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:src="@drawable/logo3"
+                android:layout_marginStart="20dp"/>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/akreditasi"
+                android:layout_marginStart="60dp"/>
+
+
+        </androidx.appcompat.widget.Toolbar>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rel_titlebook"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_below="@id/rel_toolbar"
+        android:background="@color/colorPrimaryDark"
+        >
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detail Dokter"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:fontFamily="@font/bookmanoldstyle"
+            android:textColor="@android:color/white"
+            />
+
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rel_titlebook"
+        android:scrollbars="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_atas">
+            <RelativeLayout
+                android:id="@+id/box_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_picture"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/logobulet"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/box_data"
+                android:layout_below="@id/box_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_template">
+                    <RelativeLayout
+                        android:id="@+id/page_nama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/icon_nama"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/dokter2"/>
+
+                        <TextView
+                            android:id="@+id/textnamaDokter"
+                            android:layout_toRightOf="@id/icon_nama"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="6dp"
+                            android:text="dr. Yoga Wahyu Yuwono"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:typeface="normal"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="40dp"
+                            android:background="@color/colorGREY"
+                            android:layout_below="@id/icon_nama"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/page_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/page_nama"
+                        android:padding="10dp">
+                        <ImageView
+                            android:id="@+id/icon_email"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/icons8orderhistory80"/>
+                        <TextView
+                            android:id="@+id/text_spesialisdokter"
+                            android:layout_toRightOf="@id/icon_email"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Dokter Umum"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:typeface="normal"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="40dp"
+                            android:background="@color/colorGREY"
+                            android:layout_below="@id/icon_email"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/page_numberphone"
+                        android:layout_below="@id/page_jk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/icon_numberphone"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/clock"/>
+
+                        <TextView
+                            android:id="@+id/text_jamdokter"
+                            android:layout_toRightOf="@id/icon_numberphone"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="6dp"
+                            android:text="18.00 - 20.00"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:typeface="normal"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="40dp"
+                            android:background="@color/colorGREY"
+                            android:layout_below="@id/icon_numberphone"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/page_jk"
+                        android:layout_below="@id/page_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/icon_jk"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/calendar"/>
+
+                        <TextView
+                            android:layout_toRightOf="@id/icon_jk"
+                            android:id="@+id/text_haridokter"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Senin - Rabu, Jumat"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:typeface="normal"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="40dp"
+                            android:background="@color/colorGREY"
+                            android:layout_below="@id/icon_jk"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/page_alamat"
+                        android:layout_below="@id/page_numberphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/icon_alamat"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/icons8newticket96"/>
+
+                        <TextView
+                            android:id="@+id/text_statusDokter"
+                            android:layout_toRightOf="@id/icon_alamat"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Praktik Di RSI"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:typeface="normal"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="40dp"
+                            android:background="@color/colorGREY"
+                            android:layout_below="@id/icon_alamat"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/page_Keterangan"
+                        android:layout_below="@id/page_alamat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/icon_keterangan"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/information"/>
+
+                        <TextView
+                            android:id="@+id/textketeranganDokter"
+                            android:layout_toRightOf="@id/icon_keterangan"
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="24dp"
+                            android:layout_marginTop="6dp"
+                            android:text=" - "
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:typeface="normal"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="40dp"
+                            android:background="@color/colorGREY"
+                            android:layout_below="@id/icon_keterangan"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_bagikandokter"
+                android:layout_below="@id/box_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bagikan Info Dokter"
+                android:background="@color/colorAccent"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:fontFamily="@font/bookmanoldstyle"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

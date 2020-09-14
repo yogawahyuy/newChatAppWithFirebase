@@ -18,7 +18,7 @@ import com.rsip.mobile.R;
 public class MenuOneFragment extends Fragment {
     GridView gridView;
     View rootView;
-    String[] title={"Booking","Riwayat Periksa","Tempat Tidur","Dokter Cuti","Agenda RSI","Info Dokter"};
+    String[] title={"Booking","Riwayat Periksa","Tempat Tidur","Dokter Hari Ini","Agenda RSI","Info Dokter"};
     int[] image={R.drawable.icons8newticket96,R.drawable.icons8orderhistory80,R.drawable.icons8hospitalbed80,R.drawable.icons8doctormale96,R.drawable.calendar,R.drawable.icons8info80};
 
 

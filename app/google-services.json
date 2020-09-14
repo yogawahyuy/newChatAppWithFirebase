@@ -1,50 +1,42 @@
 {
   "project_info": {
-    "project_number": "324217224487",
-    "firebase_url": "https://chatingfirebase-c5b63.firebaseio.com",
-    "project_id": "chatingfirebase-c5b63",
-    "storage_bucket": "chatingfirebase-c5b63.appspot.com"
+    "project_number": "348696960174",
+    "firebase_url": "https://rsi-mobile.firebaseio.com",
+    "project_id": "rsi-mobile",
+    "storage_bucket": "rsi-mobile.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:324217224487:android:b7b06a930edcac35103d02",
+        "mobilesdk_app_id": "1:348696960174:android:47505d1793f6bfe701a13f",
         "android_client_info": {
-          "package_name": "com.example.chatwithfirebase"
+          "package_name": "com.rsip.adminrsimoblie"
         }
       },
       "oauth_client": [
         {
-          "client_id": "324217224487-al11g5n8f8m91nu9vhurev4r57qbf7hv.apps.googleusercontent.com",
+          "client_id": "348696960174-b4tcn109vda57289kfu0ar3duahguto3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.chatwithfirebase",
+            "package_name": "com.rsip.adminrsimoblie",
             "certificate_hash": "4f005fce1e2880169cd2887221cc4f0bcf1b4ee7"
           }
         },
         {
-          "client_id": "324217224487-becotmrcp8ihlim5eveuoapl5nl4916f.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.chatwithfirebase",
-            "certificate_hash": "54b2a08130b391630ef446e132094a96bd81d5ad"
-          }
-        },
-        {
-          "client_id": "324217224487-aqn76hdkbt7p3m0uj8bm5soaircrqv2b.apps.googleusercontent.com",
+          "client_id": "348696960174-i3ndn8a1saiffh4vgcmlf69ce44g26lf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC236XyaMdbvT95QbyVT-KUi_UBphvtQQc"
+          "current_key": "AIzaSyA4RxeqHqUMg15zqaf4RjRCF5lnEJ4Gm6Y"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "324217224487-aqn76hdkbt7p3m0uj8bm5soaircrqv2b.apps.googleusercontent.com",
+              "client_id": "348696960174-i3ndn8a1saiffh4vgcmlf69ce44g26lf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -53,14 +45,14 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:324217224487:android:5bc846c42dcd0de0103d02",
+        "mobilesdk_app_id": "1:348696960174:android:c1605728b7a3ef7301a13f",
         "android_client_info": {
           "package_name": "com.rsip.mobile"
         }
       },
       "oauth_client": [
         {
-          "client_id": "324217224487-6kjfa0booqui086tiff1fse3tt9r063s.apps.googleusercontent.com",
+          "client_id": "348696960174-vvabl0vfornnv3gipkvjue85up75pebs.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.rsip.mobile",
@@ -68,20 +60,20 @@
           }
         },
         {
-          "client_id": "324217224487-aqn76hdkbt7p3m0uj8bm5soaircrqv2b.apps.googleusercontent.com",
+          "client_id": "348696960174-i3ndn8a1saiffh4vgcmlf69ce44g26lf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC236XyaMdbvT95QbyVT-KUi_UBphvtQQc"
+          "current_key": "AIzaSyA4RxeqHqUMg15zqaf4RjRCF5lnEJ4Gm6Y"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "324217224487-aqn76hdkbt7p3m0uj8bm5soaircrqv2b.apps.googleusercontent.com",
+              "client_id": "348696960174-i3ndn8a1saiffh4vgcmlf69ce44g26lf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

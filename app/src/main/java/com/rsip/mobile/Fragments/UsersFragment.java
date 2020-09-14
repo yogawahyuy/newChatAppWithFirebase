@@ -145,6 +145,7 @@ public class UsersFragment extends Fragment {
                         alamat.setText("alamat disini");
                     }if (!user.getImageURL().equals("Default")){
                         GlideApp.with(getContext()).load(storageReference).into(profilePicture);
+                        Log.d("isi storage", "onDataChange: "+storageReference);
                     }
                     progressDialog.dismiss();
                 }
