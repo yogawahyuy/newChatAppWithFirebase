@@ -232,7 +232,6 @@
                     android:gravity="left"
                     android:textColor="@android:color/black"
                     android:fontFamily="@font/bookmanoldstyle"
-
                     android:layout_marginTop="8dp"
                     android:layout_marginLeft="8dp"/>
                 <com.toptoche.searchablespinnerlibrary.SearchableSpinner

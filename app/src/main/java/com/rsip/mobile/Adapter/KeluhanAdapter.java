@@ -48,7 +48,7 @@ public class KeluhanAdapter extends RecyclerView.Adapter<KeluhanAdapter.ViewHold
         holder.unit.setText(keluhanModels.get(position).getUnit());
         holder.keluhan.setText(keluhanModels.get(position).getKeluhan());
         holder.balasan.setText(keluhanModels.get(position).getPesanBalasan());
-        holder.yangBalas.setText("Wahyuy");
+        holder.yangBalas.setText(keluhanModels.get(position).getNamaPembalas());
     }
 
     @Override

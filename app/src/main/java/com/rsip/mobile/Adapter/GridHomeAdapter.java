@@ -11,11 +11,10 @@ import android.widget.TextView;
 
 import com.rsip.mobile.R;
 import com.rsip.mobile.RecylcerView.DokterTodayActivity;
+import com.rsip.mobile.RecylcerView.JadwalOperasiActivity;
 import com.rsip.mobile.View.AgendaRsiActivity;
 import com.rsip.mobile.View.BookingActivity;
-import com.rsip.mobile.View.DokterCutiActivity;
 import com.rsip.mobile.View.InfoBedActivity;
-import com.rsip.mobile.View.InfoDokterActivity;
 import com.rsip.mobile.View.InfoSemuaDokterActivity;
 import com.rsip.mobile.View.RiwayatPeriksaActivity;
 
@@ -76,7 +75,7 @@ public class GridHomeAdapter extends BaseAdapter {
                     mContext.startActivity(new Intent(mContext, DokterTodayActivity.class));
                 }
                 else if (position==4){
-                    mContext.startActivity(new Intent(mContext, AgendaRsiActivity.class));
+                    mContext.startActivity(new Intent(mContext, JadwalOperasiActivity.class));
                 }else if (position==5){
                     mContext.startActivity(new Intent(mContext, InfoSemuaDokterActivity.class));
                 }

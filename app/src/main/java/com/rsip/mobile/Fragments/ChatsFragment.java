@@ -122,9 +122,13 @@ public class ChatsFragment extends Fragment {
             public void onClick(View v) {
                 sendKeluhan(firebaseUser.getUid(),editTextNama.getText().toString(),editTextTanggal.getText().toString(),spinerKeluhan.getSelectedItem().toString(),spinerUnit.getSelectedItem().toString(),editTextKeluhan.getText().toString());
                startActivity(new Intent(getContext(),DaftarKeluhanActivity.class));
+               closeFragment();
             }
         });
         dialog.show();
+    }
+    private void closeFragment(){
+        getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
     }
 
     private void showDatePicker(){
@@ -173,6 +177,7 @@ public class ChatsFragment extends Fragment {
         hashMap.put("statusBalas","belum");
         hashMap.put("pesanBalasan","belum dibalas");
         hashMap.put("idPembalas","belum ada");
+        hashMap.put("namaPembalas","Belum Ada");
 
 
         reference.child("Keluhan").push().setValue(hashMap);

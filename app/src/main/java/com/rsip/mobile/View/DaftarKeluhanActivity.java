@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.rsip.mobile.Adapter.KeluhanAdapter;
+import com.rsip.mobile.MainActivity;
 import com.rsip.mobile.Model.KeluhanModel;
+import com.rsip.mobile.Model.User;
 import com.rsip.mobile.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,7 +36,8 @@ public class DaftarKeluhanActivity extends AppCompatActivity {
     KeluhanAdapter keluhanAdapter;
     FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
     DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Keluhan");
-    String hasilHari="";
+    DatabaseReference mRefrence= FirebaseDatabase.getInstance().getReference("Users");
+    String hasilNama;
 
 
     @Override
@@ -56,6 +61,9 @@ public class DaftarKeluhanActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot:dataSnapshot.getChildren()){
                     KeluhanModel keluhanModel=snapshot.getValue(KeluhanModel.class);
                     if (keluhanModel.getSender().equals(getUid)){
+                        String idPembalas=keluhanModel.getIdPembalas();
+                        getNama(idPembalas);
+                        Log.d("hasilNama", "readKeluhan: "+keluhanModel.getNamaPembalas());
                         keluhanModels.add(keluhanModel);
                         relEmptyView.setVisibility(View.GONE);
                     }else if(!keluhanModel.getSender().equals(getUid)){
@@ -74,4 +82,32 @@ public class DaftarKeluhanActivity extends AppCompatActivity {
 
     }
 
+    private void getNama(String idPembalas) {
+        mRefrence.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    User user = dataSnapshot.getValue(User.class);
+                    user.setId(dataSnapshot.getKey());
+                    if (user.getId().equals(idPembalas)){
+                        hasilNama = user.getUsername();
+                        Log.d("hasilNama", "onDataChange: "+hasilNama);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(DaftarKeluhanActivity.this, MainActivity.class));
+        finish();
+    }
 }

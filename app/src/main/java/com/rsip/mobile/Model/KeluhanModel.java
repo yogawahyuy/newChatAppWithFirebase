@@ -1,29 +1,9 @@
 package com.rsip.mobile.Model;
 
 public class KeluhanModel {
-    String nama,tanggal,kategori,unit,keluhan,pesanBalasan,statusBalas,idPembalas,sender;
+    String nama,tanggal,kategori,unit,keluhan,pesanBalasan,statusBalas,idPembalas,sender,namaPembalas;
 
-    public KeluhanModel(String nama, String tanggal, String kategori, String unit, String keluhan, String pesanBalasan, String statusBalas, String idPembalas, String sender) {
-        this.nama = nama;
-        this.tanggal = tanggal;
-        this.kategori = kategori;
-        this.unit = unit;
-        this.keluhan = keluhan;
-        this.pesanBalasan = pesanBalasan;
-        this.statusBalas = statusBalas;
-        this.idPembalas = idPembalas;
-        this.sender = sender;
-    }
 
-    public KeluhanModel(String nama, String tanggal, String kategori, String unit, String keluhan, String pesanBalasan, String sender) {
-        this.nama = nama;
-        this.tanggal = tanggal;
-        this.kategori = kategori;
-        this.unit = unit;
-        this.keluhan = keluhan;
-        this.pesanBalasan = pesanBalasan;
-        this.sender = sender;
-    }
 
     public KeluhanModel() {
     }
@@ -98,5 +78,13 @@ public class KeluhanModel {
 
     public void setSender(String sender) {
         this.sender = sender;
+    }
+
+    public String getNamaPembalas() {
+        return namaPembalas;
+    }
+
+    public void setNamaPembalas(String namaPembalas) {
+        this.namaPembalas = namaPembalas;
     }
 }
