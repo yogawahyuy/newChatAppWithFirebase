@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.rsip.mobile.Model.AyatModel;
 import com.rsip.mobile.Model.InfoBedModel;
@@ -22,6 +23,7 @@ import com.rsip.mobile.Model.KalendarHijriModel;
 import com.rsip.mobile.Model.MenuSurahModel;
 import com.rsip.mobile.Model.QuoteModel;
 import com.rsip.mobile.R;
+import com.rsip.mobile.RecylcerView.PoliklinikModel;
 import com.rsip.mobile.View.KalendarHijriActivity;
 
 import org.json.JSONArray;
@@ -379,5 +381,63 @@ public class JsonUtil {
             }
         });
         Volley.newRequestQueue(context).add(jsonArrayRequest);
+    }
+
+    public void getPoliklinik(Context context,String url, String tglPeriksa, final RecyclerView.Adapter adapter, final List<PoliklinikModel> poliklinikModels){
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject root = new JSONObject(response);
+                    JSONArray list = root.getJSONArray("list");
+                    for (int i = 0; i <list.length() ; i++) {
+                        JSONObject data= list.getJSONObject(i);
+                        PoliklinikModel poliklinikModel=new PoliklinikModel();
+                        poliklinikModel.setKd_poliklinikx(data.getString("kd_poliklinikx"));
+                        poliklinikModel.setNm_poliklinikx(data.getString("nm_poliklinikx"));
+                        poliklinikModel.setNip_dokterx(data.getString("nip_dokterx"));
+                        poliklinikModel.setNm_dokterx(data.getString("nm_dokterx"));
+                        poliklinikModel.setHarix(data.getString("harix"));
+                        poliklinikModel.setTglx(data.getString("tglx"));
+                        poliklinikModel.setJam_mulaix(data.getString("jam_mulaix"));
+                        poliklinikModel.setJam_selesaix(data.getString("jam_selesaix"));
+                        poliklinikModels.add(poliklinikModel);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+    }
+    public void getHariAktif(Context context,Spinner spinner,List spinnerList){
+
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, Koneksi.URL_TAMPIL_HARI_AKTIF, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try{
+                    JSONArray respone=response.getJSONArray("respone");
+                    for (int i = 0; i <respone.length() ; i++) {
+                       JSONObject data=respone.getJSONObject(i);
+                       String tampung=data.getString("hari");
+                       tampung+=data.getString("tanggal");
+                       spinnerList.add(tampung);
+                        Log.d("data", "onResponse: "+tampung);
+                    }
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
     }
 }

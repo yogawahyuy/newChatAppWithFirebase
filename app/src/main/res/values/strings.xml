@@ -97,6 +97,14 @@
         <item>Muttaqien Pramudigdo, dr., Sp.S.</item>
         <item>Hernawan, dr., Sp.S</item>
     </string-array>
+    <string-array name="pembayaran">
+        <item>BPJS</item>
+        <item>Umum</item>
+    </string-array>
 
+    <string-array name="norm">
+        <item>977829 Tirta Indra W</item>
+    </string-array>
     <string name="hello_world">Hello world!</string>
+    <string name="Konfirmasi">Silahkan Untuk Datang Ke Pendaftaran Rumah Sakit Islam Purwokerto Untuk Konfirmasi</string>
 </resources>

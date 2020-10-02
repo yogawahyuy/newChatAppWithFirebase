@@ -3,6 +3,7 @@
     package="com.rsip.mobile">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -18,7 +19,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.DetailJadwalOperasiActivity"></activity>
+        <activity
+            android:name=".RecylcerView.RiwayatDaftarActivity"
+            android:label="@string/title_activity_riwayat_daftar"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".View.SummaryPendaftaranActivity" />
+        <activity android:name=".View.RingkasanDaftarOnlineActivity" />
+        <activity
+            android:name=".RecylcerView.PoliklinikActivity"
+            android:label=""
+            android:theme="@style/AppTheme" />
+        <activity android:name=".View.DaftarOnlineActivity" />
+        <activity
+            android:name=".RecylcerView.HistoryPeriksaActivity"
+            android:label="Jadwal Periksa"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".View.StatusBookingActivity" />
+        <activity android:name=".View.DetailJadwalOperasiActivity" />
         <activity
             android:name=".RecylcerView.JadwalOperasiActivity"
             android:label="Jadwal Operasi"

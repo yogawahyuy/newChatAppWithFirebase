@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.DaftarOnlineActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E6E3E3E3"
+        >
+        <RelativeLayout
+            android:id="@+id/rel_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                >
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/logo3"
+                    android:layout_marginStart="20dp"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/akreditasi"
+                    android:layout_marginStart="60dp"/>
+
+
+            </androidx.appcompat.widget.Toolbar>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_titlebook"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_below="@id/rel_toolbar"
+            android:layout_marginBottom="3dp"
+            android:background="@color/colorPrimaryDark"
+            >
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pendaftaran"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/white"
+                />
+
+
+
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/lin_utama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/rel_titlebook">
+
+            <LinearLayout
+                android:id="@+id/lin_rm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="16dp"
+                android:background="@android:color/white">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor CM / Rekam Medik"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textSize="16sp"/>
+
+                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/spinner_rm"
+                    android:entries="@array/norm"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_asuransi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/white">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Asuransi"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textSize="16sp"/>
+
+<!--                <com.toptoche.searchablespinnerlibrary.SearchableSpinner-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:id="@+id/spinner_Asuransi"-->
+<!--                    android:entries="@array/pembayaran"/>-->
+                
+                <RadioGroup
+                    android:id="@+id/radGroupAsuransi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/radioBtnBpjs"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="BPJS"/>
+                    <RadioButton
+                        android:id="@+id/radioBtnUmum"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Umum"/>
+                </RadioGroup>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lin_NomerHp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/white">
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nomer HP"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/daftarOnlineNoHP"
+                    android:inputType="numberDecimal"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lin_Hari"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@android:color/white">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal Periksa"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textSize="16sp"/>
+
+                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/spinner_Hari"
+                    android:entries="@array/pembayaran"/>
+
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_lanjut"
+                android:background="@drawable/bg_templategreens"
+                android:text="Lanjut"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
