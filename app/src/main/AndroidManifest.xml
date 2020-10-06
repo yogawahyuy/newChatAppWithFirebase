@@ -21,7 +21,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".RecylcerView.RiwayatDaftarActivity"
-            android:label="@string/title_activity_riwayat_daftar"
+            android:label=""
             android:theme="@style/AppTheme"></activity>
         <activity android:name=".View.SummaryPendaftaranActivity" />
         <activity android:name=".View.RingkasanDaftarOnlineActivity" />

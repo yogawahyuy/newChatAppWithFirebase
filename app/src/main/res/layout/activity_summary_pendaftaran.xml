@@ -6,4 +6,190 @@
     android:layout_height="match_parent"
     tools:context=".View.SummaryPendaftaranActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/rel_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                >
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/logo3"
+                    android:layout_marginStart="20dp"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/akreditasi"
+                    android:layout_marginStart="60dp"/>
+
+
+            </androidx.appcompat.widget.Toolbar>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_titlebook"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_below="@id/rel_toolbar"
+            android:layout_marginBottom="3dp"
+            android:background="@color/colorPrimaryDark"
+            >
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hasil Pendaftaran"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/white"
+                />
+
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linNoAntrian"
+            android:layout_below="@id/rel_titlebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/bg_template">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nomor Antrian"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"/>
+
+            <TextView
+                android:id="@+id/noAntrianText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FAS-1"
+                android:textColor="@android:color/black"
+                android:gravity="center_horizontal"
+                android:textSize="50sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Silahkan Datang Pada"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="4dp"/>
+                <TextView
+                    android:id="@+id/textharisumary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rabu"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="4dp"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal dan Jam"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="4dp"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textSize="14sp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="8dp"
+                >
+                <TextView
+                    android:id="@+id/tanggaljam_sumary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="30/12/2020 13.00"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="4dp"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textStyle="bold|italic"
+                    android:textSize="14sp"
+                    android:gravity="center_horizontal"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="4dp"
+                >
+                <TextView
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:text="Diruang"
+                    android:layout_marginLeft="4dp"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="1"
+                    android:gravity="right"/>
+                <TextView
+                    android:id="@+id/polisumary"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:layout_marginLeft="4dp"
+                    android:text="Poli Kebidanan Dan Kandungan"
+                    android:textStyle="bold"
+                    android:gravity="left"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_halamanUtama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KeHALAMAN UTAMA"
+            android:fontFamily="@font/bookmanoldstyle"
+            android:background="@drawable/bg_templategreens"
+            android:layout_below="@id/linNoAntrian"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"/>
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

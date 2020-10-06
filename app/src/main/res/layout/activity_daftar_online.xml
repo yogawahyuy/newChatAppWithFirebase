@@ -5,6 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.DaftarOnlineActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -74,6 +78,7 @@
                 android:layout_margin="16dp"
                 android:background="@android:color/white">
                 <TextView
+                    android:id="@+id/titelBpjs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Nomor CM / Rekam Medik"
@@ -81,12 +86,44 @@
                     android:fontFamily="@font/bookmanoldstyle"
                     android:textSize="16sp"/>
 
-                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                <EditText
+                    android:id="@+id/edttext_norm"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:id="@+id/spinner_rm"
-                    android:entries="@array/norm"/>
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:inputType="numberDecimal"/>
 
+                <EditText
+                    android:id="@+id/edttext_noKartuBpjs"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:inputType="numberDecimal"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lin_nik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="16dp"
+                android:background="@android:color/white">
+                <TextView
+                    android:id="@+id/titelNik"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NIK"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textSize="16sp"/>
+
+
+                <EditText
+                    android:id="@+id/edttext_nik"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:inputType="numberDecimal"/>
 
             </LinearLayout>
 
@@ -129,6 +166,31 @@
                         android:text="Umum"/>
                 </RadioGroup>
 
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lin_noRujukan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="16dp"
+                android:background="@android:color/white">
+                <TextView
+                    android:id="@+id/titelnoRujukan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor Rujukan"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textSize="16sp"/>
+
+
+                <EditText
+                    android:id="@+id/edttext_noRujukan"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:inputType="numberDecimal"/>
 
             </LinearLayout>
             <LinearLayout
@@ -192,6 +254,7 @@
                 android:layout_marginRight="16dp"/>
         </LinearLayout>
     </RelativeLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -165,7 +165,7 @@ public class PoliklinikActivity extends AppCompatActivity {
     private void postMessageBPJS(String tanggal){
         HashMap<String,String> param=new HashMap<>();
         //param.put("TANGGAL_PERIKSA",tanggal);
-        param.put("TANGGAL_PERIKSA","31/12/2020");
+        param.put("TANGGAL_PERIKSA","30/12/2020");
         ApiService apiService=retrofit.create(ApiService.class);
         Call<JsonObject> result=apiService.postMessage(param);
         result.enqueue(new Callback<JsonObject>() {
@@ -207,7 +207,7 @@ public class PoliklinikActivity extends AppCompatActivity {
     private void postMessage(String tanggal){
         HashMap<String,String> param=new HashMap<>();
         //param.put("TANGGAL_PERIKSA",tanggal);
-        param.put("TANGGAL_PERIKSA","31/12/2020");
+        param.put("TANGGAL_PERIKSA","30/12/2020");
         ApiService apiService=retrofit.create(ApiService.class);
         Call<JsonObject> result=apiService.postMessage(param);
         result.enqueue(new Callback<JsonObject>() {

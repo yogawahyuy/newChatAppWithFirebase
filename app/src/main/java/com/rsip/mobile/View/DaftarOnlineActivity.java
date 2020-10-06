@@ -11,9 +11,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -40,9 +42,12 @@ import java.util.List;
 public class DaftarOnlineActivity extends AppCompatActivity {
 
     Button btnLanjut;
-    Spinner spinerTanggal,spinerRM,spinnerAsuransi;
+    Spinner spinerTanggal,spinnerAsuransi;
     EditText noHP;
     RadioGroup listAsuransi;
+    EditText noKartuBpjs,nik,noRujukan,noRM;
+    LinearLayout linNik,linNoRujukan;
+    TextView titleBpjs;
     JsonUtil jsonUtil=new JsonUtil();
     List<String> isi=new ArrayList<>();
     @Override
@@ -55,10 +60,19 @@ public class DaftarOnlineActivity extends AppCompatActivity {
     private void findViews(){
         btnLanjut=findViewById(R.id.btn_lanjut);
         spinerTanggal=findViewById(R.id.spinner_Hari);
-        spinerRM=findViewById(R.id.spinner_rm);
         listAsuransi=findViewById(R.id.radGroupAsuransi);
        // spinnerAsuransi=findViewById(R.id.spinner_Asuransi);
+        noRM=findViewById(R.id.edttext_norm);
         noHP=findViewById(R.id.daftarOnlineNoHP);
+        noKartuBpjs=findViewById(R.id.edttext_noKartuBpjs);
+        noKartuBpjs.setVisibility(View.GONE);
+        nik=findViewById(R.id.edttext_nik);
+        noRujukan=findViewById(R.id.edttext_noRujukan);
+        titleBpjs=findViewById(R.id.titelBpjs);
+        linNik=findViewById(R.id.lin_nik);
+        linNoRujukan=findViewById(R.id.lin_noRujukan);
+        linNik.setVisibility(View.GONE);
+        linNoRujukan.setVisibility(View.GONE);
         getHariAktif();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item,isi);
@@ -85,37 +99,33 @@ public class DaftarOnlineActivity extends AppCompatActivity {
                 }
             }
         });
-
+        selectAsuransi();
 
     }
 
     private void selectAsuransi(){
 
-//        listAsuransi.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                switch (checkedId){
-//                    case R.id.radioBtnBpjs:
-//                        btnLanjut.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                getAllDataForm("BPJS");
-//                            }
-//                        });
-//                        break;
-//                    case R.id.radioBtnUmum:
-//                        btnLanjut.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                //startActivity(new Intent(DaftarOnlineActivity.this, PoliklinikActivity.class));
-//                                getAllDataForm("Umum");
-//
-//                            }
-//                        });
-//                        break;
-//                }
-//            }
-//        });
+        listAsuransi.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.radioBtnBpjs:
+                        noKartuBpjs.setVisibility(View.VISIBLE);
+                        linNik.setVisibility(View.VISIBLE);
+                        linNoRujukan.setVisibility(View.VISIBLE);
+                        noRM.setVisibility(View.GONE);
+                        titleBpjs.setText("No Kartu BPJS");
+                        break;
+                    case R.id.radioBtnUmum:
+                        noKartuBpjs.setVisibility(View.GONE);
+                        linNoRujukan.setVisibility(View.GONE);
+                        linNik.setVisibility(View.GONE);
+                        noRM.setVisibility(View.VISIBLE);
+                        titleBpjs.setText("Nomor CM / Rekam Medik");
+                        break;
+                }
+            }
+        });
     }
 
     private void radioChecked(View view){
@@ -140,15 +150,15 @@ public class DaftarOnlineActivity extends AppCompatActivity {
         String s=spinerTanggal.getSelectedItem().toString();
         String s1=s.substring(s.indexOf(" "));
 
-        String erem=spinerRM.getSelectedItem().toString();
-        String rm=erem.substring(0,erem.indexOf(" "));
+//        String erem=spinerRM.getSelectedItem().toString();
+//        String rm=erem.substring(0,erem.indexOf(" "));
 
         String hari=spinerTanggal.getSelectedItem().toString();
         String harinya=hari.substring(0,hari.indexOf(" "));
 
-        String namaRm=spinerRM.getSelectedItem().toString();
+        //String namaRm=spinerRM.getSelectedItem().toString();
 
-        String namanya=namaRm.substring(namaRm.indexOf(" "));
+      //  String namanya=namaRm.substring(namaRm.indexOf(" "));
 
         String outputDate="";
 
@@ -163,12 +173,14 @@ public class DaftarOnlineActivity extends AppCompatActivity {
         }
         Toast.makeText(DaftarOnlineActivity.this, outputDate, Toast.LENGTH_SHORT).show();
 
-        intent.putExtra("norm",rm);
-        intent.putExtra("namanya",namanya);
+//        intent.putExtra("norm",rm);
+//        intent.putExtra("namanya",namanya);
+        intent.putExtra("norm",noRM.getText().toString());
+        intent.putExtra("namanya","Default");
         intent.putExtra("asuransi",asuransi);
         intent.putExtra("nohp",noHP.getText().toString());
        // intent.putExtra("tanggal",outputDate);
-        intent.putExtra("tanggal","31/12/2020");
+        intent.putExtra("tanggal","30/12/2020");
         intent.putExtra("hari",harinya);
         Log.d("asuransi", "getAllDataForm: "+asuransi);
         startActivity(intent);

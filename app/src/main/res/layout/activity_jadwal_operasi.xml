@@ -59,12 +59,55 @@
 
 
         </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/lin_tanggal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel_titlebed"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pilih Tanggal"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:gravity="center_horizontal"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btn_tanggalAwal"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:text="Tanggal Awal"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/bookmanoldstyle"/>
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="S/D"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textColor="@android:color/black"
+                    android:gravity="center_horizontal"/>
+                <Button
+                    android:id="@+id/btn_tanggalAkhir"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:text="Tanggal Akhir"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/bookmanoldstyle"/>
+            </LinearLayout>
+
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
-            android:layout_below="@id/rel_titlebed"/>
+            android:layout_below="@id/lin_tanggal"/>
 
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

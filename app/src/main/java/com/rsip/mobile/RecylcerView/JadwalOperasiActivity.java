@@ -2,6 +2,7 @@ package com.rsip.mobile.RecylcerView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,9 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.rsip.mobile.R;
 
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Toast;
 import android.os.Handler;
 
@@ -25,6 +29,7 @@ public class JadwalOperasiActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
 
 
+    Button btnTanggalMulai,btnTanggalAkhir;
     private JadwalOperasiAdapter mAdapter;
 
     private ArrayList<JadwalOperasiModel> modelList = new ArrayList<>();
@@ -43,6 +48,22 @@ public class JadwalOperasiActivity extends AppCompatActivity {
 
     private void findViews() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        btnTanggalMulai=findViewById(R.id.btn_tanggalAwal);
+        btnTanggalAkhir=findViewById(R.id.btn_tanggalAkhir);
+    }
+
+    private void showtanggalMulai(){
+        Calendar cldr=Calendar.getInstance();
+        int day=cldr.get(Calendar.DAY_OF_MONTH);
+        int month=cldr.get(Calendar.MONTH);
+        int year=cldr.get(Calendar.YEAR);
+        DatePickerDialog datePickerDialog=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+            }
+        },year,month,day);
+
     }
 
 
