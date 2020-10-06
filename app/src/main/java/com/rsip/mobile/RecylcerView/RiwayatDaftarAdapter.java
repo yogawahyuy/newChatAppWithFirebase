@@ -55,8 +55,10 @@ public class RiwayatDaftarAdapter extends RecyclerView.Adapter<RecyclerView.View
             final RiwayatDaftarModel model = getItem(position);
             ViewHolder genericViewHolder = (ViewHolder) holder;
 
-            genericViewHolder.itemTxtTitle.setText(model.getTitle());
-            genericViewHolder.itemTxtMessage.setText(model.getMessage());
+            genericViewHolder.noAntrian.setText(model.getNomorantrean());
+            genericViewHolder.namaPasien.setText(model.getNamapasien());
+            genericViewHolder.namaPoli.setText(model.getNamapoli());
+            genericViewHolder.jamPelayanan.setText(model.getJamdilayani());
 
 
         }
@@ -84,17 +86,20 @@ public class RiwayatDaftarAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView imgUser;
-        private TextView itemTxtTitle;
-        private TextView itemTxtMessage;
+
+        private TextView noAntrian;
+        private TextView namaPasien;
+        private TextView namaPoli;
+        private TextView jamPelayanan;
 
 
         public ViewHolder(final View itemView) {
             super(itemView);
 
-            this.imgUser = (ImageView) itemView.findViewById(R.id.img_user);
-            this.itemTxtTitle = (TextView) itemView.findViewById(R.id.item_txt_title);
-            this.itemTxtMessage = (TextView) itemView.findViewById(R.id.item_txt_message);
+            this.noAntrian = (TextView) itemView.findViewById(R.id.textView_noantrians);
+            this.namaPasien = (TextView) itemView.findViewById(R.id.textView_namapasien);
+            this.namaPoli = (TextView) itemView.findViewById(R.id.textView_namaPoli);
+            this.jamPelayanan = (TextView) itemView.findViewById(R.id.textView_jampelayanan);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {

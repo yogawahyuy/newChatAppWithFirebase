@@ -95,8 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_gravity="center_vertical">
                 <TextView
@@ -106,7 +105,7 @@
                     android:textColor="@android:color/black"
                     android:fontFamily="@font/bookmanoldstyle"
                     android:textSize="14sp"
-                    android:layout_marginLeft="4dp"/>
+                    android:layout_marginLeft="16dp"/>
                 <TextView
                     android:id="@+id/textharisumary"
                     android:layout_width="wrap_content"
@@ -173,7 +172,7 @@
                     android:layout_marginLeft="4dp"
                     android:text="Poli Kebidanan Dan Kandungan"
                     android:textStyle="bold"
-                    android:gravity="left"
+                    android:gravity="center"
                     android:textColor="@android:color/black"
                     android:layout_weight="1"
                     />

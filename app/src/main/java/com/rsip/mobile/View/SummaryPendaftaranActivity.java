@@ -43,7 +43,7 @@ public class SummaryPendaftaranActivity extends AppCompatActivity {
             antrianText.setText(intent.getStringExtra("nomorantrean"));
             String timeStamp= intent.getStringExtra("estimasidilayani");
             Log.d("data", "fillIntent: "+timeStamp);
-            long estimasiDilayani=Long.parseLong(timeStamp) *1000L;
+            long estimasiDilayani=Long.parseLong(timeStamp);
             tanggalJamHari.setText(getDate(estimasiDilayani));
             hariText.setVisibility(View.GONE);
             poliSummary.setText(intent.getStringExtra("namapoli"));
@@ -60,7 +60,7 @@ public class SummaryPendaftaranActivity extends AppCompatActivity {
 //            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
 //            Date netDate = (new Date(timestamp));
             Calendar calendar=Calendar.getInstance(Locale.ENGLISH);
-            calendar.setTimeInMillis(timestamp*1000L);
+            calendar.setTimeInMillis(timestamp);
             SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd/MM/yyyy hh:mm a");
             Date date=calendar.getTime();
 

@@ -30,4 +30,9 @@ public interface ApiService {
     })
     @POST("post_antrianBpjs")
     Call<JsonObject> postRawJSON(@Body JsonObject jsonObject);
+
+    @FormUrlEncoded
+    @POST("post_batalDaftar")
+    Call<JsonObject> postBatalDaftar(@FieldMap HashMap<String,String> param);
+
 }

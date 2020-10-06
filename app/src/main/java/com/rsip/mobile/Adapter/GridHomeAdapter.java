@@ -13,6 +13,7 @@ import com.rsip.mobile.R;
 import com.rsip.mobile.RecylcerView.DokterTodayActivity;
 import com.rsip.mobile.RecylcerView.HistoryPeriksaActivity;
 import com.rsip.mobile.RecylcerView.JadwalOperasiActivity;
+import com.rsip.mobile.RecylcerView.RiwayatDaftarActivity;
 import com.rsip.mobile.View.AgendaRsiActivity;
 import com.rsip.mobile.View.BookingActivity;
 import com.rsip.mobile.View.DaftarOnlineActivity;
@@ -68,7 +69,7 @@ public class GridHomeAdapter extends BaseAdapter {
                     mContext.startActivity(new Intent(mContext, DaftarOnlineActivity.class));
                 }
                 else if (position==1){
-                    mContext.startActivity(new Intent(mContext, HistoryPeriksaActivity.class));
+                    mContext.startActivity(new Intent(mContext, RiwayatPeriksaActivity.class));
 
                 }else if (position==2){
                     mContext.startActivity(new Intent(mContext, InfoBedActivity.class));
