@@ -20,6 +20,7 @@ import com.google.gson.JsonObject;
 import com.rsip.mobile.Interface.ApiService;
 import com.rsip.mobile.R;
 import com.rsip.mobile.Utils.Koneksi;
+import com.rsip.mobile.View.DetailRiwayatPeriksaActivity;
 
 import android.widget.Toast;
 import android.os.Handler;
@@ -69,22 +70,6 @@ public class RiwayatDaftarActivity extends AppCompatActivity {
     private void setAdapter() {
 
 
-//        modelList.add(new RiwayatDaftarModel("Android", "Hello " + " Android"));
-//        modelList.add(new RiwayatDaftarModel("Beta", "Hello " + " Beta"));
-//        modelList.add(new RiwayatDaftarModel("Cupcake", "Hello " + " Cupcake"));
-//        modelList.add(new RiwayatDaftarModel("Donut", "Hello " + " Donut"));
-//        modelList.add(new RiwayatDaftarModel("Eclair", "Hello " + " Eclair"));
-//        modelList.add(new RiwayatDaftarModel("Froyo", "Hello " + " Froyo"));
-//        modelList.add(new RiwayatDaftarModel("Gingerbread", "Hello " + " Gingerbread"));
-//        modelList.add(new RiwayatDaftarModel("Honeycomb", "Hello " + " Honeycomb"));
-//        modelList.add(new RiwayatDaftarModel("Ice Cream Sandwich", "Hello " + " Ice Cream Sandwich"));
-//        modelList.add(new RiwayatDaftarModel("Jelly Bean", "Hello " + " Jelly Bean"));
-//        modelList.add(new RiwayatDaftarModel("KitKat", "Hello " + " KitKat"));
-//        modelList.add(new RiwayatDaftarModel("Lollipop", "Hello " + " Lollipop"));
-//        modelList.add(new RiwayatDaftarModel("Marshmallow", "Hello " + " Marshmallow"));
-//        modelList.add(new RiwayatDaftarModel("Nougat", "Hello " + " Nougat"));
-//        modelList.add(new RiwayatDaftarModel("Android O", "Hello " + " Android O"));
-
 
         mAdapter = new RiwayatDaftarAdapter(RiwayatDaftarActivity.this, modelList);
 
@@ -106,8 +91,19 @@ public class RiwayatDaftarActivity extends AppCompatActivity {
 
                 //handle item click events here
                 //Toast.makeText(RiwayatDaftarActivity.this, "Hey " + model.getTitle(), Toast.LENGTH_SHORT).show();
-
-
+               Intent intent=new Intent(RiwayatDaftarActivity.this,DetailRiwayatPeriksaActivity.class);
+               intent.putExtra("nomorantrean",model.getNomorantrean());
+               intent.putExtra("kodebooking",model.getKodebooking());
+               intent.putExtra("namapasien",model.getNamapasien());
+               intent.putExtra("estimasidilayani",model.getEstimasidilayani());
+               intent.putExtra("jamdilayani",model.getJamdilayani());
+               intent.putExtra("namapoli",model.getNamapoli());
+               intent.putExtra("namadokter",model.getNamadokter());
+               intent.putExtra("hari",model.getHari());
+               intent.putExtra("tanggal",model.getTanggal());
+               intent.putExtra("jam_mulai",model.getJam_mulai());
+               intent.putExtra("jam_selesai",model.getJam_selesai());
+               startActivity(intent);
             }
         });
 
@@ -125,7 +121,7 @@ public class RiwayatDaftarActivity extends AppCompatActivity {
         param.put("KD_REKAM_MEDIS",intent.getStringExtra("KD_REKAM_MEDIS"));
         param.put("TANGGAL_PERIKSA",intent.getStringExtra("TANGGAL_PERIKSA"));
         ApiService apiService= retrofit.create(ApiService.class);
-        Call<JsonObject> result=apiService.postBatalDaftar(param);
+        Call<JsonObject> result=apiService.postDaftarAntrian(param);
         result.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {

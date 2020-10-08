@@ -19,10 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".View.DetailRiwayatPeriksaActivity"></activity>
         <activity
             android:name=".RecylcerView.RiwayatDaftarActivity"
             android:label=""
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".View.SummaryPendaftaranActivity" />
         <activity android:name=".View.RingkasanDaftarOnlineActivity" />
         <activity

@@ -32,7 +32,11 @@ public interface ApiService {
     Call<JsonObject> postRawJSON(@Body JsonObject jsonObject);
 
     @FormUrlEncoded
-    @POST("post_batalDaftar")
-    Call<JsonObject> postBatalDaftar(@FieldMap HashMap<String,String> param);
+    @POST("post_DaftarAntrian")
+    Call<JsonObject> postDaftarAntrian(@FieldMap HashMap<String,String> param);
+
+    @FormUrlEncoded
+    @POST("post_BatalDaftarUmum")
+    Call<JsonObject> postBatalDaftarUmum(@FieldMap HashMap<String,String> param);
 
 }

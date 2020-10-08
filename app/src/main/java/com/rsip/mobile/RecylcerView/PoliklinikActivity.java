@@ -27,7 +27,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -67,6 +70,7 @@ public class PoliklinikActivity extends AppCompatActivity {
     private ArrayList<PoliklinikModel> modelList = new ArrayList<>();
     private Retrofit retrofit;
     private Retrofit retrofitDaftar;
+    String str=null;
 
 
     @Override
@@ -94,9 +98,33 @@ public class PoliklinikActivity extends AppCompatActivity {
         tanggalPoli.setText(intent.getStringExtra("tanggal"));
         hariPoli.setText(intent.getStringExtra("hari"));
         postMessage(tanggal);
-        postMessageBPJS(tanggal);
+
+        String parseTime=intent.getStringExtra("tanggal");
+        parseDate(parseTime);
     }
 
+
+    private String parseDate(String time){
+        String inputParse="dd/MM/yyyy";
+        String outputParse="yyyy-MM-dd";
+
+        SimpleDateFormat inputFormat=new SimpleDateFormat(inputParse);
+        SimpleDateFormat outputFormat=new SimpleDateFormat(outputParse);
+
+        Date date=null;
+         str=null;
+
+        try{
+            date=inputFormat.parse(time);
+            str=outputFormat.format(date);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        Log.d("dataTime", "parseDate: "+time);
+        Log.d("dataTime", "parseDate: "+str);
+        postMessageBPJS(str);
+        return str;
+    }
 
     private void setAdapter() {
 
@@ -123,27 +151,46 @@ public class PoliklinikActivity extends AppCompatActivity {
                 //Toast.makeText(PoliklinikActivity.this, "Hey " + model.getTitle(), Toast.LENGTH_SHORT).show();
 
                 Intent intenToRingkasan=new Intent(PoliklinikActivity.this, RingkasanDaftarOnlineActivity.class);
-                intenToRingkasan.putExtra("kdPoliklinik",model.getKd_poliklinikx());
-                intenToRingkasan.putExtra("nm_poliklinikx",model.getNm_poliklinikx());
-                intenToRingkasan.putExtra("nip_dokterx",model.getNip_dokterx());
-                intenToRingkasan.putExtra("nm_dokterx",model.getNm_dokterx());
-                intenToRingkasan.putExtra("harix",model.getHarix());
-                intenToRingkasan.putExtra("tglx",model.getTglx());
-                intenToRingkasan.putExtra("jam_mulaix",model.getJam_mulaix());
-                intenToRingkasan.putExtra("jam_selesaix",model.getJam_selesaix());
-                intenToRingkasan.putExtra("namanya",intent.getStringExtra("namanya"));
-                intenToRingkasan.putExtra("norm",intent.getStringExtra("norm"));
-                intenToRingkasan.putExtra("asuransi",intent.getStringExtra("asuransi"));
-                intenToRingkasan.putExtra("nohp",intent.getStringExtra("nohp"));
-                intenToRingkasan.putExtra("tanggal",intent.getStringExtra("tanggal"));
-                intenToRingkasan.putExtra("hari",intent.getStringExtra("hari"));
+                Log.d("dataIntent", "onItemClick: "+intent.getStringExtra("asuransi"));
+                if (intent.getStringExtra("asuransi").equalsIgnoreCase("BPJS")){
+                    intenToRingkasan.putExtra("nomorkartu",intent.getStringExtra("nomorkartu"));
+                    intenToRingkasan.putExtra("nik",intent.getStringExtra("nik"));
+                    intenToRingkasan.putExtra("asuransi",intent.getStringExtra("asuransi"));
+                    intenToRingkasan.putExtra("nohp",intent.getStringExtra("nohp"));
+                    intenToRingkasan.putExtra("nomorreferensi",intent.getStringExtra("nomorreferensi"));
+                    intenToRingkasan.putExtra("tanggal",str);
+                    intenToRingkasan.putExtra("kdPoliklinik",model.getKd_poliklinikx());
+                    intenToRingkasan.putExtra("jenisreferensi",intent.getIntExtra("jenisreferens",1));
+                    intenToRingkasan.putExtra("jenisrequest",intent.getIntExtra("jenisrequest",2));
+                    intenToRingkasan.putExtra("polieksekutif",intent.getIntExtra("polieksekutif",0));
+                    startActivity(intenToRingkasan);
+                }else{
+                    intenToRingkasan.putExtra("kdPoliklinik",model.getKd_poliklinikx());
+                    intenToRingkasan.putExtra("nm_poliklinikx",model.getNm_poliklinikx());
+                    intenToRingkasan.putExtra("nip_dokterx",model.getNip_dokterx());
+                    intenToRingkasan.putExtra("nm_dokterx",model.getNm_dokterx());
+                    intenToRingkasan.putExtra("harix",model.getHarix());
+                    intenToRingkasan.putExtra("tglx",model.getTglx());
+                    intenToRingkasan.putExtra("jam_mulaix",model.getJam_mulaix());
+                    intenToRingkasan.putExtra("jam_selesaix",model.getJam_selesaix());
+                    intenToRingkasan.putExtra("namanya",intent.getStringExtra("namanya"));
+                    intenToRingkasan.putExtra("norm",intent.getStringExtra("norm"));
+                    intenToRingkasan.putExtra("asuransi",intent.getStringExtra("asuransi"));
+                    intenToRingkasan.putExtra("nohp",intent.getStringExtra("nohp"));
+                    intenToRingkasan.putExtra("tanggal",intent.getStringExtra("tanggal"));
+                    intenToRingkasan.putExtra("hari",intent.getStringExtra("hari"));
+                    startActivity(intenToRingkasan);
+                }
 
-                startActivity(intenToRingkasan);
 
 
             }
         });
 
+
+    }
+
+    private void sendIntent(){
 
     }
 

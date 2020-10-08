@@ -106,7 +106,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+
                 android:background="@android:color/white">
                 <TextView
                     android:id="@+id/titelNik"
@@ -134,6 +136,7 @@
                 android:orientation="vertical"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
                 android:background="@android:color/white">
                 <TextView
                     android:layout_width="match_parent"
@@ -173,7 +176,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
                 android:background="@android:color/white">
                 <TextView
                     android:id="@+id/titelnoRujukan"
@@ -190,7 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:fontFamily="@font/bookmanoldstyle"
-                    android:inputType="numberDecimal"/>
+                    android:inputType="text"/>
 
             </LinearLayout>
             <LinearLayout

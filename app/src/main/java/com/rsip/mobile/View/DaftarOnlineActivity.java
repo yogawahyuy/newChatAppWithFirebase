@@ -172,18 +172,31 @@ public class DaftarOnlineActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         Toast.makeText(DaftarOnlineActivity.this, outputDate, Toast.LENGTH_SHORT).show();
-
+        if (asuransi.equalsIgnoreCase("BPJS")){
+            intent.putExtra("nomorkartu",noKartuBpjs.getText().toString());
+            intent.putExtra("nik",nik.getText().toString());
+            intent.putExtra("asuransi",asuransi);
+            intent.putExtra("nomorreferensi",noRujukan.getText().toString());
+            intent.putExtra("nohp",noHP.getText().toString());
+            //intent.putExtra("tanggal",outputDate);
+            intent.putExtra("tanggal", "30/12/2020");
+            intent.putExtra("jenisreferensi",1);
+            intent.putExtra("jenisrequest",2);
+            intent.putExtra("polieksekutif",0);
+            startActivity(intent);
+        }else {
 //        intent.putExtra("norm",rm);
 //        intent.putExtra("namanya",namanya);
-        intent.putExtra("norm",noRM.getText().toString());
-        intent.putExtra("namanya","Default");
-        intent.putExtra("asuransi",asuransi);
-        intent.putExtra("nohp",noHP.getText().toString());
-       // intent.putExtra("tanggal",outputDate);
-        intent.putExtra("tanggal","30/12/2020");
-        intent.putExtra("hari",harinya);
-        Log.d("asuransi", "getAllDataForm: "+asuransi);
-        startActivity(intent);
+            intent.putExtra("norm", noRM.getText().toString());
+            intent.putExtra("namanya", "Default");
+            intent.putExtra("asuransi", asuransi);
+            intent.putExtra("nohp", noHP.getText().toString());
+            // intent.putExtra("tanggal",outputDate);
+            intent.putExtra("tanggal", "30/12/2020");
+            intent.putExtra("hari", harinya);
+            Log.d("asuransi", "getAllDataForm: " + asuransi);
+            startActivity(intent);
+        }
     }
 
     public void getHariAktif(){

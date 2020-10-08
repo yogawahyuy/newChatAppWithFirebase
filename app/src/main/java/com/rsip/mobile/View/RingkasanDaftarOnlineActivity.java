@@ -88,17 +88,22 @@ public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
     }
 
     private void fillFromIntent(){
-        String tanggalHari=intent.getStringExtra("hari");
-        tanggalHari +=" "+intent.getStringExtra("tanggal");
-        String jammulaiselesai=intent.getStringExtra("jam_mulaix");
-        jammulaiselesai+=" - "+intent.getStringExtra("jam_selesaix");
-        noRM.setText(intent.getStringExtra("norm"));
-        namaPasien.setText(intent.getStringExtra("namanya"));
-        poli.setText(intent.getStringExtra("nm_poliklinikx"));
-        nmDokter.setText(intent.getStringExtra("nm_dokterx"));
-        hariTanggal.setText(tanggalHari);
-        jamPraktek.setText(jammulaiselesai);
-        asuransi.setText(intent.getStringExtra("asuransi"));
+        if (intent.getStringExtra("asuransi").equalsIgnoreCase("BPJS")){
+
+        }
+        else {
+            String tanggalHari = intent.getStringExtra("hari");
+            tanggalHari += " " + intent.getStringExtra("tanggal");
+            String jammulaiselesai = intent.getStringExtra("jam_mulaix");
+            jammulaiselesai += " - " + intent.getStringExtra("jam_selesaix");
+            noRM.setText(intent.getStringExtra("norm"));
+            namaPasien.setText(intent.getStringExtra("namanya"));
+            poli.setText(intent.getStringExtra("nm_poliklinikx"));
+            nmDokter.setText(intent.getStringExtra("nm_dokterx"));
+            hariTanggal.setText(tanggalHari);
+            jamPraktek.setText(jammulaiselesai);
+            asuransi.setText(intent.getStringExtra("asuransi"));
+        }
     }
 
     private void initialiseRetrofitDaftar(){
@@ -118,38 +123,13 @@ public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
     }
 
     private void postMessageDaftarBPJS(View v){
-//        HashMap<String,String > hashMap=new HashMap<>();
-//        hashMap.put("nomorkartu","0000077162038");
-//        hashMap.put("nik","3506141308950002");
-//        hashMap.put("notelp","081123456778");
-//        hashMap.put("tanggalperiksa","2020-12-30");
-//        hashMap.put("kodepoli","BED");
-//        hashMap.put("nomorreferensi","111119020920P000005");
-//        hashMap.put("jenisreferensi","1");
-//        hashMap.put("jenisrequest","2");
-//        hashMap.put("polieksekutif","0");
-//        ApiService apiService=retrofitDaftar.create(ApiService.class);
-//        Call<JsonObject> result=apiService.postBpjs(hashMap);
-//        result.enqueue(new Callback<JsonObject>() {
-//            @Override
-//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-//                Toast.makeText(RingkasanDaftarOnlineActivity.this, response.body().toString(), Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<JsonObject> call, Throwable t) {
-//                Toast.makeText(RingkasanDaftarOnlineActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
-//                Log.d("data", "onFailure: "+t.getMessage());
-//            }
-//        });
-
         JsonObject jsonObject=new JsonObject();
-        jsonObject.addProperty("nomorkartu","0000077162038");
-        jsonObject.addProperty("nik","3506141308950002");
-        jsonObject.addProperty("notelp","081123456778");
+        jsonObject.addProperty("nomorkartu",intent.getStringExtra("nomorkartu"));
+        jsonObject.addProperty("nik",intent.getStringExtra("nik"));
+        jsonObject.addProperty("notelp",intent.getStringExtra("nohp"));
         jsonObject.addProperty("tanggalperiksa","2020-12-30");
         jsonObject.addProperty("kodepoli","BED");
-        jsonObject.addProperty("nomorreferensi","111119020920P000005");
+        jsonObject.addProperty("nomorreferensi",intent.getStringExtra("nomorreferensi"));
         jsonObject.addProperty("jenisreferensi",1);
         jsonObject.addProperty("jenisrequest",2);
         jsonObject.addProperty("polieksekutif",0);
@@ -176,15 +156,6 @@ public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
                         intent1.putExtra("namadokter",reponse.getString("namadokter"));
                         intent1.putExtra("asuransi",intent.getStringExtra("asuransi"));
                         startActivity(intent1);
-                    }
-                    Boolean status=root.getBoolean("status");
-                    Log.d("datab", "onResponse: "+status);
-                    if (!status){
-                        String mesge=root.getString("msg");
-                        Snackbar snackbar= Snackbar.make(v,mesge,Snackbar.LENGTH_LONG);
-                        snackbar.show();
-                        //Toast.makeText(RingkasanDaftarOnlineActivity.this, "", Toast.LENGTH_SHORT).show();
-
                     }
                 }catch (Exception e){
                     e.printStackTrace();
