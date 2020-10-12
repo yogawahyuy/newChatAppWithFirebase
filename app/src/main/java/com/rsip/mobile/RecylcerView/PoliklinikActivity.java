@@ -160,9 +160,14 @@ public class PoliklinikActivity extends AppCompatActivity {
                     intenToRingkasan.putExtra("nomorreferensi",intent.getStringExtra("nomorreferensi"));
                     intenToRingkasan.putExtra("tanggal",str);
                     intenToRingkasan.putExtra("kdPoliklinik",model.getKd_poliklinikx());
+                    intenToRingkasan.putExtra("nmPoliKlinik",model.getNm_poliklinikx());
                     intenToRingkasan.putExtra("jenisreferensi",intent.getIntExtra("jenisreferens",1));
                     intenToRingkasan.putExtra("jenisrequest",intent.getIntExtra("jenisrequest",2));
                     intenToRingkasan.putExtra("polieksekutif",intent.getIntExtra("polieksekutif",0));
+                    intenToRingkasan.putExtra("harix",model.getHarix());
+                    intenToRingkasan.putExtra("nm_dokterx",model.getNm_dokterx());
+                    intenToRingkasan.putExtra("jam_mulaix",model.getJam_mulaix());
+                    intenToRingkasan.putExtra("jam_selesaix",model.getJam_selesaix());
                     startActivity(intenToRingkasan);
                 }else{
                     intenToRingkasan.putExtra("kdPoliklinik",model.getKd_poliklinikx());

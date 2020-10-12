@@ -178,8 +178,8 @@ public class DaftarOnlineActivity extends AppCompatActivity {
             intent.putExtra("asuransi",asuransi);
             intent.putExtra("nomorreferensi",noRujukan.getText().toString());
             intent.putExtra("nohp",noHP.getText().toString());
-            //intent.putExtra("tanggal",outputDate);
-            intent.putExtra("tanggal", "30/12/2020");
+            intent.putExtra("tanggal",outputDate);
+            //intent.putExtra("tanggal", "30/12/2020");
             intent.putExtra("jenisreferensi",1);
             intent.putExtra("jenisrequest",2);
             intent.putExtra("polieksekutif",0);
@@ -191,8 +191,8 @@ public class DaftarOnlineActivity extends AppCompatActivity {
             intent.putExtra("namanya", "Default");
             intent.putExtra("asuransi", asuransi);
             intent.putExtra("nohp", noHP.getText().toString());
-            // intent.putExtra("tanggal",outputDate);
-            intent.putExtra("tanggal", "30/12/2020");
+            intent.putExtra("tanggal",outputDate);
+           // intent.putExtra("tanggal", "30/12/2020");
             intent.putExtra("hari", harinya);
             Log.d("asuransi", "getAllDataForm: " + asuransi);
             startActivity(intent);

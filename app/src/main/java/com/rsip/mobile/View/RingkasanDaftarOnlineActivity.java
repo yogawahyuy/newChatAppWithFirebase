@@ -37,7 +37,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
 
-    TextView noRM,namaPasien,poli,nmDokter,hariTanggal,jamPraktek,asuransi;
+    TextView noRM,namaPasien,poli,nmDokter,hariTanggal,jamPraktek,asuransi,titleRM,titleNama,titleNamaDokter;
     Button btnDaftar,btnGantiTanggal,btnGantiPoli;
     Intent intent;
     private Retrofit retrofitDaftar;
@@ -58,6 +58,9 @@ public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
         btnGantiTanggal=findViewById(R.id.btn_GantiTanggal);
         btnGantiPoli=findViewById(R.id.btn_gantipoli);
         asuransi=findViewById(R.id.textpembayaran);
+        titleRM=findViewById(R.id.titelRM);
+        titleNama=findViewById(R.id.titelnama);
+        titleNamaDokter=findViewById(R.id.titelnamaDokter);
         intent=getIntent();
         fillFromIntent();
         initialiseRetrofitDaftar();
@@ -89,7 +92,19 @@ public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
 
     private void fillFromIntent(){
         if (intent.getStringExtra("asuransi").equalsIgnoreCase("BPJS")){
-
+            titleRM.setText("No Kartu BPJS");
+            noRM.setText(intent.getStringExtra("nomorkartu"));
+            titleNama.setText("No Rujukan");
+            namaPasien.setText(intent.getStringExtra("nomorreferensi"));
+            nmDokter.setText(intent.getStringExtra("nm_dokterx"));
+            poli.setText(intent.getStringExtra("nmPoliKlinik"));
+            asuransi.setText(intent.getStringExtra("asuransi"));
+            String tanggalHari = intent.getStringExtra("harix");
+            tanggalHari += " " + intent.getStringExtra("tanggal");
+            String jammulaiselesai = intent.getStringExtra("jam_mulaix");
+            jammulaiselesai += " - " + intent.getStringExtra("jam_selesaix");
+            hariTanggal.setText(tanggalHari);
+            jamPraktek.setText(jammulaiselesai);
         }
         else {
             String tanggalHari = intent.getStringExtra("hari");
@@ -127,8 +142,9 @@ public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
         jsonObject.addProperty("nomorkartu",intent.getStringExtra("nomorkartu"));
         jsonObject.addProperty("nik",intent.getStringExtra("nik"));
         jsonObject.addProperty("notelp",intent.getStringExtra("nohp"));
-        jsonObject.addProperty("tanggalperiksa","2020-12-30");
-        jsonObject.addProperty("kodepoli","BED");
+        jsonObject.addProperty("tanggalperiksa",intent.getStringExtra("tanggal"));
+        jsonObject.addProperty("kodepoli",intent.getStringExtra("kdPoliklinik"));
+        //jsonObject.addProperty("kodepoli","BED");
         jsonObject.addProperty("nomorreferensi",intent.getStringExtra("nomorreferensi"));
         jsonObject.addProperty("jenisreferensi",1);
         jsonObject.addProperty("jenisrequest",2);
@@ -172,11 +188,11 @@ public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
     }
     private void postMessageDaftar(){
         HashMap<String ,String > hashMap=new HashMap<>();
-        hashMap.put("KD_REKAM_MEDIS","108400");
+        hashMap.put("KD_REKAM_MEDIS",intent.getStringExtra("norm"));
         hashMap.put("KD_POLIKLINIK",intent.getStringExtra("kdPoliklinik"));
         hashMap.put("NIP_DOKTER",intent.getStringExtra("nip_dokterx"));
-        // hashMap.put("TANGGAL_PERIKSA",intent.getStringExtra("tanggal"));
-        hashMap.put("TANGGAL_PERIKSA","30/12/2020");
+         hashMap.put("TANGGAL_PERIKSA",intent.getStringExtra("tanggal"));
+        //hashMap.put("TANGGAL_PERIKSA","30/12/2020");
         RegUmumApiService apiService=retrofitDaftar.create(RegUmumApiService.class);
         Call<JsonObject> result=apiService.postMessageDaftar(hashMap);
         result.enqueue(new Callback<JsonObject>() {
