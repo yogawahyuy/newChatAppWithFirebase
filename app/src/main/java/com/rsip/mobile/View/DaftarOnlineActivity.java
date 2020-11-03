@@ -62,6 +62,7 @@ public class DaftarOnlineActivity extends AppCompatActivity {
         spinerTanggal=findViewById(R.id.spinner_Hari);
         listAsuransi=findViewById(R.id.radGroupAsuransi);
        // spinnerAsuransi=findViewById(R.id.spinner_Asuransi);
+
         noRM=findViewById(R.id.edttext_norm);
         noHP=findViewById(R.id.daftarOnlineNoHP);
         noKartuBpjs=findViewById(R.id.edttext_noKartuBpjs);
@@ -74,12 +75,15 @@ public class DaftarOnlineActivity extends AppCompatActivity {
         linNik.setVisibility(View.GONE);
         linNoRujukan.setVisibility(View.GONE);
         getHariAktif();
+        jsonUtil.getHariAktif(this,spinerTanggal,isi);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item,isi);
 //        dataAdapter.setDropDownViewResource
 //                (android.R.layout.simple_spinner_dropdown_item);
+        spinerTanggal.setSelection(1);
         spinerTanggal.setAdapter(dataAdapter);
-        jsonUtil.getHariAktif(this,spinerTanggal,isi);
+        listAsuransi.setSelected(true);
+
        // selectAsuransi();
         btnLanjut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +92,7 @@ public class DaftarOnlineActivity extends AppCompatActivity {
                 switch (id){
                     case R.id.radioBtnBpjs:
 
-                            getAllDataForm("BPJS");
+                        getAllDataForm("BPJS");
 
                         break;
                     case R.id.radioBtnUmum:
@@ -147,6 +151,7 @@ public class DaftarOnlineActivity extends AppCompatActivity {
     private void getAllDataForm(String asuransi){
         Intent intent=new Intent(DaftarOnlineActivity.this,PoliklinikActivity.class);
         //membelah kata
+
         String s=spinerTanggal.getSelectedItem().toString();
         String s1=s.substring(s.indexOf(" "));
 
@@ -183,6 +188,7 @@ public class DaftarOnlineActivity extends AppCompatActivity {
             intent.putExtra("jenisreferensi",1);
             intent.putExtra("jenisrequest",2);
             intent.putExtra("polieksekutif",0);
+            Log.d("datadaftar", "getAllDataForm: "+outputDate);
             startActivity(intent);
         }else {
 //        intent.putExtra("norm",rm);

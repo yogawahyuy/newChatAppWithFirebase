@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rsip.mobile.R;
+import com.rsip.mobile.RecylcerView.DataAmbulanceKeluarActivity;
 import com.rsip.mobile.View.InfoBedActivity;
 import com.rsip.mobile.View.JadwalSholatActivity;
 import com.rsip.mobile.View.KalendarHijriActivity;
@@ -77,7 +78,7 @@ public class GridHomeAdapterOne extends BaseAdapter {
 
                 }
                 else if (position==5){
-                    mContext.startActivity(new Intent(mContext, QuoteActivity.class));
+                    mContext.startActivity(new Intent(mContext, DataAmbulanceKeluarActivity.class));
                 }
             }
         });

@@ -16,8 +16,8 @@ import com.rsip.mobile.R;
  * A simple {@link Fragment} subclass.
  */
 public class MenuTwoFragment extends Fragment {
-        String[] title={"Alquran","Jadwal Sholat","Kartu Pasien","Kartu BPJS","Kalendar Hijriah","Quote"};
-    int[] image={R.drawable.quran,R.drawable.mosque,R.drawable.card,R.drawable.icons8doctormale96,R.drawable.calendar,R.drawable.icons8info80};
+        String[] title={"Alquran","Jadwal Sholat","Kartu Pasien","Kartu BPJS","Kalendar Hijriah","Ambulance"};
+    int[] image={R.drawable.quran,R.drawable.mosque,R.drawable.card,R.drawable.icons8doctormale96,R.drawable.calendar,R.drawable.ambulance};
     View rootView;
     GridView gridView;
     public MenuTwoFragment() {

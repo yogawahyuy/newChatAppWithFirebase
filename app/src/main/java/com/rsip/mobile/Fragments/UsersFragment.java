@@ -17,10 +17,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rsip.mobile.Adapter.UsersAdapter;
+import com.rsip.mobile.BuildConfig;
 import com.rsip.mobile.Model.GlideApp;
 import com.rsip.mobile.Model.User;
 import com.rsip.mobile.R;
 import com.rsip.mobile.View.EditProfileActivity;
+import com.rsip.mobile.View.PrivaciPolicyActivity;
 import com.rsip.mobile.View.StartActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.rsip.mobile.View.TentangAplikasiActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +51,7 @@ public class UsersFragment extends Fragment {
     private Button btnLogout,btnEdit;
     CircleImageView profilePicture;
     ProgressDialog progressDialog;
-    private TextView email,nama,nohp,alamat,jeniskelamin;
+    private TextView email,nama,nohp,alamat,jeniskelamin,appVersionName,tentangAplikasi;
     StorageReference storageReference;
     final FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
 
@@ -67,8 +70,9 @@ public class UsersFragment extends Fragment {
         nohp=view.findViewById(R.id.texthp);
         alamat=view.findViewById(R.id.textalamat);
         jeniskelamin=view.findViewById(R.id.textjk);
+        appVersionName=view.findViewById(R.id.textViewVersiAPP);
         profilePicture=view.findViewById(R.id.profile_picture);
-        progresDialog();
+        tentangAplikasi=view.findViewById(R.id.textViewTentangAplikasi);
         btnEdit=view.findViewById(R.id.edit_profilebtn);
         btnLogout=view.findViewById(R.id.logout_profilebtn);
         if (firebaseUser==null){
@@ -85,7 +89,8 @@ public class UsersFragment extends Fragment {
                     Toast.makeText(getContext(), "Anda Berhasil Logout", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getContext(), StartActivity.class));
                 }else{
-                    startActivity(new Intent(getContext(), StartActivity.class));
+                    //startActivity(new Intent(getContext(), StartActivity.class));
+                    Toast.makeText(getContext(), "Fitur Sedang Dikembangkan", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -102,6 +107,13 @@ public class UsersFragment extends Fragment {
         }
         users=new ArrayList<>();
         readUsers();
+        appVersionName.setText("Versi Aplikasi "+BuildConfig.VERSION_NAME);
+        tentangAplikasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), TentangAplikasiActivity.class));
+            }
+        });
        // GlideApp.with(getContext()).load(storageReference).into(profilePicture);
         return view;
     }
@@ -115,6 +127,7 @@ public class UsersFragment extends Fragment {
 
     private void readUsers() {
         if (firebaseUser!=null) {
+            progresDialog();
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
             storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+firebaseUser.getUid()+".jpg");
             //Glide.with(getContext()).load(storageReference).into(profilePicture);

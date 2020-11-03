@@ -55,12 +55,13 @@ public class JadwalOperasiAdapter extends RecyclerView.Adapter<RecyclerView.View
             final JadwalOperasiModel model = getItem(position);
             ViewHolder genericViewHolder = (ViewHolder) holder;
 
-            genericViewHolder.kamar.setText(model.getKamar());
-            genericViewHolder.noRegis.setText(model.getNoRegis());
-            genericViewHolder.tanggalOperasi.setText(model.getTanggalOperasi());
-            genericViewHolder.jamOperasi.setText(model.getJamOperasi());
-            genericViewHolder.operator.setText(model.getOperator());
-            genericViewHolder.lastupdate.setText("Terakhir Update "+model.getLastupdate());
+//            genericViewHolder.kamar.setText(model.getKamar());
+            genericViewHolder.noRegis.setText(model.getKodebooking());
+            genericViewHolder.tanggalOperasi.setText(model.getTanggaloperasi());
+            genericViewHolder.jamOperasi.setText(model.getJenistindakan());
+            genericViewHolder.operator.setText(model.getNamapoli());
+            genericViewHolder.status.setText(model.getTerlaksana());
+//            genericViewHolder.lastupdate.setText("Terakhir Update "+model.getLastupdate());
 
 
         }
@@ -88,18 +89,19 @@ public class JadwalOperasiAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-       private TextView noRegis,kamar,tanggalOperasi,jamOperasi,icd10,icd9,operator,spesialistik,lastupdate;
+       private TextView noRegis,kamar,tanggalOperasi,jamOperasi,icd10,icd9,operator,spesialistik,lastupdate,status;
 
         public ViewHolder(final View itemView) {
             super(itemView);
 
             noRegis=itemView.findViewById(R.id.textView_no_registrasi);
-            kamar=itemView.findViewById(R.id.textView_kamar_operasi);
+//            kamar=itemView.findViewById(R.id.textView_kamar_operasi);
             tanggalOperasi=itemView.findViewById(R.id.textView_tanggal_Operasi);
             jamOperasi=itemView.findViewById(R.id.textView_jam_Operasi);
             operator=itemView.findViewById(R.id.textView_operator);
-            noRegis=itemView.findViewById(R.id.textView_no_registrasi);
-            lastupdate=itemView.findViewById(R.id.textView_update);
+            status=itemView.findViewById(R.id.textView_status);
+//            noRegis=itemView.findViewById(R.id.textView_no_registrasi);
+//            lastupdate=itemView.findViewById(R.id.textView_update);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

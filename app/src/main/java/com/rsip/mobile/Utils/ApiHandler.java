@@ -36,4 +36,13 @@ public class ApiHandler {
                 .build();
         return builder.create(serviceClass);
     }
+
+    public static <S> S createServiceJadwal(Class<S> serviceClass,String baseUrl){
+        Retrofit builder=new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient.build())
+                .build();
+        return builder.create(serviceClass);
+    }
 }

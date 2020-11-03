@@ -19,6 +19,7 @@ import com.rsip.mobile.View.BookingActivity;
 import com.rsip.mobile.View.DaftarOnlineActivity;
 import com.rsip.mobile.View.InfoBedActivity;
 import com.rsip.mobile.View.InfoSemuaDokterActivity;
+import com.rsip.mobile.View.LandingJadwalOperasiActivity;
 import com.rsip.mobile.View.RiwayatPeriksaActivity;
 
 public class GridHomeAdapter extends BaseAdapter {
@@ -78,7 +79,7 @@ public class GridHomeAdapter extends BaseAdapter {
                     mContext.startActivity(new Intent(mContext, DokterTodayActivity.class));
                 }
                 else if (position==4){
-                    mContext.startActivity(new Intent(mContext, JadwalOperasiActivity.class));
+                    mContext.startActivity(new Intent(mContext, LandingJadwalOperasiActivity.class));
                 }else if (position==5){
                     mContext.startActivity(new Intent(mContext, InfoSemuaDokterActivity.class));
                 }

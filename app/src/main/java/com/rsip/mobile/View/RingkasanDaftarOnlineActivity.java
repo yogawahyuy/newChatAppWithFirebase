@@ -105,6 +105,7 @@ public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
             jammulaiselesai += " - " + intent.getStringExtra("jam_selesaix");
             hariTanggal.setText(tanggalHari);
             jamPraktek.setText(jammulaiselesai);
+            Log.d("dataRingkasan", "fillFromIntent: "+ intent.getStringExtra("harix"));
         }
         else {
             String tanggalHari = intent.getStringExtra("hari");
@@ -180,6 +181,9 @@ public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
+                Toast.makeText(RingkasanDaftarOnlineActivity.this, "Gagal Mendaftar, Pastikan Data Yang Anda Masukan Benar", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(RingkasanDaftarOnlineActivity.this,MainActivity.class));
+                finish();
                 Log.d("DataBpjs", "onFailure: "+call.toString());
             }
         });
@@ -192,7 +196,7 @@ public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
         hashMap.put("KD_POLIKLINIK",intent.getStringExtra("kdPoliklinik"));
         hashMap.put("NIP_DOKTER",intent.getStringExtra("nip_dokterx"));
          hashMap.put("TANGGAL_PERIKSA",intent.getStringExtra("tanggal"));
-        //hashMap.put("TANGGAL_PERIKSA","30/12/2020");
+        //hashMap.put("TANGGAL_PERIKSA","31/12/2020");
         RegUmumApiService apiService=retrofitDaftar.create(RegUmumApiService.class);
         Call<JsonObject> result=apiService.postMessageDaftar(hashMap);
         result.enqueue(new Callback<JsonObject>() {
@@ -239,7 +243,8 @@ public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                Toast.makeText(RingkasanDaftarOnlineActivity.this, "Gagal Daftar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RingkasanDaftarOnlineActivity.this, "PASIEN TELAH TERDAFTAR UMUM KE DUA POLI. SILAKAN LAKUKAN PENDAFTARAN KE LOKET PENDAFTARAN UNTUK PENDFTARAN LAINNYA", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(RingkasanDaftarOnlineActivity.this,MainActivity.class));
                 Log.d("data", "onFailure: "+t.getMessage());
                 Log.d("data", "onFailure: "+call.toString());
             }

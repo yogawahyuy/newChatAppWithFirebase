@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.DetailAmbulanceKeluarActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/rel_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimaryDark"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                    >
+
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/logo3"
+                        android:layout_marginStart="20dp"/>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/akreditasi"
+                        android:layout_marginStart="60dp"/>
+
+
+                </androidx.appcompat.widget.Toolbar>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rel_titlebook"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:layout_below="@id/rel_toolbar"
+                android:layout_marginBottom="3dp"
+                android:background="@color/colorPrimaryDark"
+                >
+                <TextView
+                    android:id="@+id/text_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Detail Ambulance Keluar"
+                    android:gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textColor="@android:color/white"
+                    />
+
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/box_data"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rel_titlebook"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_template">
+                    <RelativeLayout
+                        android:id="@+id/page_nama"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <!--                    <ImageView-->
+                        <!--                        android:id="@+id/icon_nama"-->
+                        <!--                        android:layout_width="24dp"-->
+                        <!--                        android:layout_height="24dp"-->
+                        <!--                        android:layout_marginTop="5dp"-->
+                        <!--                        android:src="@drawable/icons8newticket96"/>-->
+                        <TextView
+                            android:id="@+id/titelRM"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Plat Nomor"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="@font/bookmanoldstyle"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/textPlatNomer"
+                            android:layout_below="@id/titelRM"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Yoga Wahyu Yuwono"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:typeface="normal"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="14dp"
+                            android:background="@color/colorGREY"
+                            android:layout_below="@id/textPlatNomer"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/page_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/page_nama"
+                        android:padding="10dp">
+                        <TextView
+                            android:id="@+id/titelnama"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Driver"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="@font/bookmanoldstyle"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/textdriver"
+                            android:layout_below="@id/titelnama"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Yoga Wahyu Yuwono"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:typeface="normal"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="14dp"
+                            android:background="@color/colorGREY"
+                            android:layout_below="@id/textdriver"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/page_pembayran"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/page_email"
+                        android:padding="10dp">
+                        <TextView
+                            android:id="@+id/titelpembayran"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tujuan"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="@font/bookmanoldstyle"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+                        <TextView
+                            android:id="@+id/texttujuan"
+                            android:layout_below="@id/titelpembayran"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Yoga Wahyu Yuwono"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:typeface="normal"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="14dp"
+                            android:background="@color/colorGREY"
+                            android:layout_below="@id/texttujuan"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/page_numberphone"
+                        android:layout_below="@id/page_jammulaiselesai"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/titelnamaDokter"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Jam Keluar"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="@font/bookmanoldstyle"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/textjamKeluar"
+                            android:layout_below="@id/titelnamaDokter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Yoga Wahyu Yuwono"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:typeface="normal"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="14dp"
+                            android:background="@color/colorGREY"
+                            android:layout_below="@id/textjamKeluar"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/page_jk"
+                        android:layout_below="@id/page_numberphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/titelpoli"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Jarak"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="@font/bookmanoldstyle"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_below="@id/titelpoli"
+                            android:id="@+id/textjarak"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Yoga Wahyu Yuwono"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:typeface="normal"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="14dp"
+                            android:background="@color/colorGREY"
+                            android:layout_below="@id/textjarak"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/page_alamat"
+                        android:layout_below="@id/page_jk"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/titelhari"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Jenis Kendaraan"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="@font/bookmanoldstyle"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/textjenis"
+                            android:layout_below="@id/titelhari"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="6dp"
+                            android:text="Yoga Wahyu Yuwono"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:typeface="normal"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="14dp"
+                            android:background="@color/colorGREY"
+                            android:layout_below="@id/textjenis"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                                            android:id="@+id/page_jammulaiselesai"
+                                            android:layout_below="@id/page_pembayran"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:padding="10dp">
+
+                                            <TextView
+                                                android:id="@+id/titeljam"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:text="Tanggal Keluar"
+                                                android:layout_marginLeft="16dp"
+                                                android:fontFamily="@font/bookmanoldstyle"
+                                                android:textColor="@android:color/black"
+                                                android:textSize="16sp"
+                                                android:textStyle="bold"/>
+
+                                            <TextView
+                                                android:id="@+id/texttanggal"
+                                                android:layout_below="@id/titeljam"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="16dp"
+                                                android:layout_marginTop="6dp"
+                                                android:text="Yoga Wahyu Yuwono"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold"
+                                                android:typeface="normal"
+                                                android:fontFamily="@font/bookmanoldstyle"/>
+
+                                            <View
+                                                android:layout_width="match_parent"
+                                                android:layout_height="1px"
+                                                android:layout_marginTop="10dp"
+                                                android:layout_marginLeft="14dp"
+                                                android:background="@color/colorGREY"
+                                                android:layout_below="@id/texttanggal"/>
+                                        </RelativeLayout>
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

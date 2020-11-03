@@ -167,6 +167,7 @@ public class BookingActivity extends AppCompatActivity {
         String todayDate=dateFormat.format(today);
         Log.d("bookingdate", "getDateToTanggalPeriksa: "+todayDate);
         tanggalPeriksa.setText(todayDate);
+
     }
     private void getTimeNow(){
         SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm");

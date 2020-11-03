@@ -19,7 +19,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.DetailRiwayatPeriksaActivity"></activity>
+        <activity android:name=".View.TentangAplikasiActivity"></activity>
+        <activity android:name=".View.PrivaciPolicyActivity" />
+        <activity android:name=".View.TentangActivity" />
+        <activity android:name=".View.DetailAmbulanceKeluarActivity" />
+        <activity
+            android:name=".RecylcerView.DataAmbulanceKeluarActivity"
+            android:label=""
+            android:theme="@style/AppTheme" />
+        <activity android:name=".View.LandingJadwalOperasiActivity" />
+        <activity android:name=".View.DetailRiwayatPeriksaActivity" />
         <activity
             android:name=".RecylcerView.RiwayatDaftarActivity"
             android:label=""

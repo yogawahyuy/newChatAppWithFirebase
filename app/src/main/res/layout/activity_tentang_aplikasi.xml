@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.TentangAplikasiActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/rel_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                >
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/logo3"
+                    android:layout_marginStart="20dp"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/akreditasi"
+                    android:layout_marginStart="60dp"/>
+
+
+            </androidx.appcompat.widget.Toolbar>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_titlebook"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_below="@id/rel_toolbar"
+            android:layout_marginBottom="3dp"
+            android:background="@color/colorPrimaryDark"
+            >
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tentang Aplikasi"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/white"
+                />
+
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_below="@id/rel_titlebook"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:src="@drawable/slide3"
+                android:scaleType="centerCrop"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Aplikasi Mobile RSI Dikembangkan Oleh Instalasi Sistem informasi Rumah Sakit islam Purwokerto"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Anda Dapat menghubungi kami :"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Rumah Sakit Islam Purwokerto"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2. rsip.mobile@gmail.com"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rating Aplikasi"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/ratingapp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Klik Disini Untuk Memberi Rating"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/bookmanoldstyle"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pihak Ketiga : "
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/githubPenggunaQuranJSON"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Github : Pengunna "
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                />
+            <TextView
+                android:id="@+id/githubRioastamal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2. Github : rioastamal "
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                />
+            <TextView
+                android:id="@+id/aladhan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3. Aladhan"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                />
+            <TextView
+                android:id="@+id/githubIbnux"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="4. Github : Ibnux "
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                />
+            <TextView
+                android:id="@+id/unpkg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5. Unpkg"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                />
+            <TextView
+                android:id="@+id/icon8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6. Icons8.com"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_privasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kebijakan Privasi"
+                android:background="@color/colorPrimaryDark"
+                android:layout_margin="16dp"/>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

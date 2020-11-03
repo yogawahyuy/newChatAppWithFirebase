@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.rsip.mobile.Fragments.AboutFragment;
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.rsip.mobile.View.TentangActivity;
 
 import java.util.ArrayList;
 
@@ -45,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         CacheUtil cacheUtil=new CacheUtil();
         cacheUtil.deleteCache(this);
+        profileImage=findViewById(R.id.logorsi);
+        profileImage.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                startActivity(new Intent(MainActivity.this, TentangActivity.class));
+                return false;
+            }
+        });
         bottomNavigationViewEx=findViewById(R.id.bottom_nav_view);
         bottomNavigationViewEx.setIconSize(20, 20);
         bottomNavigationViewEx.setTextSize(12);

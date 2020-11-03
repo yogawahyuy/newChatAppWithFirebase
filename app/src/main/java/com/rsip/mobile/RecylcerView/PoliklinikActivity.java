@@ -168,6 +168,7 @@ public class PoliklinikActivity extends AppCompatActivity {
                     intenToRingkasan.putExtra("nm_dokterx",model.getNm_dokterx());
                     intenToRingkasan.putExtra("jam_mulaix",model.getJam_mulaix());
                     intenToRingkasan.putExtra("jam_selesaix",model.getJam_selesaix());
+                    Log.d("data", "onItemClick: "+model.getHarix());
                     startActivity(intenToRingkasan);
                 }else{
                     intenToRingkasan.putExtra("kdPoliklinik",model.getKd_poliklinikx());

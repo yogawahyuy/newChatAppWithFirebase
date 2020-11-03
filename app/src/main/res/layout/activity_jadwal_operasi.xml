@@ -64,7 +64,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/rel_titlebed"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,12 +103,40 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_kartu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel_titlebed"
+            android:orientation="horizontal"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_template">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="Nomor Kartu"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/textView_nokartu"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="00000"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/bookmanoldstyle"/>
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="vertical"
-            android:layout_below="@id/lin_tanggal"/>
+            android:layout_below="@id/lin_kartu"/>
 
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -39,4 +39,12 @@ public interface ApiService {
     @POST("post_BatalDaftarUmum")
     Call<JsonObject> postBatalDaftarUmum(@FieldMap HashMap<String,String> param);
 
+    @Headers({
+            "Accept: application/json",
+            "Content-Type: application/json",
+            "x-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6IlJTSVAifQ.GZdOrhQbcTgJ2FIV4wRnqFXd5I0AtG7CDUI_RCWn8EM"
+    })
+    @POST("post_jadwalOperasi")
+    Call<JsonObject> postJSONOperasi(@Body JsonObject jsonObject);
+
 }

@@ -3,95 +3,148 @@ package com.rsip.mobile.RecylcerView;
 import java.util.ArrayList;
 
 public class JadwalOperasiModel {
-    private String noRegis,kamar,tanggalOperasi,jamOperasi,icd10,icd9,operator,spesialistik,lastupdate;
-
-    public JadwalOperasiModel(String noRegis, String kamar, String tanggalOperasi, String jamOperasi, String icd10, String icd9, String operator, String spesialistik, String lastupdate) {
-
-        this.noRegis = noRegis;
-        this.kamar = kamar;
-        this.tanggalOperasi = tanggalOperasi;
-        this.jamOperasi = jamOperasi;
-        this.icd10 = icd10;
-        this.icd9 = icd9;
-        this.operator = operator;
-        this.spesialistik = spesialistik;
-        this.lastupdate = lastupdate;
-    }
+    String kodebooking,tanggaloperasi,jenistindakan,kodepoli,namapoli,terlaksana;
 
     public JadwalOperasiModel() {
     }
 
-
-
-    public String getNoRegis() {
-        return noRegis;
+    public String getKodebooking() {
+        return kodebooking;
     }
 
-    public void setNoRegis(String noRegis) {
-        this.noRegis = noRegis;
+    public void setKodebooking(String kodebooking) {
+        this.kodebooking = kodebooking;
     }
 
-    public String getKamar() {
-        return kamar;
+    public String getTanggaloperasi() {
+        return tanggaloperasi;
     }
 
-    public void setKamar(String kamar) {
-        this.kamar = kamar;
+    public void setTanggaloperasi(String tanggaloperasi) {
+        this.tanggaloperasi = tanggaloperasi;
     }
 
-    public String getTanggalOperasi() {
-        return tanggalOperasi;
+    public String getJenistindakan() {
+        return jenistindakan;
     }
 
-    public void setTanggalOperasi(String tanggalOperasi) {
-        this.tanggalOperasi = tanggalOperasi;
+    public void setJenistindakan(String jenistindakan) {
+        this.jenistindakan = jenistindakan;
     }
 
-    public String getJamOperasi() {
-        return jamOperasi;
+    public String getKodepoli() {
+        return kodepoli;
     }
 
-    public void setJamOperasi(String jamOperasi) {
-        this.jamOperasi = jamOperasi;
+    public void setKodepoli(String kodepoli) {
+        this.kodepoli = kodepoli;
     }
 
-    public String getIcd10() {
-        return icd10;
+    public String getNamapoli() {
+        return namapoli;
     }
 
-    public void setIcd10(String icd10) {
-        this.icd10 = icd10;
+    public void setNamapoli(String namapoli) {
+        this.namapoli = namapoli;
     }
 
-    public String getIcd9() {
-        return icd9;
+    public String getTerlaksana() {
+        return terlaksana;
     }
 
-    public void setIcd9(String icd9) {
-        this.icd9 = icd9;
+    public void setTerlaksana(String terlaksana) {
+        this.terlaksana = terlaksana;
     }
 
-    public String getOperator() {
-        return operator;
-    }
-
-    public void setOperator(String operator) {
-        this.operator = operator;
-    }
-
-    public String getSpesialistik() {
-        return spesialistik;
-    }
-
-    public void setSpesialistik(String spesialistik) {
-        this.spesialistik = spesialistik;
-    }
-
-    public String getLastupdate() {
-        return lastupdate;
-    }
-
-    public void setLastupdate(String lastupdate) {
-        this.lastupdate = lastupdate;
-    }
+//    private String noRegis,kamar,tanggalOperasi,jamOperasi,icd10,icd9,operator,spesialistik,lastupdate;
+//
+//    public JadwalOperasiModel(String noRegis, String kamar, String tanggalOperasi, String jamOperasi, String icd10, String icd9, String operator, String spesialistik, String lastupdate) {
+//
+//        this.noRegis = noRegis;
+//        this.kamar = kamar;
+//        this.tanggalOperasi = tanggalOperasi;
+//        this.jamOperasi = jamOperasi;
+//        this.icd10 = icd10;
+//        this.icd9 = icd9;
+//        this.operator = operator;
+//        this.spesialistik = spesialistik;
+//        this.lastupdate = lastupdate;
+//    }
+//
+//    public JadwalOperasiModel() {
+//    }
+//
+//
+//
+//    public String getNoRegis() {
+//        return noRegis;
+//    }
+//
+//    public void setNoRegis(String noRegis) {
+//        this.noRegis = noRegis;
+//    }
+//
+//    public String getKamar() {
+//        return kamar;
+//    }
+//
+//    public void setKamar(String kamar) {
+//        this.kamar = kamar;
+//    }
+//
+//    public String getTanggalOperasi() {
+//        return tanggalOperasi;
+//    }
+//
+//    public void setTanggalOperasi(String tanggalOperasi) {
+//        this.tanggalOperasi = tanggalOperasi;
+//    }
+//
+//    public String getJamOperasi() {
+//        return jamOperasi;
+//    }
+//
+//    public void setJamOperasi(String jamOperasi) {
+//        this.jamOperasi = jamOperasi;
+//    }
+//
+//    public String getIcd10() {
+//        return icd10;
+//    }
+//
+//    public void setIcd10(String icd10) {
+//        this.icd10 = icd10;
+//    }
+//
+//    public String getIcd9() {
+//        return icd9;
+//    }
+//
+//    public void setIcd9(String icd9) {
+//        this.icd9 = icd9;
+//    }
+//
+//    public String getOperator() {
+//        return operator;
+//    }
+//
+//    public void setOperator(String operator) {
+//        this.operator = operator;
+//    }
+//
+//    public String getSpesialistik() {
+//        return spesialistik;
+//    }
+//
+//    public void setSpesialistik(String spesialistik) {
+//        this.spesialistik = spesialistik;
+//    }
+//
+//    public String getLastupdate() {
+//        return lastupdate;
+//    }
+//
+//    public void setLastupdate(String lastupdate) {
+//        this.lastupdate = lastupdate;
+//    }
 }
