@@ -80,29 +80,35 @@
                     shimmer:duration="800">
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="270dp"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical">
-                        <RelativeLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="75dp"
-                            android:background="@drawable/bg_templategreens">
-                            <TextView
-                                android:id="@+id/kartupasienTV"
-                                android:layout_width="375dp"
-                                android:layout_height="75dp"
-                                android:text="Kartu BPJS"
-                                android:textSize="34sp"
-                                android:textColor="@android:color/white"
-                                android:fontFamily="@font/bookmanoldstyle"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center_horizontal"/>
+                            android:background="#09836c"
+                            android:orientation="horizontal">
                             <ImageView
                                 android:layout_width="150dp"
                                 android:layout_height="wrap_content"
-                                android:layout_toRightOf="@id/kartupasienTV"
-                                android:src="@drawable/logo3"/>
+                                android:src="@drawable/logogaruda"/>
 
-                        </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="75dp"
+                                android:text="Kartu Indonesia Sehat"
+                                android:fontFamily="@font/bookmanoldstyle"
+                                android:textColor="@android:color/white"
+                                android:textSize="30sp"
+                                android:gravity="center_vertical"/>
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/bpjs"
+                                android:layout_marginTop="8dp"/>
+
+
+
+                        </LinearLayout>
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="190dp"
