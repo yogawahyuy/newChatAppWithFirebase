@@ -67,7 +67,7 @@ public class ChatsFragment extends Fragment {
         callRsi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
                 callIntent.setData(Uri.parse("tel:085875035300"));
                 startActivity(callIntent);
             }

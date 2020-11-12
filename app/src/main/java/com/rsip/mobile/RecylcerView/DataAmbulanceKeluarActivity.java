@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.rsip.mobile.R;
 import com.rsip.mobile.View.DetailAmbulanceKeluarActivity;
 
+import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
 
@@ -32,7 +33,7 @@ public class DataAmbulanceKeluarActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
 
-
+    private TextView emptyView;
     private DataAmbulanceKeluarAdapter mAdapter;
 
     private ArrayList<DataAmbulanceKeluarModel> modelList = new ArrayList<>();
@@ -54,6 +55,8 @@ public class DataAmbulanceKeluarActivity extends AppCompatActivity {
     private void findViews() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         readFromFirebase();
+        emptyView=findViewById(R.id.emptyview);
+        emptyView.setVisibility(View.GONE);
     }
 
 
@@ -111,6 +114,10 @@ public class DataAmbulanceKeluarActivity extends AppCompatActivity {
                     dataAmbulanceKeluarModel.setKey(dataSnapshot.getKey());
                     if (dataAmbulanceKeluarModel.getStatus().equalsIgnoreCase("Keluar")){
                         modelList.add(dataAmbulanceKeluarModel);
+                    }
+                    if (modelList.size()==0){
+                        emptyView.setVisibility(View.VISIBLE);
+                        recyclerView.setVisibility(View.GONE);
                     }
                     setAdapter();
                 }

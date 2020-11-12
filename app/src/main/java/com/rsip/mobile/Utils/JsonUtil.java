@@ -253,7 +253,7 @@ public class JsonUtil {
         Volley.newRequestQueue(context).add(jsonArrayRequest);
     }
 
-    public void getDateHijri(final Context context, final List<KalendarHijriModel> kalendarHijri,String tanggal,ProgressDialog progressDialog,TextView days,TextView month,TextView years,TextView dates,TextView holidays){
+    public void getDateHijri(final Context context, final List<KalendarHijriModel> kalendarHijri,String tanggal,TextView days,TextView month,TextView years,TextView dates,TextView holidays){
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "http://api.aladhan.com/v1/gToH?date=" + tanggal, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -291,7 +291,7 @@ public class JsonUtil {
                                 holidays.setText(holiday.getString(0));
                             }
                         }
-                        progressDialog.dismiss();
+                        //progressDialog.dismiss();
                     }catch (JSONException e){
                         e.printStackTrace();
                     }
@@ -346,7 +346,7 @@ public class JsonUtil {
         Volley.newRequestQueue(context).add(jsonArrayRequest);
     }
 
-    public void getQuotesIslamic(Context context,TextView quoteText,TextView quouteAuthor,TextView surahNo,TextView ayahNo){
+    public void getQuotesIslamic(Context context,TextView quoteText,TextView quouteAuthor,TextView surahNo,TextView ayahNo,ProgressDialog progressDialog){
         JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, "https://unpkg.com/quran-json@1.0.1/json/quran/id.json", null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -368,7 +368,7 @@ public class JsonUtil {
                     quouteAuthor.setText(quoteModelList.get(hasilRandom).getQuoteAuthor());
                     surahNo.setText(quoteModelList.get(hasilRandom).getSurahNo());
                     ayahNo.setText(quoteModelList.get(hasilRandom).getAyahNo());
-
+                    progressDialog.dismiss();
                 }catch (JSONException e){
                     e.getMessage();
                 }

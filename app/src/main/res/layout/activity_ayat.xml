@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     android:id="@+id/actvity_ayats"
     tools:context=".View.AyatActivity"
-    app:umanoPanelHeight="75dp"
-    app:umanoShadowHeight="5dp"
     android:gravity="bottom">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -65,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/rel_titlebook"
             android:orientation="horizontal"
-            android:background="@drawable/bg_templategreens">
+            android:background="@drawable/bg_templatehijau">
             <TextView
                 android:id="@+id/tv_typesurah"
                 android:layout_width="125dp"
@@ -101,8 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/lin_ayat"
-            android:layout_marginBottom="3dp"
-            android:background="@drawable/bg_templategreens"
+            android:background="@drawable/bg_templatehijau"
             android:visibility="visible"
 
             >
@@ -116,7 +113,7 @@
                     android:id="@+id/text_player"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Putar Surah Ini"
+                    android:text="Putar Surah  Ini"
                     android:gravity="center_horizontal"
                     android:textStyle="bold"
                     android:textSize="18sp"

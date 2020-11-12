@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/rel_titlebook"
             android:orientation="horizontal"
-            android:background="@drawable/bg_templategreens"
+            android:background="@drawable/bg_templatehijau"
             android:layout_marginBottom="3dp">
             <TextView
                 android:id="@+id/tv_tempat"

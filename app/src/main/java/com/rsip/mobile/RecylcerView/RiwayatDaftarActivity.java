@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import com.rsip.mobile.R;
 import com.rsip.mobile.Utils.Koneksi;
 import com.rsip.mobile.View.DetailRiwayatPeriksaActivity;
 
+import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
 
@@ -45,6 +47,7 @@ public class RiwayatDaftarActivity extends AppCompatActivity {
     Intent intent;
     Retrofit retrofit;
 
+    private TextView emptyView;
     private ArrayList<RiwayatDaftarModel> modelList = new ArrayList<>();
 
 
@@ -61,9 +64,11 @@ public class RiwayatDaftarActivity extends AppCompatActivity {
 
     private void findViews() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        emptyView=findViewById(R.id.emptyview);
         intent=getIntent();
         initialitatonRetrofit();
         postMessageDaftarAntrian();
+        emptyView.setVisibility(View.GONE);
     }
 
 
@@ -120,6 +125,8 @@ public class RiwayatDaftarActivity extends AppCompatActivity {
         HashMap<String,String> param=new HashMap<>();
         param.put("KD_REKAM_MEDIS",intent.getStringExtra("KD_REKAM_MEDIS"));
         param.put("TANGGAL_PERIKSA",intent.getStringExtra("TANGGAL_PERIKSA"));
+        Log.d("data", "postMessageDaftarAntrian: "+intent.getStringExtra("KD_REKAM_MEDIS"));
+        Log.d("data", "postMessageDaftarAntrian: "+intent.getStringExtra("TANGGAL_PERIKSA"));
         ApiService apiService= retrofit.create(ApiService.class);
         Call<JsonObject> result=apiService.postDaftarAntrian(param);
         result.enqueue(new Callback<JsonObject>() {
@@ -144,8 +151,15 @@ public class RiwayatDaftarActivity extends AppCompatActivity {
                         riwayatDaftarModel.setJam_mulai(data.getString("jam_mulai"));
                         riwayatDaftarModel.setJam_selesai(data.getString("jam_selesai"));
                         modelList.add(riwayatDaftarModel);
+//                        if (modelList.size()==0){
+//                            emptyView.setVisibility(View.VISIBLE);
+//                            recyclerView.setVisibility(View.GONE);
+//                        }
+                        Log.d("data", "onResponse: "+riwayatDaftarModel.getNomorantrean());
 
                     }
+
+
                 setAdapter();
                 }catch (Exception e){
                     e.printStackTrace();

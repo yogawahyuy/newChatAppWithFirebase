@@ -50,8 +50,8 @@ public class KalendarHijriActivity extends AppCompatActivity {
 
         getDateNow();
         progresDialog();
-        jsonUtil.getDateHijri(this,kalendarHijriModels,currentDate,progressDialog,day,month,year,date,holiday);
-        jsonUtil.getQuotesIslamic(this,quoteText,quoteAuthor,surahNo,ayahNo);
+        jsonUtil.getDateHijri(this,kalendarHijriModels,currentDate,day,month,year,date,holiday);
+        jsonUtil.getQuotesIslamic(this,quoteText,quoteAuthor,surahNo,ayahNo,progressDialog);
 
         btnGantiTanggal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +68,7 @@ public class KalendarHijriActivity extends AppCompatActivity {
         btnGantiAyat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jsonUtil.getQuotesIslamic(KalendarHijriActivity.this,quoteText,quoteAuthor,surahNo,ayahNo);
+                jsonUtil.getQuotesIslamic(KalendarHijriActivity.this,quoteText,quoteAuthor,surahNo,ayahNo,progressDialog);
             }
         });
     }
@@ -82,7 +82,7 @@ public class KalendarHijriActivity extends AppCompatActivity {
 
     private void progresDialog() {
         progressDialog=new ProgressDialog(this);
-        progressDialog.setMessage("Sedang Mengambil Jadwal Solat");
+        progressDialog.setMessage("Sedang Mengambil Data");
         progressDialog.setIndeterminate(false);
         progressDialog.setCanceledOnTouchOutside(true);
         progressDialog.setCancelable(true);
@@ -101,7 +101,7 @@ public class KalendarHijriActivity extends AppCompatActivity {
                 currentDate=dayOfMonth+"-"+(monthss+1)+"-"+yearss;
                 Log.d("hijricurentdate", "onDateSet: "+currentDate);
                 dateMasehi.setText(currentDate);
-                jsonUtil.getDateHijri(KalendarHijriActivity.this,kalendarHijriModels,currentDate,progressDialog,day,month,year,date,holiday);
+                jsonUtil.getDateHijri(KalendarHijriActivity.this,kalendarHijriModels,currentDate,day,month,year,date,holiday);
             }
         },years,months,days);
         datePickerDialog.show();

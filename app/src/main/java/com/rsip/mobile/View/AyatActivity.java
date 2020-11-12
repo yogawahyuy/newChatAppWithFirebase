@@ -158,7 +158,6 @@ public class AyatActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
         super.onBackPressed();
         handler.removeCallbacks(updater);
         mediaPlayer.stop();
@@ -176,6 +175,8 @@ public class AyatActivity extends AppCompatActivity {
             mediaPlayer.setDataSource(urlMusic);
             mediaPlayer.prepare();
             textTotalDuration.setText(millisSecondToTimer(mediaPlayer.getDuration()));
+
+
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
