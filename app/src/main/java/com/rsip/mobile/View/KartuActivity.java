@@ -37,7 +37,9 @@ public class KartuActivity extends AppCompatActivity {
         QRCodeWriter writer=new QRCodeWriter();
         try{
             //BitMatrix bitMatrix=multiFormatWriter.encode(modal, BarcodeFormat.QR_CODE,200,200);
+
             BitMatrix bitMatrix=writer.encode("rsipurwokerto.co.id", BarcodeFormat.QR_CODE,500,500);
+            //BitMatrix bitMatrix=writer.encode("11123345", BarcodeFormat.CODE_128,500,500);
             int width=bitMatrix.getWidth();
             int height=bitMatrix.getHeight();
             Bitmap bm=Bitmap.createBitmap(width,height, Bitmap.Config.RGB_565);
