@@ -73,6 +73,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.8.1'
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.8.1'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+    implementation 'com.github.florent37:expansionpanel:1.2.4'
 
 
 }

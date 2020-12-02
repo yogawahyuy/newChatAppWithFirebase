@@ -68,7 +68,8 @@
                 android:id="@+id/box_photo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:visibility="gone">
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_picture"
                     android:layout_width="150dp"
@@ -81,7 +82,7 @@
                 android:layout_below="@id/box_photo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="50dp"
                 android:padding="10dp">
 
                 <RelativeLayout
@@ -267,7 +268,8 @@
                         android:layout_below="@id/page_alamat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp">
+                        android:padding="10dp"
+                        android:visibility="gone">
 
                         <ImageView
                             android:id="@+id/icon_keterangan"

@@ -79,7 +79,9 @@ public class RingkasanDaftarOnlineActivity extends AppCompatActivity {
         btnGantiPoli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RingkasanDaftarOnlineActivity.this,PoliklinikActivity.class));
+                Intent intent1=new Intent(RingkasanDaftarOnlineActivity.this,PoliklinikActivity.class);
+                intent1.putExtra("asuransi",intent.getStringExtra("asuransi"));
+                startActivity(intent1);
             }
         });
         btnGantiTanggal.setOnClickListener(new View.OnClickListener() {

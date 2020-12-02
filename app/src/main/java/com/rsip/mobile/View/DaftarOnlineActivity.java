@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -61,8 +62,6 @@ public class DaftarOnlineActivity extends AppCompatActivity {
         btnLanjut=findViewById(R.id.btn_lanjut);
         spinerTanggal=findViewById(R.id.spinner_Hari);
         listAsuransi=findViewById(R.id.radGroupAsuransi);
-       // spinnerAsuransi=findViewById(R.id.spinner_Asuransi);
-
         noRM=findViewById(R.id.edttext_norm);
         noHP=findViewById(R.id.daftarOnlineNoHP);
         noKartuBpjs=findViewById(R.id.edttext_noKartuBpjs);
@@ -78,30 +77,33 @@ public class DaftarOnlineActivity extends AppCompatActivity {
         jsonUtil.getHariAktif(this,spinerTanggal,isi);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item,isi);
-//        dataAdapter.setDropDownViewResource
-//                (android.R.layout.simple_spinner_dropdown_item);
         spinerTanggal.setSelection(1);
         spinerTanggal.setAdapter(dataAdapter);
         listAsuransi.setSelected(true);
-
-       // selectAsuransi();
         btnLanjut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int id=listAsuransi.getCheckedRadioButtonId();
-                switch (id){
+                    int id = listAsuransi.getCheckedRadioButtonId();
+                switch (id) {
                     case R.id.radioBtnBpjs:
-
-                        getAllDataForm("BPJS");
+                        if (TextUtils.isEmpty(noKartuBpjs.getText().toString()) || TextUtils.isEmpty(nik.getText().toString())
+                                || TextUtils.isEmpty(noRujukan.getText().toString())) {
+                            Toast.makeText(DaftarOnlineActivity.this, "Ada Data Kosong", Toast.LENGTH_SHORT).show();
+                        }else {
+                            getAllDataForm("BPJS");
+                        }
 
                         break;
                     case R.id.radioBtnUmum:
-
+                        if (TextUtils.isEmpty(noRM.getText().toString())) {
+                            Toast.makeText(DaftarOnlineActivity.this, "Ada Data Kosong", Toast.LENGTH_SHORT).show();
+                        }else {
                             getAllDataForm("Umum");
-
+                        }
                         break;
                 }
             }
+
         });
         selectAsuransi();
 

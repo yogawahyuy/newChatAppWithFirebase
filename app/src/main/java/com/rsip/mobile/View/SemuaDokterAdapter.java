@@ -62,12 +62,12 @@ public class SemuaDokterAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         if (holder instanceof ViewHolder) {
             final SemuaDokterModel model = getItem(position);
             ViewHolder genericViewHolder = (ViewHolder) holder;
-            storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+model.getKey()+".jpg");
+            //storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+model.getKey()+".jpg");
 
 
 
-            genericViewHolder.itemTxtTitle.setText(model.getNamaDokter());
-            genericViewHolder.itemTxtMessage.setText(model.getSpesialistik());
+            genericViewHolder.itemTxtTitle.setText(model.getNm_dokterx());
+            genericViewHolder.itemTxtMessage.setText(model.getNm_poliklinikx());
 
             Log.d("isi storage", "onBindViewHolder: "+storageReference);
 

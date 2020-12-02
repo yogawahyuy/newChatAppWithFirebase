@@ -127,22 +127,15 @@ public class PoliklinikActivity extends AppCompatActivity {
     }
 
     private void setAdapter() {
-
-
         mAdapter = new PoliKlinikAdapter(PoliklinikActivity.this, modelList);
 
         recyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
         recyclerView.setLayoutManager(layoutManager);
-
-
         recyclerView.setAdapter(mAdapter);
-
-
         mAdapter.SetOnItemClickListener(new PoliKlinikAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position, PoliklinikModel model) {
@@ -196,9 +189,6 @@ public class PoliklinikActivity extends AppCompatActivity {
 
     }
 
-    private void sendIntent(){
-
-    }
 
     private void initialiseRetrofit() {
         String asuransi=intent.getStringExtra("asuransi");
@@ -217,8 +207,8 @@ public class PoliklinikActivity extends AppCompatActivity {
 
     private void postMessageBPJS(String tanggal){
         HashMap<String,String> param=new HashMap<>();
-        //param.put("TANGGAL_PERIKSA",tanggal);
-        param.put("TANGGAL_PERIKSA","30/12/2020");
+        param.put("TANGGAL_PERIKSA",tanggal);
+        //param.put("TANGGAL_PERIKSA","30/12/2020");
         ApiService apiService=retrofit.create(ApiService.class);
         Call<JsonObject> result=apiService.postMessage(param);
         result.enqueue(new Callback<JsonObject>() {
@@ -259,8 +249,8 @@ public class PoliklinikActivity extends AppCompatActivity {
 
     private void postMessage(String tanggal){
         HashMap<String,String> param=new HashMap<>();
-        //param.put("TANGGAL_PERIKSA",tanggal);
-        param.put("TANGGAL_PERIKSA","30/12/2020");
+        param.put("TANGGAL_PERIKSA",tanggal);
+        //param.put("TANGGAL_PERIKSA","30/12/2020");
         ApiService apiService=retrofit.create(ApiService.class);
         Call<JsonObject> result=apiService.postMessage(param);
         result.enqueue(new Callback<JsonObject>() {
@@ -297,40 +287,7 @@ public class PoliklinikActivity extends AppCompatActivity {
 
             }
         });
-//        result.enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                try {
-//                    //Toast.makeText(PoliklinikActivity.this, "respone message"+response.body().string(), Toast.LENGTH_SHORT).show();
-//                    Log.d("data", "onResponse: "+response.body().string());
-//                    String jadwal=response.body().string();
-//                    JSONObject jsonObject=new JSONObject(jadwal);
-//                    JSONObject res=jsonObject.getJSONObject("response");
-//                    JSONArray list=res.getJSONArray("list");
-//                    for (int i = 0; i <list.length() ; i++) {
-//                        JSONObject data=list.getJSONObject(i);
-//                        PoliklinikModel poliklinikModel=new PoliklinikModel();
-//                        poliklinikModel.setKd_poliklinikx(data.getString("kd_poliklinikx"));
-//                        poliklinikModel.setNm_poliklinikx(data.getString("nm_poliklinikx"));
-//                        poliklinikModel.setNip_dokterx(data.getString("nip_dokterx"));
-//                        poliklinikModel.setNm_dokterx(data.getString("nip_dokterx"));
-//                        poliklinikModel.setHarix(data.getString("harix"));
-//                        poliklinikModel.setTglx(data.getString("tglx"));
-//                        poliklinikModel.setJam_mulaix(data.getString("jam_mulaix"));
-//                        poliklinikModel.setJam_selesaix(data.getString("jam_selesaix"));
-//                        modelList.add(poliklinikModel);
-//                    }
-//                    setAdapter();
-//                } catch (IOException | JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//
-//            }
-//        });
+
     }
 
 

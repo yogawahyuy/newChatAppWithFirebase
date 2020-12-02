@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.TentangAplikasiActivity"></activity>
+        <activity android:name=".View.ShareAllJadwalDokter"></activity>
+        <activity android:name=".View.TentangAplikasiActivity" />
         <activity android:name=".View.PrivaciPolicyActivity" />
         <activity android:name=".View.TentangActivity" />
         <activity android:name=".View.DetailAmbulanceKeluarActivity" />

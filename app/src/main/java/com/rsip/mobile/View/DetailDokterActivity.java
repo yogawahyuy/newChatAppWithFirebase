@@ -24,6 +24,7 @@ public class DetailDokterActivity extends AppCompatActivity {
     CircleImageView profilePicture;
     TextView namaDokter,spesialDokter,hariDokter,jamDokter,statusDokter,ketDokter;
     StorageReference storageReference;
+    String jam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,29 +56,40 @@ public class DetailDokterActivity extends AppCompatActivity {
     }
 
     private void fillDataFromIntent(){
-        String harikedua=intent.getStringExtra("harikedua");
-        if (TextUtils.isEmpty(harikedua)) {
-            namaDokter.setText(intent.getStringExtra("namadokter"));
-            spesialDokter.setText(intent.getStringExtra("spesial"));
-            hariDokter.setText(intent.getStringExtra("hari"));
-            jamDokter.setText(intent.getStringExtra("jam"));
-            statusDokter.setText(intent.getStringExtra("status"));
-            ketDokter.setText(intent.getStringExtra("ket"));
-        }else{
-            namaDokter.setText(intent.getStringExtra("namadokter"));
-            spesialDokter.setText(intent.getStringExtra("spesial"));
-            String hari=intent.getStringExtra("hari");
-            hari+=" dan ";
-            hari+=intent.getStringExtra("harikedua");
-            hariDokter.setText(hari);
+        namaDokter.setText(intent.getStringExtra("nm_dokterx"));
+        spesialDokter.setText(intent.getStringExtra("nm_poliklinikx"));
+        jam=intent.getStringExtra("jam_mulaix");
+        jam+=" - ";
+        jam+=intent.getStringExtra("jam_selesaix");
+        jamDokter.setText(jam);
+        hariDokter.setText(intent.getStringExtra("harix"));
+        statusDokter.setText(intent.getStringExtra("status"));
+        ketDokter.setText(intent.getStringExtra("ket"));
+        statusDokter.setText(intent.getStringExtra("tglx"));
 
-            String jam=intent.getStringExtra("jam");
-            jam+=" dan ";
-            jam+=intent.getStringExtra("jamkedua");
-            jamDokter.setText(jam);
-            statusDokter.setText(intent.getStringExtra("status"));
-            ketDokter.setText(intent.getStringExtra("ket"));
-        }
+//        if (TextUtils.isEmpty(harikedua)) {
+//            namaDokter.setText(intent.getStringExtra("nm_dokterx"));
+//            spesialDokter.setText(intent.getStringExtra("nm_poliklinikx"));
+//            hariDokter.setText(intent.getStringExtra("harix"));
+//            jamDokter.setText(intent.getStringExtra("jam_mulaix"));
+//            statusDokter.setText(intent.getStringExtra("status"));
+//            ketDokter.setText(intent.getStringExtra("ket"));
+//        }
+//        else{
+//            namaDokter.setText(intent.getStringExtra("namadokter"));
+//            spesialDokter.setText(intent.getStringExtra("spesial"));
+//            String hari=intent.getStringExtra("hari");
+//            hari+=" dan ";
+//            hari+=intent.getStringExtra("harikedua");
+//            hariDokter.setText(hari);
+//
+//            String jam=intent.getStringExtra("jam");
+//            jam+=" dan ";
+//            jam+=intent.getStringExtra("jamkedua");
+//            jamDokter.setText(jam);
+//            statusDokter.setText(intent.getStringExtra("status"));
+//            ketDokter.setText(intent.getStringExtra("ket"));
+//        }
     }
     private void getPhotoDokter(){
         storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+intent.getStringExtra("key")+".jpg");
@@ -89,11 +101,11 @@ public class DetailDokterActivity extends AppCompatActivity {
         Intent intent1=new Intent(DetailDokterActivity.this,ShareDokterActivity.class);
         intent1.putExtra("key",intent.getStringExtra("key"));
         intent1.putExtra("id",intent.getStringExtra("id"));
-        intent1.putExtra("namadokter",intent.getStringExtra("namadokter"));
-        intent1.putExtra("spesial",intent.getStringExtra("spesial"));
-        intent1.putExtra("hari",intent.getStringExtra("hari"));
-        intent1.putExtra("jam",intent.getStringExtra("jam"));
-        intent1.putExtra("status",intent.getStringExtra("status"));
+        intent1.putExtra("nm_dokterx",intent.getStringExtra("nm_dokterx"));
+        intent1.putExtra("nm_poliklinikx",intent.getStringExtra("nm_poliklinikx"));
+        intent1.putExtra("harix",intent.getStringExtra("harix"));
+        intent1.putExtra("jam",jam);
+        intent1.putExtra("tglx",intent.getStringExtra("tglx"));
         intent1.putExtra("ket",intent.getStringExtra("ket"));
         intent1.putExtra("harikedua",intent.getStringExtra("harikedua"));
         intent1.putExtra("jamkedua",intent.getStringExtra("jamkedua"));

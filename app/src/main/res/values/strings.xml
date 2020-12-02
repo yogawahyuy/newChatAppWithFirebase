@@ -107,4 +107,13 @@
     </string-array>
     <string name="hello_world">Hello world!</string>
     <string name="Konfirmasi">Silahkan Untuk Datang Ke Pendaftaran Rumah Sakit Islam Purwokerto Untuk Konfirmasi</string>
+    <string-array name="hari">
+        <item>Semua Hari</item>
+        <item>SENIN</item>
+        <item>SELASA</item>
+        <item>RABU</item>
+        <item>KAMIS</item>
+        <item>JUMAT</item>
+        <item>SABTU</item>
+    </string-array>
 </resources>

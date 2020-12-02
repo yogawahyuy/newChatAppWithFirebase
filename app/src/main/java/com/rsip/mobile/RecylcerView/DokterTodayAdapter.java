@@ -58,10 +58,10 @@ public class DokterTodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             final DokterTodayModel model = getItem(position);
             ViewHolder genericViewHolder = (ViewHolder) holder;
 
-            genericViewHolder.itemTxtTitle.setText(model.getNamaDokter());
-            genericViewHolder.itemTxtMessage.setText(model.getSpesialistik());
-            storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+model.getKey()+".jpg");
-            GlideApp.with(mContext).load(storageReference).into(genericViewHolder.imgUser);
+            genericViewHolder.itemTxtTitle.setText(model.getNm_dokterx());
+            genericViewHolder.itemTxtMessage.setText(model.getNm_poliklinikx());
+           // storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+model.getKey()+".jpg");
+            //GlideApp.with(mContext).load(storageReference).into(genericViewHolder.imgUser);
 
 
         }

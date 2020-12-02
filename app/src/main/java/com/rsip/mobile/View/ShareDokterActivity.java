@@ -42,8 +42,9 @@ public class ShareDokterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_share_dokter);
        findView();
        intent=getIntent();
-       getDataFromIntent();
-       getPhotoDokter();
+       //getDataFromIntent();
+       //getPhotoDokter();
+        fillDataFromIntent();
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,30 +65,38 @@ public class ShareDokterActivity extends AppCompatActivity {
         jamKedua=findViewById(R.id.text_jamdokterkedua);
         linearLayout=findViewById(R.id.waktu_kedua);
     }
-    private void getDataFromIntent(){
-        String harikeduas=intent.getStringExtra("harikedua");
-        if (!TextUtils.isEmpty(harikeduas)) {
-            namaDokter.setText(intent.getStringExtra("namadokter"));
-            spesialisDokter.setText(intent.getStringExtra("spesial"));
-            hariPertama.setText(intent.getStringExtra("hari"));
-            jamPertama.setText(intent.getStringExtra("jam"));
-        }else{
-            linearLayout.setVisibility(View.VISIBLE);
-            namaDokter.setText(intent.getStringExtra("namadokter"));
-            spesialisDokter.setText(intent.getStringExtra("spesial"));
-            hariPertama.setText(intent.getStringExtra("hari"));
-            jamPertama.setText(intent.getStringExtra("jam"));
-            hariKedua.setText(intent.getStringExtra("harikedua"));
-            jamKedua.setText(intent.getStringExtra("jamkedua"));
-        }
-
+    private void fillDataFromIntent(){
+        namaDokter.setText(intent.getStringExtra("nm_dokterx"));
+        spesialisDokter.setText(intent.getStringExtra("nm_poliklinikx"));
+        hariPertama.setText(intent.getStringExtra("tglx"));
+        //jamPertama.setText(intent.getStringExtra("jam"));
+        hariKedua.setText(intent.getStringExtra("harix"));
+        jamKedua.setText(intent.getStringExtra("jam"));
     }
-    private void getPhotoDokter(){
-        storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+intent.getStringExtra("key")+".jpg");
-        Log.d("detaildokter", "getPhotoDokter: "+storageReference);
-        GlideApp.with(this).load(storageReference).into(profilePicture);
-
-    }
+//    private void getDataFromIntent(){
+//        String harikeduas=intent.getStringExtra("harikedua");
+//        if (!TextUtils.isEmpty(harikeduas)) {
+//            namaDokter.setText(intent.getStringExtra("namadokter"));
+//            spesialisDokter.setText(intent.getStringExtra("spesial"));
+//            hariPertama.setText(intent.getStringExtra("hari"));
+//            jamPertama.setText(intent.getStringExtra("jam"));
+//        }else{
+//            linearLayout.setVisibility(View.VISIBLE);
+//            namaDokter.setText(intent.getStringExtra("namadokter"));
+//            spesialisDokter.setText(intent.getStringExtra("spesial"));
+//            hariPertama.setText(intent.getStringExtra("hari"));
+//            jamPertama.setText(intent.getStringExtra("jam"));
+//            hariKedua.setText(intent.getStringExtra("harikedua"));
+//            jamKedua.setText(intent.getStringExtra("jamkedua"));
+//        }
+//
+//    }
+//    private void getPhotoDokter(){
+//        storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+intent.getStringExtra("key")+".jpg");
+//        Log.d("detaildokter", "getPhotoDokter: "+storageReference);
+//        GlideApp.with(this).load(storageReference).into(profilePicture);
+//
+//    }
 
     @SuppressLint("ResourceAsColor")
     private Bitmap getBitmapFromView(View view){
@@ -102,7 +111,7 @@ public class ShareDokterActivity extends AppCompatActivity {
     private void shareImage(){
         Bitmap bitmap = getBitmapFromView(relativeLayout);
         //String fileName="RsiMobile-"+surahNo.getText().toString()+".jpg";
-        String filePath=this.getFilesDir().getPath().toString() + "/RsiMobile-"+intent.getStringExtra("namadokter")+".PNG";
+        String filePath=this.getFilesDir().getPath().toString() + "/RsiMobile-"+intent.getStringExtra("nm_dokterx")+".PNG";
         File file=new File(filePath);
         try {
             FileOutputStream outputStream = new FileOutputStream(file);

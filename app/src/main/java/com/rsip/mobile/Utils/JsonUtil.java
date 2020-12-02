@@ -25,6 +25,7 @@ import com.rsip.mobile.Model.QuoteModel;
 import com.rsip.mobile.R;
 import com.rsip.mobile.RecylcerView.PoliklinikModel;
 import com.rsip.mobile.View.KalendarHijriActivity;
+import com.rsip.mobile.View.SemuaDokterModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -70,6 +71,47 @@ public class JsonUtil {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i("JsonUtils", "onErrorResponse: "+error);
+            }
+        });
+        Volley.newRequestQueue(context).add(jsonObjectRequest);
+    }
+
+    public void getJadwalAllPoli(Context context, final RecyclerView.Adapter adapter, final List<SemuaDokterModel> semuaDokterModels,String hariSortir){
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, Koneksi.URL_TAMPIL_JADWAL_ALL_POLI, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                if (response.length()>0){
+                    Log.d("getJadwal", "onResponse: "+response.length());
+                    try{
+                        JSONArray root=response.getJSONArray("response");
+                        for (int i = 0; i <root.length() ; i++) {
+                            JSONObject data=root.getJSONObject(i);
+                            SemuaDokterModel semuaDokterModel=new SemuaDokterModel();
+                            semuaDokterModel.setKd_poliklinikx(data.getString("kd_poliklinikx"));
+                            semuaDokterModel.setNm_poliklinikx(data.getString("nm_poliklinikx"));
+                            semuaDokterModel.setNip_dokterx(data.getString("nip_dokterx"));
+                            semuaDokterModel.setNm_dokterx(data.getString("nm_dokterx"));
+                            semuaDokterModel.setHarix(data.getString("harix"));
+                            //semuaDokterModel.setTglx(data.getString("tglx"));
+                            semuaDokterModel.setJam_mulaix(data.getString("jam_mulaix"));
+                            semuaDokterModel.setJam_selesaix(data.getString("jam_selesaix"));
+                            if (data.getString("harix").equalsIgnoreCase(hariSortir)){
+                                semuaDokterModels.add(semuaDokterModel);
+                            }else{
+                                semuaDokterModels.add(semuaDokterModel);
+                            }
+
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
             }
         });
         Volley.newRequestQueue(context).add(jsonObjectRequest);

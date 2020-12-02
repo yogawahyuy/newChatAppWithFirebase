@@ -12,7 +12,7 @@
         android:adjustViewBounds="true"
         android:alpha="0.9"
         android:background="#16000000"
-        android:scaleType="centerCrop" />
+        android:src="@drawable/icons8doctormale96"/>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
         android:id="@+id/rel_utama"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <RelativeLayout
             android:id="@+id/rel_toolbar"
             android:layout_width="match_parent"
@@ -38,7 +38,7 @@
         <RelativeLayout
             android:id="@+id/rel_titlebed"
             android:layout_width="match_parent"
-            android:layout_height="28dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/rel_toolbar"
             android:layout_marginBottom="3dp"
             android:background="@color/colorPrimaryDark"
@@ -54,6 +54,29 @@
                 android:fontFamily="@font/bookmanoldstyle"
                 android:textColor="@android:color/white"
                 />
+            <TextView
+                android:id="@+id/todayDate"
+                android:layout_below="@id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="tanggal"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/white"
+                />
+            <TextView
+                android:id="@+id/tulisanBagikanJadwal"
+                android:layout_below="@id/todayDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bagikan Jadwal"
+                android:gravity="center_horizontal"
+                android:textSize="16sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@color/lightGrey"
+                />
 
 
         </RelativeLayout>
@@ -64,8 +87,9 @@
     android:scrollbars="vertical"
     android:layout_below="@id/rel_titlebed"/>
 
-    </RelativeLayout>
 
+
+    </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
