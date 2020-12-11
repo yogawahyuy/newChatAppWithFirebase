@@ -72,6 +72,13 @@ public class DetailRiwayatPeriksaActivity extends AppCompatActivity {
                 dialogForm();
             }
         });
+        btnKehalamanUtama.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DetailRiwayatPeriksaActivity.this,MainActivity.class));
+                finish();
+            }
+        });
         getDateToTanggalPeriksa();
         initialisingRetrofit();
     }

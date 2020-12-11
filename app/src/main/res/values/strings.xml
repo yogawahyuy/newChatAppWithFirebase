@@ -116,4 +116,24 @@
         <item>JUMAT</item>
         <item>SABTU</item>
     </string-array>
+    <string-array name="poliklinik">
+        <item>Hemodialisa</item>
+        <item>Laboratorium</item>
+        <item>Poli Fisioterapi</item>
+        <item>Poli Kebidanan Dan Kandungan</item>
+        <item>Poli Radiologi</item>
+        <item>Poli Spesialis Anak</item>
+        <item>Poli Spesialis Bedah</item>
+        <item>Poli Spesialis Bedah Urologi</item>
+        <item>Poli Spesialis Forensik</item>
+        <item>Poli Spesialis Jantung</item>
+        <item>Poli Spesialis Orthopedi</item>
+        <item>Poli Spesialis Paru</item>
+        <item>Poli Spesialis Penyakit Dalam</item>
+        <item>Poli Spesialis Syaraf</item>
+        <item>Poli Spesialis THT</item>
+        <item>Poli Fisioterapi</item>
+        <item>Poli Gigi</item>
+        <item>Poli Spesialis Mata</item>
+    </string-array>
 </resources>

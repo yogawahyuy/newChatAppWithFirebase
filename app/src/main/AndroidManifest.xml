@@ -18,7 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.ShareAllJadwalDokter"></activity>
+        <activity android:name=".View.LandingAllJadwalDokterActivity"></activity>
+        <activity
+            android:name=".RecylcerView.JadwalDokterAllActivity"
+            android:label=""
+            android:theme="@style/AppTheme" />
+        <activity android:name=".View.ShareAllJadwalDokter" />
         <activity android:name=".View.TentangAplikasiActivity" />
         <activity android:name=".View.PrivaciPolicyActivity" />
         <activity android:name=".View.TentangActivity" />

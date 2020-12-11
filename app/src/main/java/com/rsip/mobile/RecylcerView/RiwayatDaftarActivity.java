@@ -109,6 +109,7 @@ public class RiwayatDaftarActivity extends AppCompatActivity {
                intent.putExtra("jam_mulai",model.getJam_mulai());
                intent.putExtra("jam_selesai",model.getJam_selesai());
                startActivity(intent);
+               finish();
             }
         });
 

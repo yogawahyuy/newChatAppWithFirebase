@@ -1,0 +1,109 @@
+{
+  "project_info": {
+    "project_number": "348696960174",
+    "firebase_url": "https://rsi-mobile.firebaseio.com",
+    "project_id": "rsi-mobile",
+    "storage_bucket": "rsi-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348696960174:android:47505d1793f6bfe701a13f",
+        "android_client_info": {
+          "package_name": "com.rsip.adminrsimoblie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348696960174-a4o70a5sur6i3clbu3la56fp2nhnsf1j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rsip.adminrsimoblie",
+            "certificate_hash": "91270d91209e705addf909dbe51f16ac5d1f4f74"
+          }
+        },
+        {
+          "client_id": "348696960174-b4tcn109vda57289kfu0ar3duahguto3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rsip.adminrsimoblie",
+            "certificate_hash": "4f005fce1e2880169cd2887221cc4f0bcf1b4ee7"
+          }
+        },
+        {
+          "client_id": "348696960174-hv638ddhgd7qfsdbb4ic861383rgs4aj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rsip.adminrsimoblie",
+            "certificate_hash": "ca70f9a5716f2aa839f2be5deb015a6a7d27b765"
+          }
+        },
+        {
+          "client_id": "348696960174-i3ndn8a1saiffh4vgcmlf69ce44g26lf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4RxeqHqUMg15zqaf4RjRCF5lnEJ4Gm6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348696960174-i3ndn8a1saiffh4vgcmlf69ce44g26lf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348696960174:android:c1605728b7a3ef7301a13f",
+        "android_client_info": {
+          "package_name": "com.rsip.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "348696960174-4nkm6j1t8t0penhb5tbku63dcajvo5o9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rsip.mobile",
+            "certificate_hash": "9d6af41a51a296807ffd9783e50c454569018e02"
+          }
+        },
+        {
+          "client_id": "348696960174-vvabl0vfornnv3gipkvjue85up75pebs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rsip.mobile",
+            "certificate_hash": "4f005fce1e2880169cd2887221cc4f0bcf1b4ee7"
+          }
+        },
+        {
+          "client_id": "348696960174-i3ndn8a1saiffh4vgcmlf69ce44g26lf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4RxeqHqUMg15zqaf4RjRCF5lnEJ4Gm6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "348696960174-i3ndn8a1saiffh4vgcmlf69ce44g26lf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

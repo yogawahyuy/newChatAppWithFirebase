@@ -71,6 +71,7 @@ public class ShareAllJadwalDokter extends AppCompatActivity {
     }
 
     private void findViews(){
+        intent=getIntent();
         tableLayout = (TableLayout)this.findViewById(R.id.tableLayout);
         judul=findViewById(R.id.textViewJudulJadwal);
         relativeLayout=findViewById(R.id.rel_picture);
@@ -83,7 +84,7 @@ public class ShareAllJadwalDokter extends AppCompatActivity {
                 .build();
         getJadwal();
         initTable();
-        Log.d("modelist", "onResponse: "+modelList.size());
+        Log.d("intentss", "onResponse: "+intent.getStringExtra("dokterToday"));
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,10 +170,6 @@ public class ShareAllJadwalDokter extends AppCompatActivity {
         TableLayout tl=findViewById(R.id.tableLayout);
 
         for (int i = 0; i <modelList.size() ; i++) {
-//            TableRow row=new TableRow(this);
-//            TableRow.LayoutParams lp=new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
-//            row.setLayoutParams(lp);
-//            row.setPadding(5,5,5,5);
             TableRow row=(TableRow)getLayoutInflater().inflate(R.layout.layout_row,null);
             String nomer=String.valueOf(i+1);
             String jamPraktek=modelList.get(i).getJam_mulaix();
@@ -181,36 +178,6 @@ public class ShareAllJadwalDokter extends AppCompatActivity {
             ((TextView) row.findViewById(R.id.idDoktertabel)).setText(modelList.get(i).getNm_dokterx());
             ((TextView) row.findViewById(R.id.idPolitabel)).setText(modelList.get(i).getNm_poliklinikx());
             ((TextView) row.findViewById(R.id.idJamtabel)).setText(jamPraktek);
-
-//            TextView no=new TextView(this);
-////            no.setTextColor(Color.WHITE);
-////            no.setWidth(40);
-////            no.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-//            no.setGravity(Gravity.CENTER);
-//            TextView dokter=new TextView(this);
-//            dokter.setTextColor(Color.WHITE);
-//            //dokter.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
-//            //dokter.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-//            dokter.setGravity(Gravity.CENTER);
-//            TextView poli=new TextView(this);
-//            poli.setTextColor(Color.WHITE);
-////            poli.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
-////            poli.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-//            poli.setGravity(Gravity.CENTER);
-//            TextView jampraktek=new TextView(this);
-//            jampraktek.setTextColor(Color.WHITE);
-////            jampraktek.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
-////            jampraktek.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-//            jampraktek.setGravity(Gravity.CENTER);
-//            String nomer=String.valueOf(i+1);
-//            no.setText(nomer);
-//            dokter.setText(modelList.get(i).getNm_dokterx());
-//            poli.setText(modelList.get(i).getNm_poliklinikx());
-//            jampraktek.setText(modelList.get(i).getJam_mulaix());
-//            row.addView(no);
-//            row.addView(dokter);
-//            row.addView(poli);
-//            row.addView(jampraktek);
             tl.addView(row);
         }
     }

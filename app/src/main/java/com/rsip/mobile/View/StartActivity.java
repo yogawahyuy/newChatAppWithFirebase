@@ -39,6 +39,7 @@ public class StartActivity extends AppCompatActivity {
         login=findViewById(R.id.btnLoginApp);
         register=findViewById(R.id.btnRegisterApp);
         skipLogin=findViewById(R.id.textskip);
+        skipLogin.setVisibility(View.GONE);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

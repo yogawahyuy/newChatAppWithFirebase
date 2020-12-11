@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.LandingAllJadwalDokterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/rel_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/logo3" />
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="60dp"
+                    android:src="@drawable/akreditasi" />
+
+
+            </androidx.appcompat.widget.Toolbar>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_titlebook"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_below="@id/rel_toolbar"
+            android:background="@color/colorPrimaryDark"
+            >
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pencarian Jadwal Dokter"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/white"
+                />
+
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_landing_jadwal_dokter"
+            android:layout_below="@id/rel_titlebook"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="100dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Jadwal"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/black"
+                android:gravity="center"/>
+            <EditText
+                android:id="@+id/edittxt_tanggaljadwal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+            <Button
+                android:id="@+id/btn_cari"
+                android:layout_below="@id/linCariRiwayat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cari"
+                android:background="@drawable/bg_templategreens"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+            <Button
+                android:id="@+id/btn_poli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cari Berdasarkan Poli"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_template"/>
+
+            <Button
+                android:id="@+id/btn_jadwal_semua_dokter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jadwal Semua dokter"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_templateyellow"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

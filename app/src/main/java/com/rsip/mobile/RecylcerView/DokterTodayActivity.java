@@ -93,7 +93,9 @@ public class DokterTodayActivity extends AppCompatActivity {
         shareJadwal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DokterTodayActivity.this, ShareAllJadwalDokter.class));
+                Intent intent = new Intent(DokterTodayActivity.this, ShareAllJadwalDokter.class);
+                intent.putExtra("dokterToday","true");
+                startActivity(intent);
             }
         });
 
@@ -160,6 +162,7 @@ public class DokterTodayActivity extends AppCompatActivity {
                 //handle item click events here
                 //Toast.makeText(DokterTodayActivity.this, "Hey " + model.getTitle(), Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(DokterTodayActivity.this, DetailDokterActivity.class);
+                intent.putExtra("doktertoday","doktertoday");
                 intent.putExtra("kdPoliklinik",model.getKd_poliklinikx());
                 intent.putExtra("nm_poliklinikx",model.getNm_poliklinikx());
                 intent.putExtra("nip_dokterx",model.getNip_dokterx());

@@ -25,7 +25,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.android.volley.Request;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
@@ -46,6 +45,7 @@ import com.rsip.mobile.Utils.Koneksi;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
 
@@ -55,6 +55,7 @@ import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -69,9 +70,11 @@ public class InfoSemuaDokterActivity extends AppCompatActivity {
     private ArrayList<SemuaDokterModel> modelList = new ArrayList<>();
     DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Dokter");
     StorageReference storageReference;
+    Intent intent;
     private Retrofit retrofit;
     private String curentDate;
     private SearchableSpinner searchableSpinnerHari;
+    private TextView tanggalDokter;
 
 
     @Override
@@ -80,33 +83,41 @@ public class InfoSemuaDokterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info_semua_dokter);
 
         findViews();
-       // readDokter();
-        //setAdapter();
 
 
     }
 
     private void findViews() {
+        intent=getIntent();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         searchableSpinnerHari=findViewById(R.id.spinner_Hari);
+        tanggalDokter=findViewById(R.id.text_tanggal);
+        String tanggalnya="Tanggal ";
+        tanggalnya += intent.getStringExtra("TANGGAL_PERIKSA");
+        tanggalDokter.setText(tanggalnya);
 
+        initialitatonRetrofit();
+
+       // postMessage("28/07/2020");
+        //getJadwalAllPoli();
+//        searchableSpinnerHari.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                //getJadwalAllPoli();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+        getJadwalDokter();
+    }
+    private void initialitatonRetrofit(){
         retrofit = new Retrofit.Builder()
                 .baseUrl(Koneksi.URL_TAMPIL_JADWAL_POLI_UMUM)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-       // postMessage("28/07/2020");
-        getJadwalAllPoli();
-        searchableSpinnerHari.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //getJadwalAllPoli();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 //    private void readDokter(){
 //
@@ -226,10 +237,49 @@ public class InfoSemuaDokterActivity extends AppCompatActivity {
 //
 //    }
 
-    private void getJadwalAllPoli(){
-        setAdapter();
-        JsonUtil jsonUtil=new JsonUtil();
-        jsonUtil.getJadwalAllPoli(this,mAdapter,modelList,searchableSpinnerHari.getSelectedItem().toString());
+//    private void getJadwalAllPoli(){
+//        setAdapter();
+//        JsonUtil jsonUtil=new JsonUtil();
+//        jsonUtil.getJadwalAllPoli(this,mAdapter,modelList,searchableSpinnerHari.getSelectedItem().toString());
+//    }
+
+    private void getJadwalDokter(){
+        HashMap<String , String > param=new HashMap<>();
+        param.put("TANGGAL_PERIKSA",intent.getStringExtra("TANGGAL_PERIKSA"));
+        ApiService apiService=retrofit.create(ApiService.class);
+        Call<JsonObject> result=apiService.postMessage(param);
+        result.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response.body().toString());
+                    JSONObject res = jsonObject.getJSONObject("response");
+                    JSONArray list = res.getJSONArray("list");
+                    for (int i = 0; i <list.length() ; i++) {
+                        JSONObject data=list.getJSONObject(i);
+                        SemuaDokterModel semuaDokterModel=new SemuaDokterModel();
+                        semuaDokterModel.setKd_poliklinikx(data.getString("kd_poliklinikx"));
+                        semuaDokterModel.setNm_poliklinikx(data.getString("nm_poliklinikx"));
+                        semuaDokterModel.setNip_dokterx(data.getString("nip_dokterx"));
+                        semuaDokterModel.setNm_dokterx(data.getString("nm_dokterx"));
+                        semuaDokterModel.setHarix(data.getString("harix"));
+                        semuaDokterModel.setTglx(data.getString("tglx"));
+                        semuaDokterModel.setJam_mulaix(data.getString("jam_mulaix"));
+                        semuaDokterModel.setJam_selesaix(data.getString("jam_selesaix"));
+                        modelList.add(semuaDokterModel);
+                    }
+                    setAdapter();
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+
+            }
+        });
     }
 
 

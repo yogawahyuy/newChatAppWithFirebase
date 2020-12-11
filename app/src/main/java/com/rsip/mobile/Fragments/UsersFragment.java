@@ -81,6 +81,7 @@ public class UsersFragment extends Fragment {
         }else{
             btnLogout.setText("LOG OUT");
         }
+        progresDialog();
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,9 +89,11 @@ public class UsersFragment extends Fragment {
                     FirebaseAuth.getInstance().signOut();
                     Toast.makeText(getContext(), "Anda Berhasil Logout", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getContext(), StartActivity.class));
+                    getActivity().finish();
                 }else{
-                    //startActivity(new Intent(getContext(), StartActivity.class));
-                    Toast.makeText(getContext(), "Fitur Sedang Dikembangkan", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getContext(), StartActivity.class));
+                    getActivity().finish();
+                    //Toast.makeText(getContext(), "Fitur Sedang Dikembangkan", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -98,7 +101,7 @@ public class UsersFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(), EditProfileActivity.class));
-                getActivity().finish();
+                //getActivity().finish();
 
             }
         });
@@ -121,13 +124,15 @@ public class UsersFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        readUsers();
+        //readUsers();
+        //progresDialog();
         //GlideApp.with(getContext()).load(storageReference).into(profilePicture);
     }
 
     private void readUsers() {
+
         if (firebaseUser!=null) {
-            progresDialog();
+
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
             storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+firebaseUser.getUid()+".jpg");
             //Glide.with(getContext()).load(storageReference).into(profilePicture);
@@ -135,6 +140,7 @@ public class UsersFragment extends Fragment {
             reference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    progressDialog.dismiss();
                     User user = dataSnapshot.getValue(User.class);
                     if (!user.getUsername().isEmpty()) {
                         nama.setText(user.getUsername());
@@ -146,7 +152,7 @@ public class UsersFragment extends Fragment {
                         nohp.setText(user.getNumberPhone());
                     }
                     if (!user.getJk().isEmpty()){
-                        if (user.equals("1")){
+                        if (user.getJk().equalsIgnoreCase("1")){
                             jeniskelamin.setText("Laki-laki");
                         }else{
                             jeniskelamin.setText("Perempuan");
@@ -160,7 +166,7 @@ public class UsersFragment extends Fragment {
                         GlideApp.with(getContext()).load(storageReference).into(profilePicture);
                         Log.d("isi storage", "onDataChange: "+storageReference);
                     }
-                    progressDialog.dismiss();
+
                 }
 
                 @Override
