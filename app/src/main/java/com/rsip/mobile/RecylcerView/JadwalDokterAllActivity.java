@@ -26,7 +26,9 @@ import com.android.volley.toolbox.Volley;
 import com.rsip.mobile.R;
 import com.rsip.mobile.Utils.Koneksi;
 import com.rsip.mobile.View.DetailDokterActivity;
+import com.rsip.mobile.View.ShareAllJadwalDokter;
 
+import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
 
@@ -38,6 +40,7 @@ public class JadwalDokterAllActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     Intent intents;
+    private TextView shareJadwal;
 
 
     private JadwalDokterAllAdapter mAdapter;
@@ -60,6 +63,7 @@ public class JadwalDokterAllActivity extends AppCompatActivity {
     }
 
     private void findViews() {
+        shareJadwal=findViewById(R.id.tulisanBagikanJadwal);
         intents=getIntent();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         singleItemList=new ArrayList<>();
@@ -71,6 +75,23 @@ public class JadwalDokterAllActivity extends AppCompatActivity {
         allDataList=new ArrayList<>();
         Log.d("findview", "findViews: "+intents.getStringExtra("poli"));
         Log.d("findview", "findViews: "+intents.getStringExtra("spinerPoli"));
+        shareJadwal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(JadwalDokterAllActivity.this, ShareAllJadwalDokter.class);
+                Log.d("allJadwal", "onClick: "+intents.getStringExtra("dokterall"));
+                Log.d("allJadwal", "onClick: "+intents.getStringExtra("poli"));
+                if (!TextUtils.isEmpty(intents.getStringExtra("dokterall"))) {
+                    intent.putExtra("dari", intents.getStringExtra("dokterall"));
+                }
+                if (!TextUtils.isEmpty(intents.getStringExtra("poli"))){
+                    intent.putExtra("dari", intents.getStringExtra("poli"));
+                    intent.putExtra("darispiner",intents.getStringExtra("spinerPoli"));
+                }
+
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -100,6 +121,13 @@ public class JadwalDokterAllActivity extends AppCompatActivity {
                 //handle item click events here
                 //Toast.makeText(JadwalDokterAllActivity.this, "Hey " + model.getTitle(), Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(JadwalDokterAllActivity.this, DetailDokterActivity.class);
+                if (!TextUtils.isEmpty(intents.getStringExtra("dokterall"))) {
+                    intent.putExtra("dari", intents.getStringExtra("dokterall"));
+                }
+                if (!TextUtils.isEmpty(intents.getStringExtra("poli"))){
+                    intent.putExtra("dari", intents.getStringExtra("poli"));
+                    intent.putExtra("darispiner",intents.getStringExtra("spinerPoli"));
+                }
                 intent.putExtra("kdPoliklinik",model.getKd_poliklinikx());
                 intent.putExtra("nm_poliklinikx",model.getNm_poliklinikx());
                 intent.putExtra("nip_dokterx",model.getNip_dokterx());
@@ -140,8 +168,8 @@ public class JadwalDokterAllActivity extends AppCompatActivity {
                             jadwalDokterAllModel.setJam_selesaix(data.getString("jam_selesaix"));
 
                             //dari intent dokter today
-                            if (!TextUtils.isEmpty(intents.getStringExtra("doktertoday"))) {
-                                if (intents.getStringExtra("doktertoday").equalsIgnoreCase("doktertoday")) {
+                            if (!TextUtils.isEmpty(intents.getStringExtra("dokterall"))) {
+                                if (intents.getStringExtra("dokterall").equalsIgnoreCase("dokterall")) {
                                     if (data.getString("harix").equalsIgnoreCase("SENIN")) {
                                         singleItemList.add(jadwalDokterAllModel);
                                     }

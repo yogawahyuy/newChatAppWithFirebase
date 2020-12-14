@@ -32,10 +32,13 @@
                     android:src="@drawable/akreditasi"
                     android:layout_marginStart="60dp"/>
                 <ImageView
+                    android:id="@+id/icons_more"
                     android:layout_marginStart="20dp"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/more"/>
+                    android:src="@drawable/more"
+                    android:visibility="gone"/>
+
 
             </androidx.appcompat.widget.Toolbar>
         </RelativeLayout>
@@ -43,7 +46,7 @@
         <RelativeLayout
             android:id="@+id/rel_titlebed"
             android:layout_width="match_parent"
-            android:layout_height="28dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/rel_toolbar"
             android:background="@color/colorPrimaryDark"
             >
@@ -58,7 +61,17 @@
                 android:fontFamily="@font/bookmanoldstyle"
                 android:textColor="@android:color/white"
                 />
-
+            <TextView
+                android:id="@+id/tulisanBagikanJadwal"
+                android:layout_below="@id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bagikan Jadwal"
+                android:gravity="center_horizontal"
+                android:textSize="16sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@color/lightGrey"
+                />
 
         </RelativeLayout>
         <androidx.recyclerview.widget.RecyclerView

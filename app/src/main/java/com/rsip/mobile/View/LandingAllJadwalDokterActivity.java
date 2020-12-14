@@ -60,7 +60,7 @@ public class LandingAllJadwalDokterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intents=new Intent(LandingAllJadwalDokterActivity.this,JadwalDokterAllActivity.class);
-                intents.putExtra("doktertoday","doktertoday");
+                intents.putExtra("dokterall","dokterall");
                 startActivity(intents);
             }
         });

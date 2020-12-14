@@ -18,7 +18,7 @@
         android:id="@+id/rel_picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/slide3">
+        android:background="@drawable/bg_atas">
         <LinearLayout
             android:id="@+id/logo_header"
             android:layout_width="match_parent"
@@ -104,6 +104,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:id="@+id/idHaritabel"
+                        android:text="Hari "
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textSize="13sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:id="@+id/idJamtabel"
                         android:text="Jam Praktek"
                         android:textColor="@android:color/white"
@@ -125,23 +135,23 @@
                 android:layout_height="wrap_content"
                 android:text="Dibuat Otomatis Oleh RSI MOBILE"
                 android:gravity="center"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/black"/>
         </LinearLayout>
 
-
+        <Button
+            android:id="@+id/btnShare"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="share"
+            android:layout_below="@id/footer"
+            android:visibility="visible"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_templatehijau"/>
     </RelativeLayout>
-            <Button
-                android:id="@+id/btnShare"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="share"
-                android:layout_below="@id/rel_picture"
-                android:visibility="visible"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_templatehijau"/>
+
         </RelativeLayout>
 
     </ScrollView>

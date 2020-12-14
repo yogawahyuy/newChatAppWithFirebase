@@ -14,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -25,11 +26,16 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.JsonObject;
 import com.rsip.mobile.BuildConfig;
 import com.rsip.mobile.Interface.ApiService;
 import com.rsip.mobile.R;
 import com.rsip.mobile.RecylcerView.DokterTodayModel;
+import com.rsip.mobile.RecylcerView.JadwalDokterAllModel;
 import com.rsip.mobile.Utils.Koneksi;
 
 import org.json.JSONArray;
@@ -82,9 +88,13 @@ public class ShareAllJadwalDokter extends AppCompatActivity {
                 .baseUrl(Koneksi.URL_TAMPIL_JADWAL_POLI_UMUM)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        getJadwal();
+        if(!TextUtils.isEmpty(intent.getStringExtra("dokterToday"))) {
+            getJadwal();
+        }else{
+            getAllJadwal();
+        }
         initTable();
-        Log.d("intentss", "onResponse: "+intent.getStringExtra("dokterToday"));
+        Log.d("intentss", "onResponse: "+intent.getStringExtra("dari"));
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,9 +187,74 @@ public class ShareAllJadwalDokter extends AppCompatActivity {
             ((TextView) row.findViewById(R.id.idnotabel)).setText(nomer);
             ((TextView) row.findViewById(R.id.idDoktertabel)).setText(modelList.get(i).getNm_dokterx());
             ((TextView) row.findViewById(R.id.idPolitabel)).setText(modelList.get(i).getNm_poliklinikx());
+            ((TextView) row.findViewById(R.id.idHaritabel)).setText(modelList.get(i).getHarix());
             ((TextView) row.findViewById(R.id.idJamtabel)).setText(jamPraktek);
             tl.addView(row);
         }
+    }
+    private void getAllJadwal(){
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, Koneksi.URL_TAMPIL_JADWAL_ALL_POLI, null, new com.android.volley.Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                if (response.length()>0){
+
+                    try{
+                        JSONArray root=response.getJSONArray("response");
+                        for (int i = 0; i <root.length() ; i++) {
+                            //ArrayList<JadwalDokterAllModel> singleItemList,selasaItemList,rabuItemList,kamisItemList,jumatItemList,sabtuItemList = new ArrayList<>();
+                            JSONObject data=root.getJSONObject(i);
+//                            JadwalDokterAllModel jadwalDokterAllModel=new JadwalDokterAllModel();
+//                            jadwalDokterAllModel.setKd_poliklinikx(data.getString("kd_poliklinikx"));
+//                            jadwalDokterAllModel.setNm_poliklinikx(data.getString("nm_poliklinikx"));
+//                            jadwalDokterAllModel.setNip_dokterx(data.getString("nip_dokterx"));
+//                            jadwalDokterAllModel.setNm_dokterx(data.getString("nm_dokterx"));
+//                            jadwalDokterAllModel.setHarix(data.getString("harix"));
+//                            jadwalDokterAllModel.setJam_mulaix(data.getString("jam_mulaix"));
+//                            jadwalDokterAllModel.setJam_selesaix(data.getString("jam_selesaix"));
+
+                            DokterTodayModel todayModel=new DokterTodayModel();
+                            todayModel.setKd_poliklinikx(data.getString("kd_poliklinikx"));
+                            todayModel.setNm_poliklinikx(data.getString("nm_poliklinikx"));
+                            todayModel.setNip_dokterx(data.getString("nip_dokterx"));
+                            todayModel.setNm_dokterx(data.getString("nm_dokterx"));
+                            todayModel.setHarix(data.getString("harix"));
+                            //todayModel.setTglx(data.getString("tglx"));
+                            todayModel.setJam_mulaix(data.getString("jam_mulaix"));
+                            todayModel.setJam_selesaix(data.getString("jam_selesaix"));
+
+                            //dari intent dokterall
+                            if (!TextUtils.isEmpty(intent.getStringExtra("dari"))) {
+                                judul.setText("Jadwal Semua Dokter");
+                                if (intent.getStringExtra("dari").equalsIgnoreCase("dokterall")) {
+                                    modelList.add(todayModel);
+                                }
+
+                            }
+
+                            if (!TextUtils.isEmpty(intent.getStringExtra("dari"))) {
+                                judul.setText("Jadwal Dokter Poli "+intent.getStringExtra("darispiner"));
+                                if (intent.getStringExtra("dari").equalsIgnoreCase("poli")) {
+                                    if (data.getString("nm_poliklinikx").equalsIgnoreCase(intent.getStringExtra("darispiner")))
+                                    modelList.add(todayModel);
+                                }
+                            }
+                        }
+                        initTable();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        Volley.newRequestQueue(this).add(jsonObjectRequest);
+
     }
 
     @SuppressLint("ResourceAsColor")
