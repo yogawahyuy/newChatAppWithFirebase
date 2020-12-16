@@ -69,6 +69,29 @@
             android:fontFamily="@font/bookmanoldstyle"
             android:textColor="@android:color/white"
             />
+        <LinearLayout
+            android:layout_below="@id/text_tanggal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            >
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/tulisanBagikanJadwal"
+                android:layout_below="@id/todayDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bagikan Jadwal"
+                android:gravity="center_horizontal"
+                android:textSize="16sp"
+                android:background="@android:color/holo_red_dark"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
 
 
     </RelativeLayout>

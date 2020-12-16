@@ -28,6 +28,7 @@
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 >
                 <ImageView
+                    android:visibility="gone"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:src="@drawable/left"
@@ -200,10 +201,10 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bookmanoldstyle"
                 android:gravity="center_horizontal"
-                android:text="Dibuat otomatis oleh RSI Mobile"
+                android:text="Dibuat otomatis oleh Mobile RSI"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_alignParentBottom="true"

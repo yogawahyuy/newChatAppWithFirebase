@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.SplashScreenActivity"
-    android:background="@drawable/tile">
+    android:background="@drawable/splashscreen"
+    android:id="@+id/relsplash">
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/loading2"
+        android:src="@drawable/loading"
         android:layout_centerInParent="true"/>
 
 

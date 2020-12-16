@@ -90,7 +90,9 @@ public class ShareAllJadwalDokter extends AppCompatActivity {
                 .build();
         if(!TextUtils.isEmpty(intent.getStringExtra("dokterToday"))) {
             getJadwal();
-        }else{
+        }else if(!TextUtils.isEmpty(intent.getStringExtra("alldokter"))){
+            getJadwalDokter();
+        } else{
             getAllJadwal();
         }
         initTable();
@@ -162,6 +164,50 @@ public class ShareAllJadwalDokter extends AppCompatActivity {
                             modelList.add(todayModel);
                             Log.d("tanggal", "onResponse: "+modelList.get(i).getNm_dokterx());
                         }
+                    }
+                    initTable();
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+
+            }
+        });
+
+    }
+    private void getJadwalDokter(){
+        HashMap<String,String> param=new HashMap<>();
+        //param.put("TANGGAL_PERIKSA",tanggal);
+        param.put("TANGGAL_PERIKSA",intent.getStringExtra("TANGGAL_PERIKSA"));
+        ApiService apiService=retrofit.create(ApiService.class);
+        Call<JsonObject> result=apiService.postMessage(param);
+        result.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response.body().toString());
+                    JSONObject res = jsonObject.getJSONObject("response");
+                    JSONArray list = res.getJSONArray("list");
+                    for (int i = 0; i <list.length() ; i++) {
+                        JSONObject data=list.getJSONObject(i);
+                        DokterTodayModel todayModel=new DokterTodayModel();
+                        todayModel.setKd_poliklinikx(data.getString("kd_poliklinikx"));
+                        todayModel.setNm_poliklinikx(data.getString("nm_poliklinikx"));
+                        todayModel.setNip_dokterx(data.getString("nip_dokterx"));
+                        todayModel.setNm_dokterx(data.getString("nm_dokterx"));
+                        todayModel.setHarix(data.getString("harix"));
+                        todayModel.setTglx(data.getString("tglx"));
+                        todayModel.setJam_mulaix(data.getString("jam_mulaix"));
+                        todayModel.setJam_selesaix(data.getString("jam_selesaix"));
+
+//                        if (data.getString("harix").equalsIgnoreCase(hasilHaris)) {
+//                            modelList.add(todayModel);
+//                            Log.d("tanggal", "onResponse: "+modelList.get(i).getNm_dokterx());
+//                        }
+                        modelList.add(todayModel);
                     }
                     initTable();
                 }catch (JSONException e){

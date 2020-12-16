@@ -133,24 +133,26 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dibuat Otomatis Oleh RSI MOBILE"
+                android:text="Dibuat Otomatis Oleh Mobile RSI"
                 android:gravity="center"
+                android:textSize="14sp"
                 android:textColor="@android:color/black"/>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnShare"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="share"
-            android:layout_below="@id/footer"
-            android:visibility="visible"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_templatehijau"/>
+
     </RelativeLayout>
+            <Button
+                android:id="@+id/btnShare"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="share"
+                android:layout_below="@id/rel_picture"
+                android:visibility="visible"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_templatehijau"/>
 
         </RelativeLayout>
 

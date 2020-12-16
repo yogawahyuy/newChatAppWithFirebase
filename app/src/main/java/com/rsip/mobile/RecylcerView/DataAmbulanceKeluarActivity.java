@@ -54,7 +54,7 @@ public class DataAmbulanceKeluarActivity extends AppCompatActivity {
 
     private void findViews() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        readFromFirebase();
+       // readFromFirebase();
         emptyView=findViewById(R.id.emptyview);
         emptyView.setVisibility(View.GONE);
     }

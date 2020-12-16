@@ -23,7 +23,7 @@ public class KartuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_kartu);
         backImg=findViewById(R.id.backimg);
         qrcodeImg=findViewById(R.id.imageqrcode);

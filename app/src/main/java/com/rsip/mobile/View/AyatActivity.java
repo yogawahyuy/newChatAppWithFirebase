@@ -81,6 +81,7 @@ public class AyatActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         intent=getIntent();
         idSurah=intent.getIntExtra("idposisi",2);
+
         toAdapter();
         progresDialog();
 
@@ -89,16 +90,16 @@ public class AyatActivity extends AppCompatActivity {
         imagePlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progresDialogMusic();
-                getRectitation(AyatActivity.this,idSurah,progressDialog1);
-                imagePlayButton.setVisibility(View.GONE);
-                imagePlayPause.setVisibility(View.VISIBLE);
-                linearLayoutSeekbar.setVisibility(View.VISIBLE);
-                textPlayer.setVisibility(View.GONE);
+//                progresDialogMusic();
+//                getRectitation(AyatActivity.this,idSurah,progressDialog1);
+//                imagePlayButton.setVisibility(View.GONE);
+//                imagePlayPause.setVisibility(View.VISIBLE);
+//                linearLayoutSeekbar.setVisibility(View.VISIBLE);
+//                textPlayer.setVisibility(View.GONE);
 
             }
         });
-
+        autoDownloadAyat();
         imagePlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,6 +134,15 @@ public class AyatActivity extends AppCompatActivity {
                 playerSeekBar.setSecondaryProgress(percent);
             }
         });
+
+    }
+    private void autoDownloadAyat(){
+        progresDialogMusic();
+        getRectitation(AyatActivity.this,idSurah,progressDialog1);
+        imagePlayButton.setVisibility(View.GONE);
+        imagePlayPause.setVisibility(View.VISIBLE);
+        linearLayoutSeekbar.setVisibility(View.VISIBLE);
+        textPlayer.setVisibility(View.GONE);
 
     }
     public void toAdapter(){

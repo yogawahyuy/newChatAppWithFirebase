@@ -7,12 +7,14 @@
 
     <ImageView
         android:id="@+id/img_user"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:adjustViewBounds="true"
         android:alpha="0.9"
         android:background="#16000000"
-        android:src="@drawable/icons8doctormale96"/>
+        android:src="@drawable/riwayatpemeriksaan2"
+        android:layout_centerInParent="true"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"

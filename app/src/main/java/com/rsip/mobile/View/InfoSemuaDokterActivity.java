@@ -74,7 +74,7 @@ public class InfoSemuaDokterActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private String curentDate;
     private SearchableSpinner searchableSpinnerHari;
-    private TextView tanggalDokter;
+    private TextView tanggalDokter,bagikanJadwal;
 
 
     @Override
@@ -95,8 +95,18 @@ public class InfoSemuaDokterActivity extends AppCompatActivity {
         String tanggalnya="Tanggal ";
         tanggalnya += intent.getStringExtra("TANGGAL_PERIKSA");
         tanggalDokter.setText(tanggalnya);
+        bagikanJadwal=findViewById(R.id.tulisanBagikanJadwal);
 
         initialitatonRetrofit();
+        bagikanJadwal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intents=new Intent(InfoSemuaDokterActivity.this,ShareAllJadwalDokter.class);
+                intents.putExtra("alldokter","true");
+                intents.putExtra("TANGGAL_PERIKSA",intent.getStringExtra("TANGGAL_PERIKSA"));
+                startActivity(intents);
+            }
+        });
 
        // postMessage("28/07/2020");
         //getJadwalAllPoli();
@@ -243,6 +253,13 @@ public class InfoSemuaDokterActivity extends AppCompatActivity {
 //        jsonUtil.getJadwalAllPoli(this,mAdapter,modelList,searchableSpinnerHari.getSelectedItem().toString());
 //    }
 
+    private void sendDataBagikanJadwal(){
+        Intent intents=new Intent(InfoSemuaDokterActivity.this,ShareAllJadwalDokter.class);
+        intents.putExtra("alldokter","true");
+        intents.putExtra("TANGGAL_PERIKSA","TANGGAL_PERIKSA");
+        startActivity(intent);
+
+    }
     private void getJadwalDokter(){
         HashMap<String , String > param=new HashMap<>();
         param.put("TANGGAL_PERIKSA",intent.getStringExtra("TANGGAL_PERIKSA"));

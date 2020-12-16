@@ -172,7 +172,6 @@ public class DokterTodayActivity extends AppCompatActivity {
                 intent.putExtra("jam_mulaix",model.getJam_mulaix());
                 intent.putExtra("jam_selesaix",model.getJam_selesaix());
                 startActivity(intent);
-                finish();
 
             }
         });

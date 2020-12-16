@@ -24,6 +24,7 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             >
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/backimg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,6 +45,7 @@
         </androidx.appcompat.widget.Toolbar>
     </RelativeLayout>
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/linear_home"
             android:layout_below="@id/rel_toolbar"
             android:layout_width="match_parent"
@@ -372,6 +374,21 @@
                 </com.facebook.shimmer.ShimmerFrameLayout>
 
             </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/underconstruction"
+            android:layout_below="@id/rel_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:src="@drawable/underconstur"
+                android:layout_gravity="center"
+                android:layout_marginTop="150dp"
+                />
+
         </LinearLayout>
     </RelativeLayout>
     </ScrollView>

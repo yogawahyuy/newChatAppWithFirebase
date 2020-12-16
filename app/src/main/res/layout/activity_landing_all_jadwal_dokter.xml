@@ -67,49 +67,100 @@
             android:orientation="vertical"
             android:layout_marginTop="100dp"
             >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/bg_template">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tanggal Jadwal"
+                android:text="Pilih Tanggal"
                 android:fontFamily="@font/bookmanoldstyle"
                 android:textColor="@android:color/black"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textSize="20sp"
+                />
             <EditText
                 android:id="@+id/edittxt_tanggaljadwal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:fontFamily="@font/bookmanoldstyle"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"/>
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_template"
+                android:gravity="center"/>
             <Button
                 android:id="@+id/btn_cari"
                 android:layout_below="@id/linCariRiwayat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cari"
-                android:background="@drawable/bg_templategreens"
+                android:text="Cari Per Tanggal"
+                android:background="@drawable/bg_templategreen"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"/>
-
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"/>
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_template">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pilih Poli"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:textSize="20sp"
+                />
             <Button
                 android:id="@+id/btn_poli"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cari Berdasarkan Poli"
+                android:text="Jadwal Poliklinik"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_template"/>
-
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_templateblue"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_template">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jadwal Poliklinik"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:textSize="20sp"
+                />
             <Button
                 android:id="@+id/btn_jadwal_semua_dokter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Jadwal Semua dokter"
+                android:text="Semua dokter"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/bg_templateyellow"/>
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_templatered"/>
+        </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 
