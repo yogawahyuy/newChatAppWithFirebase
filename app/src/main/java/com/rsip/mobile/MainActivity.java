@@ -29,7 +29,11 @@ import com.rsip.mobile.View.TentangActivity;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+import eu.dkaratzas.android.inapp.update.Constants;
+import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
+import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
+
+public class MainActivity extends AppCompatActivity implements InAppUpdateManager.InAppUpdateHandler {
 
     ImageView profileImage,akreditasiImage;
     //TextView username;
@@ -39,12 +43,20 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationViewEx bottomNavigationViewEx;
     MenuItem prevMenuItem;
+    InAppUpdateManager inAppUpdateManager;
+    private static final int REQ_CODE_VERSION_UPDATE = 530;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        InAppUpdateManager.Builder(this,REQ_CODE_VERSION_UPDATE)
+//                .resumeUpdates(true)
+//                .mode(Constants.UpdateMode.IMMEDIATE)
+//                .checkForAppUpdate();
+////        inAppUpdateManager.checkForAppUpdate();
+        updateManager();
         CacheUtil cacheUtil=new CacheUtil();
         cacheUtil.deleteCache(this);
         profileImage=findViewById(R.id.logorsi);
@@ -165,6 +177,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void updateManager(){
+        inAppUpdateManager=InAppUpdateManager.Builder(this,REQ_CODE_VERSION_UPDATE)
+                .resumeUpdates(true)
+                .mode(Constants.UpdateMode.FLEXIBLE)
+                .snackBarMessage("Update Berhasil Di Download")
+                .snackBarMessage("Restart")
+                .handler(this);
+        inAppUpdateManager.checkForAppUpdate();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -188,6 +210,17 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+
+    //in appupdate manager
+    @Override
+    public void onInAppUpdateError(int code, Throwable error) {
+
+    }
+
+    @Override
+    public void onInAppUpdateStatus(InAppUpdateStatus status) {
+
+    }
 
 
     class ViewPagerAdapter extends FragmentPagerAdapter{

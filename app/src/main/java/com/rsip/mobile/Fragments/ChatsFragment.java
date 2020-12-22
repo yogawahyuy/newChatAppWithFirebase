@@ -127,6 +127,9 @@ public class ChatsFragment extends Fragment {
         });
         dialog.show();
     }
+    private void dialogFormCallCenter(){
+
+    }
     private void closeFragment(){
         getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
     }

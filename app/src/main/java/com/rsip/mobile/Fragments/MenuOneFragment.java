@@ -18,8 +18,8 @@ import com.rsip.mobile.R;
 public class MenuOneFragment extends Fragment {
     GridView gridView;
     View rootView;
-    String[] title={"Pendaftaran Online","Riwayat Periksa","Tempat Tidur","Dokter Hari Ini","Jadwal Operasi","Info Dokter"};
-    int[] image={R.drawable.icons8newticket96,R.drawable.icons8orderhistory80,R.drawable.icons8hospitalbed80,R.drawable.icons8doctormale96,R.drawable.calendar,R.drawable.icons8info80};
+    String[] title={"Pendaftaran Online","Riwayat Periksa","Tempat Tidur","Dokter Hari Ini","Pendaftaran Poli Covid","Info Dokter"};
+    int[] image={R.drawable.icons8newticket96,R.drawable.icons8orderhistory80,R.drawable.icons8hospitalbed80,R.drawable.icons8doctormale96,R.drawable.covid,R.drawable.icons8info80};
 
 
     public MenuOneFragment() {

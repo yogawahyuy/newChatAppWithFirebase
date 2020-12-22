@@ -8,7 +8,9 @@ import android.content.IntentSender;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 
+import com.google.android.gms.dynamic.IFragmentWrapper;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
@@ -19,35 +21,40 @@ import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
 import com.rsip.mobile.MainActivity;
 import com.rsip.mobile.R;
 
+import eu.dkaratzas.android.inapp.update.Constants;
+import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
+import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
+
 public class SplashScreenActivity extends AppCompatActivity {
 
     private AppUpdateManager mUpdateManager;
+    AppUpdateManager appUpdateManager;
     private FakeAppUpdateManager fakeAppUpdateManager;
-    private static final int RC_UPDATE_APP = 11;
+    private static final int RC_UPDATE_APP = 530;
     InstallStateUpdatedListener installStateUpdatedListener;
+    Task<AppUpdateInfo> appUpdateInfoTask;
+    InAppUpdateManager inAppUpdateManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-//        // Creates instance of the manager.
-//        AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(this);
-//
-//// Returns an intent object that you use to check for an update.
-//        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
-//
-//// Checks that the platform will allow the specified type of update.
-//        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
-//            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
-//                // Request the update.
-//            }
-//        });
-
+//        inAppUpdateManager=InAppUpdateManager.Builder(this,RC_UPDATE_APP)
+//                .resumeUpdates(true)
+//                .mode(Constants.UpdateMode.IMMEDIATE)
+//                .snackBarMessage("Update berhasil di download")
+//                .snackBarAction("Muat Ulang")
+//                .handler(this);
+//        inAppUpdateManager = InAppUpdateManager.Builder(this,RC_UPDATE_APP)
+//                .resumeUpdates(true)
+//                .mode(Constants.UpdateMode.IMMEDIATE);
+//        inAppUpdateManager.checkForAppUpdate();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -58,11 +65,33 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        checkUpdate();
+
+    private void updateCheck(){
+        // Creates instance of the manager.
+        appUpdateManager = AppUpdateManagerFactory.create(this);
+
+// Returns an intent object that you use to check for an update.
+        appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+
+// Checks that the platform will allow the specified type of update.
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    // For a flexible update, use AppUpdateType.FLEXIBLE
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                // Request the update.
+
+                try {
+                    appUpdateManager.startUpdateFlowForResult(appUpdateInfo,AppUpdateType.FLEXIBLE,this,RC_UPDATE_APP);
+                } catch (IntentSender.SendIntentException e) {
+                    e.printStackTrace();
+                }
+            }else {
+
+
+            }
+        });
     }
+
 
     private void checkUpdate(){
         installStateUpdatedListener = new InstallStateUpdatedListener() {
@@ -116,6 +145,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 Log.e("update aplikasi", "onActivityResult: app download failed");
             }
         }
+
     }
     private void popupSnackbarForCompleteUpdate() {
 
@@ -139,8 +169,6 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if (mUpdateManager != null) {
-            mUpdateManager.unregisterListener(installStateUpdatedListener);
-        }
     }
+
 }

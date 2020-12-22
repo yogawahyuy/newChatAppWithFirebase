@@ -16,6 +16,7 @@ import com.rsip.mobile.View.JadwalSholatActivity;
 import com.rsip.mobile.View.KalendarHijriActivity;
 import com.rsip.mobile.View.KartuActivity;
 import com.rsip.mobile.View.KartuBpjsActivity;
+import com.rsip.mobile.View.LandingJadwalOperasiActivity;
 import com.rsip.mobile.View.MenuSurahActivity;
 import com.rsip.mobile.View.QuoteActivity;
 
@@ -68,7 +69,7 @@ public class GridHomeAdapterOne extends BaseAdapter {
                 else if (position==1){
                     mContext.startActivity(new Intent(mContext, JadwalSholatActivity.class));
                 }else if (position==2){
-                    mContext.startActivity(new Intent(mContext, KartuActivity.class));
+                    mContext.startActivity(new Intent(mContext, LandingJadwalOperasiActivity.class));
                 }
                 else if (position==3){
                     mContext.startActivity(new Intent(mContext, KartuBpjsActivity.class));

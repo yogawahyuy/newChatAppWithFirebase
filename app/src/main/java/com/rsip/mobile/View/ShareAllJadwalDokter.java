@@ -179,6 +179,7 @@ public class ShareAllJadwalDokter extends AppCompatActivity {
 
     }
     private void getJadwalDokter(){
+        judul.setText("Jadwal Dokter Tanggal "+intent.getStringExtra("TANGGAL_PERIKSA"));
         HashMap<String,String> param=new HashMap<>();
         //param.put("TANGGAL_PERIKSA",tanggal);
         param.put("TANGGAL_PERIKSA",intent.getStringExtra("TANGGAL_PERIKSA"));
@@ -239,6 +240,7 @@ public class ShareAllJadwalDokter extends AppCompatActivity {
         }
     }
     private void getAllJadwal(){
+        judul.setText("Jadwal Semua Dokter");
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, Koneksi.URL_TAMPIL_JADWAL_ALL_POLI, null, new com.android.volley.Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -279,10 +281,11 @@ public class ShareAllJadwalDokter extends AppCompatActivity {
                             }
 
                             if (!TextUtils.isEmpty(intent.getStringExtra("dari"))) {
-                                judul.setText("Jadwal Dokter Poli "+intent.getStringExtra("darispiner"));
+
                                 if (intent.getStringExtra("dari").equalsIgnoreCase("poli")) {
                                     if (data.getString("nm_poliklinikx").equalsIgnoreCase(intent.getStringExtra("darispiner")))
-                                    modelList.add(todayModel);
+                                        judul.setText("Jadwal Dokter Poli "+intent.getStringExtra("darispiner"));
+                                        modelList.add(todayModel);
                                 }
                             }
                         }

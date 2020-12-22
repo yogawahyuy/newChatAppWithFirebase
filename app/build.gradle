@@ -9,8 +9,8 @@ android {
         applicationId "com.rsip.mobile"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 13
-        versionName "1.1.0"
+        versionCode 14
+        versionName "1.1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -40,6 +40,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //library used
+    implementation 'eu.dkaratzas:android-inapp-update:1.0.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.google.android.material:material:1.1.0'

@@ -39,7 +39,7 @@ public class StartActivity extends AppCompatActivity {
         login=findViewById(R.id.btnLoginApp);
         register=findViewById(R.id.btnRegisterApp);
         skipLogin=findViewById(R.id.textskip);
-        skipLogin.setVisibility(View.GONE);
+       // skipLogin.setVisibility(View.GONE);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +57,7 @@ public class StartActivity extends AppCompatActivity {
         skipLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(StartActivity.this,MainActivity.class));
+                startActivity(new Intent(StartActivity.this,DaftarPoliCovidActivity.class));
 
             }
         });

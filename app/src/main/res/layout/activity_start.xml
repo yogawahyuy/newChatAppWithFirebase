@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:background="@color/green"
-        android:textColor="#fff"
+        android:textColor="@android:color/black"
         android:fontFamily="@font/bookmanoldstyle"
         android:text="Login"/>
     <Button
@@ -37,21 +37,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textColor="#fff"
+        android:textColor="@android:color/black"
         android:fontFamily="@font/bookmanoldstyle"
-        android:background="@android:color/holo_red_dark"
+        android:background="@drawable/bg_templatekuning"
         android:text="Register"/>
 
     <TextView
         android:layout_below="@id/btnRegisterApp"
         android:id="@+id/textskip"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Skip Login"
+        android:layout_height="60dp"
+        android:text="Pendaftaran Covid 19"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
+        android:textSize="28sp"
         android:gravity="center"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:fontFamily="@font/bookmanoldstyle"
-        android:layout_marginTop="16dp"/>
+        android:background="@android:color/holo_red_dark"
+        android:layout_marginTop="34dp"
+        android:textStyle="bold"/>
 
 </RelativeLayout>
