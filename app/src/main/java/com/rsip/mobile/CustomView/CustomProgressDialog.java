@@ -23,7 +23,7 @@ public class CustomProgressDialog {
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.custom_progress_dialog);
         GifImageView gifImageView=dialog.findViewById(R.id.gifloading);
-        Glide.with(activity).load(R.drawable.loading2).centerCrop().into(gifImageView);
+        Glide.with(activity).load(R.drawable.loading).centerCrop().into(gifImageView);
         dialog.show();
     }
     public void hideDialog(){

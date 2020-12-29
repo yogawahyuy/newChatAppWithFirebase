@@ -81,10 +81,10 @@ public class JadwalDokterAllActivity extends AppCompatActivity {
                 Intent intent=new Intent(JadwalDokterAllActivity.this, ShareAllJadwalDokter.class);
                 Log.d("allJadwal", "onClick: "+intents.getStringExtra("dokterall"));
                 Log.d("allJadwal", "onClick: "+intents.getStringExtra("poli"));
-                if (!TextUtils.isEmpty(intents.getStringExtra("dokterall"))) {
+                if (!TextUtils.isEmpty(intents.getStringExtra("dokterall"))) { //dari intent tampilkan jadwal semua dokter
                     intent.putExtra("dari", intents.getStringExtra("dokterall"));
                 }
-                if (!TextUtils.isEmpty(intents.getStringExtra("poli"))){
+                if (!TextUtils.isEmpty(intents.getStringExtra("poli"))){ //dari intent pilihan poli klinik
                     intent.putExtra("dari", intents.getStringExtra("poli"));
                     intent.putExtra("darispiner",intents.getStringExtra("spinerPoli"));
                 }
@@ -158,6 +158,7 @@ public class JadwalDokterAllActivity extends AppCompatActivity {
                         for (int i = 0; i <root.length() ; i++) {
                             //ArrayList<JadwalDokterAllModel> singleItemList,selasaItemList,rabuItemList,kamisItemList,jumatItemList,sabtuItemList = new ArrayList<>();
                             JSONObject data=root.getJSONObject(i);
+
                             JadwalDokterAllModel jadwalDokterAllModel=new JadwalDokterAllModel();
                             jadwalDokterAllModel.setKd_poliklinikx(data.getString("kd_poliklinikx"));
                             jadwalDokterAllModel.setNm_poliklinikx(data.getString("nm_poliklinikx"));

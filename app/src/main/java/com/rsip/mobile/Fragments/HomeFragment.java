@@ -5,7 +5,9 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
@@ -23,6 +25,8 @@ import com.squareup.picasso.Picasso;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.PageIndicator;
 import com.synnapps.carouselview.ViewListener;
+import com.vatsal.imagezoomer.ZoomAnimation;
+import com.viven.imagezoom.ImageZoomHelper;
 
 import java.util.ArrayList;
 
@@ -49,11 +53,13 @@ public class HomeFragment extends Fragment {
     ShimmerFrameLayout mShimmerViewContainer,mShimerViewNews,mShimerViewMenu;
     ViewPager viewPager;
     PageIndicator pageIndicator;
-    private ArrayList<Integer> carousellModels = new ArrayList<Integer>();
+    //private ArrayList<Integer> carousellModels = new ArrayList<Integer>();
+    private ArrayList<String> carousellModels = new ArrayList<String>();
     private ArrayList<HomeCarousellModel> homeCarousellModels = new ArrayList<>();
     private ArrayList<GridView> imageNews =new ArrayList<>();
     private ArrayList<GridViewModel> gridViewModels=new ArrayList<>();
     MenuViewAdapter menuViewAdapter;
+    ImageZoomHelper imageZoomHelper;
 
     String[] title={"Booking","Riwayat Periksa","Tempat Tidur","Dokter Cuti","Agenda RSI","Info Dokter"};
     int[] image={R.drawable.icons8newticket96,R.drawable.icons8orderhistory80,R.drawable.icons8hospitalbed80,R.drawable.icons8doctormale96,R.drawable.calendar,R.drawable.icons8info80};
@@ -70,6 +76,13 @@ public class HomeFragment extends Fragment {
             View customView=getActivity().getLayoutInflater().inflate(R.layout.home_view_custom,null);
             ImageView imageView=customView.findViewById(R.id.myImage_home);
             Picasso.get().load(carousellModels.get(position)).into(imageView);
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    ZoomAnimation zoomAnimation=new ZoomAnimation(getActivity());
+//                    zoomAnimation.zoomReverse(v,500);
+                }
+            });
             return customView;
         }
     };
@@ -121,6 +134,7 @@ public class HomeFragment extends Fragment {
         viewPager.setAdapter(menuViewAdapter);
         pageIndicator=rootView.findViewById(R.id.pageindicator);
         pageIndicator.setViewPager(viewPager);
+        imageZoomHelper=new ImageZoomHelper(getActivity());
 
         mShimmerViewContainer = (ShimmerFrameLayout) rootView.findViewById(R.id.shimer_view_container);
         mShimerViewNews=rootView.findViewById(R.id.shimer_view_container_news);
@@ -131,6 +145,7 @@ public class HomeFragment extends Fragment {
 
         return rootView;
     }
+
 
     @Override
     public void onResume() {
@@ -145,9 +160,15 @@ public class HomeFragment extends Fragment {
     }
 
     private void dataSliderHome(ViewListener viewListener, CarouselView carouselView, ShimmerFrameLayout shimmerFrameLayout){
-        carousellModels.add(R.drawable.slide3);
-        carousellModels.add(R.drawable.slide2);
-        carousellModels.add(R.drawable.slide1);
+        String finalImage;
+        for (int i = 1; i <=3 ; i++) {
+            finalImage="http://103.255.241.124:5758/cobaimage/"+i+".jpg";
+            carousellModels.add(finalImage);
+        }
+//        carousellModels.add(R.drawable.slide3);
+//        carousellModels.add(R.drawable.slide2);
+//        carousellModels.add(R.drawable.slide1);
+        Log.d("carosel", "dataSliderHome: "+carousellModels.size());
         carouselView.setViewListener(viewListener);
         carouselView.setPageCount(3);
         shimmerFrameLayout.stopShimmerAnimation();

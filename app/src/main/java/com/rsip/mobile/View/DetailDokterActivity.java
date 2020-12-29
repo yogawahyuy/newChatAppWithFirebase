@@ -1,8 +1,10 @@
 package com.rsip.mobile.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,7 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageException;
 import com.google.firebase.storage.StorageReference;
 import com.rsip.mobile.Model.GlideApp;
 import com.rsip.mobile.R;
@@ -61,8 +66,8 @@ public class DetailDokterActivity extends AppCompatActivity {
         jam=intent.getStringExtra("jam_mulaix");
         jam+=" - ";
         jam+=intent.getStringExtra("jam_selesaix");
-        jamDokter.setText(jam);
-        hariDokter.setText(intent.getStringExtra("harix"));
+        jamDokter.setText("JAM "+jam);
+        hariDokter.setText("HARI "+intent.getStringExtra("harix"));
         statusDokter.setText(intent.getStringExtra("status"));
         ketDokter.setText(intent.getStringExtra("ket"));
         statusDokter.setText(intent.getStringExtra("tglx"));
@@ -92,9 +97,25 @@ public class DetailDokterActivity extends AppCompatActivity {
 //        }
     }
     private void getPhotoDokter(){
-        storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+intent.getStringExtra("key")+".jpg");
-        Log.d("detaildokter", "getPhotoDokter: "+storageReference);
-        GlideApp.with(this).load(storageReference).into(profilePicture);
+//        storageReference = FirebaseStorage.getInstance().getReference("FotoDokter/" + intent.getStringExtra("nip_dokterx") + ".jpg");
+//        Log.d("detaildokter", "getPhotoDokter: " + storageReference);
+//
+//        GlideApp.with(this).load(storageReference).into(profilePicture).onLoadFailed(getDrawable(R.drawable.dokter2));
+        String url="http://103.255.241.124:5758/fotodokter/"+intent.getStringExtra("nip_dokterx")+".jpg";
+        GlideApp.with(this).load(url).into(profilePicture);
+        //GlideApp.with(this).load("gs://rsi-mobile.appspot.com/FotoDokter/"+intent.getStringExtra("nip_dokterx")+".jpg").into(profilePicture);
+
+//        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//            @Override
+//            public void onSuccess(Uri uri) {
+//                GlideApp.with(DetailDokterActivity.this).load(storageReference).into(profilePicture);
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception e) {
+//                GlideApp.with(DetailDokterActivity.this).load(R.drawable.riwayatpemeriksaan2).into(profilePicture);
+//            }
+//        });
 
     }
     private void fillToIntent(){
@@ -109,6 +130,7 @@ public class DetailDokterActivity extends AppCompatActivity {
         intent1.putExtra("ket",intent.getStringExtra("ket"));
         intent1.putExtra("harikedua",intent.getStringExtra("harikedua"));
         intent1.putExtra("jamkedua",intent.getStringExtra("jamkedua"));
+        intent1.putExtra("nip_dokterx",intent.getStringExtra("nip_dokterx"));
         startActivity(intent1);
         Log.d("detail", "fillToIntent: "+intent.getStringExtra("namadokter"));
     }

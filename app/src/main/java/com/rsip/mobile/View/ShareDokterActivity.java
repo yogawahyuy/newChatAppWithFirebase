@@ -40,8 +40,9 @@ public class ShareDokterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share_dokter);
-       findView();
+
        intent=getIntent();
+        findView();
        //getDataFromIntent();
        //getPhotoDokter();
         fillDataFromIntent();
@@ -64,6 +65,8 @@ public class ShareDokterActivity extends AppCompatActivity {
         jamPertama=findViewById(R.id.text_jamdokter);
         jamKedua=findViewById(R.id.text_jamdokterkedua);
         linearLayout=findViewById(R.id.waktu_kedua);
+        Log.d("isi inten", "findView: "+intent.getStringExtra("nip_dokterx"));
+        getPhotoDokter();
     }
     private void fillDataFromIntent(){
         namaDokter.setText(intent.getStringExtra("nm_dokterx"));
@@ -91,12 +94,14 @@ public class ShareDokterActivity extends AppCompatActivity {
 //        }
 //
 //    }
-//    private void getPhotoDokter(){
-//        storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+intent.getStringExtra("key")+".jpg");
+    private void getPhotoDokter(){
+//        storageReference= FirebaseStorage.getInstance().getReference("FotoDokter/"+intent.getStringExtra("nip_dokterx")+".jpg");
 //        Log.d("detaildokter", "getPhotoDokter: "+storageReference);
 //        GlideApp.with(this).load(storageReference).into(profilePicture);
-//
-//    }
+        String url="http://103.255.241.124:5758/fotodokter/"+intent.getStringExtra("nip_dokterx")+".jpg";
+        GlideApp.with(this).load(url).into(profilePicture);
+
+    }
 
     @SuppressLint("ResourceAsColor")
     private Bitmap getBitmapFromView(View view){

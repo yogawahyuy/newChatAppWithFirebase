@@ -71,11 +71,14 @@ public class SemuaDokterAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
             Log.d("isi storage", "onBindViewHolder: "+storageReference);
 
+            String url="http://103.255.241.124:5758/fotodokter/"+model.getNip_dokterx()+".jpg";
+            GlideApp.with(mContext).load(url).into(genericViewHolder.imgUser);
             //String url=modelList.get(position).getUrlPhoto();
 
             //Uri uri= Uri.parse(url);
             //genericViewHolder.imgUser.setImageURI(uri);
-            GlideApp.with(mContext).load(storageReference).into(genericViewHolder.imgUser);
+           // GlideApp.with(mContext).load(storageReference).into(genericViewHolder.imgUser);
+
 
 
 

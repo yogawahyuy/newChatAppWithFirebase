@@ -69,6 +69,7 @@ public class RiwayatDaftarActivity extends AppCompatActivity {
         initialitatonRetrofit();
         postMessageDaftarAntrian();
         emptyView.setVisibility(View.GONE);
+        Log.d("isiModelis", "findViews: "+modelList.size());
     }
 
 
@@ -155,6 +156,10 @@ public class RiwayatDaftarActivity extends AppCompatActivity {
 //                        if (modelList.size()==0){
 //                            emptyView.setVisibility(View.VISIBLE);
 //                            recyclerView.setVisibility(View.GONE);
+//                        }
+//                        if (modelList.size()!=null){
+//                            recyclerView.setVisibility(View.GONE);
+//                            emptyView.setVisibility(View.VISIBLE);
 //                        }
                         Log.d("data", "onResponse: "+riwayatDaftarModel.getNomorantrean());
 

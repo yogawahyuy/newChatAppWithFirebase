@@ -53,7 +53,6 @@ public class RegisterActivity extends AppCompatActivity {
         btn_register=findViewById(R.id.btnregister);
         auth=FirebaseAuth.getInstance();
         spinner=findViewById(R.id.spiner_register);
-
         fullname.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -24,19 +24,27 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.JsonObject;
+import com.rsip.mobile.Adapter.CustomDokterTodayAdapter;
 import com.rsip.mobile.Interface.ApiService;
+import com.rsip.mobile.Model.CustomDokterTodayModel;
 import com.rsip.mobile.R;
 import com.rsip.mobile.Utils.Koneksi;
 import com.rsip.mobile.View.DetailDokterActivity;
 import com.rsip.mobile.View.InfoSemuaDokterActivity;
 import com.rsip.mobile.View.ShareAllJadwalDokter;
 
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
@@ -55,17 +63,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DokterTodayActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private RecyclerView recyclerViews;
 
 
     private DokterTodayAdapter mAdapter;
-    TextView todayDate,shareJadwal;
+    private CustomDokterTodayAdapter mAdapters;
+    TextView todayDate,shareJadwal,textTitle;
 
     private ArrayList<DokterTodayModel> modelList = new ArrayList<>();
+    private ArrayList<CustomDokterTodayModel> modelLists = new ArrayList<>();
     DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Dokter");
     String hasilHari="";
     ProgressDialog progressDialog;
-    private Retrofit retrofit;
+    private Retrofit retrofit, retrofitUmum;
     private String curentDate;
+    Intent intent;
+
+    private LinearLayout linEmptyView;
 
 
     @Override
@@ -82,14 +96,28 @@ public class DokterTodayActivity extends AppCompatActivity {
 
     private void findViews() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_umur);
+        linEmptyView=findViewById(R.id.linEmptyView);
+        linEmptyView.setVisibility(View.GONE);
         todayDate=findViewById(R.id.todayDate);
+        textTitle=findViewById(R.id.text_title);
         shareJadwal=findViewById(R.id.tulisanBagikanJadwal);
         retrofit = new Retrofit.Builder()
                 .baseUrl(Koneksi.URL_TAMPIL_JADWAL_POLI_UMUM)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        getJadwal();
-
+        retrofitUmum = new Retrofit.Builder()
+                .baseUrl(Koneksi.URL_TAMPIL_JADWAL_ALL_POLI)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        intent=getIntent();
+        if (!TextUtils.isEmpty(intent.getStringExtra("umum"))){
+            getAllJadwal();
+            todayDate.setVisibility(View.GONE);
+            textTitle.setText("Dokter Umum");
+        }else if (TextUtils.isEmpty(intent.getStringExtra("umum"))){
+            getJadwal();
+        }
         shareJadwal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,6 +206,20 @@ public class DokterTodayActivity extends AppCompatActivity {
 
 
     }
+
+    private void CustomSetAdapter(){
+        mAdapters = new CustomDokterTodayAdapter(DokterTodayActivity.this,modelLists);
+        recyclerViews.setHasFixedSize(true);
+        final GridLayoutManager layoutManager = new GridLayoutManager(DokterTodayActivity.this, 2);
+        recyclerViews.addItemDecoration(new GridMarginDecoration(DokterTodayActivity.this, 2, 2, 2, 2));
+        recyclerViews.setLayoutManager(layoutManager);
+
+
+        recyclerViews.setAdapter(mAdapters);
+
+        //mAdapters
+
+    }
     private void getCurrentDate(){
         Date c= Calendar.getInstance().getTime();
         Log.d("tanggal", "getCurentDate: "+c);
@@ -203,7 +245,7 @@ public class DokterTodayActivity extends AppCompatActivity {
         titleTodayDate+=", "+curentDate;
         todayDate.setText(titleTodayDate);
         HashMap<String,String> param=new HashMap<>();
-        //param.put("TANGGAL_PERIKSA",tanggal);
+        //param.put("TANGGAL_PERIKSA","27/12/2020");
         param.put("TANGGAL_PERIKSA",curentDate);
         ApiService apiService=retrofit.create(ApiService.class);
         Call<JsonObject> result=apiService.postMessage(param);
@@ -226,13 +268,28 @@ public class DokterTodayActivity extends AppCompatActivity {
                         todayModel.setJam_mulaix(data.getString("jam_mulaix"));
                         todayModel.setJam_selesaix(data.getString("jam_selesaix"));
 
-                        if (data.getString("harix").equalsIgnoreCase(hasilHaris)) {
-                            modelList.add(todayModel);
+//                        if (!TextUtils.isEmpty(intent.getStringExtra("umum"))) {
+//                            if (data.getString("kd_poliklinikx").equalsIgnoreCase("P.Umm")) {
+////                                if (data.getString("harix").equalsIgnoreCase(hasilHaris)) {
+//                                    modelList.add(todayModel);
+//                               // }
+//                            }
+//                        }
+                        if (TextUtils.isEmpty(intent.getStringExtra("umum"))) {
+                            if (data.getString("harix").equalsIgnoreCase(hasilHaris)) {
+                                modelList.add(todayModel);
+                            }
                         }
+
                         setAdapter();
                     }
+
                 }catch (JSONException e){
                     e.printStackTrace();
+                    if (modelList.size()==0){
+                        recyclerView.setVisibility(View.GONE);
+                        linEmptyView.setVisibility(View.VISIBLE);
+                    }
                 }
             }
 
@@ -256,6 +313,61 @@ public class DokterTodayActivity extends AppCompatActivity {
         hasilHari=format.format(tanggalDanWaktu);
         Log.d("hari ini", "getHariIni: "+hasilHari);
     }
+    private void getAllJadwal(){
+
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, Koneksi.URL_TAMPIL_JADWAL_ALL_POLI, null, new com.android.volley.Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                if (response.length()>0){
+
+                    try{
+                        JSONArray root=response.getJSONArray("response");
+                        for (int i = 0; i <root.length() ; i++) {
+                            //ArrayList<JadwalDokterAllModel> singleItemList,selasaItemList,rabuItemList,kamisItemList,jumatItemList,sabtuItemList = new ArrayList<>();
+                            JSONObject data=root.getJSONObject(i);
+                            //Log.d(TAG, "onResponse: ");
+
+                            DokterTodayModel todayModel=new DokterTodayModel();
+                            todayModel.setKd_poliklinikx(data.getString("kd_poliklinikx"));
+                            todayModel.setNm_poliklinikx(data.getString("nm_poliklinikx"));
+                            todayModel.setNip_dokterx(data.getString("nip_dokterx"));
+                            todayModel.setNm_dokterx(data.getString("nm_dokterx"));
+                            todayModel.setHarix(data.getString("harix"));
+                            //todayModel.setTglx(data.getString("tglx"));
+                            todayModel.setJam_mulaix(data.getString("jam_mulaix"));
+                            todayModel.setJam_selesaix(data.getString("jam_selesaix"));
+
+                            //dari intent dokter today
+                            if (!TextUtils.isEmpty(intent.getStringExtra("umum"))) {
+                                if (data.getString("kd_poliklinikx").equalsIgnoreCase("P.Umm")) {
+//                                if (data.getString("harix").equalsIgnoreCase(hasilHaris)) {
+                                    modelList.add(todayModel);
+                                    // }
+                                }
+                            }
+
+
+                        }
+
+
+                        setAdapter();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        Volley.newRequestQueue(this).add(jsonObjectRequest);
+    }
+
+
 
 //    private void progresDialog(){
 //        progressDialog=new ProgressDialog(this);
@@ -266,4 +378,5 @@ public class DokterTodayActivity extends AppCompatActivity {
 //        progressDialog.show();
 //    }
 
-}
+    }
+

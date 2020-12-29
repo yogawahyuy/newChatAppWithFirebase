@@ -18,8 +18,8 @@
         <item>Permintaan Informasi</item>
     </string-array>
     <string-array name="jeniskelamin">
-        <item>Laki-Laki</item>
-        <item>Perempuan</item>
+        <item><font fgcolor='#8E8E93'>Laki-Laki</font></item>
+        <item><font fgcolor='#8E8E93'>Perempuan</font></item>
     </string-array>
     <string-array name="kota">
         <item>Banyumas</item>

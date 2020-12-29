@@ -76,6 +76,9 @@ public class GridHomeAdapter extends BaseAdapter {
                     mContext.startActivity(new Intent(mContext, RiwayatPeriksaActivity.class));
 
                 }else if (position==2){
+//                    Intent intent=new Intent(mContext,DokterTodayActivity.class);
+//                    intent.putExtra("umum","umum");
+//                    mContext.startActivity(intent);
                     mContext.startActivity(new Intent(mContext, InfoBedActivity.class));
                 }
                 else if (position==3){

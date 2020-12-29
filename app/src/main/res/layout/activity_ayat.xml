@@ -73,7 +73,8 @@
                 android:fontFamily="@font/bookmanoldstyle"
                 android:gravity="center_horizontal"
                 android:paddingTop="10dp"
-                android:paddingLeft="8dp"/>
+                android:paddingLeft="8dp"
+                android:layout_weight="1"/>
             <TextView
                 android:id="@+id/tv_translation"
                 android:layout_width="150dp"
@@ -83,12 +84,13 @@
                 android:fontFamily="@font/bookmanoldstyle"
                 android:gravity="center_horizontal"
                 android:paddingTop="10dp"
-                android:layout_marginLeft="-8dp"/>
+                android:layout_weight="1"/>
             <TextView
                 android:id="@+id/tv_jumlahayat"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:text="236 Ayat"
+                android:layout_weight="1"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/bookmanoldstyle"
                 android:gravity="center_horizontal"
@@ -134,6 +136,7 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:src="@drawable/download"
                     android:visibility="visible"
                     />
@@ -182,7 +185,8 @@
             android:layout_below="@id/rel_player"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical"
+            android:layout_marginTop="8dp"/>
 
 
     </RelativeLayout>

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,11 @@ public class DokterTodayAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
             genericViewHolder.itemTxtTitle.setText(model.getNm_dokterx());
             genericViewHolder.itemTxtMessage.setText(model.getNm_poliklinikx());
-           // storageReference= FirebaseStorage.getInstance().getReference("ProfilePicture/"+model.getKey()+".jpg");
+            //storageReference= FirebaseStorage.getInstance().getReference("FotoDokter/"+model.getNip_dokterx()+".jpg");
+            String url="http://103.255.241.124:5758/fotodokter/"+model.getNip_dokterx()+".jpg";
+            GlideApp.with(mContext).load(url).into(genericViewHolder.imgUser);
+
+//            Log.d("storage foto", "onBindViewHolder: "+storageReference.getPath());
             //GlideApp.with(mContext).load(storageReference).into(genericViewHolder.imgUser);
 
 

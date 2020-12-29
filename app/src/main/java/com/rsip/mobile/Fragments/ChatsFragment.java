@@ -2,6 +2,7 @@ package com.rsip.mobile.Fragments;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -47,9 +48,9 @@ public class ChatsFragment extends Fragment {
     Spinner spinerKeluhan,spinerUnit;
     FirebaseUser firebaseUser;
     DatabaseReference reference;
-    AlertDialog.Builder dialog;
-    LayoutInflater inflater;
-    View dialogView;
+    AlertDialog.Builder dialog,dialogCallCs;
+    LayoutInflater inflater,inflaterCallCs;
+    View dialogView,dialogViewCallCs;
 
     
     @Override
@@ -67,9 +68,8 @@ public class ChatsFragment extends Fragment {
         callRsi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                callIntent.setData(Uri.parse("tel:085875035300"));
-                startActivity(callIntent);
+
+                dialogFormCallCenter();
             }
         });
         chatRsi.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +128,47 @@ public class ChatsFragment extends Fragment {
         dialog.show();
     }
     private void dialogFormCallCenter(){
-
+        Button btnIgd,btnAmbulance,btnKomplain;
+        dialogCallCs=new AlertDialog.Builder(getContext());
+        inflaterCallCs=getLayoutInflater();
+        dialogViewCallCs=inflaterCallCs.inflate(R.layout.custom_dialog_call_center,null);
+        dialogCallCs.setView(dialogViewCallCs);
+        btnIgd=dialogViewCallCs.findViewById(R.id.btn_call_igd);
+        btnAmbulance=dialogViewCallCs.findViewById(R.id.btn_call_ambulance);
+        btnKomplain=dialogViewCallCs.findViewById(R.id.btn_call_komplain);
+        dialogCallCs.setCancelable(true);
+        dialogCallCs.setTitle("Call Center RSI");
+        dialogCallCs.setPositiveButton("Batal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        btnIgd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:(0281)630019"));
+                startActivity(callIntent);
+            }
+        });
+        btnAmbulance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:085875035300"));
+                startActivity(callIntent);
+            }
+        });
+        btnKomplain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:085875035300"));
+                startActivity(callIntent);
+            }
+        });
+        dialogCallCs.show();
     }
     private void closeFragment(){
         getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();

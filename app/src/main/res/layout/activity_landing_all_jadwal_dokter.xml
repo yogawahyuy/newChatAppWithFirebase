@@ -92,7 +92,8 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bg_template"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:focusable="false"/>
             <Button
                 android:id="@+id/btn_cari"
                 android:layout_below="@id/linCariRiwayat"

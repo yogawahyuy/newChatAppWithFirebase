@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.rsip.mobile.Model.GlideApp;
 import com.rsip.mobile.R;
 
 
@@ -83,6 +84,8 @@ public class JadwalDokterAllAdapter extends SectionedRecyclerViewAdapter<Recycle
 
         itemViewHolder.itemTxtTitle.setText(itemTitle);
         itemViewHolder.itemTxtMessage.setText(itemMessage);
+        String url="http://103.255.241.124:5758/fotodokter/"+itemsInSection.get(relativePosition).getNip_dokterx()+".jpg";
+        GlideApp.with(context).load(url).into(itemViewHolder.imgUser);
 
 
     }

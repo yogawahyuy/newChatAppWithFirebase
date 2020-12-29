@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     tools:context=".View.DaftarOnlineActivity">
     <ScrollView
         android:layout_width="match_parent"
@@ -12,7 +13,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E6E3E3E3"
+
         >
         <RelativeLayout
             android:id="@+id/rel_toolbar"
@@ -45,7 +46,6 @@
             android:layout_width="match_parent"
             android:layout_height="28dp"
             android:layout_below="@id/rel_toolbar"
-            android:layout_marginBottom="3dp"
             android:background="@color/colorPrimaryDark"
             >
             <TextView
@@ -63,12 +63,37 @@
 
 
         </RelativeLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_below="@id/rel_titlebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="13dp"
+            android:elevation="8dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0.0px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:cardElevation="10dp"
+            app:cardPreventCornerOverlap="false"
+            android:layout_marginBottom="13dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+
+            >
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            shimmer:duration="800">
         <LinearLayout
             android:id="@+id/lin_utama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_below="@id/rel_titlebook">
+
+            android:background="#FFFFFF">
 
             <LinearLayout
                 android:id="@+id/lin_rm"
@@ -76,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_margin="16dp"
-                android:background="@android:color/white">
+                >
                 <TextView
                     android:id="@+id/titelBpjs"
                     android:layout_width="match_parent"
@@ -84,7 +109,8 @@
                     android:text="Nomor CM / Rekam Medik"
                     android:textColor="@android:color/black"
                     android:fontFamily="@font/bookmanoldstyle"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    />
 
                 <EditText
                     android:id="@+id/edttext_norm"
@@ -256,8 +282,13 @@
                 android:text="Lanjut"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"/>
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"/>
         </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
     </ScrollView>
 

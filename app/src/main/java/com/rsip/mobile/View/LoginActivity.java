@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     CustomProgressDialog dialog;
     FirebaseAuth auth;
-    LinearLayout linLupaPassword;
+    LinearLayout linLupaPassword,linGotoDaftar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         password=findViewById(R.id.password);
         btnLogin=findViewById(R.id.btnlogin);
         linLupaPassword=findViewById(R.id.lin_lupaPassword);
+        linGotoDaftar=findViewById(R.id.lin_goto_daftar);
         dialog=new CustomProgressDialog(this);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,15 +52,21 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this,LupaPasswordActivity.class));
             }
         });
+        linGotoDaftar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
     }
     private void toLogin(){
         String txtEmail=email.getText().toString();
         String txtPassword=password.getText().toString();
-        dialog.showDialog();
+
         if (TextUtils.isEmpty(txtEmail)||TextUtils.isEmpty(txtPassword)){
             Toast.makeText(LoginActivity.this, "Isi semua form", Toast.LENGTH_SHORT).show();
         }else {
-
+            dialog.showDialog();
             auth.signInWithEmailAndPassword(txtEmail,txtPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {

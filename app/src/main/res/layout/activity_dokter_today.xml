@@ -94,12 +94,48 @@
 
 
         </RelativeLayout>
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recycler_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="vertical"
-    android:layout_below="@id/rel_titlebed"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/rel_titlebed">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_umur"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+    />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rel_titlebed"
+            android:id="@+id/linEmptyView"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="150dp">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/icons8doctormale96"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tidak Ada Jadwal Hari Ini"
+                android:gravity="center"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/black"/>
+        </LinearLayout>
 
 
 
