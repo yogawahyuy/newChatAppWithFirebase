@@ -75,22 +75,19 @@ public class JadwalDokterAllActivity extends AppCompatActivity {
         allDataList=new ArrayList<>();
         Log.d("findview", "findViews: "+intents.getStringExtra("poli"));
         Log.d("findview", "findViews: "+intents.getStringExtra("spinerPoli"));
-        shareJadwal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(JadwalDokterAllActivity.this, ShareAllJadwalDokter.class);
-                Log.d("allJadwal", "onClick: "+intents.getStringExtra("dokterall"));
-                Log.d("allJadwal", "onClick: "+intents.getStringExtra("poli"));
-                if (!TextUtils.isEmpty(intents.getStringExtra("dokterall"))) { //dari intent tampilkan jadwal semua dokter
-                    intent.putExtra("dari", intents.getStringExtra("dokterall"));
-                }
-                if (!TextUtils.isEmpty(intents.getStringExtra("poli"))){ //dari intent pilihan poli klinik
-                    intent.putExtra("dari", intents.getStringExtra("poli"));
-                    intent.putExtra("darispiner",intents.getStringExtra("spinerPoli"));
-                }
-
-                startActivity(intent);
+        shareJadwal.setOnClickListener(v -> {
+            Intent intent=new Intent(JadwalDokterAllActivity.this, ShareAllJadwalDokter.class);
+            Log.d("allJadwal", "onClick: "+intents.getStringExtra("dokterall"));
+            Log.d("allJadwal", "onClick: "+intents.getStringExtra("poli"));
+            if (!TextUtils.isEmpty(intents.getStringExtra("dokterall"))) { //dari intent tampilkan jadwal semua dokter
+                intent.putExtra("dari", intents.getStringExtra("dokterall"));
             }
+            if (!TextUtils.isEmpty(intents.getStringExtra("poli"))){ //dari intent pilihan poli klinik
+                intent.putExtra("dari", intents.getStringExtra("poli"));
+                intent.putExtra("darispiner",intents.getStringExtra("spinerPoli"));
+            }
+
+            startActivity(intent);
         });
     }
 
@@ -102,6 +99,13 @@ public class JadwalDokterAllActivity extends AppCompatActivity {
         modelList.add(new JadwalDokterAllModel("KAMIS",kamisItemList));
         modelList.add(new JadwalDokterAllModel("JUMAT",jumatItemList));
         modelList.add(new JadwalDokterAllModel("SABTU",sabtuItemList));
+//
+//        modelList.add(new JadwalDokterAllModel("SENIN",singleItemList));
+//        modelList.add(new JadwalDokterAllModel("SELASA",singleItemList));
+//        modelList.add(new JadwalDokterAllModel("RABU",singleItemList));
+//        modelList.add(new JadwalDokterAllModel("KAMIS",singleItemList));
+//        modelList.add(new JadwalDokterAllModel("JUMAT",singleItemList));
+//        modelList.add(new JadwalDokterAllModel("SABTU",singleItemList));
         Log.d("newJadwal", "setAdapter: "+allDataList.size());
         mAdapter = new JadwalDokterAllAdapter(JadwalDokterAllActivity.this, modelList);
 
@@ -114,20 +118,44 @@ public class JadwalDokterAllActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
 
-        mAdapter.SetOnItemClickListener(new JadwalDokterAllAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position, JadwalDokterAllModel model) {
+//        mAdapter.SetOnItemClickListener(new JadwalDokterAllAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position, JadwalDokterAllModel model) {
+//
+//                //handle item click events here
+//                //Toast.makeText(JadwalDokterAllActivity.this, "Hey " + model.getTitle(), Toast.LENGTH_SHORT).show();
+//                Intent intent=new Intent(JadwalDokterAllActivity.this, DetailDokterActivity.class);
+//                if (!TextUtils.isEmpty(intents.getStringExtra("dokterall"))) {
+//                    intent.putExtra("dari", intents.getStringExtra("dokterall"));
+//                }
+//                if (!TextUtils.isEmpty(intents.getStringExtra("poli"))){
+//                    intent.putExtra("dari", intents.getStringExtra("poli"));
+//                    intent.putExtra("darispiner",intents.getStringExtra("spinerPoli"));
+//                }
+//                intent.putExtra("kdPoliklinik",model.getKd_poliklinikx());
+//                intent.putExtra("nm_poliklinikx",model.getNm_poliklinikx());
+//                intent.putExtra("nip_dokterx",model.getNip_dokterx());
+//                intent.putExtra("nm_dokterx",model.getNm_dokterx());
+//                intent.putExtra("harix",model.getHarix());
+//                //intent.putExtra("tglx",model.getTglx());
+//                intent.putExtra("jam_mulaix",model.getJam_mulaix());
+//                intent.putExtra("jam_selesaix",model.getJam_selesaix());
+//                startActivity(intent);
+//                finish();
+//
+//            }
+//        });
 
-                //handle item click events here
-                //Toast.makeText(JadwalDokterAllActivity.this, "Hey " + model.getTitle(), Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(JadwalDokterAllActivity.this, DetailDokterActivity.class);
-                if (!TextUtils.isEmpty(intents.getStringExtra("dokterall"))) {
-                    intent.putExtra("dari", intents.getStringExtra("dokterall"));
-                }
-                if (!TextUtils.isEmpty(intents.getStringExtra("poli"))){
-                    intent.putExtra("dari", intents.getStringExtra("poli"));
-                    intent.putExtra("darispiner",intents.getStringExtra("spinerPoli"));
-                }
+        mAdapter.SetOnItemClickListener((view, position, model) -> {
+            Intent intent=new Intent(JadwalDokterAllActivity.this, DetailDokterActivity.class);
+            Log.d("diklikea", "setAdapter: "+"DIKLIK EAAA");
+//                if (!TextUtils.isEmpty(intents.getStringExtra("dokterall"))) {
+//                    intent.putExtra("dari", intents.getStringExtra("dokterall"));
+//                }
+//                if (!TextUtils.isEmpty(intents.getStringExtra("poli"))){
+//                    intent.putExtra("dari", intents.getStringExtra("poli"));
+//                    intent.putExtra("darispiner",intents.getStringExtra("spinerPoli"));
+//                }
                 intent.putExtra("kdPoliklinik",model.getKd_poliklinikx());
                 intent.putExtra("nm_poliklinikx",model.getNm_poliklinikx());
                 intent.putExtra("nip_dokterx",model.getNip_dokterx());
@@ -138,8 +166,6 @@ public class JadwalDokterAllActivity extends AppCompatActivity {
                 intent.putExtra("jam_selesaix",model.getJam_selesaix());
                 startActivity(intent);
                 finish();
-
-            }
         });
 
 
@@ -147,91 +173,95 @@ public class JadwalDokterAllActivity extends AppCompatActivity {
 
     private void getAllJadwal(){
 
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, Koneksi.URL_TAMPIL_JADWAL_ALL_POLI, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, Koneksi.URL_TAMPIL_JADWAL_ALL_POLI, null, response -> {
 
-                if (response.length()>0){
+            if (response.length()>0){
 
-                    try{
-                        JSONArray root=response.getJSONArray("response");
-                        for (int i = 0; i <root.length() ; i++) {
-                            //ArrayList<JadwalDokterAllModel> singleItemList,selasaItemList,rabuItemList,kamisItemList,jumatItemList,sabtuItemList = new ArrayList<>();
-                            JSONObject data=root.getJSONObject(i);
+                try{
+                    JSONArray root=response.getJSONArray("response");
+                    for (int i = 0; i <root.length() ; i++) {
+                        //ArrayList<JadwalDokterAllModel> singleItemList,selasaItemList,rabuItemList,kamisItemList,jumatItemList,sabtuItemList = new ArrayList<>();
+                        JSONObject data=root.getJSONObject(i);
 
-                            JadwalDokterAllModel jadwalDokterAllModel=new JadwalDokterAllModel();
-                            jadwalDokterAllModel.setKd_poliklinikx(data.getString("kd_poliklinikx"));
-                            jadwalDokterAllModel.setNm_poliklinikx(data.getString("nm_poliklinikx"));
-                            jadwalDokterAllModel.setNip_dokterx(data.getString("nip_dokterx"));
-                            jadwalDokterAllModel.setNm_dokterx(data.getString("nm_dokterx"));
-                            jadwalDokterAllModel.setHarix(data.getString("harix"));
-                            jadwalDokterAllModel.setJam_mulaix(data.getString("jam_mulaix"));
-                            jadwalDokterAllModel.setJam_selesaix(data.getString("jam_selesaix"));
+                        JadwalDokterAllModel jadwalDokterAllModel=new JadwalDokterAllModel();
+                        jadwalDokterAllModel.setKd_poliklinikx(data.getString("kd_poliklinikx"));
+                        jadwalDokterAllModel.setNm_poliklinikx(data.getString("nm_poliklinikx"));
+                        jadwalDokterAllModel.setNip_dokterx(data.getString("nip_dokterx"));
+                        jadwalDokterAllModel.setNm_dokterx(data.getString("nm_dokterx"));
+                        jadwalDokterAllModel.setHarix(data.getString("harix"));
+                        jadwalDokterAllModel.setJam_mulaix(data.getString("jam_mulaix"));
+                        jadwalDokterAllModel.setJam_selesaix(data.getString("jam_selesaix"));
 
-                            //dari intent dokter today
-                            if (!TextUtils.isEmpty(intents.getStringExtra("dokterall"))) {
-                                if (intents.getStringExtra("dokterall").equalsIgnoreCase("dokterall")) {
-                                    if (data.getString("harix").equalsIgnoreCase("SENIN")) {
-                                        singleItemList.add(jadwalDokterAllModel);
-                                    }
-                                    if (data.getString("harix").equalsIgnoreCase("SELASA")) {
-                                        selasaItemList.add(jadwalDokterAllModel);
-                                    }
-                                    if (data.getString("harix").equalsIgnoreCase("RABU")) {
-                                        rabuItemList.add(jadwalDokterAllModel);
-                                    }
-                                    if (data.getString("harix").equalsIgnoreCase("KAMIS")) {
-                                        kamisItemList.add(jadwalDokterAllModel);
-                                    }
-                                    if (data.getString("harix").equalsIgnoreCase("JUMAT")) {
-                                        jumatItemList.add(jadwalDokterAllModel);
-                                    }
-                                    if (data.getString("harix").equalsIgnoreCase("SABTU")) {
-                                        sabtuItemList.add(jadwalDokterAllModel);
-                                    }
+                        //dari intent dokter today
+                        if (!TextUtils.isEmpty(intents.getStringExtra("dokterall"))) {
+                            if (intents.getStringExtra("dokterall").equalsIgnoreCase("dokterall")) {
+                                if (data.getString("harix").equalsIgnoreCase("SENIN")) {
+                                    singleItemList.add(jadwalDokterAllModel);
+                                }
+                                if (data.getString("harix").equalsIgnoreCase("SELASA")) {
+                                    selasaItemList.add(jadwalDokterAllModel);
+                                    //singleItemList.add(jadwalDokterAllModel);
 
                                 }
-                            }
-                            if (!TextUtils.isEmpty(intents.getStringExtra("poli"))) {
-                                if (intents.getStringExtra("poli").equalsIgnoreCase("poli")) {
-                                    if (data.getString("harix").equalsIgnoreCase("SENIN") && data.getString("nm_poliklinikx").equalsIgnoreCase(intents.getStringExtra("spinerPoli"))) {
-                                        singleItemList.add(jadwalDokterAllModel);
-                                    }
-                                    if (data.getString("harix").equalsIgnoreCase("SELASA") && data.getString("nm_poliklinikx").equalsIgnoreCase(intents.getStringExtra("spinerPoli"))) {
-                                        selasaItemList.add(jadwalDokterAllModel);
-                                    }
-                                    if (data.getString("harix").equalsIgnoreCase("RABU") && data.getString("nm_poliklinikx").equalsIgnoreCase(intents.getStringExtra("spinerPoli"))) {
-                                        rabuItemList.add(jadwalDokterAllModel);
-                                    }
-                                    if (data.getString("harix").equalsIgnoreCase("KAMIS") && data.getString("nm_poliklinikx").equalsIgnoreCase(intents.getStringExtra("spinerPoli"))) {
-                                        kamisItemList.add(jadwalDokterAllModel);
-                                    }
-                                    if (data.getString("harix").equalsIgnoreCase("JUMAT") && data.getString("nm_poliklinikx").equalsIgnoreCase(intents.getStringExtra("spinerPoli"))) {
-                                        jumatItemList.add(jadwalDokterAllModel);
-                                    }
-                                    if (data.getString("harix").equalsIgnoreCase("SABTU") && data.getString("nm_poliklinikx").equalsIgnoreCase(intents.getStringExtra("spinerPoli"))) {
-                                        sabtuItemList.add(jadwalDokterAllModel);
-                                    }
+                                if (data.getString("harix").equalsIgnoreCase("RABU")) {
+                                    rabuItemList.add(jadwalDokterAllModel);
+                                    //singleItemList.add(jadwalDokterAllModel);
+
                                 }
+                                if (data.getString("harix").equalsIgnoreCase("KAMIS")) {
+                                    kamisItemList.add(jadwalDokterAllModel);
+                                   // singleItemList.add(jadwalDokterAllModel);
+
+                                }
+                                if (data.getString("harix").equalsIgnoreCase("JUMAT")) {
+                                    jumatItemList.add(jadwalDokterAllModel);
+                                    //singleItemList.add(jadwalDokterAllModel);
+
+                                }
+                                if (data.getString("harix").equalsIgnoreCase("SABTU")) {
+                                    sabtuItemList.add(jadwalDokterAllModel);
+                                    //singleItemList.add(jadwalDokterAllModel);
+
+                                }
+
                             }
-                            allDataList.add(jadwalDokterAllModel);
-
-
                         }
+                        if (!TextUtils.isEmpty(intents.getStringExtra("poli"))) {
+                            if (intents.getStringExtra("poli").equalsIgnoreCase("poli")) {
+                                if (data.getString("harix").equalsIgnoreCase("SENIN") && data.getString("nm_poliklinikx").equalsIgnoreCase(intents.getStringExtra("spinerPoli"))) {
+                                    singleItemList.add(jadwalDokterAllModel);
+                                }
+                                if (data.getString("harix").equalsIgnoreCase("SELASA") && data.getString("nm_poliklinikx").equalsIgnoreCase(intents.getStringExtra("spinerPoli"))) {
+                                    selasaItemList.add(jadwalDokterAllModel);
+                                }
+                                if (data.getString("harix").equalsIgnoreCase("RABU") && data.getString("nm_poliklinikx").equalsIgnoreCase(intents.getStringExtra("spinerPoli"))) {
+                                    rabuItemList.add(jadwalDokterAllModel);
+                                }
+                                if (data.getString("harix").equalsIgnoreCase("KAMIS") && data.getString("nm_poliklinikx").equalsIgnoreCase(intents.getStringExtra("spinerPoli"))) {
+                                    kamisItemList.add(jadwalDokterAllModel);
+                                }
+                                if (data.getString("harix").equalsIgnoreCase("JUMAT") && data.getString("nm_poliklinikx").equalsIgnoreCase(intents.getStringExtra("spinerPoli"))) {
+                                    jumatItemList.add(jadwalDokterAllModel);
+                                }
+                                if (data.getString("harix").equalsIgnoreCase("SABTU") && data.getString("nm_poliklinikx").equalsIgnoreCase(intents.getStringExtra("spinerPoli"))) {
+                                    sabtuItemList.add(jadwalDokterAllModel);
+                                }
+                            }
+                        }
+                        allDataList.add(jadwalDokterAllModel);
 
 
-                        setAdapter();
-                    }catch (Exception e){
-                        e.printStackTrace();
                     }
+
+
+                    setAdapter();
+                }catch (Exception e){
+                    e.printStackTrace();
                 }
-
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
 
-            }
+        }, error -> {
+
         });
         Volley.newRequestQueue(this).add(jsonObjectRequest);
     }

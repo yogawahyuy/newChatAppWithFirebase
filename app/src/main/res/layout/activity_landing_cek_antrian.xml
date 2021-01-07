@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    tools:context=".View.LandingCekAntrianActivity">
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/rel_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/logo3" />
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="60dp"
+                    android:src="@drawable/akreditasi" />
+
+
+            </androidx.appcompat.widget.Toolbar>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rel_titlebook"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:layout_below="@id/rel_toolbar"
+            android:background="@color/colorPrimaryDark"
+            >
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Antrian Poli"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:fontFamily="@font/bookmanoldstyle"
+                android:textColor="@android:color/white"
+                />
+
+
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_spinner"
+            android:layout_below="@id/rel_titlebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="1dp"
+            android:elevation="8dp"
+            android:divider="@android:color/black"
+            android:dividerHeight="0.0px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:cardElevation="10dp"
+            app:cardPreventCornerOverlap="false"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="20dp">
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                shimmer:duration="800">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tanggal"
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/bookmanoldstyle"/>
+                    <EditText
+                        android:id="@+id/edittxt_tanggalantrian"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:fontFamily="@font/bookmanoldstyle"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/bg_templatewhite"
+                        android:gravity="center"
+                        android:focusable="false"/>
+                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="14dp"
+                        >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Poliklinik"
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:textColor="@android:color/black"
+                        android:fontFamily="@font/bookmanoldstyle"/>
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/spiner_antrian_poliklinik"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:gravity="center"
+                        android:background="@drawable/bg_templatewhite"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="14dp"
+                        >
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Dokter"
+                            android:textSize="18sp"
+                            android:gravity="center"
+                            android:textColor="@android:color/black"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                            android:id="@+id/spiner_dokter_antrian"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:gravity="center"
+                            android:background="@drawable/bg_templatewhite"/>
+                        />
+                    </LinearLayout>
+                    <Button
+                        android:id="@+id/btn_cari_antrian"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cari"
+                        android:background="@color/colorPrimaryDark"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_tanggal_antrian"
+            android:layout_below="@id/card_view_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="1dp"
+            android:elevation="8dp"
+            android:divider="@android:color/black"
+            android:dividerHeight="0.0px"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            app:cardElevation="10dp"
+            app:cardPreventCornerOverlap="false"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="20dp">
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                shimmer:duration="800">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Pilih Tanggal"
+                            android:textSize="18sp"
+                            android:gravity="center"
+                            android:textColor="@android:color/black"
+                            android:fontFamily="@font/bookmanoldstyle"/>
+                        <EditText
+                            android:id="@+id/edittxt_tanggal_antrian2"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:fontFamily="@font/bookmanoldstyle"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/bg_templatewhite"
+                            android:gravity="center"
+                            android:focusable="false"/>
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="@color/yellow"
+                            android:text="Cari Pertanggal"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

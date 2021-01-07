@@ -45,6 +45,7 @@ import com.rsip.mobile.Utils.Koneksi;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import android.widget.AdapterView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
@@ -74,7 +75,8 @@ public class InfoSemuaDokterActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private String curentDate;
     private SearchableSpinner searchableSpinnerHari;
-    private TextView tanggalDokter,bagikanJadwal;
+    private TextView tanggalDokter,bagikanJadwal,textViewEmpty;
+    private RelativeLayout emptyView;
 
 
     @Override
@@ -92,11 +94,13 @@ public class InfoSemuaDokterActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         searchableSpinnerHari=findViewById(R.id.spinner_Hari);
         tanggalDokter=findViewById(R.id.text_tanggal);
+        emptyView=findViewById(R.id.emptyview);
+        textViewEmpty=findViewById(R.id.text_view_empty);
         String tanggalnya="Tanggal ";
         tanggalnya += intent.getStringExtra("TANGGAL_PERIKSA");
         tanggalDokter.setText(tanggalnya);
         bagikanJadwal=findViewById(R.id.tulisanBagikanJadwal);
-
+        emptyView.setVisibility(View.GONE);
         initialitatonRetrofit();
         bagikanJadwal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +126,7 @@ public class InfoSemuaDokterActivity extends AppCompatActivity {
 //            }
 //        });
         getJadwalDokter();
+
     }
     private void initialitatonRetrofit(){
         retrofit = new Retrofit.Builder()
@@ -168,6 +173,9 @@ public class InfoSemuaDokterActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         recyclerView.setAdapter(mAdapter);
+
+
+        Log.d("ukuran modelis", "setAdapter: "+modelList.size());
 
 
         mAdapter.SetOnItemClickListener(new SemuaDokterAdapter.OnItemClickListener() {
@@ -284,10 +292,19 @@ public class InfoSemuaDokterActivity extends AppCompatActivity {
                         semuaDokterModel.setJam_mulaix(data.getString("jam_mulaix"));
                         semuaDokterModel.setJam_selesaix(data.getString("jam_selesaix"));
                         modelList.add(semuaDokterModel);
+                        Log.d("ukuran modelis", "onResponse: "+modelList.size());
+
                     }
+
+
                     setAdapter();
                 }catch (JSONException e){
                     e.printStackTrace();
+                    if (modelList.size()==0){
+                        recyclerView.setVisibility(View.GONE);
+                        emptyView.setVisibility(View.VISIBLE);
+                        textViewEmpty.setText("Tidak Ada Jadwal Dokter Hari Ini");
+                    }
                 }
 
             }

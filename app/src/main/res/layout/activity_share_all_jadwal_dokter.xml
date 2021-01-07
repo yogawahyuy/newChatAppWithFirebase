@@ -84,8 +84,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+
+                        android:id="@+id/idHaritabel"
+                        android:text="Hari"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textSize="13sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:id="@+id/idDoktertabel"
-                        android:text="Nama Dokter"
+                        android:text="Nama Dokter "
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
                         android:gravity="center"
@@ -96,16 +107,6 @@
                         android:layout_weight="1"
                         android:id="@+id/idPolitabel"
                         android:text="Poli "
-                        android:textColor="@android:color/white"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:textSize="13sp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:id="@+id/idHaritabel"
-                        android:text="Hari "
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
                         android:gravity="center"

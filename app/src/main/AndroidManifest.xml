@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".View.DaftarPoliCovidActivity"></activity>
+        <activity android:name=".View.LandingCekAntrianActivity"></activity>
+        <activity android:name=".View.DaftarPoliCovidActivity" />
         <activity android:name=".View.LandingAllJadwalDokterActivity" />
         <activity
             android:name=".RecylcerView.JadwalDokterAllActivity"

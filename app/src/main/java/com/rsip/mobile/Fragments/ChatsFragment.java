@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -43,7 +44,7 @@ public class ChatsFragment extends Fragment {
     private View v;
 
     UsersAdapter usersAdapter;
-    Button callRsi,chatRsi,laporkan,lihatKeluhan;
+    Button callRsi,callAmbulance,callCenter,chatRsi,laporkan,lihatKeluhan;
     EditText editTextTanggal,editTextNama,editTextKeluhan;
     Spinner spinerKeluhan,spinerUnit;
     FirebaseUser firebaseUser;
@@ -51,6 +52,7 @@ public class ChatsFragment extends Fragment {
     AlertDialog.Builder dialog,dialogCallCs;
     LayoutInflater inflater,inflaterCallCs;
     View dialogView,dialogViewCallCs;
+    RelativeLayout relWa;
 
     
     @Override
@@ -63,13 +65,43 @@ public class ChatsFragment extends Fragment {
         reference= FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());}
 
         callRsi=v.findViewById(R.id.btn_hubcs);
+        callAmbulance=v.findViewById(R.id.btn_hub_ambulance);
+        callCenter=v.findViewById(R.id.btn_hub_call);
         lihatKeluhan=v.findViewById(R.id.btn_lihatChat);
         chatRsi=v.findViewById(R.id.btn_chatcs);
+        relWa=v.findViewById(R.id.rel_wa);
+        relWa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url= "https://wa.me/6285875035300";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
         callRsi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                dialogFormCallCenter();
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:(0281)635627"));
+                startActivity(callIntent);
+                //dialogFormCallCenter();
+            }
+        });
+        callAmbulance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:(0281)635627"));
+                startActivity(callIntent);
+            }
+        });
+        callCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:(0281)630019"));
+                startActivity(callIntent);
             }
         });
         chatRsi.setOnClickListener(new View.OnClickListener() {

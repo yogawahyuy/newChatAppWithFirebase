@@ -72,7 +72,7 @@ public class GridHomeAdapterOne extends BaseAdapter {
                     mContext.startActivity(new Intent(mContext, LandingJadwalOperasiActivity.class));
                 }
                 else if (position==3){
-                    mContext.startActivity(new Intent(mContext, KartuActivity.class));
+                    mContext.startActivity(new Intent(mContext, InfoBedActivity.class));
                 }
                 else if (position==4){
                     mContext.startActivity(new Intent(mContext, KalendarHijriActivity.class));

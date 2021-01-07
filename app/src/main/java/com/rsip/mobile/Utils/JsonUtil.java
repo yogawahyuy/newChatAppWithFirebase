@@ -231,39 +231,33 @@ public class JsonUtil {
     }
 
     public void getJadwalSholat(Context context, final List<JadwalSolatModel> jadwals, String tanggal, String tempat, final TextView subuh, final TextView duhur, final TextView ashar, final TextView magrib, final TextView isya,final ProgressDialog progressDialog){
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "http://api.aladhan.com/v1/timingsByAddress?address="+tempat+"/"+tanggal+"&method=11", null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONObject data = response.getJSONObject("data");
-                    JSONObject jadwal=data.getJSONObject("timings");
-                    JadwalSolatModel jadwalSolatModel=new JadwalSolatModel();
-                    jadwalSolatModel.setAzhar(jadwal.getString("Asr"));
-                    jadwalSolatModel.setDuha(jadwal.getString("Sunrise"));
-                    jadwalSolatModel.setDuhur(jadwal.getString("Dhuhr"));
-                    jadwalSolatModel.setImsak(jadwal.getString("Imsak"));
-                    jadwalSolatModel.setIsya(jadwal.getString("Isha"));
-                    jadwalSolatModel.setMagrib(jadwal.getString("Maghrib"));
-                    jadwalSolatModel.setSubuh(jadwal.getString("Fajr"));
-                    //jadwalSolatModel.setTanggal(jadwal.getString("tanggal"));
-                    Log.d("jadwalsolat", "onResponse: "+jadwal.getString("Fajr"));
-                    subuh.setText(jadwalSolatModel.getSubuh());
-                    duhur.setText(jadwalSolatModel.getDuhur());
-                    ashar.setText(jadwalSolatModel.getAzhar());
-                    magrib.setText(jadwalSolatModel.getMagrib());
-                    isya.setText(jadwalSolatModel.getIsya());
-                    jadwals.add(jadwalSolatModel);
-                    progressDialog.dismiss();
-                }catch (JSONException e){
-                    e.printStackTrace();
-                }
-
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, "http://api.aladhan.com/v1/timingsByAddress?address="+tempat+"/"+tanggal+"&method=11", null, response -> {
+            try {
+                JSONObject data = response.getJSONObject("data");
+                JSONObject jadwal=data.getJSONObject("timings");
+                JadwalSolatModel jadwalSolatModel=new JadwalSolatModel();
+                jadwalSolatModel.setAzhar(jadwal.getString("Asr"));
+                jadwalSolatModel.setDuha(jadwal.getString("Sunrise"));
+                jadwalSolatModel.setDuhur(jadwal.getString("Dhuhr"));
+                jadwalSolatModel.setImsak(jadwal.getString("Imsak"));
+                jadwalSolatModel.setIsya(jadwal.getString("Isha"));
+                jadwalSolatModel.setMagrib(jadwal.getString("Maghrib"));
+                jadwalSolatModel.setSubuh(jadwal.getString("Fajr"));
+                //jadwalSolatModel.setTanggal(jadwal.getString("tanggal"));
+                Log.d("jadwalsolat", "onResponse: "+jadwal.getString("Fajr"));
+                subuh.setText(jadwalSolatModel.getSubuh());
+                duhur.setText(jadwalSolatModel.getDuhur());
+                ashar.setText(jadwalSolatModel.getAzhar());
+                magrib.setText(jadwalSolatModel.getMagrib());
+                isya.setText(jadwalSolatModel.getIsya());
+                jadwals.add(jadwalSolatModel);
+                progressDialog.dismiss();
+            }catch (JSONException e){
+                e.printStackTrace();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
 
-            }
+        }, error -> {
+
         });
         Volley.newRequestQueue(context).add(jsonObjectRequest);
     }

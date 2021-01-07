@@ -59,14 +59,14 @@ public class MainActivity extends AppCompatActivity implements InAppUpdateManage
         updateManager();
         CacheUtil cacheUtil=new CacheUtil();
         cacheUtil.deleteCache(this);
-        profileImage=findViewById(R.id.logorsi);
-        profileImage.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                startActivity(new Intent(MainActivity.this, TentangActivity.class));
-                return false;
-            }
-        });
+//        profileImage=findViewById(R.id.logorsi);
+//        profileImage.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                startActivity(new Intent(MainActivity.this, TentangActivity.class));
+//                return false;
+//            }
+//        });
         bottomNavigationViewEx=findViewById(R.id.bottom_nav_view);
         bottomNavigationViewEx.setIconSize(20, 20);
         bottomNavigationViewEx.setTextSize(12);

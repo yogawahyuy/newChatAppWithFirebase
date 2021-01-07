@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.chrisbanes.photoview.PhotoView;
 import com.rsip.mobile.Adapter.UsersAdapter;
 import com.rsip.mobile.BuildConfig;
 import com.rsip.mobile.Model.GlideApp;
@@ -35,6 +36,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.rsip.mobile.View.TentangAplikasiActivity;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +52,7 @@ public class UsersFragment extends Fragment {
     private List<User> users;
     private Button btnLogout,btnEdit;
     CircleImageView profilePicture;
+    //PhotoView profilePicture;
     ProgressDialog progressDialog;
     private TextView email,nama,nohp,alamat,jeniskelamin,appVersionName,tentangAplikasi;
     StorageReference storageReference;
@@ -75,6 +78,7 @@ public class UsersFragment extends Fragment {
         tentangAplikasi=view.findViewById(R.id.textViewTentangAplikasi);
         btnEdit=view.findViewById(R.id.edit_profilebtn);
         btnLogout=view.findViewById(R.id.logout_profilebtn);
+        //profilePicture=view.findViewById(R.id.profile_image);
         if (firebaseUser==null){
             btnLogout.setText("Login");
             btnEdit.setVisibility(View.GONE);
@@ -111,12 +115,11 @@ public class UsersFragment extends Fragment {
         users=new ArrayList<>();
         readUsers();
         appVersionName.setText("Versi Aplikasi "+BuildConfig.VERSION_NAME);
-        tentangAplikasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), TentangAplikasiActivity.class));
-            }
-        });
+        tentangAplikasi.setOnClickListener(v -> startActivity(new Intent(getContext(), TentangAplikasiActivity.class)));
+
+//        profilePicture.setOnClickListener(v -> {
+//            //ZoomAnimation zoomAnimation
+//        });
        // GlideApp.with(getContext()).load(storageReference).into(profilePicture);
         return view;
     }

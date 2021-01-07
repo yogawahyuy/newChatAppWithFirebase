@@ -1,10 +1,16 @@
 package com.rsip.mobile.Fragments;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -14,20 +20,27 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.rsip.mobile.Adapter.GridHomeAdapter;
 import com.rsip.mobile.Adapter.GridHomeAdapterOne;
 import com.rsip.mobile.Adapter.MenuViewAdapter;
+import com.rsip.mobile.BuildConfig;
+import com.rsip.mobile.Model.GlideApp;
 import com.rsip.mobile.Model.GridViewModel;
 import com.rsip.mobile.Model.HomeCarousellModel;
 import com.rsip.mobile.R;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.rsip.mobile.View.ShareDokterActivity;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.PageIndicator;
 import com.synnapps.carouselview.ViewListener;
-import com.vatsal.imagezoomer.ZoomAnimation;
-import com.viven.imagezoom.ImageZoomHelper;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -59,7 +72,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<GridView> imageNews =new ArrayList<>();
     private ArrayList<GridViewModel> gridViewModels=new ArrayList<>();
     MenuViewAdapter menuViewAdapter;
-    ImageZoomHelper imageZoomHelper;
+    //ImageZoomHelper imageZoomHelper;
 
     String[] title={"Booking","Riwayat Periksa","Tempat Tidur","Dokter Cuti","Agenda RSI","Info Dokter"};
     int[] image={R.drawable.icons8newticket96,R.drawable.icons8orderhistory80,R.drawable.icons8hospitalbed80,R.drawable.icons8doctormale96,R.drawable.calendar,R.drawable.icons8info80};
@@ -81,11 +94,69 @@ public class HomeFragment extends Fragment {
                 public void onClick(View v) {
 //                    ZoomAnimation zoomAnimation=new ZoomAnimation(getActivity());
 //                    zoomAnimation.zoomReverse(v,500);
+                    //GlideApp.with(v).load(carousellModels.get(position)).
+                    //Glide.with(v).load(carousellModels.get(position)).into(new Target())
+                    Picasso.get().load(carousellModels.get(position)).into(new Target() {
+                        @Override
+                        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+//                            Intent intent = new Intent("android.intent.action.SEND");
+//                            intent.setType("image/*");
+//                            intent.putExtra("android.intent.extra.STREAM", shareImage(bitmap));
+//                            startActivity(Intent.createChooser(intent, "share"));
+                            shareImage(bitmap);
+                        }
+
+                        @Override
+                        public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+
+                        }
+
+                        @Override
+                        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                        }
+                    });
                 }
             });
             return customView;
         }
     };
+    private Uri getlocalBitmapUri(Bitmap bitmap) {
+
+        Uri bmuri = null;
+        String filePath=getContext().getFilesDir().getPath().toString() + "shareinfo.PNG";
+        try {
+            File file = new File(filePath);
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            file.setReadable(true,false);
+            Uri uri= FileProvider.getUriForFile(getContext(), BuildConfig.APPLICATION_ID+".provider",file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, fileOutputStream);
+            fileOutputStream.close();
+            bmuri = Uri.fromFile(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e2) {
+            e2.printStackTrace();
+        }
+        return bmuri;
+
+    }
+    private void shareImage(Bitmap bitmap){
+        String filePath=getContext().getFilesDir().getPath().toString() + "share.PNG";
+        File file=new File(filePath);
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+            file.setReadable(true,false);
+            Uri uri= FileProvider.getUriForFile(getContext(), BuildConfig.APPLICATION_ID+".provider",file);
+            Intent intentShare=new Intent(Intent.ACTION_SEND);
+            intentShare.putExtra(Intent.EXTRA_STREAM,uri);
+            intentShare.setType("image/jpg");
+            startActivity(Intent.createChooser(intentShare,"Bagikan Ke"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     ViewListener viewListenerNews = new ViewListener() {
         @Override
@@ -134,7 +205,7 @@ public class HomeFragment extends Fragment {
         viewPager.setAdapter(menuViewAdapter);
         pageIndicator=rootView.findViewById(R.id.pageindicator);
         pageIndicator.setViewPager(viewPager);
-        imageZoomHelper=new ImageZoomHelper(getActivity());
+        //imageZoomHelper=new ImageZoomHelper(getActivity());
 
         mShimmerViewContainer = (ShimmerFrameLayout) rootView.findViewById(R.id.shimer_view_container);
         mShimerViewNews=rootView.findViewById(R.id.shimer_view_container_news);

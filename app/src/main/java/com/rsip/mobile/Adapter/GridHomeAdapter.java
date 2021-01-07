@@ -22,6 +22,7 @@ import com.rsip.mobile.View.DaftarPoliCovidActivity;
 import com.rsip.mobile.View.InfoBedActivity;
 import com.rsip.mobile.View.InfoSemuaDokterActivity;
 import com.rsip.mobile.View.LandingAllJadwalDokterActivity;
+import com.rsip.mobile.View.LandingCekAntrianActivity;
 import com.rsip.mobile.View.LandingJadwalOperasiActivity;
 import com.rsip.mobile.View.RiwayatPeriksaActivity;
 
@@ -79,7 +80,7 @@ public class GridHomeAdapter extends BaseAdapter {
 //                    Intent intent=new Intent(mContext,DokterTodayActivity.class);
 //                    intent.putExtra("umum","umum");
 //                    mContext.startActivity(intent);
-                    mContext.startActivity(new Intent(mContext, InfoBedActivity.class));
+                    mContext.startActivity(new Intent(mContext, LandingCekAntrianActivity.class));
                 }
                 else if (position==3){
                     mContext.startActivity(new Intent(mContext, DokterTodayActivity.class));

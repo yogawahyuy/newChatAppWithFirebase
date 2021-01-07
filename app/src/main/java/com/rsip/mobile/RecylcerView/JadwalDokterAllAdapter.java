@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ public class JadwalDokterAllAdapter extends SectionedRecyclerViewAdapter<Recycle
 
     private List<JadwalDokterAllModel> modelList;
 
-    private OnItemClickListener mItemClickListener;
+    OnItemClickListener mItemClickListener;
 
 
     private Context context;
@@ -128,7 +129,7 @@ public class JadwalDokterAllAdapter extends SectionedRecyclerViewAdapter<Recycle
     }
 
     // ItemViewHolder Class for Items in each Section
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         final TextView itemTxtTitle;
 
@@ -144,6 +145,13 @@ public class JadwalDokterAllAdapter extends SectionedRecyclerViewAdapter<Recycle
 
             imgUser = (ImageView) itemView.findViewById(R.id.img_user);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+               // mItemClickListener.onItemClick(itemView,getAdapterPosition(),modelList.get(getAdapterPosition()));
+                    //Log.d("jadwal alldokter", "onClick: "+modelList.get(getAdapterPosition()).getSingleItemArrayList().toString());
+                }
+            });
 
         }
     }

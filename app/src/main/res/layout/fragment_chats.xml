@@ -40,18 +40,38 @@
                 android:id="@+id/btn_hubcs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hubungi Call Center RSI"
+                android:text="Call IGD 24 JAM"
                 android:background="@android:color/holo_red_dark"
                 android:textColor="@android:color/white"
                 android:layout_margin="16dp"/>
+            <Button
+                android:id="@+id/btn_hub_ambulance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Call Ambulance"
+                android:background="@color/yellow"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"/>
+            <Button
+                android:id="@+id/btn_hub_call"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Call Center"
+                android:background="@color/green"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"/>
             <Button
                 android:id="@+id/btn_chatcs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:background="@color/green"
-                android:text="Chat Call Center RSI"
+                android:background="@android:color/holo_purple"
+                android:text="Input Keluhan"
                 android:textColor="@android:color/white"/>
             <Button
                 android:id="@+id/btn_lihatChat"
@@ -60,9 +80,46 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bg_template"
+                android:background="@android:color/white"
                 android:text="Lihat Keluhan"
                 android:textColor="@android:color/black"/>
+<!--            <Button-->
+<!--                android:id="@+id/btn_wa_komplain"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="16dp"-->
+<!--                android:layout_marginRight="16dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:background="@drawable/bg_template"-->
+<!--                android:text="Wa Komplain"-->
+<!--                android:textColor="@android:color/black"/>-->
+            <RelativeLayout
+                android:id="@+id/rel_wa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="50dp"
+                >
+            <ImageView
+                android:id="@+id/waicons"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/waicon"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="120dp"
+                android:background="@android:color/white"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/waicons"
+                    android:text="WA Komplain"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/bookmanoldstyle"/>
+            </RelativeLayout>
+
         </LinearLayout>
 
     </RelativeLayout>

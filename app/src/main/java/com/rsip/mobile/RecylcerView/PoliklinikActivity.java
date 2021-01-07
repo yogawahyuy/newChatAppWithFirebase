@@ -37,11 +37,14 @@ import java.util.Map;
 
 import com.google.gson.JsonObject;
 import com.rsip.mobile.Interface.ApiService;
+import com.rsip.mobile.MainActivity;
 import com.rsip.mobile.R;
 import com.rsip.mobile.Utils.HttpHandler;
 import com.rsip.mobile.Utils.Koneksi;
 import com.rsip.mobile.View.RingkasanDaftarOnlineActivity;
+import com.rsip.mobile.View.TentangActivity;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
@@ -71,6 +74,7 @@ public class PoliklinikActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private Retrofit retrofitDaftar;
     String str=null;
+    ImageView profileimage;
 
 
     @Override
@@ -97,10 +101,23 @@ public class PoliklinikActivity extends AppCompatActivity {
         tanggal=intent.getStringExtra("tanggal");
         tanggalPoli.setText(intent.getStringExtra("tanggal"));
         hariPoli.setText(intent.getStringExtra("hari"));
-        postMessage(tanggal);
 
         String parseTime=intent.getStringExtra("tanggal");
-        parseDate(parseTime);
+        //parseDate(parseTime);
+        profileimage=findViewById(R.id.profile_image);
+        profileimage.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                startActivity(new Intent(PoliklinikActivity.this, TentangActivity.class));
+                return false;
+            }
+        });
+
+        if (intent.getStringExtra("asuransi").equalsIgnoreCase("BPJS")){
+            parseDate(parseTime);
+        }else {
+            postMessage(tanggal);
+        }
     }
 
 

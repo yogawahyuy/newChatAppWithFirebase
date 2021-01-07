@@ -100,7 +100,7 @@
                         android:layout_height="185dp"
                         android:src="@drawable/dokter2"
                         android:layout_centerInParent="true"
-                        android:scaleType="centerCrop"/>
+                        android:scaleType="fitCenter"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -128,7 +128,8 @@
                         android:fontFamily="@font/bookmanoldstyle"
                         android:textColor="@android:color/white"
                         android:layout_marginTop="10dp"
-                        android:layout_centerHorizontal="true"/>
+                        android:layout_centerHorizontal="true"
+                        android:textSize="13sp"/>
                 </RelativeLayout>
 
                 <RelativeLayout

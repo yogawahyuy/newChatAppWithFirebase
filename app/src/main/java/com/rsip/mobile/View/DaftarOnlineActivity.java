@@ -209,29 +209,23 @@ public class DaftarOnlineActivity extends AppCompatActivity {
 
     public void getHariAktif(){
 
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, Koneksi.URL_TAMPIL_HARI_AKTIF, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try{
-                    JSONArray respone=response.getJSONArray("response");
-                    for (int i = 0; i <respone.length() ; i++) {
-                        JSONObject data=respone.getJSONObject(i);
-                        String tampung=data.getString("hari");
-                        tampung+="   "+data.getString("tanggal");
-                        isi.add(tampung);
-                        Log.d("data", "onResponse: "+tampung);
-                    }
-
-
-                }catch (JSONException e){
-                    e.printStackTrace();
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.POST, Koneksi.URL_TAMPIL_HARI_AKTIF, null, response -> {
+            try{
+                JSONArray respone=response.getJSONArray("response");
+                for (int i = 0; i <respone.length() ; i++) {
+                    JSONObject data=respone.getJSONObject(i);
+                    String tampung=data.getString("hari");
+                    tampung+="   "+data.getString("tanggal");
+                    isi.add(tampung);
+                    Log.d("data", "onResponse: "+tampung);
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
 
+
+            }catch (JSONException e){
+                e.printStackTrace();
             }
+        }, error -> {
+
         });
         Volley.newRequestQueue(this).add(jsonObjectRequest);
 

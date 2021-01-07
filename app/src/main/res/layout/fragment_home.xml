@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="vertical"
-            shimmer:duration="800">
+            shimmer:duration="5000">
             <include layout="@layout/homesection_one"/>
 
         </com.facebook.shimmer.ShimmerFrameLayout>
